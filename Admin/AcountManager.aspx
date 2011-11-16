@@ -92,16 +92,22 @@
                         IDCard :
                         <asp:TextBox ID="txt_IDCard" runat="server" Width="160px"></asp:TextBox>
 &nbsp;Decentralize :
-                        <asp:DropDownList ID="ddl_Decentralize" runat="server">
+                        <asp:DropDownList ID="ddl_Decentralize" runat="server" 
+                            DataSourceID="SqlDataSource_Decentralize" DataTextField="Decentralize" 
+                            DataValueField="Decentralize">
                             <asp:ListItem>Adminitrator</asp:ListItem>
                             <asp:ListItem>Mod</asp:ListItem>
                             <asp:ListItem>User</asp:ListItem>
                         </asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSource_Decentralize" runat="server" 
+                            ConnectionString="<%$ ConnectionStrings:MobileShopConnectionString %>" 
+                            SelectCommand="SELECT * FROM [Decentralize]"></asp:SqlDataSource>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btn_Add" runat="server" Text="Add" onclick="btn_Add_Click" />
                         <br />
                         <br />
-                        <center><asp:Label ID="lb_Note" runat="server" ForeColor="Red" Font-Bold="True" 
+                        <center>
+                            <asp:Label ID="lb_Note" runat="server" ForeColor="#33CC33" Font-Bold="True" 
                                 Font-Size="15pt"></asp:Label>
                             <br />
                         </center>
@@ -133,8 +139,25 @@
                                 SortExpression="Address" />
                             <asp:BoundField DataField="IDCard" HeaderText="IDCard" 
                                 SortExpression="IDCard" />
-                            <asp:BoundField DataField="Decentralize" HeaderText="Decentralize" 
-                                SortExpression="Decentralize" />
+                            <%--<asp:BoundField DataField="Decentralize" HeaderText="Decentralize" 
+                                SortExpression="Decentralize" />--%>
+                            <asp:TemplateField HeaderText="Gender"> 
+                            <EditItemTemplate> 
+                              <asp:DropDownList ID="cmbDecentralize" runat="server"  SelectedValue='<%# Eval("Decentralize") %>'> 
+                                <asp:ListItem Value="Adminitrator" Text="Adminitrator"></asp:ListItem>
+                                <asp:ListItem Selected="True" Value="User" Text="User"></asp:ListItem>
+                                <asp:ListItem Value="Mod" Text="Mod"></asp:ListItem>
+                              </asp:DropDownList> 
+                            </EditItemTemplate> 
+                            <ItemTemplate> 
+                              <asp:Label ID="lbDecentralize" runat="server" Text='<%# Eval("Decentralize") %>'></asp:Label> 
+                            </ItemTemplate> 
+                            <%--<FooterTemplate> 
+                              <asp:DropDownList ID="cmbNewDecentralize" runat="server" >
+                                <asp:ListItem Text="Adminitrator" Value="Adminitrator"></asp:ListItem> 
+                                <asp:ListItem Selected="True"  Text="User" Value="User"></asp:ListItem> </asp:DropDownList> 
+                            </FooterTemplate> --%>
+                            </asp:TemplateField> 
                             <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
                             <asp:CommandField ButtonType="Button" DeleteImageUrl="~/Images/delete.png" 
                                 ShowDeleteButton="True" />
