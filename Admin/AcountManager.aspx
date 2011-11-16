@@ -1,17 +1,19 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AcountManager.aspx.cs" Inherits="Admin_AcountManager" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<script runat="server">
+<%--<script runat="server">
   protected void calEventDate_SelectionChanged(object sender, EventArgs e)
   {
       txt_BirthDay.Text = calEventDate.SelectedDate.ToString("d");
   }
-</script>
+</script>--%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Pop-up Date Picker</title>
+    <%--<title>Pop-up Date Picker</title>
       <script type="text/javascript">
           function displayCalendar() {
               var datePicker = document.getElementById('datePicker');
@@ -41,8 +43,8 @@
           {
               text-align: left;
           }
-    </style>
-    <%--<title></title>
+    </style>--%>
+    <title></title>
     <style type="text/css">
         .style1
         {
@@ -52,7 +54,7 @@
         {
             text-align: left;
         }
-    </style>--%>
+    </style>
 </head>
 <body>
 <center>
@@ -74,12 +76,14 @@
                         <asp:TextBox ID="txt_Fullname" runat="server" Width="160px"></asp:TextBox>
 &nbsp;<br />
                         BirthDay :&nbsp;
-                        &nbsp;<asp:TextBox ID="txt_BirthDay" runat="server" Width="160px"></asp:TextBox>
-                        <asp:Image ID="img_Calendar" alt="" onclick="displayCalendar()" runat="server" 
-                            Height="20px" ImageUrl="~/Images/calendar.png" Width="20px" />
-                        <div id="datePicker">
+                        &nbsp;<asp:TextBox ID="txt_BirthDay" runat="server"></asp:TextBox>
+                        <asp:CalendarExtender 
+                        ID="CalendarExtender1" 
+                        TargetControlID="txt_BirthDay" 
+                        runat="server" />
+                        <%--<div id="datePicker">
                             <asp:Calendar id="calEventDate" OnSelectionChanged="calEventDate_SelectionChanged" Runat="server" />
-                        </div>
+                        </div>--%>
                     &nbsp; Tel :
                         <asp:TextBox ID="txt_Tel" runat="server" Width="160px"></asp:TextBox>
 &nbsp; Address :
@@ -147,7 +151,10 @@
                     <asp:SqlDataSource ID="SqlDataSource_User" runat="server" 
                         ConnectionString="<%$ ConnectionStrings:MobileShopConnectionString %>" 
                         SelectCommand="SELECT * FROM [User]"></asp:SqlDataSource>
-    
+ 
+                    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+                    </asp:ToolkitScriptManager>
+ 
                     <br />
                 </td>
             </tr>
