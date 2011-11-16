@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using System.Drawing;
 
 public partial class Admin_AcountManager : System.Web.UI.Page
 {
@@ -61,11 +62,12 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         TextBox tel = (TextBox)grid_Users.Rows[e.RowIndex].Cells[4].Controls[0];
         TextBox address = (TextBox)grid_Users.Rows[e.RowIndex].Cells[5].Controls[0];
         TextBox idCard = (TextBox)grid_Users.Rows[e.RowIndex].Cells[6].Controls[0];
-        TextBox decentralize = (TextBox)grid_Users.Rows[e.RowIndex].Cells[7].Controls[0];
+        //TextBox decentralize = (TextBox)grid_Users.Rows[e.RowIndex].Cells[7].Controls[0];
+        DropDownList decentralize = (DropDownList)grid_Users.Rows[e.RowIndex].FindControl("cmbDecentralize");
 
         string sql = "UPDATE Users SET Password=N'" + password.Text + "', FullName=N'" + fullName.Text + "', Tel='" +
             tel.Text + "', BirthDay='"+birthDay.Text+"',Address=N'" + address.Text + "', IDCard='" + idCard.Text + "', Decentralize='" +
-            decentralize.Text + "' Where Username='" + username + "'";
+            decentralize.SelectedValue.ToString() + "' Where Username='" + username + "'";
 
         ac.ExeCuteNonquery(sql);
         
@@ -89,6 +91,7 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         } 
         else
         {
+            lb_Note.ForeColor = System.Drawing.Color.Red;
             lb_Note.Text = "Delete username:" + username + " failed";
         }
         
@@ -99,6 +102,7 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         if (txt_Username.Text=="" || txt_Password.Text=="" || txt_Fullname.Text=="" || txt_Tel.Text=="" || txt_BirthDay.Text=="" || 
             txt_Address.Text=="" || txt_IDCard.Text=="")
         {
+            lb_Note.ForeColor = System.Drawing.Color.Red;
             lb_Note.Text = "Insert username:" + txt_Username.Text + " failed. Please complete the information.";
             FillDataInGrid();
         } 
@@ -109,6 +113,7 @@ public partial class Admin_AcountManager : System.Web.UI.Page
             int temp = int.Parse(ac.ExecuteScalar(sql));
             if (temp > 0)
             {
+                lb_Note.ForeColor = System.Drawing.Color.Red;
                 lb_Note.Text = "Insert username:" + txt_Username.Text + " failed. This username is exist.";
                 FillDataInGrid();
             }
@@ -118,6 +123,7 @@ public partial class Admin_AcountManager : System.Web.UI.Page
                 username + "', N'" + txt_Password.Text + "', N'" + txt_Fullname.Text + "', '" + txt_Tel.Text + "', '" + txt_BirthDay.Text
                 + "', N'" + txt_Address.Text + "', " + int.Parse(txt_IDCard.Text) + ", '" + ddl_Decentralize.SelectedValue.ToString() + "')";
                 ac.ExeCuteNonquery(sql);
+                lb_Note.ForeColor = System.Drawing.Color.Green;
                 lb_Note.Text = "Insert username:" + txt_Username.Text + " successfully";
                 FillDataInGrid();
             }
