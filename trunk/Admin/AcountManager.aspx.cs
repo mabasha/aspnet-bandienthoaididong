@@ -58,7 +58,7 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         string username = grid_Users.DataKeys[e.RowIndex].Value.ToString();
         TextBox password = (TextBox)grid_Users.Rows[e.RowIndex].Cells[1].Controls[0];
         TextBox fullName = (TextBox)grid_Users.Rows[e.RowIndex].Cells[2].Controls[0];
-        TextBox birthDay = (TextBox)grid_Users.Rows[e.RowIndex].Cells[3].Controls[0];
+        TextBox birthDay = (TextBox)grid_Users.Rows[e.RowIndex].Cells[3].FindControl("Birthday");
         TextBox tel = (TextBox)grid_Users.Rows[e.RowIndex].Cells[4].Controls[0];
         TextBox address = (TextBox)grid_Users.Rows[e.RowIndex].Cells[5].Controls[0];
         TextBox idCard = (TextBox)grid_Users.Rows[e.RowIndex].Cells[6].Controls[0];

@@ -77,10 +77,7 @@
 &nbsp;<br />
                         BirthDay :&nbsp;
                         &nbsp;<asp:TextBox ID="txt_BirthDay" runat="server"></asp:TextBox>
-                        <asp:CalendarExtender 
-                        ID="CalendarExtender1" 
-                        TargetControlID="txt_BirthDay" 
-                        runat="server" />
+                        <asp:CalendarExtender ID="CalendarExtender1" TargetControlID="txt_BirthDay" runat="server" />
                         <%--<div id="datePicker">
                             <asp:Calendar id="calEventDate" OnSelectionChanged="calEventDate_SelectionChanged" Runat="server" />
                         </div>--%>
@@ -132,8 +129,17 @@
                                 SortExpression="Password" />
                             <asp:BoundField DataField="FullName" HeaderText="FullName" 
                                 SortExpression="FullName" />
-                            <asp:BoundField DataField="BirthDay" DataFormatString="{0:dd/MM/yyyy}" 
-                                HeaderText="BirthDay" HtmlEncode="False" SortExpression="BirthDay" />
+                            <%--<asp:BoundField DataField="BirthDay" DataFormatString="{0:dd/MM/yyyy}" 
+                                HeaderText="BirthDay" HtmlEncode="False" SortExpression="BirthDay" />--%>
+                            <asp:TemplateField HeaderText="BirthDay"> 
+                            <EditItemTemplate> 
+                              <asp:TextBox ID="Birthday" runat="server"  Text='<%# Eval("BirthDay") %>' /> 
+                                <asp:CalendarExtender ID="CalendarExtender2" TargetControlID="Birthday" runat="server"></asp:CalendarExtender>
+                            </EditItemTemplate> 
+                            <ItemTemplate> 
+                              <asp:Label ID="lbBirthDay" runat="server" Text='<%# Eval("BirthDay") %>'></asp:Label> 
+                            </ItemTemplate> 
+                            </asp:TemplateField>
                             <asp:BoundField DataField="Tel" HeaderText="Tel" SortExpression="Tel" />
                             <asp:BoundField DataField="Address" HeaderText="Address" 
                                 SortExpression="Address" />
