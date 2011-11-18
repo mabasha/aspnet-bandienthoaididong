@@ -148,6 +148,14 @@
                             <%--<asp:BoundField DataField="Decentralize" HeaderText="Decentralize" 
                                 SortExpression="Decentralize" />--%>
                             <asp:TemplateField HeaderText="Gender"> 
+                            <%--<FooterTemplate> 
+                              <asp:DropDownList ID="cmbNewDecentralize" runat="server" >
+                                <asp:ListItem Text="Adminitrator" Value="Adminitrator"></asp:ListItem> 
+                                <asp:ListItem Selected="True"  Text="User" Value="User"></asp:ListItem> </asp:DropDownList> 
+                            </FooterTemplate> --%>
+                            <ItemTemplate> 
+                              <asp:Label ID="lbDecentralize" runat="server" Text='<%# Eval("Decentralize") %>'></asp:Label> 
+                            </ItemTemplate> 
                             <EditItemTemplate> 
                               <asp:DropDownList ID="cmbDecentralize" runat="server"  SelectedValue='<%# Eval("Decentralize") %>'> 
                                 <asp:ListItem Value="Adminitrator" Text="Adminitrator"></asp:ListItem>
@@ -155,14 +163,6 @@
                                 <asp:ListItem Value="Mod" Text="Mod"></asp:ListItem>
                               </asp:DropDownList> 
                             </EditItemTemplate> 
-                            <ItemTemplate> 
-                              <asp:Label ID="lbDecentralize" runat="server" Text='<%# Eval("Decentralize") %>'></asp:Label> 
-                            </ItemTemplate> 
-                            <%--<FooterTemplate> 
-                              <asp:DropDownList ID="cmbNewDecentralize" runat="server" >
-                                <asp:ListItem Text="Adminitrator" Value="Adminitrator"></asp:ListItem> 
-                                <asp:ListItem Selected="True"  Text="User" Value="User"></asp:ListItem> </asp:DropDownList> 
-                            </FooterTemplate> --%>
                             </asp:TemplateField> 
                             <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
                             <asp:CommandField ButtonType="Button" DeleteImageUrl="~/Images/Apps/delete.png" 
