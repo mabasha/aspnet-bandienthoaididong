@@ -165,8 +165,10 @@
                             </FooterTemplate> --%>
                             </asp:TemplateField> 
                             <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
-                            <asp:CommandField ButtonType="Button" DeleteImageUrl="~/Images/delete.png" 
-                                ShowDeleteButton="True" />
+                            <asp:CommandField ButtonType="Button" DeleteImageUrl="~/Images/Apps/delete.png" 
+                                ShowDeleteButton="True" >
+                            <HeaderStyle VerticalAlign="Middle" />
+                            </asp:CommandField>
                             <asp:CommandField ShowEditButton="True" />
                         </Columns>
                         <EditRowStyle BackColor="#999999" />
