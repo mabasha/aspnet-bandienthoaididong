@@ -11,13 +11,13 @@ using System.Data;
 /// </summary>
 public class AccessData
 {
-    public string ConnectString = ConfigurationManager.ConnectionStrings["MobileShopConnectionString"].ConnectionString;
-    public SqlConnection GetConnect()
+    public static string ConnectString = ConfigurationManager.ConnectionStrings["MobileShopConnectionString"].ConnectionString;
+    public static SqlConnection GetConnect()
     {
         return new SqlConnection(ConnectString);
     }
     //hàm trả về 1 datatable
-    public DataTable GetTable(string sql)
+    public static DataTable GetTable(string sql)
     {
         SqlConnection con = GetConnect();
         SqlDataAdapter ad = new SqlDataAdapter(sql, con);
@@ -27,7 +27,7 @@ public class AccessData
         return dt;
     }
     //hàm thực thi lệnh executenonquery
-    public void ExeCuteNonquery(string sql)
+    public static void ExecuteNonQuery(string sql)
     {
         SqlConnection con = GetConnect();
         con.Open();
@@ -37,7 +37,7 @@ public class AccessData
         cmd.Dispose();
     }
     //Hàm thực thi lệnh ExecuteScalar để trả về 1 giá trị
-    public string ExecuteScalar(string sql)
+    public static object ExecuteScalar(string sql)
     {
         SqlConnection con = GetConnect();
         con.Open();
@@ -47,7 +47,7 @@ public class AccessData
         cmd.Dispose();
         return kq;
     }
-    public SqlDataReader ExecuteReader(string sql)
+    public static SqlDataReader ExecuteReader(string sql)
     {
         SqlConnection con = GetConnect();
         con.Open();
