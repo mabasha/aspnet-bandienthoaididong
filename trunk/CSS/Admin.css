@@ -1,0 +1,41 @@
+﻿
+/* Phần trên cùng của một trang */
+.header
+{
+	color : blue;
+	text-align : center;
+	width : 100%;
+	font-size : x-large;
+}
+
+.add
+{
+	width : 100%;
+	padding : 30px 30px 30px 30px;
+}
+
+.list
+{
+	width : 100%;
+	padding : 30px 30px 30px 30px;
+}
+
+td.left-add
+{
+	width : 40%;
+}
+
+td.right-add
+{
+	width : 70%;
+}
+
+.error
+{
+	color : Red;
+}
+
+.info
+{
+	color : Blue;
+}
