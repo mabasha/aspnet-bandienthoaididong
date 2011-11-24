@@ -18,6 +18,7 @@
     <div>
         <div class="header">Quản lý nhà sản xuất</div>
         <div class="add">
+            <asp:Label ID="lThongBao" runat="server" Text="ThongBao"></asp:Label>
             <table class="style1">
                 <tr>
                     <td class="left-add">
@@ -26,6 +27,7 @@
                         <asp:TextBox ID="tName" runat="server"></asp:TextBox>
                     </td>
                 </tr>
+                
             </table>
             <asp:Button ID="bAdd" runat="server" Text="Add" onclick="bAdd_Click" 
                 style="height: 26px" />
@@ -33,7 +35,10 @@
         <div class="list">
             <asp:GridView ID="gProducer" runat="server" AutoGenerateColumns="False" 
                 onrowdatabound="gProducer_RowDataBound" 
-                onselectedindexchanged="gProducer_SelectedIndexChanged">
+                onselectedindexchanged="gProducer_SelectedIndexChanged" 
+                onrowdeleting="gProducer_RowDeleting" 
+                onrowcancelingedit="gProducer_RowCancelingEdit" 
+                onrowediting="gProducer_RowEditing" onrowupdating="gProducer_RowUpdating">
                 <Columns>
                     <asp:BoundField DataField="ID" HeaderText="Mã NSX" />
                     <asp:BoundField DataField="Name" HeaderText="Tên NSX" />
