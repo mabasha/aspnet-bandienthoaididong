@@ -6,23 +6,31 @@
 	text-align : center;
 	width : 100%;
 	font-size : x-large;
+	padding : 20px 20px 20px 20px;
 }
 
 .add
 {
 	width : 100%;
 	padding : 30px 30px 30px 30px;
+	border-style : dotted;
+	border-color : Gray;
+	border-width : 1px;
 }
 
 .list
 {
 	width : 100%;
 	padding : 30px 30px 30px 30px;
+	border-style : dotted;
+	border-color : Gray;
+	border-width : 1px;
+	text-align : center;
 }
 
 td.left-add
 {
-	width : 40%;
+	width : 30%;
 }
 
 td.right-add
