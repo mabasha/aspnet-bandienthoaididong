@@ -86,7 +86,7 @@
                     <asp:GridView ID="grid_Users" runat="server" AutoGenerateColumns="False" 
                         CellPadding="4" DataKeyNames="Username" 
                         EnableModelValidation="True" ForeColor="#333333" 
-                        onrowdatabound="grid_Users_RowDataBound" Width="800px" 
+                        onrowdatabound="grid_Users_RowDataBound" Width="1033px" 
                         onrowediting="grid_Users_RowEditing" 
                         onrowupdating="grid_Users_RowUpdating" 
                         onrowdeleting="grid_Users_RowDeleting">
@@ -134,7 +134,7 @@
                             </EditItemTemplate> 
                             </asp:TemplateField> 
                             <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
-                            <asp:CommandField ButtonType="Button" DeleteImageUrl="~/Images/Apps/delete.png" 
+                            <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/delete.png" 
                                 ShowDeleteButton="True" >
                             <HeaderStyle VerticalAlign="Middle" />
                             </asp:CommandField>
