@@ -19,11 +19,9 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         }
     }
     
-    AccessData ac = new AccessData();
-
     private void FillDataInGrid()
     {
-        SqlConnection conn = new SqlConnection(ac.ConnectString);
+        SqlConnection conn = new SqlConnection(AccessData.ConnectString);
         SqlDataAdapter sqldata = new SqlDataAdapter("Select * from Users", conn);
         DataTable dt = new DataTable();
         try
@@ -69,7 +67,7 @@ public partial class Admin_AcountManager : System.Web.UI.Page
             tel.Text + "', BirthDay='"+birthDay.Text+"',Address=N'" + address.Text + "', IDCard='" + idCard.Text + "', Decentralize='" +
             decentralize.SelectedValue.ToString() + "' Where Username='" + username + "'";
 
-        ac.ExeCuteNonquery(sql);
+        AccessData.ExecuteNonQuery(sql);
         
         //ac.ExeCuteNonquery("UPDATE User SET Password='" + password.Text + "', FullName='" + fullName.Text + "', BirthDay='" + birthDay.Text + "', Tel='" + tel.Text + "', Address='" + address.Text + "', IDCard='" + idCard.Text + "', Decentralize='" + decentralize.Text + "' WHERE Username=" + int.Parse(username.Text) + "");
         grid_Users.EditIndex = -1;
@@ -85,7 +83,7 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         string username = grid_Users.DataKeys[e.RowIndex].Values[0].ToString();
         if (1>0)
         {
-            ac.ExeCuteNonquery("Delete from Users where Username='" + username + "'");
+            AccessData.ExecuteNonQuery("Delete from Users where Username='" + username + "'");
             lb_Note.Text = "Delete username:" + username + " successfully";
             FillDataInGrid();
         } 
@@ -110,7 +108,7 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         {
             string username = txt_Username.Text;
             string sql = "Select Count(*) From Users Where Username='" + username + "'";
-            int temp = int.Parse(ac.ExecuteScalar(sql));
+            int temp = int.Parse((string)AccessData.ExecuteScalar(sql));
             if (temp > 0)
             {
                 lb_Note.ForeColor = System.Drawing.Color.Red;
@@ -122,7 +120,7 @@ public partial class Admin_AcountManager : System.Web.UI.Page
                 sql = "Insert into Users (Username, Password, FullName, Tel, BirthDay, Address, IDCard, Decentralize) Values (N'" +
                 username + "', N'" + txt_Password.Text + "', N'" + txt_Fullname.Text + "', '" + txt_Tel.Text + "', '" + txt_BirthDay.Text
                 + "', N'" + txt_Address.Text + "', " + int.Parse(txt_IDCard.Text) + ", '" + ddl_Decentralize.SelectedValue.ToString() + "')";
-                ac.ExeCuteNonquery(sql);
+                AccessData.ExecuteNonQuery(sql);
                 lb_Note.ForeColor = System.Drawing.Color.Green;
                 lb_Note.Text = "Insert username:" + txt_Username.Text + " successfully";
                 FillDataInGrid();

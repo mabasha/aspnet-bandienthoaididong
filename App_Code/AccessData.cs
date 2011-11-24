@@ -42,7 +42,7 @@ public class AccessData
         SqlConnection con = GetConnect();
         con.Open();
         SqlCommand cmd = new SqlCommand(sql, con);
-        string kq = cmd.ExecuteScalar().ToString();
+        object kq = cmd.ExecuteScalar();
         con.Close();
         cmd.Dispose();
         return kq;

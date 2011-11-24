@@ -31,6 +31,21 @@
                 style="height: 26px" />
         </div>
         <div class="list">
+            <asp:GridView ID="gProducer" runat="server" AutoGenerateColumns="False" 
+                onrowdatabound="gProducer_RowDataBound" 
+                onselectedindexchanged="gProducer_SelectedIndexChanged">
+                <Columns>
+                    <asp:BoundField DataField="ID" HeaderText="Mã NSX" />
+                    <asp:BoundField DataField="Name" HeaderText="Tên NSX" />
+                    <asp:CommandField ButtonType="Button" SelectText="Chọn" 
+                        ShowSelectButton="True" />
+                    <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/delete.png" 
+                        ShowDeleteButton="True" />
+                    <asp:CommandField CancelText="Hủy" EditText="Sửa" ShowEditButton="True" 
+                        UpdateText="Cập nhật" />
+                </Columns>
+                <SelectedRowStyle BackColor="#66CCFF" />
+            </asp:GridView>
         </div>
     </div>
     </form>

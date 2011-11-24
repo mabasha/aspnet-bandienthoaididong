@@ -23,7 +23,7 @@ public partial class Gui_ShowProducts : System.Web.UI.Page
     AccessData ac = new AccessData();
     private void FillDataInGrid()
     {
-        SqlConnection conn = new SqlConnection(ac.ConnectString);
+        SqlConnection conn = new SqlConnection(AccessData.ConnectString);
         SqlDataAdapter sqldata = new SqlDataAdapter("SELECT Phone.*, Producer.Name FROM Phone INNER JOIN Producer cd ON Phone.ProducerID = cd.ID", conn);
         DataTable dt = new DataTable();
         try
