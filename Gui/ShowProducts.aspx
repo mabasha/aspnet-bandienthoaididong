@@ -99,7 +99,7 @@
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource_PhoneView" runat="server" 
             ConnectionString="<%$ ConnectionStrings:MobileShopConnectionString %>" 
-            SelectCommand="SELECT Phone.ID, Phone.Name, Phone.ProducerID, Phone.Image, Phone.Price, Phone.SpecialFeature, Phone.Camera, Phone.VideoCall, Phone.RecorderCamera, Phone.SubCamera, Phone.VideoPlayer, Phone.MusicPlayer, Phone.FM, Phone.TV, Phone.Recorder, Phone.CallingRecorder, Phone.FMRecorder, Phone.Java, Phone.Game, Phone.TVConnection, Phone.OfficeApps, Phone.Screen, Phone.Resolution, Phone.SizeScreen, Phone.Sensor, Phone.OS, Phone.Style, Phone.QwertyKeyboard, Phone.Size, Phone.Weight, Phone.Warranty, Phone.Language, Phone.Battery, Phone.CapabilityBattery, Phone.CallingTime, Phone.WattingTime, cd.Name AS Expr1 FROM Phone INNER JOIN Producer AS cd ON Phone.ProducerID = cd.ID">
+            SelectCommand="SELECT Phone.ID, Phone.Name, Phone.ProducerID, Phone.Image, Phone.Price, Phone.SpecialFeature, Phone.Camera, Phone.VideoCall, Phone.RecorderCamera, Phone.SubCamera, Phone.VideoPlayer, Phone.MusicPlayer, Phone.FM, Phone.TV, Phone.Recorder, Phone.CallingRecorder, Phone.FMRecorder, Phone.Java, Phone.Game, Phone.TVConnection, Phone.OfficeApps, Phone.Screen, Phone.Resolution, Phone.SizeScreen, Phone.Sensor, Phone.OS, Phone.Style, Phone.QwertyKeyboard, Phone.Size, Phone.Weight, Phone.Warranty, Phone.Language, Phone.Battery, Phone.CapabilityBattery, Phone.CallingTime, Phone.WaittingTime, cd.Name AS Expr1 FROM Phone INNER JOIN Producer AS cd ON Phone.ProducerID = cd.ID">
         </asp:SqlDataSource>
     
     </div>

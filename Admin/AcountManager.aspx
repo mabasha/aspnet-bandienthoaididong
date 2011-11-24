@@ -13,37 +13,6 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <%--<title>Pop-up Date Picker</title>
-      <script type="text/javascript">
-          function displayCalendar() {
-              var datePicker = document.getElementById('datePicker');
-              datePicker.style.display = 'block';
-          }
-      </script>
-      <style type="text/css">
-      #datePicker
-      {
-          display:none;
-          position:absolute;
-          border:solid 2px black;
-          background-color:white;
-      }
-      .content
-      {
-          width:400px;
-          background-color:white;
-          margin:auto;
-          padding:10px;
-      }
-      html
-      {
-          background-color:silver;
-      }
-          .style2
-          {
-              text-align: left;
-          }
-    </style>--%>
     <title></title>
     <style type="text/css">
         .style1
