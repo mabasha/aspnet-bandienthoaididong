@@ -56,7 +56,7 @@ public partial class Gui_ShowProducts : System.Web.UI.Page
             temp += int.Parse(donGia.Text);
             ViewState["TongTien"] = temp.ToString();
             lb_SoLuong.Text = ViewState["TongSoLuong"].ToString();
-            lb_TriGia.Text=ViewState["TongTien"].ToString();
+            lb_TriGia.Text = String.Format("{0:0,0 VNĐ}", temp);
         }
     }
 }
