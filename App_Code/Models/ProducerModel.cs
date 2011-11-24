@@ -36,4 +36,16 @@ public class ProducerModel
     {
         return AccessData.GetTable("select * from Producer");
     }
+
+    public static void Delete(int ID)
+    {
+        String query = String.Format("delete from Producer where ID='{0}'", ID);
+        AccessData.ExecuteNonQuery(query);
+    }
+
+    public static void Update(int ID, string newName)
+    {
+        String query = String.Format("update Producer set Name = '{0}' where ID='{1}'",newName, ID);
+        AccessData.ExecuteNonQuery(query);
+    }
 }
