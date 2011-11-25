@@ -22,7 +22,13 @@ public class ProducerModel
 
     public static int GetMaxID()
     {
-        return Convert.ToInt32(AccessData.ExecuteScalar("select max(ID) from Producer"));
+        object result = AccessData.ExecuteScalar("select max(ID) from Distributor");
+        try
+        {
+            Convert.ToInt32(result);
+        }
+        catch (Exception) { }
+        return 0;
     }
     public static void Insert(string name)
     {
