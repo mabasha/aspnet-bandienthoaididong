@@ -39,12 +39,22 @@
             <asp:Label ID="lThongBao" runat="server" Text="tThongBao"></asp:Label>
         </div>
         <div class="list">
-            <asp:GridView ID="gShow" runat="server" AutoGenerateColumns="False">
+            <asp:GridView ID="gShow" runat="server" AutoGenerateColumns="False" 
+                onrowcancelingedit="gShow_RowCancelingEdit" onrowdatabound="gShow_RowDataBound" 
+                onrowdeleting="gShow_RowDeleting" onrowediting="gShow_RowEditing" 
+                onrowupdating="gShow_RowUpdating">
                 <Columns>
                     <asp:BoundField DataField="ID" HeaderText="ID" />
                     <asp:BoundField DataField="Name" HeaderText="Tên" />
                     <asp:BoundField DataField="Address" HeaderText="Địa chỉ" />
+                    <asp:CommandField ButtonType="Button" SelectText="Chọn" 
+                        ShowSelectButton="True" />
+                    <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/delete.png" 
+                        ShowDeleteButton="True" />
+                    <asp:CommandField CancelText="Hủy" EditText="Sửa" ShowEditButton="True" 
+                        UpdateText="Cập nhật" />
                 </Columns>
+                <SelectedRowStyle BackColor="#99CCFF" />
             </asp:GridView>
         </div>
     </div>

@@ -75,7 +75,6 @@ public partial class Admin_ProducerManager : System.Web.UI.Page
         if (tUpdateName.Text != "")
         {
             int ID = Convert.ToInt32(tUpdateID.Text);
-            string newName = tUpdateName.Text;
             ProducerModel.Update(ID, tUpdateName.Text);
             gProducer.EditIndex = -1;
             FillData();

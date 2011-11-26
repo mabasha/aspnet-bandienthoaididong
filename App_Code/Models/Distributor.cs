@@ -20,16 +20,22 @@ public class Distributor
     public Distributor(int id)
     {
         this.id = id;
+        
+    }
+
+    public Distributor(int id, string name, string address)
+    {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+    }
+
+    public void GetInfoByID()
+    {
         string query = String.Format("select * from Distributor where ID =  {0}", id);
         DataTable dt = AccessData.GetTable(query);
         name = (string)dt.Rows[0]["Name"];
         address = (string)dt.Rows[0]["Address"];
-    }
-
-    public Distributor(string name, string address)
-    {
-        this.name = name;
-        this.address = address;
     }
 
     public bool Insert()
@@ -68,10 +74,10 @@ public class Distributor
         try
         {
             Convert.ToInt32(result);
-            return true;
+            return false;
         }
         catch (Exception) { }
-        return false;
+        return true;
     }
 
     public static int GetMaxID()
@@ -79,7 +85,7 @@ public class Distributor
         object result = AccessData.ExecuteScalar("select max(ID) from Distributor");
         try
         {
-            Convert.ToInt32(result);
+            return Convert.ToInt32(result);
         }
         catch(Exception){}
         return 0;
