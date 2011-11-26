@@ -9,6 +9,7 @@
         .style1
         {
             width: 100%;
+            background-color: #FFFFFF;
         }
         .style2
         {
@@ -76,7 +77,20 @@
         {
             width: 200px;
             font-style: italic;
-            background-color: #3333FF;
+            background-color: #FFFFFF;
+        }
+        .style17
+        {
+            color: #3333FF;
+        }
+        .style18
+        {
+            width: 100%;
+        }
+        .style19
+        {
+            color: #3333FF;
+            font-style: italic;
         }
     </style>
     
@@ -547,49 +561,161 @@
                     <tr>
                         <td class="style16">
                             <asp:Label ID="Label41" runat="server" Text="Loại :" 
-                                ToolTip="Loại màn hình: Loại hiển thị của màn hình điên thoại di động, một số dòng hiển thị là màn hình màu, một số thì hiển thị là màn hình đơn sắc. "></asp:Label>
+                                
+                                ToolTip="Loại màn hình: Loại hiển thị của màn hình điên thoại di động, một số dòng hiển thị là màn hình màu, một số thì hiển thị là màn hình đơn sắc. " 
+                                CssClass="style17"></asp:Label>
                         </td>
                         <td>
-                            &nbsp;</td>
+                            <asp:Label ID="lb_Screen" runat="server"></asp:Label>
+                        </td>
                     </tr>
                     <tr>
                         <td class="style16">
                             <asp:Label ID="Label42" runat="server" Text="Độ phân giải :" 
-                                ToolTip="Độ phân giải màn hình được biểu thị bằng số lượng các điểm ảnh theo chiều ngang và số dòng theo chiều đứng trên màn hình. "></asp:Label>
+                                
+                                ToolTip="Độ phân giải màn hình được biểu thị bằng số lượng các điểm ảnh theo chiều ngang và số dòng theo chiều đứng trên màn hình. " 
+                                CssClass="style17"></asp:Label>
                         </td>
                         <td>
-                            &nbsp;</td>
+                            <asp:Label ID="lb_Resolution" runat="server"></asp:Label>
+                        </td>
                     </tr>
                     <tr>
                         <td class="style16">
                             <asp:Label ID="Label43" runat="server" Text="Kích thước :" 
-                                ToolTip="Kích thước màn hình là biểu hiện độ lớn hay nhỏ của màn hình điện thước tính bằng đơn vị: inch "></asp:Label>
+                                
+                                ToolTip="Kích thước màn hình là biểu hiện độ lớn hay nhỏ của màn hình điện thước tính bằng đơn vị: inch " 
+                                CssClass="style17"></asp:Label>
                         </td>
                         <td>
-                            &nbsp;</td>
+                            <asp:Label ID="lb_SizeScreen" runat="server"></asp:Label>
+                        </td>
                     </tr>
                     <tr>
                         <td class="style16">
                             <asp:Label ID="Label44" runat="server" Text="Cảm ứng : " 
-                                ToolTip="Là chức năng màn hình có thể tương tác trực tiếp trên màn hình. "></asp:Label>
+                                ToolTip="Là chức năng màn hình có thể tương tác trực tiếp trên màn hình. " 
+                                CssClass="style17"></asp:Label>
                         </td>
                         <td>
-                            &nbsp;</td>
+                            <asp:Label ID="lb_Sensor" runat="server"></asp:Label>
+                        </td>
                     </tr>
                 </table>
             </td>
         </tr>
         <tr>
             <td class="style7">
-                Thông tin chung :ng :</td>
+                Thông tin chung :</td>
             <td>
-                &nbsp;</td>
+                <table class="style18">
+                    <tr>
+                        <td class="style19" width="200px">
+                            <asp:Label ID="Label45" runat="server" Text="Hệ điều hành : " 
+                                ToolTip="Hệ điều hành là một phần mềm chuyên dụng để điều hành, quản lí chiếc điện thoại của bạn. "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label ID="lb_OS" runat="server"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style19" width="200px">
+                            <asp:Label ID="Label46" runat="server" Text="Kiểu dáng : " 
+                                ToolTip="Kiểu dáng điện thoại hiện nay đa dạng mang tích chất thời trang đáp ứng được nhu cầu của người sử dụng. "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label ID="lb_Style" runat="server"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style19" width="200px">
+                            <asp:Label ID="Label47" runat="server" Text="Bàn phím Qwerty : " 
+                                ToolTip=" Bàn phím Qwerty trên điện thoại là bàn phím có đầy đủ 26 chữ cái giống bàn phím của máy tính, phù hợp với những ứng dụng văn phòng, soạn thảo văn bản. "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label ID="lb_QwertyKeyboard" runat="server"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style19" width="200px">
+                            <asp:Label ID="Label48" runat="server" Text="Kích thước điện thoại : " 
+                                ToolTip=" Kích thước điện thoại thể hiện chiều cao, dày, rộng của điện thoại được tính bằng đơn vị (mm) "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label ID="lb_Size" runat="server"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style19" width="200px">
+                            <asp:Label ID="Label49" runat="server" Text="Trọng lượng điện thoại : " 
+                                ToolTip="Trọng lượng điện thoại biểu hiện độ nặng nhẹ của của sản phẩm được tính bằng đơn vị Gram (g) "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label ID="lb_Weight" runat="server"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style19" width="200px">
+                            <asp:Label ID="Label50" runat="server" Text="Ngôn ngữ điện thoại : " 
+                                ToolTip="Ngôn ngữ là chức năng điện thoại hỗ trợ nhiều loại ngôn ngữ khác nhau nhằm hỗ trợ người dùng dễ sử dụng. "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label ID="lb_Language" runat="server"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style19" width="200px">
+                            <asp:Label ID="Label51" runat="server" Text="Bảo hành : "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label ID="lb_Warranty2" runat="server"></asp:Label>
+                        </td>
+                    </tr>
+                </table>
+            </td>
         </tr>
         <tr>
             <td class="style7">
                 Nguồn : </td>
             <td>
-                &nbsp;</td>
+                <table class="style18">
+                    <tr>
+                        <td class="style19" width="200px">
+                            <asp:Label ID="Label52" runat="server" Text="Loại pin : "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label ID="lb_Battery" runat="server"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style19" width="200px">
+                            <asp:Label ID="Label53" runat="server" Text="Dung lượng pin : " 
+                                ToolTip="Dung lượng pin nằm chỉ khả năng hoạt động của pin "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label ID="lb_CapabilityBattery" runat="server"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style19" width="200px">
+                            <asp:Label ID="Label54" runat="server" Text="Thời gian đàm thoại : " 
+                                ToolTip="Thời gian đàm thoại là thời gian mà được tính khi cuộc gọi bắt đầu kết nối. "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label ID="lb_CallingTime" runat="server"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style19" width="200px">
+                            <asp:Label ID="Label55" runat="server" Text="Thời gian chờ : " 
+                                ToolTip="Là thời gian máy ở trạng thái nghỉ không sử dụng "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label ID="lb_WaittingTime" runat="server"></asp:Label>
+                        </td>
+                    </tr>
+                </table>
+            </td>
         </tr>
     </table>
     </form>

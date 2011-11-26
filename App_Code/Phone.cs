@@ -88,7 +88,7 @@ public class Phone
     public Phone(int _id)
     {
         this.id = _id;
-        
+        DataTable dt = AccessData.GetTable("SELECT * FROM Phone WHERE id=" + id);
         name = dt.Rows[0]["Name"].ToString();
         producerID = int.Parse(dt.Rows[0]["ProducerID"].ToString());
         image = dt.Rows[0]["Image"].ToString();
