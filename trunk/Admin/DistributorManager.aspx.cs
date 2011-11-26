@@ -24,13 +24,14 @@ public partial class Admin_DistributorManager : System.Web.UI.Page
     {
         if (tName.Text != "" && tAddress.Text != "")
         {
-            Distributor dis = new Distributor(tName.Text, tAddress.Text);
+            Distributor dis = new Distributor(0, tName.Text, tAddress.Text);
             bool isSuccess = dis.Insert();
             if (isSuccess == true)
             {
                 lThongBao.Text = "<p class=info>* Thêm thành công.</p>";
                 tName.Text = "";
                 tAddress.Text = "";
+                FillData();
             }
             else
             {
@@ -41,5 +42,48 @@ public partial class Admin_DistributorManager : System.Web.UI.Page
         {
             lThongBao.Text = "<p class=error>* Bạn chưa nhập đầy đủ thông tin.</p>";
         }
+    }
+    protected void gShow_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow &&
+            (e.Row.RowState == DataControlRowState.Alternate ||
+            e.Row.RowState == DataControlRowState.Normal))
+        {
+            ImageButton bDelete = (ImageButton)e.Row.Cells[4].Controls[0];
+            bDelete.OnClientClick = "if(!confirm('Bạn có chắc muốn xóa NPP này không ?')) return false;";
+        }
+    }
+    protected void gShow_RowEditing(object sender, GridViewEditEventArgs e)
+    {
+        gShow.EditIndex = e.NewEditIndex;
+        FillData();
+    }
+    protected void gShow_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+    {
+        gShow.EditIndex = -1;
+        FillData();
+    }
+    protected void gShow_RowUpdating(object sender, GridViewUpdateEventArgs e)
+    {
+        TextBox tUpdateID = (TextBox)gShow.Rows[e.RowIndex].Cells[0].Controls[0];
+        TextBox tUpdateName = (TextBox)gShow.Rows[e.RowIndex].Cells[1].Controls[0];
+        TextBox tUpdateAddress = (TextBox)gShow.Rows[e.RowIndex].Cells[2].Controls[0];
+        int ID = Convert.ToInt32(tUpdateID.Text);
+        string name = tUpdateName.Text;
+        string address = tUpdateAddress.Text;
+        if (tUpdateName.Text != "" && tUpdateAddress.Text!="")
+        {
+            Distributor dis = new Distributor(ID, name, address);
+            dis.Update();
+            gShow.EditIndex = -1;
+            FillData();
+        }
+    }
+
+    protected void gShow_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        Distributor dis = new Distributor(Convert.ToInt32(gShow.Rows[e.RowIndex].Cells[0].Text));
+        dis.Delete();
+        FillData();
     }
 }
