@@ -64,6 +64,41 @@ public partial class Admin_PhoneDetail : System.Web.UI.Page
             lb_CPU.Text = phone.CPU;
             lb_MemoryCard.Text = phone.memoryCard;
             lb_MaximumMemoryCapacity.Text = phone.maximumMemoryCapacity;
+
+            lb_Contact.Text = phone.contact;
+            lb_Message.Text = phone.message;
+            lb_Email.Text = phone.email;
+
+            lb_2Gband.Text = phone.secondGband;
+            lb_3Gband.Text = phone.threeGband;
+            lb_MutilSimcard.Text = phone.mutilSimcard;
+            lb_GPRS.Text = phone.GPRS;
+            lb_EDGE.Text = phone.EDGE;
+            lb_3G.Text = phone.threeG;
+            lb_Wifi.Text = phone.wifi;
+            lb_Browser.Text = phone.browser;
+            lb_GPS.Text = phone.GPS;
+            lb_Bluetooth.Text = phone.bluetooth;
+            lb_Ultrared.Text = phone.ultrared;
+            lb_USB.Text = phone.USB;
+
+            lb_Screen.Text = phone.screen;
+            lb_Resolution.Text = phone.resolution;
+            lb_SizeScreen.Text = phone.sizeScreen;
+            lb_Sensor.Text = phone.sensor;
+
+            lb_OS.Text = phone.OS;
+            lb_Style.Text = phone.style;
+            lb_QwertyKeyboard.Text = phone.qwertyKeyboard;
+            lb_Size.Text = phone.size;
+            lb_Weight.Text = phone.weight;
+            lb_Language.Text = phone.language;
+            lb_Warranty2.Text = phone.warranty;
+
+            lb_Battery.Text = phone.battery;
+            lb_CapabilityBattery.Text = phone.capabilityBattery;
+            lb_CallingTime.Text = phone.callingTime;
+            lb_WaittingTime.Text = phone.waittingTime;
         }
         
     }
