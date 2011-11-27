@@ -5,6 +5,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
+
+    <script src="../Scripts/jquery-1.4.1.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $("document").ready(OnPageReady);
+
+        function OnPageReady() {
+            $("#bAdd").bind("click", OnAddClick);
+        }
+
+        function OnAddClick() {
+            if ($("#tName").val() == "" || $("tAddress").val() == "") {
+                alert("Bạn chưa nhập đầy đủ thông tin");
+                return false;
+            }
+        }
+    </script>
+
     <title></title>
     <style type="text/css">
         .style1

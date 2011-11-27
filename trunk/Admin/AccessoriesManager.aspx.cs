@@ -12,7 +12,11 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            DataTable producer = 
+            DataTable dtProducer = Producer.GetAll();
+            cProducer.DataSource = dtProducer;
+            cProducer.DataTextField = "Name";
+            cProducer.DataValueField = "ID";
+            cProducer.DataBind();
         }
     }
     protected void bShowImage_Click(object sender, EventArgs e)

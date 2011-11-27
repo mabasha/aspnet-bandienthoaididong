@@ -22,25 +22,18 @@ public partial class Admin_DistributorManager : System.Web.UI.Page
     }
     protected void bAdd_Click(object sender, EventArgs e)
     {
-        if (tName.Text != "" && tAddress.Text != "")
+        Distributor dis = new Distributor(0, tName.Text, tAddress.Text);
+        bool isSuccess = dis.Insert();
+        if (isSuccess == true)
         {
-            Distributor dis = new Distributor(0, tName.Text, tAddress.Text);
-            bool isSuccess = dis.Insert();
-            if (isSuccess == true)
-            {
-                lThongBao.Text = "<p class=info>* Thêm thành công.</p>";
-                tName.Text = "";
-                tAddress.Text = "";
-                FillData();
-            }
-            else
-            {
-                lThongBao.Text = "<p class=error>* Tên đã tồn tại.</p>";
-            }
+            lThongBao.Text = "<p class=info>* Thêm thành công.</p>";
+            tName.Text = "";
+            tAddress.Text = "";
+            FillData();
         }
         else
         {
-            lThongBao.Text = "<p class=error>* Bạn chưa nhập đầy đủ thông tin.</p>";
+            lThongBao.Text = "<p class=error>* Tên đã tồn tại.</p>";
         }
     }
     protected void gShow_RowDataBound(object sender, GridViewRowEventArgs e)
