@@ -84,4 +84,9 @@ public class Producer
     {
         return AccessData.GetTable("select * from Producer");
     }
+
+    public static DataTable GetName()
+    {
+        return AccessData.GetTable("select Name from Producer");
+    }
 }

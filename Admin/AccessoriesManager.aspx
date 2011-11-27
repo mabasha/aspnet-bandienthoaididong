@@ -7,16 +7,32 @@
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
 
     <script src="../Scripts/jquery-1.4.1.js" type="text/javascript"></script>
+
+    <script src="../Scripts/Utils.js" type="text/javascript"></script>
+
     <script type="text/javascript">
 
-        $("document").ready(function() {
-        $("#bChooseImage").bind("click", OpenPopup);
-        });
+        $("document").ready(OnPageReady);
+
+        function OnPageReady() {
+            $("#bChooseImage").click(OpenPopup);
+            $("#tPrice").keydown(OnKeyDownCheckNumber);
+            $("#bAdd").click(OnAddClick);
+            
+        }
 
         function OpenPopup() {
             window.open("ImageManager.aspx", 'mypopup', 'width=600, height=400, toolbar=no, scrollbars=no, resizable=yes, status=no, toolbar=no, menubar=no, location=no');
             self.close();
         }
+        
+        function OnAddClick() {
+            if ($("#tName").val() == "" || $("#tPrice").val() == "" || $("#tImageName").val() == "") {
+                alert("Bạn chưa nhập đầy đủ thông tin");
+                return false;
+            }
+        }
+
     </script>
     <title>Quản lý phụ kiện</title>
     <style type="text/css">
