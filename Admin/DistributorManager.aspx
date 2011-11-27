@@ -42,7 +42,9 @@
             <asp:GridView ID="gShow" runat="server" AutoGenerateColumns="False" 
                 onrowcancelingedit="gShow_RowCancelingEdit" onrowdatabound="gShow_RowDataBound" 
                 onrowdeleting="gShow_RowDeleting" onrowediting="gShow_RowEditing" 
-                onrowupdating="gShow_RowUpdating">
+                onrowupdating="gShow_RowUpdating" CellPadding="4" ForeColor="#333333" 
+                GridLines="None">
+                <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                 <Columns>
                     <asp:BoundField DataField="ID" HeaderText="ID" />
                     <asp:BoundField DataField="Name" HeaderText="Tên" />
@@ -54,7 +56,12 @@
                     <asp:CommandField CancelText="Hủy" EditText="Sửa" ShowEditButton="True" 
                         UpdateText="Cập nhật" />
                 </Columns>
-                <SelectedRowStyle BackColor="#99CCFF" />
+                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <EditRowStyle BackColor="#999999" />
+                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             </asp:GridView>
         </div>
     </div>
