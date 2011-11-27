@@ -67,7 +67,7 @@
                         Hình ảnh</td>
                     <td>
                         <asp:TextBox ID="tImageName" runat="server"></asp:TextBox>
-                        <asp:Button ID="bChooseImage" runat="server" Text="Chọn hình ảnh" />
+                        <asp:Button ID="bChooseImage" runat="server" Text="..." />
                         <asp:Button ID="bShowImage" runat="server" onclick="bShowImage_Click" 
                             Text="Hiện hình ảnh" />
                     </td>
@@ -80,6 +80,7 @@
                     </td>
                 </tr>
                 </table>
+            <asp:Button ID="bAdd" runat="server" Text="Thêm" />
         </div>
         <div class="list">
         </div>
