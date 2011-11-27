@@ -28,6 +28,12 @@
 	text-align : center;
 }
 
+.round
+{
+	border: 1px dotted Blue;
+	padding: 20px;
+}
+
 td.left-add
 {
 	width : 30%;
