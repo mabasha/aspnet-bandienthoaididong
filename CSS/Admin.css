@@ -9,6 +9,7 @@
 	padding : 20px 20px 20px 20px;
 }
 
+/*Phần thêm của một trang Admin*/
 .add
 {
 	width : 100%;
@@ -18,6 +19,7 @@
 	border-width : 1px;
 }
 
+/*Phần liệt kê các record của một trang admin*/
 .list
 {
 	width : 100%;
@@ -28,27 +30,32 @@
 	text-align : center;
 }
 
+/*Căn lề cho một thẻ div bất kỳ*/
 .round
 {
 	border: 1px dotted Blue;
 	padding: 20px;
 }
 
+/*Cột trái của bảng thêm*/
 td.left-add
 {
 	width : 30%;
 }
 
+/*Cột phải của bảng thêm*/
 td.right-add
 {
 	width : 70%;
 }
 
+/*Định dạng chữ màu đỏ khi báo lỗi*/
 .error
 {
 	color : Red;
 }
 
+/*Định dạng chữ màu xanh khi hiển thị thông tin*/
 .info
 {
 	color : Blue;

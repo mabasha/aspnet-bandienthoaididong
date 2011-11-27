@@ -4,38 +4,32 @@ using System.Linq;
 using System.Web;
 using System.Data;
 
-/// <summary>
-/// Summary description for Distributor
-/// </summary>
-public class Distributor
+public class Producer
 {
     int id;
     string name;
-    string address;
 
-	public Distributor()
+    public Producer()
 	{
 	}
 
-    public Distributor(int id)
+    public Producer(int id)
     {
         this.id = id;
         
     }
 
-    public Distributor(int id, string name, string address)
+    public Producer(int id, string name)
     {
         this.id = id;
         this.name = name;
-        this.address = address;
     }
 
     public void GetInfoByID()
     {
-        string query = String.Format("select * from Distributor where ID =  {0}", id);
+        string query = String.Format("select * from Producer where ID =  {0}", id);
         DataTable dt = AccessData.GetTable(query);
         name = (string)dt.Rows[0]["Name"];
-        address = (string)dt.Rows[0]["Address"];
     }
 
     public bool Insert()
@@ -44,7 +38,7 @@ public class Distributor
         if (isExist == false)
         {
             id = GetMaxID() + 1;
-            string query = String.Format("insert into Distributor(ID, Name, Address) values('{0}',N'{1}',N'{2}')", id, name, address);
+            string query = String.Format("insert into Producer(ID, Name) values('{0}',N'{1}')", id, name);
             AccessData.ExecuteNonQuery(query);
         }
         return !isExist;
@@ -55,7 +49,7 @@ public class Distributor
         bool isExist = IsExistName();
         if (isExist == false)
         {
-            string query = String.Format("update Distributor set Name = N'{0}', Address = N'{1}' where ID = {2}", name, address, id);
+            string query = String.Format("update Producer set Name = N'{0}' where ID = {1}", name, id);
             AccessData.ExecuteNonQuery(query);
         }
         return !isExist;
@@ -63,13 +57,13 @@ public class Distributor
 
     public void Delete()
     {
-        string query = String.Format("delete from Distributor where ID = '{0}'", id);
+        string query = String.Format("delete from Producer where ID = '{0}'", id);
         AccessData.ExecuteNonQuery(query);
     }
 
     public bool IsExistName()
     {
-        string query = String.Format("select count(ID) from Distributor where name = N'{0}'", name);
+        string query = String.Format("select count(ID) from Producer where name = N'{0}'", name);
         int count = Convert.ToInt32(AccessData.ExecuteScalar(query));
         if (count > 0) return true;
         return false;
@@ -77,17 +71,17 @@ public class Distributor
 
     public static int GetMaxID()
     {
-        object result = AccessData.ExecuteScalar("select max(ID) from Distributor");
+        object result = AccessData.ExecuteScalar("select max(ID) from Producer");
         try
         {
             return Convert.ToInt32(result);
         }
-        catch(Exception){}
+        catch (Exception) { }
         return 0;
     }
 
     public static DataTable GetAll()
     {
-        return AccessData.GetTable("select * from Distributor");
+        return AccessData.GetTable("select * from Producer");
     }
 }
