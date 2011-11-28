@@ -25,7 +25,7 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
         {
             if (tImageName.Text != "")
             {
-                iAdd.ImageUrl = "~/Images/Phone/" + tImageName.Text;
+                iAdd.ImageUrl = "~/Images/Accessory/" + tImageName.Text;
                 bShowImage.Text = "Ẩn hình ảnh";
             }
         }
@@ -34,5 +34,28 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
             iAdd.ImageUrl = "";
             bShowImage.Text = "Hiện hình ảnh";
         }
+    }
+    protected void bAdd_Click(object sender, EventArgs e)
+    {
+        Accessory acc = new Accessory(0, tName.Text, Convert.ToInt32(cProducer.SelectedItem.Value),
+            Convert.ToDouble(tPrice.Text),tImageName.Text,tDescription.Text);
+        bool isSuccess = acc.Insert();
+        if (isSuccess == true)
+        {
+            lThongBao.Text = "<p class=info>* Thêm thành công.</p>";
+            tName.Text = "";
+            tPrice.Text = "";
+            tImageName.Text = "";
+            tDescription.Text = "";
+            FillData();
+        }
+        else
+        {
+            lThongBao.Text = "<p class=error>* Tên đã tồn tại.</p>";
+        }
+    }
+
+    private void FillData()
+    {
     }
 }

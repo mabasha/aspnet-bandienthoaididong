@@ -17,11 +17,13 @@ public partial class Admin_ImageManager : System.Web.UI.Page
         {
             lThongBao.Text = "";
             ViewState["folder"] = "Phone/";
+            LoadImage();
         }
         else
         {
+            LoadImage();
         }
-        LoadImage();
+        
     }
     private void LoadImage()
     {
@@ -86,7 +88,11 @@ public partial class Admin_ImageManager : System.Web.UI.Page
     protected void bSelect_Click(object sender, EventArgs e)
     {
         GetListImageChecked();
-        hChoosedImage.Value = fileSelected[0];
+        if (fileSelected.Count > 0)
+        {
+            hChoosedImage.Value = fileSelected[0];
+        }
+        //LoadImage();
     }
     protected void bDelete_Click(object sender, EventArgs e)
     {

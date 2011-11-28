@@ -22,7 +22,7 @@
         }
 
         function OpenPopup() {
-            window.open("ImageManager.aspx", 'mypopup', 'width=600, height=400, toolbar=no, scrollbars=no, resizable=yes, status=no, toolbar=no, menubar=no, location=no');
+            window.open("ImageManager.aspx", 'mypopup', 'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no');
             self.close();
         }
         
@@ -96,7 +96,9 @@
                     </td>
                 </tr>
                 </table>
-            <asp:Button ID="bAdd" runat="server" Text="Thêm" />
+            <asp:Button ID="bAdd" runat="server" Text="Thêm" onclick="bAdd_Click" />
+            <br />
+            <asp:Label ID="lThongBao" runat="server"></asp:Label>
         </div>
         <div class="list">
         </div>

@@ -53,7 +53,7 @@ public class Distributor
     public bool Update()
     {
         bool isExist = IsExistName();
-        if (isExist == false)
+        if (isExist == false || (isExist ==true && GetIDFromName(name)==id))
         {
             string query = String.Format("update Distributor set Name = N'{0}', Address = N'{1}' where ID = {2}", name, address, id);
             AccessData.ExecuteNonQuery(query);
@@ -89,5 +89,11 @@ public class Distributor
     public static DataTable GetAll()
     {
         return AccessData.GetTable("select * from Distributor");
+    }
+
+    public static int GetIDFromName(String name)
+    {
+        String query = String.Format("select ID from Distributor where Name=N'{0}'", name);
+        return Convert.ToInt32(AccessData.ExecuteScalar(query));
     }
 }
