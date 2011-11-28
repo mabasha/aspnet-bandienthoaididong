@@ -13,68 +13,71 @@ public partial class Admin_Producer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (IsPostBack == false)
+        {
+            FillData();            
+        }
     }
-    SqlConnection mySqlCon;
+    
     protected void btnThem_Click(object sender, EventArgs e)
     {
-        string sql = ConfigurationManager.ConnectionStrings["MobileShopConnectionString"].ConnectionString;
-        mySqlCon = new SqlConnection(sql);
-        string strInsert = "insert into Producer(ID, Name) values(@ID,@Name)";
-        SqlCommand mySqlCom = new SqlCommand(strInsert, mySqlCon);
-        mySqlCom.Parameters.AddWithValue("@ID", txtMaNsx.Text);
-        mySqlCom.Parameters.AddWithValue("@Name", txtTenNsx.Text);
-        mySqlCom.Connection.Open();
-        mySqlCom.ExecuteNonQuery();
-        mySqlCom.Connection.Close();
-        txtMaNsx.Text = "";
-        txtTenNsx.Text = "";
-        //BindGrid();
+        Producer pro = new Producer(0, txtTenNsx.Text);
+        bool isSuccess = pro.Insert();
+        if (isSuccess == true)
+        {
+            lbThongbao.Text = "<p class=info>* Thêm thành công Nhà sản xuất.</p>";
+            txtTenNsx.Text = "";            
+            FillData();
+        }
+        else
+        {
+            lbThongbao.Text = "<p class=error>* Tên đã tồn tại.</p>";
+        }
     }
-
-    //public void BindGrid()
-    //{
-    //    SqlDataAdapter mySqlda = new SqlDataAdapter("select * from Producer", mySqlCon);
-    //    DataSet myds = new DataSet();
-    //    mySqlda.Fill(myds, "Producer");
-    //    gridNsx.DataSource = myds.Tables["Producer"];
-    //    //gridNsx.DataBind();
-    //}
+    
     protected void gridNsx_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType == DataControlRowType.DataRow && (e.Row.RowState == DataControlRowState.Alternate ||
                     e.Row.RowState == DataControlRowState.Normal))
         {
             ImageButton btnCancel = (ImageButton)e.Row.Cells[3].Controls[0];
-            btnCancel.OnClientClick = "if (!confirm('Bạn có đồng ý xóa?')) return false";
+            btnCancel.OnClientClick = "if (!confirm('Bạn có đồng ý xóa Nhà sản xuất?')) return false";
+        }       
+    }
 
+    protected void gridNsx_RowEditing(object sender, GridViewEditEventArgs e)
+    {
+        gridNsx.EditIndex = e.NewEditIndex;
+        FillData();
+    }
+    protected void gridNsx_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+    {
+        gridNsx.EditIndex = -1;
+        FillData();
+    } 
+    protected void gridNsx_RowUpdating(object sender, GridViewUpdateEventArgs e)
+    {
+        TextBox txtUpdateID = (TextBox)gridNsx.Rows[e.RowIndex].Cells[0].Controls[0];
+        TextBox txtUpdateName = (TextBox)gridNsx.Rows[e.RowIndex].Cells[1].Controls[0];        
+        int ID = Convert.ToInt32(txtUpdateID.Text);
+        string name = txtUpdateName.Text;        
+        if (txtUpdateName.Text != "")
+        {
+            Producer pro = new Producer(ID, name);
+            pro.Update();
+            gridNsx.EditIndex = -1;
+            FillData();
         }
     }
-    //AccessData ac = new AccessData();
-    //protected void gridNsx_RowDeleting(object sender, GridViewDeleteEventArgs e)
-    //{
-    //    string vitri = gridNsx.DataKeys[e.RowIndex].Values[0].ToString();
-    //    ac.ExeCuteNonquery("Delete from Producer where ID='" + vitri + "'");
-    //    //lb_Note.Text = "Delete username:" + username + " successfully";
-    //    //int ma = gridNsx.DataKeys(e.RowIndex).Value;
-    //    SqlConnection conn = new SqlConnection(ac.ConnectString);
-    //    SqlDataAdapter sqldata = new SqlDataAdapter("Select * from Producer", conn);
-    //    DataTable dt = new DataTable();
-    //    try
-    //    {
-    //        conn.Open();
-    //        sqldata.Fill(dt);
-    //        gridNsx.DataSource = dt;
-    //        gridNsx.DataBind();
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        Response.Write("<script>alert(" + ex.Message + ")</script>");
-    //    }
-    //    finally
-    //    {
-    //        conn.Close();
-    //    }
-
-    //}
+    protected void gridNsx_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        Producer pro = new Producer(Convert.ToInt32(gridNsx.Rows[e.RowIndex].Cells[0].Text));
+        pro.Delete();
+        FillData();
+    }
+    private void FillData()
+    {
+        gridNsx.DataSource = Producer.GetAll();
+        gridNsx.DataBind();
+    }
 }

@@ -8,17 +8,29 @@
     <style type="text/css">
         .style1
         {
-            width: 46%;
-            height: 280px;
+            width: 45%;
+            height: 200px;
         }
         .style2
         {
             height: 3px;
         }
+        .header
+        {
+            height: 52px;
+        }
+        .style3
+        {
+            height: 27px;
+        }
+        .style4
+        {
+            height: 29px;
+        }
     </style>
      <%--<input id="Button1" type="button" value="button" onclick="return Button1_onclick()" />--%>
 
-    <script language="javascript" type="text/javascript">
+    <%--<script language="javascript" type="text/javascript">
 // <!CDATA[
 
         function IsNumeric(sText) {
@@ -37,27 +49,18 @@
         }
 
 // ]]>
-    </script>
+    </script>--%>
 </head>
 <body>
     <form id="form1" runat="server">
     
+        <div class="header">
+            <div align="center" class="header">
+                CẬP NHẬT NHÀ SẢN XUẤT</div>
+        </div>
+        <div align="center" class="add">
+    
         <table class="style1" align="center">
-            <tr>
-                <td align="center">
-                    CẬP NHẬT NHÀ SẢN XUẤT</td>
-            </tr>
-            <tr>
-                <td align="center">
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td align="center">
-                    Mã nhà sản xuất:
-                    <asp:TextBox ID="txtMaNsx" runat="server" style="margin-left: 0px" 
-                        Width="221px" onblur="IsNumeric(this.value)" ></asp:TextBox>
-                </td>
-            </tr>
             <tr>
                 <td align="center">
                     Tên nhà sản xuất:
@@ -69,38 +72,31 @@
                 </td>
             </tr>
             <tr>
-                <td align="center">
+                <td align="center" class="style3">
                     <asp:Button ID="btnThem" runat="server" Text="Thêm" onclick="btnThem_Click" 
                         Width="73px"/>
                     &nbsp;</td>
             </tr>
             <tr>
-                <td>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:MobileShopConnectionString %>" 
-                        SelectCommand="SELECT [Name], [ID] FROM [Producer]" 
-                        DeleteCommand="DELETE FROM Producer WHERE (ID = @ID)" 
-                        UpdateCommand="UPDATE Producer SET ID = @ID, Name = @Name WHERE (ID = @ID)">
-                        <DeleteParameters>
-                            <asp:Parameter Name="ID" />
-                        </DeleteParameters>
-                        <UpdateParameters>
-                            <asp:Parameter Name="ID" />
-                            <asp:Parameter Name="Name" />
-                        </UpdateParameters>
-                    </asp:SqlDataSource>
-                </td>
+                <td align="center" class="style4">
+                    <asp:Label ID="lbThongbao" runat="server"></asp:Label>
+                    </td>
             </tr>
-            <tr>
-                <td align="center">
+            </table>
+    
+        </div>
+        <div align="center" class="list">
                     <asp:GridView ID="gridNsx" runat="server" AutoGenerateColumns="False" 
-                        DataSourceID="SqlDataSource1" AllowPaging="True" AllowSorting="True" 
                         CellPadding="4" DataKeyNames="ID" ForeColor="#333333" GridLines="None"                                                 
                         ShowFooter="True" Width="327px" PageSize="5" 
-                        onrowdatabound="gridNsx_RowDataBound">
+                        onrowdatabound="gridNsx_RowDataBound" 
+                onrowcancelingedit="gridNsx_RowCancelingEdit" 
+                onrowdeleting="gridNsx_RowDeleting" onrowediting="gridNsx_RowEditing" 
+                onrowupdating="gridNsx_RowUpdating">
                         <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                         <Columns>
-                            <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
+                            <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" 
+                                ReadOnly="True" />
                             <asp:BoundField DataField="Name" HeaderText="Nhà sản xuất" 
                                 SortExpression="Name" />
                             <asp:CommandField ButtonType="Button" SelectText="Chọn" 
@@ -116,9 +112,7 @@
                         <EditRowStyle BackColor="#999999" />
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     </asp:GridView>
-                    </td>
-            </tr>
-            </table>
+                    </div>
     
     </form>
 </body>
