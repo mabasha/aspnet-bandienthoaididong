@@ -47,7 +47,7 @@ public class Producer
     public bool Update()
     {
         bool isExist = IsExistName();
-        if (isExist == false)
+        if (isExist == false || (isExist == true && GetIDFromName(name) == id))
         {
             string query = String.Format("update Producer set Name = N'{0}' where ID = {1}", name, id);
             AccessData.ExecuteNonQuery(query);
@@ -88,5 +88,11 @@ public class Producer
     public static DataTable GetName()
     {
         return AccessData.GetTable("select Name from Producer");
+    }
+
+    public static int GetIDFromName(String name)
+    {
+        String query = String.Format("select ID from Producer where Name=N'{0}'", name);
+        return Convert.ToInt32(AccessData.ExecuteScalar(query));
     }
 }
