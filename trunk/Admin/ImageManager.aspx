@@ -6,14 +6,30 @@
 <head runat="server">
 
     <script src="../Scripts/jquery-1.4.1.js" type="text/javascript"></script>
+
+    <script src="../Scripts/zeroclipboard/ZeroClipboard.js" type="text/javascript"></script>
+
     <script type="text/javascript">
+        var clip = null;
+        
         $("document").ready(function() {
-        $("#bClose").bind("click", GetValue);
+            $("#bClose").bind("click", GetValue);
+            $("#bCopyToClipboard").click(CopyToClipBoard);
         });
 
         function GetValue() {
             window.opener.$("#tImageName").val($("#hChoosedImage").val());
             self.close();
+        }
+
+        function CopyToClipBoard() {
+            if (window.clipboardData) {
+                window.clipboardData.setData("Text", $("#hChoosedImage").val());
+            }
+            else {
+                alert('Chỉ hỗ trợ IE');
+            }
+            return false;
         }
     </script>
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
@@ -36,7 +52,7 @@
     </div>
     
     <div class="round">
-        <b>Thêm hình mới</b>
+        <div class="small-header">Thêm hình mới</div>
         <p id="fileUpload">
             <asp:FileUpload ID="fileUpload" runat="server" />
 &nbsp;<asp:Button ID="bUpload" runat="server" Text="Tải lên" onclick="bUpload_Click" />
@@ -44,31 +60,35 @@
         <p>
             <asp:Label ID="lThongBao" runat="server"></asp:Label>
         </p>
-    </div>
-    
-    <div id = "dImage" class="round">
-        <i style="font-size : 11px">Để chọn hình, check vào một checkbox, nhấn Chọn, sau 
-        đó nhấn Đóng để đóng cửa sổ lại</i><b><br />
-        Danh sách hình :<br />
+        </div>
+    <div class="round">
+        <div class="small-header">Danh sách hình :</div>
+        <i style="font-size : 11px"><br />
+        Để chọn hình, check vào một checkbox, nhấn Chọn, sau 
+        đó nhấn Đóng để đóng cửa sổ lại</i><br />
         <br />
-            <asp:Button ID="bSelect" runat="server" Text="Chọn" onclick="bSelect_Click" 
+        <br />
+        <asp:Button ID="bSelect" runat="server" Text="Chọn" onclick="bSelect_Click" 
             Height="26px" />
-            <asp:Button ID="bClose" runat="server" Text="Đóng" />
+        <asp:Button ID="bClose" runat="server" Text="Đóng" />
             &nbsp;&nbsp;&nbsp;
         <asp:Button ID="bDelete" runat="server" 
                 Text="Xóa" onclick="bDelete_Click" />
-            <asp:Button ID="bRename" runat="server" Text="Đổi tên" 
+        <asp:Button ID="bRename" runat="server" Text="Đổi tên" 
             onclick="bRename_Click" />
-            <br />
+        &nbsp;<asp:Button ID="bCopyToClipboard" runat="server" 
+            Text="Chép vào Clipboard (chỉ IE)" />
+        <br />
         <asp:TextBox ID="tNewName" runat="server" Visible="False"></asp:TextBox>
         <asp:Button ID="bDone" runat="server" onclick="bDone_Click" Text="Đồng ý" 
             Visible="False" />
-            <asp:HiddenField ID="hChoosedImage" runat="server" />
+        <asp:HiddenField ID="hChoosedImage" runat="server" />
         </b>
+        <i style="font-size : 11px">
         <asp:Panel ID="pImage" runat="server">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
             &nbsp;
-        </asp:Panel>
+        </asp:Panel></i>
     </div>
     </form>
     

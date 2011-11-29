@@ -60,12 +60,14 @@
                 onrowcancelingedit="gShow_RowCancelingEdit" onrowdatabound="gShow_RowDataBound" 
                 onrowdeleting="gShow_RowDeleting" onrowediting="gShow_RowEditing" 
                 onrowupdating="gShow_RowUpdating" CellPadding="4" ForeColor="#333333" 
-                GridLines="None">
+                GridLines="None" AllowPaging="True" AllowSorting="True" 
+                onpageindexchanging="gShow_PageIndexChanging" onsorting="gShow_Sorting">
                 <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                 <Columns>
-                    <asp:BoundField DataField="ID" HeaderText="ID" />
-                    <asp:BoundField DataField="Name" HeaderText="Tên" />
-                    <asp:BoundField DataField="Address" HeaderText="Địa chỉ" />
+                    <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
+                    <asp:BoundField DataField="Name" HeaderText="Tên" SortExpression="Name" />
+                    <asp:BoundField DataField="Address" HeaderText="Địa chỉ" 
+                        SortExpression="Address" />
                     <asp:CommandField ButtonType="Button" SelectText="Chọn" 
                         ShowSelectButton="True" />
                     <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/delete.png" 

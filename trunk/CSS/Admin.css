@@ -43,6 +43,14 @@ td.left-add
 	width : 30%;
 }
 
+.small-header
+{
+	text-align : center;
+	width : 100%;
+	font-size : large;
+	padding : 10px 10px 10px 10px;
+}
+
 /*Cột phải của bảng thêm*/
 td.right-add
 {

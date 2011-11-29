@@ -17,8 +17,28 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
             cProducer.DataTextField = "Name";
             cProducer.DataValueField = "ID";
             cProducer.DataBind();
+
+            FillData();
+
         }
     }
+
+    void FillData(String sortExp)
+    {
+        DataTable dtAcc = Accessory.GetAll();
+        if (sortExp != "")
+        {
+            dtAcc.DefaultView.Sort = sortExp;
+        }
+        gShow.DataSource = dtAcc;
+        gShow.DataBind();
+    }
+
+    void FillData()
+    {
+        FillData("");
+    }
+
     protected void bShowImage_Click(object sender, EventArgs e)
     {
         if (bShowImage.Text == "Hiện hình ảnh")
@@ -54,8 +74,13 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
             lThongBao.Text = "<p class=error>* Tên đã tồn tại.</p>";
         }
     }
-
-    private void FillData()
+    protected void gShow_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
+        gShow.PageIndex = e.NewPageIndex;
+        FillData();
+    }
+    protected void gShow_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        FillData(e.SortExpression);
     }
 }

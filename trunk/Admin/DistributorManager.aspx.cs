@@ -4,14 +4,26 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 public partial class Admin_DistributorManager : System.Web.UI.Page
 {
     private void FillData()
     {
-        gShow.DataSource = Distributor.GetAll();
+        FillData("");
+    }
+
+    private void FillData(string sortExp)
+    {
+        DataTable dtDis = Distributor.GetAll();
+        if (sortExp != "")
+        {
+            dtDis.DefaultView.Sort = sortExp;
+        }
+        gShow.DataSource = dtDis;
         gShow.DataBind();
     }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack == false)
@@ -78,5 +90,14 @@ public partial class Admin_DistributorManager : System.Web.UI.Page
         Distributor dis = new Distributor(Convert.ToInt32(gShow.Rows[e.RowIndex].Cells[0].Text));
         dis.Delete();
         FillData();
+    }
+    protected void gShow_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        gShow.PageIndex = e.NewPageIndex;
+        FillData();
+    }
+    protected void gShow_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        FillData(e.SortExpression);
     }
 }

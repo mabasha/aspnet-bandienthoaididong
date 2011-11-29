@@ -105,7 +105,7 @@
                 </td>
                 <td>
                     <asp:GridView ID="gridImportBillDt" runat="server" 
-                        onselectedindexchanged="Grid_SelectedIndexChanged" Width="365px">
+                         Width="365px">
                     </asp:GridView>
                 </td>
             </tr>
