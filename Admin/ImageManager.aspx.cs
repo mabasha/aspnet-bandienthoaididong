@@ -8,8 +8,21 @@ using System.IO;
 
 public partial class Admin_ImageManager : System.Web.UI.Page
 {
-    //String folder = "Phone/";
-    
+    /*
+     * 
+     * Bên phía cần lấy Image Name tạo một TextBox có ID = tImageName 
+     * để lấy được Image Name từ ImageManager
+       
+     * function OnPageReady() {
+            $("#bChooseImage").click(OpenPopup);
+        }
+     * function OpenPopup() {
+            window.open("ImageManager.aspx", 'mypopup', 'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no');
+            self.close();
+       }
+     * 
+     */
+
     List<string> fileSelected = new List<string>();
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -32,16 +45,18 @@ public partial class Admin_ImageManager : System.Web.UI.Page
         FileInfo[] files = dir.GetFiles();
         foreach (FileInfo file in files)
         {
+            
             Image img = new Image();
             string imageURL = "~/Images/" + ViewState["folder"] + file.Name;
             img.ImageUrl = imageURL;
-            img.Width = 150;
-            img.Height = 200;
-            pImage.Controls.Add(img);
+            img.Width = 50;
+            img.Height = 75;
 
             CheckBox chk = new CheckBox();
             chk.Text = file.Name;
             chk.Attributes.Add("name", file.Name);
+
+            pImage.Controls.Add(img);
             pImage.Controls.Add(chk);
         }
     }

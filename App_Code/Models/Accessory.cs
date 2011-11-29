@@ -99,7 +99,7 @@ public class Accessory
 
     public static DataTable GetAll()
     {
-        return AccessData.GetTable("select * from Accessory");
+        return AccessData.GetTable("select Accessory.*, Producer.Name as ProducerName from Accessory, Producer where Accessory.ProducerID = Producer.ID");
     }
 
     public static int GetIDFromName(String name)
