@@ -24,6 +24,7 @@ public partial class Admin_PhoneDetail : System.Web.UI.Page
         if (Request.QueryString["id"] != "")
         {
             id = int.Parse(Request.QueryString["id"]);
+            FillDataInGridAccessory(id);
             phone = new Phone(id);
             img_Phone.ImageUrl = "~/Images/Phone/" + phone.image + ".jpg";
             //int price = phone.price;
@@ -101,5 +102,13 @@ public partial class Admin_PhoneDetail : System.Web.UI.Page
             lb_WaittingTime.Text = phone.waittingTime;
         }
         
+    }
+
+    protected void FillDataInGridAccessory(int id)
+    {
+        DataTable dt = AccessData.GetTable("SELECT AccessoryPhone.*,Accessory.Name FROM AccessoryPhone,Accessory WHERE AccessoryPhone.PhoneID=" + id + " and AccessoryPhone.AccessoryID=Accessory.id");
+        grid_Accessory.DataSource = dt;
+        grid_Accessory.DataBind();
+
     }
 }

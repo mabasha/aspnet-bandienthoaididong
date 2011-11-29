@@ -108,7 +108,8 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         {
             string username = txt_Username.Text;
             string sql = "Select Count(*) From Users Where Username='" + username + "'";
-            int temp = int.Parse((string)AccessData.ExecuteScalar(sql));
+            //int temp = int.Parse((string)AccessData.ExecuteScalar(sql));
+            int temp = Convert.ToInt32(AccessData.ExecuteScalar(sql));
             if (temp > 0)
             {
                 lb_Note.ForeColor = System.Drawing.Color.Red;

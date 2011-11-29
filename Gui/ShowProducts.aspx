@@ -66,8 +66,9 @@
                             <tr>
                                 <td align="left">
                                     <b>Tên điện thoại</b> <b>:</b>
-                                    <asp:LinkButton ID="lbtn_PhoneName" runat="server" 
-                                        CommandArgument='<%# Eval("ID") %>' Text='<%# Eval("Name") %>'></asp:LinkButton>
+                                    <asp:HyperLink ID="url_PhoneName" runat="server" ForeColor="Blue" 
+                                        NavigateUrl='<%# "~/Gui/PhoneDetail.aspx?id=" + Eval("id") %>' 
+                                        Text='<%# Eval("Name") %>'></asp:HyperLink>
                                 </td>
                             </tr>
                             <tr>
@@ -82,6 +83,12 @@
                                     <asp:Label ID="lb_Price" runat="server" 
                                         Text='<%# Eval("Price") %>'></asp:Label>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="text-align: right">
+                                    <asp:HyperLink ID="url_PhoneDetail" runat="server" 
+                                        NavigateUrl='<%# "~/Gui/PhoneDetail.aspx?id=" + Eval("id") %>'>Chi tiết ...</asp:HyperLink>
+                                    .</td>
                             </tr>
                         </table>
                     </ItemTemplate>
