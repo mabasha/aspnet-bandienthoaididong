@@ -53,7 +53,7 @@
                     &nbsp; Tel :
                         <asp:TextBox ID="txt_Tel" runat="server" Width="160px"></asp:TextBox>
 &nbsp; Address :
-                        <asp:TextBox ID="txt_Address" runat="server" TextMode="MultiLine" Width="160px"></asp:TextBox>
+                        <asp:TextBox ID="txt_Address" runat="server" Width="200px" TextMode="MultiLine"></asp:TextBox>
                         <br />
                         IDCard :
                         <asp:TextBox ID="txt_IDCard" runat="server" Width="160px"></asp:TextBox>
@@ -134,7 +134,7 @@
                             </EditItemTemplate> 
                             </asp:TemplateField> 
                             <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
-                            <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/delete.png" 
+                            <asp:CommandField ButtonType="Button" DeleteImageUrl="~/Images/Apps/delete.png" 
                                 ShowDeleteButton="True" >
                             <HeaderStyle VerticalAlign="Middle" />
                             </asp:CommandField>

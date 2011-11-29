@@ -24,7 +24,7 @@
         .style4
         {
             height: 197px;
-            width: 551px;
+            width: 290px;
         }
         .style5
         {
@@ -92,6 +92,12 @@
             color: #3333FF;
             font-style: italic;
         }
+        .style20
+        {
+            height: 197px;
+            font-weight: 700;
+            width: 354px;
+        }
     </style>
     
 </head>
@@ -113,7 +119,7 @@
                     <b>Giá bán :</b> 
                     <asp:Label ID="lb_Price" runat="server" ForeColor="Red"></asp:Label>
                 </td>
-                <td class="style2">
+                <td class="style20">
                     <b>Bộ bán hàng chuẩn: </b>
                     <br />
                     <asp:Label ID="lb_StandarBox" runat="server" Font-Bold="False"></asp:Label>
@@ -121,6 +127,26 @@
                     <br />
                     Bảo hành
                     <asp:Label ID="lb_Warranty" runat="server" Font-Bold="True"></asp:Label>
+                </td>
+                <td class="style2" align="left">
+                    <br />
+                    <asp:GridView ID="grid_Accessory" runat="server" AutoGenerateColumns="False" EnableModelValidation="True" 
+                        EnableSortingAndPagingCallbacks="True" PageSize="5" Width="100%" 
+                        AllowPaging="True" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" 
+                        BorderWidth="1px" CellPadding="4" Font-Bold="False" ForeColor="Black" 
+                        GridLines="Horizontal" Height="100%" style="margin-left: 1px">
+                        <Columns>
+                            <asp:HyperLinkField DataNavigateUrlFields="id" 
+                                DataNavigateUrlFormatString="~/Gui/AccessoryDetail.aspx?id={0}" 
+                                DataTextField="Name" HeaderText="Những phụ kiện tương thích" />
+                        </Columns>
+                        <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                        <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+                        <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+                    </asp:GridView>
+                    <asp:SqlDataSource ID="SqlDataSource_PhoneAccessory" runat="server">
+                    </asp:SqlDataSource>
                 </td>
             </tr>
         </table>
