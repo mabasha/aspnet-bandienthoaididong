@@ -5,10 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
-
 public partial class Admin_Producer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -56,15 +52,14 @@ public partial class Admin_Producer : System.Web.UI.Page
         FillData();
     } 
     protected void gridNsx_RowUpdating(object sender, GridViewUpdateEventArgs e)
-    {
-        TextBox txtUpdateID = (TextBox)gridNsx.Rows[e.RowIndex].Cells[0].Controls[0];
-        TextBox txtUpdateName = (TextBox)gridNsx.Rows[e.RowIndex].Cells[1].Controls[0];        
-        int ID = Convert.ToInt32(txtUpdateID.Text);
+    {        
+        TextBox txtUpdateName = (TextBox)gridNsx.Rows[e.RowIndex].Cells[1].Controls[0];               
         string name = txtUpdateName.Text;        
+        int ID = Convert.ToInt32(gridNsx.Rows[e.RowIndex].Cells[0].Text);
         if (txtUpdateName.Text != "")
         {
             Producer pro = new Producer(ID, name);
-            pro.Update();
+            pro.Update();               
             gridNsx.EditIndex = -1;
             FillData();
         }
