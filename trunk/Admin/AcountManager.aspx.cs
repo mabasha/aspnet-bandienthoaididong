@@ -56,15 +56,16 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         string username = grid_Users.DataKeys[e.RowIndex].Value.ToString();
         TextBox password = (TextBox)grid_Users.Rows[e.RowIndex].Cells[1].Controls[0];
         TextBox fullName = (TextBox)grid_Users.Rows[e.RowIndex].Cells[2].Controls[0];
-        TextBox birthDay = (TextBox)grid_Users.Rows[e.RowIndex].Cells[3].FindControl("Birthday");
-        TextBox tel = (TextBox)grid_Users.Rows[e.RowIndex].Cells[4].Controls[0];
-        TextBox address = (TextBox)grid_Users.Rows[e.RowIndex].Cells[5].Controls[0];
-        TextBox idCard = (TextBox)grid_Users.Rows[e.RowIndex].Cells[6].Controls[0];
+        TextBox email = (TextBox)grid_Users.Rows[e.RowIndex].Cells[3].Controls[0];
+        TextBox birthDay = (TextBox)grid_Users.Rows[e.RowIndex].Cells[4].FindControl("Birthday");
+        TextBox tel = (TextBox)grid_Users.Rows[e.RowIndex].Cells[5].Controls[0];
+        TextBox address = (TextBox)grid_Users.Rows[e.RowIndex].Cells[6].Controls[0];
+        TextBox idCard = (TextBox)grid_Users.Rows[e.RowIndex].Cells[7].Controls[0];
         //TextBox decentralize = (TextBox)grid_Users.Rows[e.RowIndex].Cells[7].Controls[0];
         DropDownList decentralize = (DropDownList)grid_Users.Rows[e.RowIndex].FindControl("cmbDecentralize");
 
         string sql = "UPDATE Users SET Password=N'" + password.Text + "', FullName=N'" + fullName.Text + "', Tel='" +
-            tel.Text + "', BirthDay='"+birthDay.Text+"',Address=N'" + address.Text + "', IDCard='" + idCard.Text + "', Decentralize='" +
+            tel.Text + "', Email='"+email.Text+"', BirthDay='"+birthDay.Text+"',Address=N'" + address.Text + "', IDCard='" + idCard.Text + "', Decentralize='" +
             decentralize.SelectedValue.ToString() + "' Where Username='" + username + "'";
 
         AccessData.ExecuteNonQuery(sql);
@@ -118,8 +119,8 @@ public partial class Admin_AcountManager : System.Web.UI.Page
             }
             else
             {
-                sql = "Insert into Users (Username, Password, FullName, Tel, BirthDay, Address, IDCard, Decentralize) Values (N'" +
-                username + "', N'" + txt_Password.Text + "', N'" + txt_Fullname.Text + "', '" + txt_Tel.Text + "', '" + txt_BirthDay.Text
+                sql = "Insert into Users (Username, Password, FullName, Email, Tel, BirthDay, Address, IDCard, Decentralize) Values (N'" +
+                username + "', N'" + txt_Password.Text + "', N'" + txt_Fullname.Text + "', N'" + txt_Email.Text + "','" + txt_Tel.Text + "', '" + txt_BirthDay.Text
                 + "', N'" + txt_Address.Text + "', " + int.Parse(txt_IDCard.Text) + ", '" + ddl_Decentralize.SelectedValue.ToString() + "')";
                 AccessData.ExecuteNonQuery(sql);
                 lb_Note.ForeColor = System.Drawing.Color.Green;
