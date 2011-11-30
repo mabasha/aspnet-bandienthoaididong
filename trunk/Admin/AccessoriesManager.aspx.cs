@@ -20,6 +20,8 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
 
             FillData();
 
+            bChooseImage.OnClientClick = "window.open(\"ImageManager.aspx?receiveInputID=tImageName\", 'mypopup', "+
+                "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); ";
         }
     }
 
@@ -82,5 +84,59 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
     protected void gShow_Sorting(object sender, GridViewSortEventArgs e)
     {
         FillData(e.SortExpression);
+    }
+    protected void gShow_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow &&
+            (e.Row.RowState == DataControlRowState.Alternate ||
+            e.Row.RowState == DataControlRowState.Normal))
+        {
+            ImageButton bDelete = (ImageButton)e.Row.Cells[7].Controls[0];
+            bDelete.OnClientClick = "if(!confirm('Bạn có chắc muốn xóa NPP này không ?')) return false;";
+        }
+    }
+    protected void gShow_RowEditing(object sender, GridViewEditEventArgs e)
+    {
+        gShow.EditIndex = e.NewEditIndex;
+        FillData();
+    }
+    protected void gShow_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+    {
+        gShow.EditIndex = -1;
+        FillData();
+    }
+    protected void gShow_RowUpdating(object sender, GridViewUpdateEventArgs e)
+    {
+        string sID = gShow.Rows[e.RowIndex].Cells[0].Text;
+        TextBox tNameUpdate = (TextBox)gShow.Rows[e.RowIndex].Cells[1].Controls[0];
+        DropDownList dProducerUpdate = (DropDownList)gShow.Rows[e.RowIndex].FindControl("dProducerName");//(DropDownList)gShow.Rows[e.RowIndex].Cells[2].Controls[0];
+        TextBox tPriceUpdate = (TextBox)gShow.Rows[e.RowIndex].Cells[3].Controls[0];
+        TextBox tImageNameUpdate = (TextBox)gShow.Rows[e.RowIndex].Cells[4].Controls[0];
+        TextBox tDescriptionUpdate = (TextBox)gShow.Rows[e.RowIndex].Cells[5].Controls[0];
+
+        int ID = Convert.ToInt32(sID);
+        string name = tNameUpdate.Text;
+        int producerID = Convert.ToInt32(dProducerUpdate.SelectedValue);
+        double price = Convert.ToDouble(tPriceUpdate.Text);
+        string imageName = tImageNameUpdate.Text;
+        string description = tDescriptionUpdate.Text;
+
+        if (name != "" && tPriceUpdate.Text != "" && imageName != "" && description != null)
+        {
+            Accessory acc = new Accessory(ID, name, producerID, price, imageName, description);
+            acc.Update();
+            gShow.EditIndex = -1;
+            FillData();
+        }
+    }
+    protected void gShow_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        Accessory acc = new Accessory(Convert.ToInt32(gShow.Rows[e.RowIndex].Cells[0].Text));
+        acc.Delete();
+        FillData();
+    }
+    protected void bChooseImage_Click(object sender, EventArgs e)
+    {
+
     }
 }
