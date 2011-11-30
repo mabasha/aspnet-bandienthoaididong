@@ -15,16 +15,16 @@
         $("document").ready(OnPageReady);
 
         function OnPageReady() {
-            $("#bChooseImage").click(OpenPopup);
+            //$("#bChooseImage").click(OpenPopup);
             $("#tPrice").keydown(OnKeyDownCheckNumber);
             $("#bAdd").click(OnAddClick);
             
         }
 
-        function OpenPopup() {
+        /*function OpenPopup() {
             window.open("ImageManager.aspx", 'mypopup', 'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no');
             self.close();
-        }
+        }*/
         
         function OnAddClick() {
             if ($("#tName").val() == "" || $("#tPrice").val() == "" || $("#tImageName").val() == "") {
@@ -83,7 +83,8 @@
                         Hình ảnh</td>
                     <td>
                         <asp:TextBox ID="tImageName" runat="server"></asp:TextBox>
-                        <asp:Button ID="bChooseImage" runat="server" Text="..." />
+                        <asp:Button ID="bChooseImage" runat="server" Text="..." 
+                            onclick="bChooseImage_Click" />
                         <asp:Button ID="bShowImage" runat="server" onclick="bShowImage_Click" 
                             Text="Hiện hình ảnh" />
                     </td>
@@ -105,17 +106,38 @@
             <asp:GridView ID="gShow" runat="server" AutoGenerateColumns="False" 
                 AllowPaging="True" AllowSorting="True" CellPadding="4" ForeColor="#333333" 
                 GridLines="None" onpageindexchanging="gShow_PageIndexChanging" 
-                onsorting="gShow_Sorting">
+                onsorting="gShow_Sorting" onrowcancelingedit="gShow_RowCancelingEdit" 
+                onrowdatabound="gShow_RowDataBound" onrowdeleting="gShow_RowDeleting" 
+                onrowediting="gShow_RowEditing" onrowupdating="gShow_RowUpdating">
                 <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                 <Columns>
-                    <asp:BoundField DataField="ID" HeaderText="Mã" SortExpression="ID" />
+                    <asp:BoundField DataField="ID" HeaderText="Mã" SortExpression="ID" 
+                        ReadOnly="True" />
                     <asp:BoundField DataField="Name" HeaderText="Tên" SortExpression="Name" />
+                    <asp:TemplateField HeaderText="NSX" SortExpression="ProducerName">
+                    <ItemTemplate><asp:Label ID="lNSX" runat="server" Text='<%# Eval("ProducerName") %>'></asp:Label>
+                        
+                    </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:DropDownList ID="dProducerName" runat="server" 
+                                DataSourceID="dsProducerName" DataTextField="Name" DataValueField="ID" 
+                                SelectedValue='<%# Eval("ID") %>'>
+                            </asp:DropDownList>
+                            <asp:SqlDataSource ID="dsProducerName" runat="server" 
+                                ConnectionString="<%$ ConnectionStrings:MobileShopConnectionString %>" 
+                                SelectCommand="SELECT [ID], [Name] FROM [Producer]"></asp:SqlDataSource>
+                        </EditItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField DataField="Price" HeaderText="Giá" SortExpression="Price" />
-                    <asp:BoundField DataField="ProducerName" HeaderText="NSX" 
-                        SortExpression="ProducerName" />
-                    <asp:BoundField DataField="Image" HeaderText="Tên ảnh" SortExpression="Image" />
+                    <asp:TemplateField HeaderText="Ảnh" SortExpression="Image"></asp:TemplateField>
                     <asp:BoundField DataField="Description" HeaderText="Mô tả" 
                         SortExpression="Description" />
+                    <asp:CommandField ButtonType="Button" SelectText="Chọn" 
+                        ShowSelectButton="True" />
+                    <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/delete.png" 
+                        ShowDeleteButton="True" />
+                    <asp:CommandField CancelText="Hủy" EditText="Sửa" ShowEditButton="True" 
+                        UpdateText="Cập nhật" />
                 </Columns>
                 <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                 <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />

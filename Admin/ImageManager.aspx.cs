@@ -10,16 +10,11 @@ public partial class Admin_ImageManager : System.Web.UI.Page
 {
     /*
      * 
-     * Bên phía cần lấy Image Name tạo một TextBox có ID = tImageName 
-     * để lấy được Image Name từ ImageManager
+     * Bên phía cần lấy Image Name viết hàm gán JavaScript cho button lấy,
+     * truyền tham số là tên textInput cần nhận.
        
-     * function OnPageReady() {
-            $("#bChooseImage").click(OpenPopup);
-        }
-     * function OpenPopup() {
-            window.open("ImageManager.aspx", 'mypopup', 'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no');
-            self.close();
-       }
+     bChooseImage.OnClientClick = "window.open(\"ImageManager.aspx?receiveInputID=tDescription\", 'mypopup', "+
+                "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); ";
      * 
      */
 
@@ -36,6 +31,13 @@ public partial class Admin_ImageManager : System.Web.UI.Page
         {
             LoadImage();
         }
+        string receiveInputID = Request.QueryString["receiveInputID"];
+        if (receiveInputID == null)
+        {
+            receiveInputID = "tImageName";
+        }
+        string javascript = String.Format("window.opener.$(\"#{0}\").val($(\"#hChoosedImage\").val()); self.close();", receiveInputID);
+        bClose.OnClientClick = javascript;
         
     }
     private void LoadImage()
@@ -54,7 +56,6 @@ public partial class Admin_ImageManager : System.Web.UI.Page
 
             CheckBox chk = new CheckBox();
             chk.Text = file.Name;
-            chk.Attributes.Add("name", file.Name);
 
             pImage.Controls.Add(img);
             pImage.Controls.Add(chk);
@@ -118,6 +119,7 @@ public partial class Admin_ImageManager : System.Web.UI.Page
             file.Delete();
             LoadImage();
         }
+        
     }
     protected void bChangeFolder_Click(object sender, EventArgs e)
     {
