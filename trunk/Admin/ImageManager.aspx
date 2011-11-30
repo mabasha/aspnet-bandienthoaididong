@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
-    <script src="../Scripts/jquery-1.4.1.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
 
     <script src="../Scripts/zeroclipboard/ZeroClipboard.js" type="text/javascript"></script>
 

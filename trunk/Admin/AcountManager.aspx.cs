@@ -46,7 +46,7 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         if (e.Row.RowType == DataControlRowType.DataRow && (e.Row.RowState == DataControlRowState.Alternate || 
             e.Row.RowState == DataControlRowState.Normal))
         {
-            Button btnCancel = (Button)e.Row.Cells[9].Controls[0];
+            Button btnCancel = (Button)e.Row.Cells[10].Controls[0];
             btnCancel.OnClientClick = "if (!confirm('Bạn có đồng ý hủy')) return false";
 
         }
