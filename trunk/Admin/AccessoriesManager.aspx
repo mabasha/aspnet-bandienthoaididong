@@ -129,7 +129,18 @@
                         </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="Price" HeaderText="Giá" SortExpression="Price" />
-                    <asp:TemplateField HeaderText="Ảnh" SortExpression="Image"></asp:TemplateField>
+                    <asp:TemplateField HeaderText="Ảnh" SortExpression="Image">
+                        <ItemTemplate>
+                            <asp:Image ID="iImageTemplate" runat="server" 
+                                ImageUrl='<%# "~/Images/Accessory/"+Eval("Image") %>' />
+                            <br />
+                            <asp:Label ID="lImageNameTemplate" runat="server" Text='<%# Eval("Image") %>'></asp:Label>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox ID="tImageNameTemplate" runat="server" Text='<%# Eval("Image") %>'></asp:TextBox>
+                            <asp:Button ID="bChooseImageTemplate" runat="server" Text="Button" />
+                        </EditItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField DataField="Description" HeaderText="Mô tả" 
                         SortExpression="Description" />
                     <asp:CommandField ButtonType="Button" SelectText="Chọn" 
