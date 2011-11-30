@@ -20,8 +20,8 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
 
             FillData();
 
-            bChooseImage.OnClientClick = "window.open(\"ImageManager.aspx?receiveInputID=tImageName\", 'mypopup', "+
-                "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); ";
+            bChooseImage.OnClientClick = "window.open(\"ImageManager.aspx?receiveInputID=tImageName\", 'mypopup', " +
+                "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;";
         }
     }
 
@@ -93,17 +93,25 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
         {
             ImageButton bDelete = (ImageButton)e.Row.Cells[7].Controls[0];
             bDelete.OnClientClick = "if(!confirm('Bạn có chắc muốn xóa NPP này không ?')) return false;";
+            
         }
     }
     protected void gShow_RowEditing(object sender, GridViewEditEventArgs e)
     {
         gShow.EditIndex = e.NewEditIndex;
         FillData();
+
+        //Lấy dữ liệu từ trang popup
+        Button bChooseImageTemplate = (Button)gShow.Rows[gShow.EditIndex].FindControl("bChooseImageTemplate");
+        TextBox tImageNameTemplate = (TextBox)gShow.Rows[gShow.EditIndex].FindControl("tImageNameTemplate");
+        bChooseImageTemplate.OnClientClick = String.Format("window.open(\"ImageManager.aspx?receiveInputID={0}\", 'mypopup', " +
+            "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", tImageNameTemplate.ClientID);
     }
     protected void gShow_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
     {
         gShow.EditIndex = -1;
         FillData();
+
     }
     protected void gShow_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
@@ -111,14 +119,14 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
         TextBox tNameUpdate = (TextBox)gShow.Rows[e.RowIndex].Cells[1].Controls[0];
         DropDownList dProducerUpdate = (DropDownList)gShow.Rows[e.RowIndex].FindControl("dProducerName");//(DropDownList)gShow.Rows[e.RowIndex].Cells[2].Controls[0];
         TextBox tPriceUpdate = (TextBox)gShow.Rows[e.RowIndex].Cells[3].Controls[0];
-        TextBox tImageNameUpdate = (TextBox)gShow.Rows[e.RowIndex].Cells[4].Controls[0];
+        TextBox lImageNameTemplate = (TextBox)gShow.Rows[e.RowIndex].FindControl("tImageNameTemplate");
         TextBox tDescriptionUpdate = (TextBox)gShow.Rows[e.RowIndex].Cells[5].Controls[0];
 
         int ID = Convert.ToInt32(sID);
         string name = tNameUpdate.Text;
         int producerID = Convert.ToInt32(dProducerUpdate.SelectedValue);
         double price = Convert.ToDouble(tPriceUpdate.Text);
-        string imageName = tImageNameUpdate.Text;
+        string imageName = lImageNameTemplate.Text;
         string description = tDescriptionUpdate.Text;
 
         if (name != "" && tPriceUpdate.Text != "" && imageName != "" && description != null)
