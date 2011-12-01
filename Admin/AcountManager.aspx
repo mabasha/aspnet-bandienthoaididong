@@ -201,7 +201,8 @@
                         onrowdatabound="grid_Users_RowDataBound" Width="100%" 
                         onrowediting="grid_Users_RowEditing" 
                         onrowupdating="grid_Users_RowUpdating" 
-                        onrowdeleting="grid_Users_RowDeleting">
+                        onrowdeleting="grid_Users_RowDeleting" 
+                        onrowcancelingedit="grid_Users_RowCancelingEdit">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
                             <asp:BoundField DataField="Username" HeaderText="Username" ReadOnly="True" 

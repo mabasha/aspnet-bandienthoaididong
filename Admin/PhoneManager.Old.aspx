@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ShowProducts.aspx.cs" Inherits="Gui_ShowProducts" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PhoneManager.Old.aspx.cs" Inherits="Admin_PhoneManager" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <title></title>
     <style type="text/css">
         .style1
@@ -17,21 +17,7 @@
             color: #993366;
             background-color: #669999;
         }
-        .style3
-        {
-            text-align: center;
-            font-weight: bold;
-            color: #993366;
-            font-style: normal;
-            background-color: #669999;
-        }
-        .style4
-        {
-            text-align: left;
-            color: #3333FF;
-            font-weight: bold;
-        }
-    </style>
+        </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -41,11 +27,7 @@
             <tr>
                 <td class="style2">
                     <h2>
-                        Thông tin điện thoại</h2>
-                </td>
-                <td class="style3">
-                    <h2>
-                        Thông tin giỏ hàng</h2>
+                        Quản lý điện thoại</h2>
                 </td>
             </tr>
             <tr>
@@ -56,11 +38,19 @@
             DataSourceID="SqlDataSource_PhoneView" EnableModelValidation="True" 
             AllowPaging="True" AllowSorting="True" style="text-align: left" 
             Width="100%" onrowcommand="grid_Phone_RowCommand" 
-            onpageindexchanging="grid_Phone_PageIndexChanging">
+            onrowdatabound="grid_Phone_RowDataBound">
             <Columns>
-                <asp:ImageField DataImageUrlField="Image" 
-                    DataImageUrlFormatString="~/Images/Phone/{0}.jpg" HeaderText="Hình ảnh">
-                </asp:ImageField>
+                <asp:TemplateField HeaderText="ID">
+                    <ItemTemplate>
+                        <asp:Label ID="lb_ID" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Hình ảnh">
+                    <ItemTemplate>
+                        <asp:Image ID="img_Phone" runat="server" Height="100px" 
+                            ImageUrl='<%# "~/Images/Phone/" + Eval("Image") + ".jpg" %>' Width="100px" />
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Giới thiệu chung">
                     <ItemTemplate>
                         <table class="style1">
@@ -85,12 +75,6 @@
                                         Text='<%# Eval("Price") %>'></asp:Label>
                                 </td>
                             </tr>
-                            <tr>
-                                <td align="left" style="text-align: right">
-                                    <asp:HyperLink ID="url_PhoneDetail" runat="server" 
-                                        NavigateUrl='<%# "~/Gui/PhoneDetail.aspx?id=" + Eval("id") %>'>Chi tiết ...</asp:HyperLink>
-                                    .</td>
-                            </tr>
                         </table>
                     </ItemTemplate>
                 </asp:TemplateField>
@@ -99,10 +83,10 @@
                         <asp:Label ID="Label1" runat="server" Text='<%# Eval("SpecialFeature") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:ButtonField ButtonType="Image" CommandName="Chon_mua" ItemStyle-HorizontalAlign="Center" HeaderText="Đặt mua" 
-                    ImageUrl="~/Images/Apps/xeHang.png">
-<ItemStyle HorizontalAlign="Center"></ItemStyle>
-                </asp:ButtonField>
+                <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/delete.png" 
+                    DeleteText="Xóa" HeaderText="Xóa" ShowDeleteButton="True" />
+                <asp:ButtonField ButtonType="Image" CommandName="Edit" 
+                    ImageUrl="~/Images/Apps/edit.png" Text="Chỉnh sửa" />
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource_PhoneView" runat="server" 
@@ -112,24 +96,9 @@
     
     </div>
                 </td>
-                <td align="right" class="style4" valign="top">
-                    <br />
-                    <br />
-                    <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    Số lượng : 
-                    <asp:Label ID="lb_SoLuong" runat="server" ForeColor="Red"></asp:Label>
-                    <br />
-                    <br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    Trị giá :
-                    <asp:Label ID="lb_TriGia" runat="server" ForeColor="Red"></asp:Label>
-                </td>
             </tr>
             <tr>
                 <td>
-                    &nbsp;</td>
-                <td align="right" class="style4" valign="top">
                     &nbsp;</td>
             </tr>
         </table>

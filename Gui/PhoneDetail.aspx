@@ -128,13 +128,13 @@
                     Bảo hành
                     <asp:Label ID="lb_Warranty" runat="server" Font-Bold="True"></asp:Label>
                 </td>
-                <td class="style2" align="left">
-                    <br />
+                <td class="style2" align="left" valign="top">
                     <asp:GridView ID="grid_Accessory" runat="server" AutoGenerateColumns="False" EnableModelValidation="True" 
                         EnableSortingAndPagingCallbacks="True" PageSize="5" Width="100%" 
                         AllowPaging="True" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" 
                         BorderWidth="1px" CellPadding="4" Font-Bold="False" ForeColor="Black" 
-                        GridLines="Horizontal" Height="100%" style="margin-left: 1px">
+                        GridLines="Horizontal" Height="100%" style="margin-left: 1px" 
+                        onpageindexchanging="grid_Accessory_PageIndexChanging">
                         <Columns>
                             <asp:HyperLinkField DataNavigateUrlFields="id" 
                                 DataNavigateUrlFormatString="~/Gui/AccessoryDetail.aspx?id={0}" 

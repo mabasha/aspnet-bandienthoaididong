@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Drawing;
 
-public partial class Gui_ShowProducts : System.Web.UI.Page
+public partial class Admin_PhoneManager : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -42,26 +42,27 @@ public partial class Gui_ShowProducts : System.Web.UI.Page
             conn.Close();
         }
     }
-    protected void grid_Phone_RowCommand(object sender, GridViewCommandEventArgs e)
+
+    protected void grid_Phone_RowDataBound(object sender, GridViewRowEventArgs e)
     {
-        if (e.CommandName=="Chon_mua")
+        if (e.Row.RowType == DataControlRowType.DataRow && (e.Row.RowState == DataControlRowState.Alternate ||
+            e.Row.RowState == DataControlRowState.Normal))
         {
-            //Xác định chỉ số dòng.
-            int index = int.Parse(e.CommandArgument.ToString());
-            Label donGia = (Label)grid_Phone.Rows[index].FindControl("lb_Price");
-            int temp = int.Parse(ViewState["TongSoLuong"].ToString());
-            temp += 1;
-            ViewState["TongSoLuong"] = temp.ToString();
-            temp = int.Parse(ViewState["TongTien"].ToString());
-            temp += int.Parse(donGia.Text);
-            ViewState["TongTien"] = temp.ToString();
-            lb_SoLuong.Text = ViewState["TongSoLuong"].ToString();
-            lb_TriGia.Text = String.Format("{0:0,0 VNĐ}", temp);
+            ImageButton btnDelete = (ImageButton)e.Row.Cells[4].Controls[0];
+            btnDelete.OnClientClick = "if (!confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) return false";
+            //ImageButton btnEdit = (ImageButton)e.Row.Cells[5].Controls[0];
+            //btnEdit.OnClientClick = Response.Redirect("~/Admin/PhoneEditAdd.aspx?action=edit&&id=");
+            //btnEdit.Click();
+            
         }
     }
-    protected void grid_Phone_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    protected void grid_Phone_RowCommand(object sender, GridViewCommandEventArgs e)
     {
-        grid_Phone.PageIndex = e.NewPageIndex;
-        FillDataInGrid();
+        if (e.CommandName=="Edit")
+        {
+            int index = int.Parse(e.CommandArgument.ToString());
+            Label id = (Label)grid_Phone.Rows[index].FindControl("lb_ID");
+            Response.Redirect("~/Admin/PhoneEditAdd.aspx?action=edit&&id=" + id.Text);
+        }
     }
 }
