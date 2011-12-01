@@ -51,8 +51,7 @@ public partial class Admin_ImageManager : System.Web.UI.Page
             Image img = new Image();
             string imageURL = "~/Images/" + ViewState["folder"] + file.Name;
             img.ImageUrl = imageURL;
-            img.Width = 50;
-            img.Height = 75;
+            img.Height = 80;
 
             CheckBox chk = new CheckBox();
             chk.Text = file.Name;

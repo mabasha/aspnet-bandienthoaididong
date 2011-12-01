@@ -132,7 +132,7 @@
                     <asp:TemplateField HeaderText="Ảnh" SortExpression="Image">
                         <ItemTemplate>
                             <asp:Image ID="iImageTemplate" runat="server" 
-                                ImageUrl='<%# "~/Images/Accessory/"+Eval("Image") %>' />
+                                ImageUrl='<%# "~/Images/Accessory/"+Eval("Image") %>' Width="60px" />
                             <br />
                             <asp:Label ID="lImageNameTemplate" runat="server" Text='<%# Eval("Image") %>'></asp:Label>
                         </ItemTemplate>

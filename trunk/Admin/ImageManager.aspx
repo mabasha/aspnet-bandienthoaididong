@@ -13,14 +13,8 @@
         var clip = null;
         
         $("document").ready(function() {
-            //$("#bClose").bind("click", GetValue);
             $("#bCopyToClipboard").click(CopyToClipBoard);
         });
-
-        /*function GetValue() {
-            window.opener.$("#tImageName").val($("#hChoosedImage").val());
-            self.close();
-        }*/
 
         function CopyToClipBoard() {
             if (window.clipboardData) {
