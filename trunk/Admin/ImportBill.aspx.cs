@@ -68,7 +68,7 @@ public partial class Admin_ImportBill : System.Web.UI.Page
     {        
         ImportBillDt idt = new ImportBillDt(0, dMaHD.Text, txtTenSp.Text, getrLoaisp(), txtNumber.Text, txtPrice.Text);
         idt.Insert();
-        lbThongbaoCTHD.Text = "<p class=info>* Thêm thành công Nhà sản xuất.</p>";
+        lbThongbaoCTHD.Text = "<p class=info>* Thêm thành công Chi tiết hóa đơn.</p>";
         txtTenSp.Text = "";
         txtNumber.Text = "";
         txtPrice.Text = "";
@@ -82,10 +82,37 @@ public partial class Admin_ImportBill : System.Web.UI.Page
     }
     protected void gridImportBillDt_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-        ImportBillDt imp = new ImportBillDt(Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[0].Text));
-        imp.Delete();
-        lbThongbaoCTHD.Text = "<p class=info>* Bạn đã xóa thành công.</p>";
+        ImportBillDt impdt = new ImportBillDt(Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[0].Text));
+        impdt.Delete();
+        lbThongbaoCTHD.Text = "<p class=info>* Bạn đã xóa thành công Chi tiết hóa đơn.</p>";
         FillDataDt();
     }
-    
+
+    protected void gridImportBill_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        ImportBill imp = new ImportBill(Convert.ToInt32(gridImportBill.Rows[e.RowIndex].Cells[0].Text));
+        imp.Delete();
+        lbThongbaoHD.Text = "<p class=info>* Bạn đã xóa thành công hóa đơn.</p>";
+        FillData();
+        FillDataDt();
+    }
+    protected void dNguoiNhap_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        
+    }
+    protected void btnAddHD_Click(object sender, EventArgs e)
+    {
+        ImportBill imp = new ImportBill(0, dNguoiNhap.SelectedValue.ToString(),getCreatedDate()) ;
+        imp.Insert();
+        lbThongbaoHD.Text = "<p class=info>* Thêm thành công Hóa đơn.</p>";
+        dNgay.Text = "1";
+        dThang.Text = "1";
+        txtNam.Text = "";        
+        FillData();
+    }
+    private string getCreatedDate()
+    {
+        string cd = dThang.Text + "-" + dNgay.Text + "-" + txtNam.Text;
+        return cd;
+    }   
 }
