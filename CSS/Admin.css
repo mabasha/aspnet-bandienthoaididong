@@ -1,10 +1,19 @@
 ﻿
+.wrapper
+{
+	width:800px;
+	text-align:center;
+	margin:auto;
+}
+.clearboth
+{
+	clear:both;
+}
 /* Phần trên cùng của một trang */
 .header
 {
 	color : blue;
 	text-align : center;
-	width : 100%;
 	font-size : x-large;
 	padding : 20px 20px 20px 20px;
 }
@@ -12,22 +21,20 @@
 /*Phần thêm của một trang Admin*/
 .add
 {
-	width : 100%;
 	padding : 30px 30px 30px 30px;
 	border-style : dotted;
 	border-color : Gray;
 	border-width : 1px;
+	text-align:left;
 }
 
 /*Phần liệt kê các record của một trang admin*/
 .list
 {
-	width : 100%;
 	padding : 30px 30px 30px 30px;
 	border-style : dotted;
 	border-color : Gray;
 	border-width : 1px;
-	text-align : center;
 }
 
 /*Căn lề cho một thẻ div bất kỳ*/
@@ -40,7 +47,7 @@
 /*Cột trái của bảng thêm*/
 td.left-add
 {
-	width : 30%;
+	width : 150px;
 }
 
 .small-header
@@ -67,4 +74,29 @@ td.right-add
 .info
 {
 	color : Blue;
+}
+
+.margin
+{
+	margin : 10px 10px 10px 10px;
+}
+
+.margin-left
+{
+	margin-left:10px;
+}
+
+.right-float
+{
+	float:right;
+}
+
+.left-float
+{
+	float:left;
+}
+
+.button-close
+{
+	float:right;
 }
