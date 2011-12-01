@@ -11,10 +11,12 @@ public class ImportBill
 {
 	public ImportBill()
 	{		
-	}
+	}    
     public static DataTable GetAll()
     {
-        string query = "SELECT ImportBill.ID, ImportBill.CreatedDate, Phone.Name, ImportBillDt.IsPhone, ImportBillDt.Number, ImportBillDt.Price FROM ImportBill, ImportBillDt,Phone WHERE (ImportBill.ID=ImportBillDt.ImportBillID AND ImportBillDt.ProductID=Phone.ID)";
+        string query = "SELECT ImportBill.ID, Users.FullName, ImportBill.CreatedDate" 
+                      + " FROM ImportBill, Users"
+                      + " WHERE ImportBill.ImporterUsername = Users.Username";
         return AccessData.GetTable(query);
     }
 }

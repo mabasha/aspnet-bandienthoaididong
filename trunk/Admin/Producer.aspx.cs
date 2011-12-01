@@ -68,6 +68,7 @@ public partial class Admin_Producer : System.Web.UI.Page
     {
         Producer pro = new Producer(Convert.ToInt32(gridNsx.Rows[e.RowIndex].Cells[0].Text));
         pro.Delete();
+        lbThongbao.Text = "<p class=info>* Bạn đã xóa thành công!.</p>";
         FillData();
     }
     private void FillData()
