@@ -47,7 +47,7 @@ public partial class Admin_AcountManager : System.Web.UI.Page
             e.Row.RowState == DataControlRowState.Normal))
         {
             Button btnCancel = (Button)e.Row.Cells[10].Controls[0];
-            btnCancel.OnClientClick = "if (!confirm('Bạn có đồng ý hủy')) return false";
+            btnCancel.OnClientClick = "if (!confirm('Bạn có chắc chắn muốn xóa User này không?')) return false";
 
         }
     }
@@ -97,7 +97,7 @@ public partial class Admin_AcountManager : System.Web.UI.Page
     }
     protected void btn_Add_Click(object sender, EventArgs e)
     {
-        // Check xem user có tồn tại trong database hay chưa.
+        
         if (txt_Username.Text=="" || txt_Password.Text=="" || txt_Fullname.Text=="" || txt_Tel.Text=="" || txt_BirthDay.Text=="" || 
             txt_Address.Text=="" || txt_IDCard.Text=="")
         {
@@ -108,8 +108,8 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         else
         {
             string username = txt_Username.Text;
+            // Check xem user có tồn tại trong database hay chưa.
             string sql = "Select Count(*) From Users Where Username='" + username + "'";
-            //int temp = int.Parse((string)AccessData.ExecuteScalar(sql));
             int temp = Convert.ToInt32(AccessData.ExecuteScalar(sql));
             if (temp > 0)
             {
@@ -129,5 +129,10 @@ public partial class Admin_AcountManager : System.Web.UI.Page
             }
         }
        
+    }
+    protected void grid_Users_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+    {
+        grid_Users.EditIndex = -1;
+        FillDataInGrid();
     }
 }

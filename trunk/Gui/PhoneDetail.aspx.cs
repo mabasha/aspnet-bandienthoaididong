@@ -111,4 +111,9 @@ public partial class Admin_PhoneDetail : System.Web.UI.Page
         grid_Accessory.DataBind();
 
     }
+    protected void grid_Accessory_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        grid_Accessory.PageIndex = e.NewPageIndex;
+        FillDataInGridAccessory(id);
+    }
 }
