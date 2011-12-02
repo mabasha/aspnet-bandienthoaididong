@@ -62,7 +62,7 @@ public class SaleBill
         id = GetMaxID() + 1;
         string query = String.Format("insert into SaleBill"+
             "(ID, SalerUsername, CustomName, Address, Tel, CreatedDate, CustomUsername) "+
-            "values('{0}',N'{1}',N'{2}', N'{3}', '{4}', {5}, N'{6}')",
+            "values('{0}',N'{1}',N'{2}', N'{3}', '{4}', '{5}', N'{6}')",
             id, salerUsername, customName, address, tel, createdDate, customUsername);
         AccessData.ExecuteNonQuery(query);
         return true;

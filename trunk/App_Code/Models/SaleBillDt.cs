@@ -55,7 +55,7 @@ public class SaleBillDt
         id = GetMaxID() + 1;
         string query = String.Format("insert into SaleBillDt" +
             "(ID, SaleBillID, ProductID, ProductIMEI, IsPhone, Number, Price) " +
-            "values('{0}',{1},{2}, {3}, {4}, {5}, {6})",
+            "values('{0}',{1},{2}, {3}, '{4}', {5}, {6})",
             id, saleBillID, productID, productIMEI, isPhone, number, price);
         AccessData.ExecuteNonQuery(query);
         return true;
