@@ -40,9 +40,11 @@
                         &nbsp;</td>
                     <td>
                         <asp:RadioButton ID="rRegisted" runat="server" Checked="True" 
-                            GroupName="CustomType" Text="Đã đăng ký" AutoPostBack="True" />
+                            GroupName="CustomType" Text="Đã đăng ký" AutoPostBack="True" 
+                            oncheckedchanged="rRegisted_CheckedChanged" />
                         <asp:RadioButton ID="rUnregisted" runat="server" GroupName="CustomType" 
-                            Text="Chưa đăng ký" AutoPostBack="True" />
+                            Text="Chưa đăng ký" AutoPostBack="True" 
+                            oncheckedchanged="rUnregisted_CheckedChanged" />
                     </td>
                 </tr>
                 <tr>
@@ -83,9 +85,10 @@
                         Loại hàng</td>
                     <td>
                         <asp:RadioButton ID="rPhone" runat="server" Text="Điện thoại" Checked="True" 
-                            GroupName="ProductType" AutoPostBack="True" />
+                            GroupName="ProductType" AutoPostBack="True" 
+                            oncheckedchanged="rPhone_CheckedChanged" />
 &nbsp;<asp:RadioButton ID="rAccessory" runat="server" Text="Phụ kiện" GroupName="ProductType" 
-                            AutoPostBack="True" />
+                            AutoPostBack="True" oncheckedchanged="rAccessory_CheckedChanged" />
                     </td>
                 </tr>
                 <tr>
@@ -144,7 +147,8 @@
             </table>
             <br />
             <asp:GridView ID="gAddDetail" runat="server" AutoGenerateColumns="False" 
-                CellPadding="4" ForeColor="#333333" GridLines="None">
+                CellPadding="4" ForeColor="#333333" GridLines="None" 
+                onrowdeleting="gAddDetail_RowDeleting">
                 <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                 <Columns>
                     <asp:BoundField DataField="ProductID" HeaderText="Mã sản phẩm" />
@@ -152,6 +156,8 @@
                     <asp:BoundField DataField="ProductIMEI" HeaderText="Số IMEI" />
                     <asp:BoundField DataField="Number" HeaderText="Số lượng" />
                     <asp:BoundField DataField="Price" HeaderText="Đơn giá" />
+                    <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/delete.png" 
+                        ShowDeleteButton="True" />
                 </Columns>
                 <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                 <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
