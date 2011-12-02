@@ -17,6 +17,7 @@ public class Phone
     public int id;
     public string name;
     public int producerID;
+    public int distributorID;
     public string image;
     public double price;
     public string specialFeature;
@@ -77,6 +78,7 @@ public class Phone
     public string callingTime;
     public string waittingTime;
     public string standarBox;
+    public int residualAmount;
     
 	public Phone()
 	{
@@ -91,6 +93,7 @@ public class Phone
         DataTable dt = AccessData.GetTable("SELECT * FROM Phone WHERE id=" + id);
         name = dt.Rows[0]["Name"].ToString();
         producerID = int.Parse(dt.Rows[0]["ProducerID"].ToString());
+        distributorID = int.Parse(dt.Rows[0]["DistributorID"].ToString());
         image = dt.Rows[0]["Image"].ToString();
         price = int.Parse(dt.Rows[0]["Price"].ToString());
         specialFeature = dt.Rows[0]["SpecialFeature"].ToString();
@@ -154,6 +157,120 @@ public class Phone
 
     }
 
+    public Phone(int id, string name, int producerID, int distributorID, string image, double price, string specialFeature, string camera,
+                string videoCall, string recorderCamera, string subCamera, string videoPlayer, string musicPlayer, string FM,
+                string TV, string recorder, string callingRecorder, string FMRecorder, string java, string game, string TVConnection,
+                string officeApps, string otherApp, string screen, string ringtone, string downloadRingtone, string speakerPhone,
+                string vibrate, string jackPhone, string internalStore, string ram, string CPU, string memoryCard,
+                string maximumMemoryCapacity, string contact, string message, string email, string secondGband, string threeGband,
+                string mutilSimcard, string GPRS, string EDGE, string threeG, string wifi, string browser, string GPS, string bluetooth,
+                string ultrared, string USB, string resolution, string sizeScreen, string sensor, string OS, string style,
+                string qwertyKeyboard, string size, string weight, string warranty, string language, string battery, string capabilityBattery,
+                string callingTime, string waittingTime, string standarBox, int residualAmount)
+    {
+        this.id = id;
+        this.name = name;
+        this.producerID = producerID;
+        this.distributorID = distributorID;
+        this.image = image;
+        this.price = price;
+        this.specialFeature = specialFeature;
+        this.camera = camera;
+        this.videoCall = videoCall;
+        this.recorderCamera = recorderCamera;
+        this.subCamera = subCamera;
+        this.videoPlayer = videoPlayer;
+        this.musicPlayer = musicPlayer;
+        this.FM = FM;
+        this.TV = TV;
+        this.recorder = recorder;
+        this.callingRecorder = callingRecorder;
+        this.FMRecorder = FMRecorder;
+        this.java = java;
+        this.game = game;
+        this.TVConnection = TVConnection;
+        this.officeApps = officeApps;
+        this.otherApp = otherApp;
+        this.screen = screen;
+        this.ringtone = ringtone;
+        this.downloadRingtone = downloadRingtone;
+        this.speakerPhone = speakerPhone;
+        this.vibrate = vibrate;
+        this.jackPhone = jackPhone;
+        this.internalStore = internalStore;
+        this.ram = ram;
+        this.CPU = CPU;
+        this.memoryCard = memoryCard;
+        this.maximumMemoryCapacity = maximumMemoryCapacity;
+        this.contact = contact;
+        this.message = message;
+        this.email = email;
+        this.secondGband = secondGband;
+        this.threeGband = threeGband;
+        this.mutilSimcard = mutilSimcard;
+        this.GPRS = GPRS;
+        this.EDGE = EDGE;
+        this.threeG = threeG;
+        this.wifi = wifi;
+        this.browser = browser;
+        this.GPS = GPS;
+        this.bluetooth = bluetooth;
+        this.ultrared = ultrared;
+        this.USB = USB;
+        this.resolution = resolution;
+        this.sizeScreen = sizeScreen;
+        this.sensor = sensor;
+        this.OS = OS;
+        this.style = style;
+        this.qwertyKeyboard = qwertyKeyboard;
+        this.size = size;
+        this.weight = weight;
+        this.warranty = warranty;
+        this.language = language;
+        this.battery = battery;
+        this.capabilityBattery = capabilityBattery;
+        this.callingTime = callingTime;
+        this.waittingTime = waittingTime;
+        this.standarBox = standarBox;
+        this.residualAmount = residualAmount;
+    }
+
+    public bool Insert()
+    {
+        //id=AccessData.GetMaxID("Users");
+        bool isExit = IsExistName();
+        if (isExit == false)
+        {
+            string query = String.Format("INSERT INTO Phone(Name, ProducerID, DistributorID, Image, Price," +
+                                                        "SpecialFeature, Camera, VideoCall, RecorderCamera, SubCamera, VideoPlayer," +
+                                                        "MusicPlayer, FM, TV, Recorder, CallingRecorder, FMRecorder, Java, Game, TVConnection," +
+                                                        "OfficeApps, OtherApp, Ringtone, DownloadRingtone, SpeakerPhone, Vibrate, JackPhone," +
+                                                        "InternalStore, Ram, CPU, MemoryCard, MaximumMemoryCapacity, Contact, Message, Email," +
+                                                        "2Gband, 3Gband, MutilSimcard, GPRS, EDGE, 3G, Wifi, Browser, GPS, Bluetooth, Ultrared," +
+                                                        "USB, Screen, Resolution, SizeScreen, Sensor, OS, Style, QwertyKeyboard, Size, Weight," +
+                                                        "Warranty, Language, Battery, CapabilityBattery, CallingTime, WaittingTime, StandarBox, ResidualAmount)" +
+                                        "VALUES(N'{0}', {1}, {2}, N'{3}', {4}, N'{5}', N'{6}', N'{7}', N'{8}', N'{9}', N'{10}'," +
+                                                "N'{11}', N'{12}', N'{13}', N'{14}', N'{15}', N'{16}', N'{17}', N'{18}', N'{19}', N'{20}'," +
+                                                "N'{21}', N'{22}', N'{23}', N'{24}', N'{25}', N'{26}', N'{27}', N'{28}', N'{29}', N'{30}'," +
+                                                "N'{31}', N'{32}', N'{33}', N'{34}', N'{35}', N'{36}', N'{37}', N'{38}', N'{39}', N'{40}'," +
+                                                "N'{41}', N'{42}', N'{43}', N'{44}', N'{45}', N'{46}', N'{47}', N'{48}', N'{49}', N'{50}'," +
+                                                "N'{51}', N'{52}', N'{53}', N'{54}', N'{55}', N'{56}', N'{57}', N'{58}', N'{59}', N'{60}'," +
+                                                "N'{61}', N'{62}', {63})",
+                                        name, producerID, distributorID, image, price, specialFeature, camera, videoCall,
+                                        recorderCamera, subCamera, videoPlayer, musicPlayer, FM, TV, recorder, callingRecorder,
+                                        FMRecorder, java, game, TVConnection, officeApps, otherApp, ringtone, downloadRingtone,
+                                        speakerPhone, vibrate, jackPhone, internalStore, ram, CPU, memoryCard, maximumMemoryCapacity,
+                                        contact, message, email, secondGband, threeGband, mutilSimcard, GPRS, EDGE, threeG, wifi,
+                                        browser, GPS, bluetooth, ultrared, USB, screen, resolution, sizeScreen, sensor, OS, style,
+                                        qwertyKeyboard, size, weight, warranty, language, battery, capabilityBattery, callingTime,
+                                        waittingTime, standarBox, residualAmount);
+
+            AccessData.ExecuteNonQuery(query);
+        }
+
+        return !isExit;
+    }
+
     public void GetInfoByID()
     {
         String query = String.Format("select * from Phone where ID = N'{0}'", id);
@@ -161,9 +278,20 @@ public class Phone
         name = (string)dt.Rows[0]["Name"];
         price = Convert.ToDouble(dt.Rows[0]["Price"]);
     }
+
+    public bool IsExistName()
+    {
+        string query = String.Format("select count(ID) from Phone where name = N'{0}'", name);
+        int count = Convert.ToInt32(AccessData.ExecuteScalar(query));
+        if (count > 0) return true;
+        return false;
+    }
+
     public static DataTable GetAllWithKeyword(string keyword)
     {
         String query = String.Format("select * from Phone where Name like N'%{0}%'", keyword);
         return AccessData.GetTable(query);
     }
+
+    
 }

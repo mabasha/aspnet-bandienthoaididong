@@ -62,19 +62,20 @@
                         onitemdeleting="dtview_Phone_ItemDeleting" 
                         onitemcommand="dtview_Phone_ItemCommand" 
                         onitemupdating="dtview_Phone_ItemUpdating" 
-                        onmodechanging="dtview_Phone_ModeChanging" DataKeyNames="ID">
+                        onmodechanging="dtview_Phone_ModeChanging" DataKeyNames="ID" 
+                        oniteminserting="dtview_Phone_ItemInserting">
                         <AlternatingRowStyle BackColor="White" Width="150px" />
                         <CommandRowStyle BackColor="#D1DDF1" Font-Bold="True" />
                         <EditRowStyle BackColor="#2461BF" />
                         <FieldHeaderStyle BackColor="#DEE8F5" Font-Bold="True" />
                         <Fields>
-                            <asp:CommandField ButtonType="Image" CancelText="Hủy" 
-                                DeleteImageUrl="~/Images/Apps/delete.png" DeleteText="Xóa" 
-                                EditImageUrl="~/Images/Apps/edit.png" EditText="Sửa" InsertVisible="False" 
-                                NewImageUrl="~/Images/Apps/new.png" NewText="Thêm mới" ShowDeleteButton="True" 
+                            <asp:CommandField ButtonType="Image" CancelImageUrl="~/Images/Apps/delete.png" 
+                                CancelText="Hủy" DeleteImageUrl="~/Images/Apps/delete.png" DeleteText="Xóa" 
+                                EditImageUrl="~/Images/Apps/edit.png" EditText="Sửa" 
+                                InsertImageUrl="~/Images/Apps/add.png" InsertText="Ghi" 
+                                NewImageUrl="~/Images/Apps/add.png" NewText="Thêm" ShowDeleteButton="True" 
                                 ShowEditButton="True" ShowInsertButton="True" 
-                                UpdateImageUrl="~/Images/Apps/update.jpg" UpdateText="Cập nhật" 
-                                CancelImageUrl="~/Images/Apps/delete.png" />
+                                UpdateImageUrl="~/Images/Apps/update.jpg" UpdateText="Cập nhật" />
                             <asp:BoundField DataField="ID" HeaderText="Mã" >
                             <ControlStyle Width="450px" />
                             </asp:BoundField>
