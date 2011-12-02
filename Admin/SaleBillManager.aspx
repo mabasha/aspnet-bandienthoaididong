@@ -40,9 +40,9 @@
                         &nbsp;</td>
                     <td>
                         <asp:RadioButton ID="rRegisted" runat="server" Checked="True" 
-                            GroupName="CustomType" Text="Đã đăng ký" />
+                            GroupName="CustomType" Text="Đã đăng ký" AutoPostBack="True" />
                         <asp:RadioButton ID="rUnregisted" runat="server" GroupName="CustomType" 
-                            Text="Chưa đăng ký" />
+                            Text="Chưa đăng ký" AutoPostBack="True" />
                     </td>
                 </tr>
                 <tr>
@@ -72,7 +72,10 @@
                 </table>
             <br />
             <br />
-            <b>Chi tiết hóa đơn</b><br />
+            <b>Chi tiết hóa đơn<br />
+            </b>
+            <asp:Label ID="lInfoDt" runat="server" Text="Label"></asp:Label>
+            <br />
             <table class="style2" width="50%" 
                 style="border-style: solid; border-width: 1px">
                 <tr>
@@ -80,8 +83,9 @@
                         Loại hàng</td>
                     <td>
                         <asp:RadioButton ID="rPhone" runat="server" Text="Điện thoại" Checked="True" 
-                            GroupName="ProductType" />
-&nbsp;<asp:RadioButton ID="RadioButton2" runat="server" Text="Phụ kiện" GroupName="ProductType" />
+                            GroupName="ProductType" AutoPostBack="True" />
+&nbsp;<asp:RadioButton ID="rAccessory" runat="server" Text="Phụ kiện" GroupName="ProductType" 
+                            AutoPostBack="True" />
                     </td>
                 </tr>
                 <tr>
@@ -90,13 +94,15 @@
                     <td>
                         <asp:Button ID="bChooseProduct" runat="server" CssClass="margin-left" 
                             Text="Chọn mặt hàng" />
+                        <asp:Button ID="bShowName" runat="server" onclick="bShowName_Click" 
+                            Text="Lấy thông tin sản phẩm" />
                     </td>
                 </tr>
                 <tr>
                     <td width="50%" class="left-add">
                         Mã mặt hàng</td>
                     <td>
-                        <asp:Label ID="lProductID" runat="server"></asp:Label>
+                        <asp:TextBox ID="tProductID" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -105,6 +111,13 @@
                     <td>
                         <asp:Label ID="lProductName" runat="server"></asp:Label>
                     </td>
+                </tr>
+                <tr>
+                    <td width="50%" class="left-add">
+                        Đơn giá</td>
+                    <td>
+                        <asp:Label ID="lPrice" runat="server"></asp:Label>
+&nbsp;đ</td>
                 </tr>
                 <tr>
                     <td width="50%" class="left-add">
@@ -125,12 +138,14 @@
                         &nbsp;</td>
                     <td>
                         <asp:Button ID="bAddBillDt" runat="server" CssClass="margin" 
-                            Text="Thêm mặt hàng" />
+                            Text="Thêm mặt hàng" onclick="bAddBillDt_Click" />
                     </td>
                 </tr>
             </table>
             <br />
-            <asp:GridView ID="gAddDetail" runat="server" AutoGenerateColumns="False">
+            <asp:GridView ID="gAddDetail" runat="server" AutoGenerateColumns="False" 
+                CellPadding="4" ForeColor="#333333" GridLines="None">
+                <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                 <Columns>
                     <asp:BoundField DataField="ProductID" HeaderText="Mã sản phẩm" />
                     <asp:BoundField DataField="ProductName" HeaderText="Tên sản phẩm" />
@@ -138,9 +153,15 @@
                     <asp:BoundField DataField="Number" HeaderText="Số lượng" />
                     <asp:BoundField DataField="Price" HeaderText="Đơn giá" />
                 </Columns>
+                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <EditRowStyle BackColor="#999999" />
+                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             </asp:GridView>
             <br />
-            <asp:Button ID="bAdd" runat="server" Text="Thêm hóa đơn" />
+            <asp:Button ID="bAdd" runat="server" Text="Thêm hóa đơn" onclick="bAdd_Click" />
             <div class=clearboth></div>
         </div>
         

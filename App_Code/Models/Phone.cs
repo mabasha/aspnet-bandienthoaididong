@@ -18,7 +18,7 @@ public class Phone
     public string name;
     public int producerID;
     public string image;
-    public int price;
+    public double price;
     public string specialFeature;
     public string camera;
     public string videoCall;
@@ -152,5 +152,18 @@ public class Phone
         waittingTime = dt.Rows[0]["WaittingTime"].ToString();
         standarBox = dt.Rows[0]["StandarBox"].ToString();
 
+    }
+
+    public void GetInfoByID()
+    {
+        String query = String.Format("select * from Phone where ID = N'{0}'", id);
+        DataTable dt = AccessData.GetTable(query);
+        name = (string)dt.Rows[0]["Name"];
+        price = Convert.ToDouble(dt.Rows[0]["Price"]);
+    }
+    public static DataTable GetAllWithKeyword(string keyword)
+    {
+        String query = String.Format("select * from Phone where Name like N'%{0}%'", keyword);
+        return AccessData.GetTable(query);
     }
 }
