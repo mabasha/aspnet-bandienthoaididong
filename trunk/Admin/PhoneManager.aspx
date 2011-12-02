@@ -62,7 +62,7 @@
                         onitemdeleting="dtview_Phone_ItemDeleting" 
                         onitemcommand="dtview_Phone_ItemCommand" 
                         onitemupdating="dtview_Phone_ItemUpdating" 
-                        onmodechanging="dtview_Phone_ModeChanging">
+                        onmodechanging="dtview_Phone_ModeChanging" DataKeyNames="ID">
                         <AlternatingRowStyle BackColor="White" Width="150px" />
                         <CommandRowStyle BackColor="#D1DDF1" Font-Bold="True" />
                         <EditRowStyle BackColor="#2461BF" />
@@ -73,7 +73,8 @@
                                 EditImageUrl="~/Images/Apps/edit.png" EditText="Sửa" InsertVisible="False" 
                                 NewImageUrl="~/Images/Apps/new.png" NewText="Thêm mới" ShowDeleteButton="True" 
                                 ShowEditButton="True" ShowInsertButton="True" 
-                                UpdateImageUrl="~/Images/Apps/update.jpg" UpdateText="Cập nhật" />
+                                UpdateImageUrl="~/Images/Apps/update.jpg" UpdateText="Cập nhật" 
+                                CancelImageUrl="~/Images/Apps/delete.png" />
                             <asp:BoundField DataField="ID" HeaderText="Mã" >
                             <ControlStyle Width="450px" />
                             </asp:BoundField>
@@ -93,6 +94,9 @@
                                     <asp:DropDownList ID="ddl_Producer" runat="server" 
                                         DataSourceID="SqlDataSource_Producer" DataTextField="Name" DataValueField="ID">
                                     </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource_Producer" runat="server" 
+                                        ConnectionString="<%$ ConnectionStrings:MobileShopConnectionString %>" 
+                                        SelectCommand="SELECT * FROM [Producer]"></asp:SqlDataSource>
                                 </InsertItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="lb_Producer" runat="server" Text='<%# Eval("ProducerName") %>'></asp:Label>
@@ -113,6 +117,9 @@
                                         DataSourceID="SqlDataSource_Distributor" DataTextField="Name" 
                                         DataValueField="ID">
                                     </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource_Distributor" runat="server" 
+                                        ConnectionString="<%$ ConnectionStrings:MobileShopConnectionString %>" 
+                                        SelectCommand="SELECT * FROM [Distributor]"></asp:SqlDataSource>
                                 </InsertItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="lb_Distributor" runat="server" 
@@ -143,16 +150,16 @@
                             <asp:TemplateField HeaderText="Tính năng nổi bật">
                                 <EditItemTemplate>
                                     <asp:TextBox ID="txt_SpecialFeature" runat="server" 
-                                        Text='<%# Eval("SpecialFeature") %>' TextMode="MultiLine" Width="500px" 
-                                        Height="100px"></asp:TextBox>
+                                        TextMode="MultiLine" Width="500px" 
+                                        Height="100px" Text='<%# Eval("SpecialFeature") %>'></asp:TextBox>
                                 </EditItemTemplate>
                                 <InsertItemTemplate>
-                                    <asp:TextBox ID="txt_SpecialFeature" runat="server" 
-                                        Text='<%# Eval("SpecialFeature") %>' TextMode="MultiLine" Width="500px" 
-                                        Height="100px"></asp:TextBox>
+                                    <asp:TextBox ID="txt_SpecialFeature" runat="server" TextMode="MultiLine" Width="500px" 
+                                        Height="100px" Text='<%# Eval("SpecialFeature") %>'></asp:TextBox>
                                 </InsertItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="lb_SpecialFeature" runat="server" 
+                                        
                                         Text='<%# Eval("SpecialFeature") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -200,14 +207,12 @@
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="Ứng dụng văn phòng">
                                 <EditItemTemplate>
-                                    <asp:TextBox ID="txt_OfficeApps" runat="server" 
-                                        Text='<%# Eval("OfficeApps") %>' Height="100px" TextMode="MultiLine" 
-                                        Width="500px"></asp:TextBox>
+                                    <asp:TextBox ID="txt_OfficeApps" runat="server" Height="100px" TextMode="MultiLine" 
+                                        Width="500px" Text='<%# Eval("OfficeApps") %>'></asp:TextBox>
                                 </EditItemTemplate>
                                 <InsertItemTemplate>
-                                    <asp:TextBox ID="txt_OfficeApps" runat="server" 
-                                        Text='<%# Eval("OfficeApps") %>' Height="100px" TextMode="MultiLine" 
-                                        Width="500px"></asp:TextBox>
+                                    <asp:TextBox ID="txt_OfficeApps" runat="server" Height="100px" TextMode="MultiLine" 
+                                        Width="500px" Text='<%# Eval("OfficeApps") %>'></asp:TextBox>
                                 </InsertItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="lb_OfficeApps" runat="server" Text='<%# Eval("OfficeApps") %>'></asp:Label>
@@ -215,12 +220,14 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Ứng dụng khác">
                                 <EditItemTemplate>
-                                    <asp:TextBox ID="txt_OtherApp" runat="server" Text='<%# Eval("OtherApp") %>' 
-                                        Height="100px" TextMode="MultiLine" Width="500px"></asp:TextBox>
+                                    <asp:TextBox ID="txt_OtherApp" runat="server" 
+                                        Height="100px" TextMode="MultiLine" Width="500px" 
+                                        Text='<%# Eval("OtherApp") %>'></asp:TextBox>
                                 </EditItemTemplate>
                                 <InsertItemTemplate>
-                                    <asp:TextBox ID="txt_OtherApp" runat="server" Text='<%# Eval("OtherApp") %>' 
-                                        Height="100px" TextMode="MultiLine" Width="500px"></asp:TextBox>
+                                    <asp:TextBox ID="txt_OtherApp" runat="server" 
+                                        Height="100px" TextMode="MultiLine" Width="500px" 
+                                        Text='<%# Eval("OtherApp") %>'></asp:TextBox>
                                 </InsertItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="lb_OtherApp" runat="server" Text='<%# Eval("OtherApp") %>'></asp:Label>
