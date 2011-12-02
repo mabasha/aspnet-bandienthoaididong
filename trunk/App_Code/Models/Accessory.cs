@@ -9,23 +9,23 @@ using System.Data;
 /// </summary>
 public class Accessory
 {
-	int id;
-    string name;
-    int producerID;
-    double price;
-    string image;
-    string description;
+    public int id;
+    public string name;
+    public int producerID;
+    public double price;
+    public string image;
+    public string description;
 
-	public Accessory()
-	{
-	}
+    public Accessory()
+    {
+    }
 
     public Accessory(int id)
     {
         this.id = id;
     }
 
-    public Accessory(int id, string name, int producerID, 
+    public Accessory(int id, string name, int producerID,
         double price, string image, string description)
     {
         this.id = id;
@@ -40,10 +40,11 @@ public class Accessory
     {
         string query = String.Format("select * from Accessory where ID =  {0}", id);
         DataTable dt = AccessData.GetTable(query);
+        name = (string)dt.Rows[0]["Name"];
         producerID = (int)dt.Rows[0]["ProducerID"];
-        price = (double)dt.Rows[0]["Price"];
+        price = Convert.ToDouble(dt.Rows[0]["Price"]);
         image = (string)dt.Rows[0]["Image"];
-        description= (string)dt.Rows[0]["Description"];
+        description = (string)dt.Rows[0]["Description"];
     }
 
     public bool Insert()
@@ -65,8 +66,8 @@ public class Accessory
         if (isExist == false || (isExist == true && GetIDFromName(name) == id))
         {
             string query = String.Format("update Accessory set Name = N'{0}', ProducerID = N'{1}',"
-            + "Price = '{2}', Image = N'{3}', Description = N'{4}' where ID = {5}", 
-            name, producerID, price, image, description,id);
+            + "Price = '{2}', Image = N'{3}', Description = N'{4}' where ID = {5}",
+            name, producerID, price, image, description, id);
             AccessData.ExecuteNonQuery(query);
         }
         return !isExist;
@@ -93,7 +94,7 @@ public class Accessory
         {
             return Convert.ToInt32(result);
         }
-        catch(Exception){}
+        catch (Exception) { }
         return 0;
     }
 
@@ -106,5 +107,11 @@ public class Accessory
     {
         String query = String.Format("select ID from Accessory where Name=N'{0}'", name);
         return Convert.ToInt32(AccessData.ExecuteScalar(query));
+    }
+
+    public static DataTable GetAllWithKeyword(string keyword)
+    {
+        String query = String.Format("select * from Accessory where Name like N'%{0}%'", keyword);
+        return AccessData.GetTable(query);
     }
 }

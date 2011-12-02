@@ -15,16 +15,10 @@
         $("document").ready(OnPageReady);
 
         function OnPageReady() {
-            //$("#bChooseImage").click(OpenPopup);
             $("#tPrice").keydown(OnKeyDownCheckNumber);
             $("#bAdd").click(OnAddClick);
             
         }
-
-        /*function OpenPopup() {
-            window.open("ImageManager.aspx", 'mypopup', 'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no');
-            self.close();
-        }*/
         
         function OnAddClick() {
             if ($("#tName").val() == "" || $("#tPrice").val() == "" || $("#tImageName").val() == "") {
