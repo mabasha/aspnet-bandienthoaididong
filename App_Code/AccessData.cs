@@ -56,4 +56,14 @@ public class AccessData
         return reader;
     }
 
+    public static int GetMaxID(string table)
+    {
+        object result = ExecuteScalar("SELECT max(ID) FROM " + table);
+        try
+        {
+            return Convert.ToInt32(result);
+        }
+        catch (Exception) { }
+        return 0;
+    }
 }
