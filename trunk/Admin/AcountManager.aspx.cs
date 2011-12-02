@@ -15,11 +15,11 @@ public partial class Admin_AcountManager : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            FillDataInGrid();
+            FillDataInGrid("Username");
         }
     }
     
-    private void FillDataInGrid()
+    private void FillDataInGrid(object sort)
     {
         SqlConnection conn = new SqlConnection(AccessData.ConnectString);
         SqlDataAdapter sqldata = new SqlDataAdapter("Select * from Users", conn);
@@ -28,6 +28,7 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         {
             conn.Open();
             sqldata.Fill(dt);
+            dt.DefaultView.Sort = sort.ToString();
             grid_Users.DataSource = dt;
             grid_Users.DataBind();
         }
@@ -72,12 +73,12 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         
         //ac.ExeCuteNonquery("UPDATE User SET Password='" + password.Text + "', FullName='" + fullName.Text + "', BirthDay='" + birthDay.Text + "', Tel='" + tel.Text + "', Address='" + address.Text + "', IDCard='" + idCard.Text + "', Decentralize='" + decentralize.Text + "' WHERE Username=" + int.Parse(username.Text) + "");
         grid_Users.EditIndex = -1;
-        FillDataInGrid();
+        FillDataInGrid("Username");
     }
     protected void grid_Users_RowEditing(object sender, GridViewEditEventArgs e)
     {
         grid_Users.EditIndex= e.NewEditIndex;
-        FillDataInGrid();
+        FillDataInGrid("Username");
     }
     protected void grid_Users_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
@@ -86,7 +87,7 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         {
             AccessData.ExecuteNonQuery("Delete from Users where Username='" + username + "'");
             lb_Note.Text = "Delete username:" + username + " successfully";
-            FillDataInGrid();
+            FillDataInGrid("Username");
         } 
         else
         {
@@ -103,7 +104,7 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         {
             lb_Note.ForeColor = System.Drawing.Color.Red;
             lb_Note.Text = "Insert username:" + txt_Username.Text + " failed. Please complete the information.";
-            FillDataInGrid();
+            
         } 
         else
         {
@@ -115,7 +116,7 @@ public partial class Admin_AcountManager : System.Web.UI.Page
             {
                 lb_Note.ForeColor = System.Drawing.Color.Red;
                 lb_Note.Text = "Insert username:" + txt_Username.Text + " failed. This username is exist.";
-                FillDataInGrid();
+                //FillDataInGrid("Username");
             }
             else
             {
@@ -125,14 +126,23 @@ public partial class Admin_AcountManager : System.Web.UI.Page
                 AccessData.ExecuteNonQuery(sql);
                 lb_Note.ForeColor = System.Drawing.Color.Green;
                 lb_Note.Text = "Insert username:" + txt_Username.Text + " successfully";
-                FillDataInGrid();
+                //FillDataInGrid();
             }
         }
-       
+        FillDataInGrid("Username");
     }
     protected void grid_Users_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
     {
         grid_Users.EditIndex = -1;
-        FillDataInGrid();
+        FillDataInGrid("Username");
+    }
+    protected void grid_Users_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        grid_Users.PageIndex = e.NewPageIndex;
+        FillDataInGrid("Username");
+    }
+    protected void grid_Users_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        FillDataInGrid(e.SortExpression);
     }
 }
