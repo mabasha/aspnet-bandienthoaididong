@@ -164,9 +164,9 @@
                                     </td>
                                     <td class="style4">
                             <asp:DropDownList ID="ddl_Decentralize" runat="server" >
-                                <asp:ListItem>Adminitrator</asp:ListItem>
+                                <asp:ListItem>Administrator</asp:ListItem>
+                                <asp:ListItem>Employee</asp:ListItem>
                                 <asp:ListItem>Client</asp:ListItem>
-                                <asp:ListItem>User</asp:ListItem>
                             </asp:DropDownList>
                                     </td>
                                 </tr>
@@ -202,7 +202,9 @@
                         onrowediting="grid_Users_RowEditing" 
                         onrowupdating="grid_Users_RowUpdating" 
                         onrowdeleting="grid_Users_RowDeleting" 
-                        onrowcancelingedit="grid_Users_RowCancelingEdit">
+                        onrowcancelingedit="grid_Users_RowCancelingEdit" AllowPaging="True" 
+                        onpageindexchanging="grid_Users_PageIndexChanging" PageSize="15" 
+                        AllowSorting="True" onsorting="grid_Users_Sorting">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
                             <asp:BoundField DataField="Username" HeaderText="Username" ReadOnly="True" 
@@ -241,8 +243,8 @@
                             </ItemTemplate> 
                             <EditItemTemplate> 
                               <asp:DropDownList ID="cmbDecentralize" runat="server"  SelectedValue='<%# Eval("Decentralize") %>'> 
-                                <asp:ListItem Value="Adminitrator" Text="Adminitrator"></asp:ListItem>
-                                <asp:ListItem Selected="True" Value="User" Text="User"></asp:ListItem>
+                                <asp:ListItem Value="Administrator" Text="Administrator"></asp:ListItem>
+                                <asp:ListItem Selected="True" Value="Employee" Text="Employee"></asp:ListItem>
                                 <asp:ListItem Value="Client" Text="Client"></asp:ListItem>
                               </asp:DropDownList> 
                             </EditItemTemplate> 
