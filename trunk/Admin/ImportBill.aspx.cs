@@ -9,6 +9,16 @@ public partial class Admin_ImportBill : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (rDienthoai.Checked == true)
+        {
+            btnTenSp.OnClientClick = "window.open(\"PhoneChooser.aspx?receiveID=txtTenSp\", 'mypopup', " +
+                    "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;";
+        }
+        else if (rPhukien.Checked == true)
+        {
+            btnTenSp.OnClientClick = "window.open(\"AccessoryChooser.aspx?receiveID=txtTenSp\", 'mypopup', " +
+                    "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;";
+        }
         if (IsPostBack == false)
         {
             FillData();
@@ -50,23 +60,25 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         if (e.Row.RowType == DataControlRowType.DataRow && (e.Row.RowState == DataControlRowState.Alternate ||
                     e.Row.RowState == DataControlRowState.Normal))
         {
-            ImageButton btnDelete = (ImageButton)e.Row.Cells[4].Controls[0];
+            ImageButton btnDelete = (ImageButton)e.Row.Cells[3].Controls[0];
             btnDelete.OnClientClick = "if (!confirm('Bạn có đồng ý xóa Hóa đơn nhập?')) return false";
         }      
     }
-    protected void gridImportBill_RowEditing(object sender, GridViewEditEventArgs e)
-    {
-        gridImportBill.EditIndex = e.NewEditIndex;
-        FillData();
-    }
-    protected void gridImportBill_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-    {
-        gridImportBill.EditIndex = -1;
-        FillData();
-    }
+    //protected void gridImportBill_RowEditing(object sender, GridViewEditEventArgs e)
+    //{
+    //    gridImportBill.EditIndex = e.NewEditIndex;
+    //    FillData();
+    //}
+    //protected void gridImportBill_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+    //{
+    //    gridImportBill.EditIndex = -1;
+    //    FillData();
+    //}
     protected void btnAddCTHD_Click(object sender, EventArgs e)
-    {        
-        ImportBillDt idt = new ImportBillDt(0, dMaHD.Text, txtTenSp.Text, getrLoaisp(), txtNumber.Text, txtPrice.Text);
+    {      
+        object re = AccessData.ExecuteScalar("select max(ID) from ImportBill");
+        int cMaHD = Convert.ToInt32(re);              
+        ImportBillDt idt = new ImportBillDt(0, cMaHD, txtTenSp.Text, getrLoaisp(), txtNumber.Text, txtPrice.Text);
         idt.Insert();
         lbThongbaoCTHD.Text = "<p class=info>* Thêm thành công Chi tiết hóa đơn.</p>";
         txtTenSp.Text = "";
@@ -76,7 +88,7 @@ public partial class Admin_ImportBill : System.Web.UI.Page
     }
     private string getrLoaisp()
     {
-        if(rLoaiSp.Text == "Điện thoại")
+        if(rDienthoai.Checked == true)
             return "True";
         return "False";
     }
@@ -102,17 +114,13 @@ public partial class Admin_ImportBill : System.Web.UI.Page
     }
     protected void btnAddHD_Click(object sender, EventArgs e)
     {
-        ImportBill imp = new ImportBill(0, dNguoiNhap.SelectedValue.ToString(),getCreatedDate()) ;
+        ImportBill imp = new ImportBill(0, dNguoiNhap.SelectedValue.ToString(), getCurrentTime());
         imp.Insert();
-        lbThongbaoHD.Text = "<p class=info>* Thêm thành công Hóa đơn.</p>";
-        dNgay.Text = "1";
-        dThang.Text = "1";
-        txtNam.Text = "";        
+        lbThongbaoHD.Text = "<p class=info>* Thêm thành công Hóa đơn.</p>";              
         FillData();
-    }
-    private string getCreatedDate()
-    {
-        string cd = dThang.Text + "-" + dNgay.Text + "-" + txtNam.Text;
-        return cd;
     }   
+    private string getCurrentTime()
+    {
+        return DateTime.Now.ToShortDateString();       
+    }    
 }

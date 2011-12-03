@@ -5,6 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+
+    <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
     <style type="text/css">
         .style4
         {
@@ -35,14 +37,6 @@
         {
             width: 271px;
         }
-        .style33
-        {
-            height: 53px;
-        }
-        .style34
-        {
-            height: 62px;
-        }
         .style35
         {
             height: 55px;
@@ -50,6 +44,16 @@
         .style36
         {
             height: 52px;
+        }
+        .style37
+        {
+            width: 271px;
+            height: 61px;
+        }
+        .style38
+        {
+            width: 549px;
+            height: 61px;
         }
     </style>
 </head>
@@ -60,10 +64,6 @@
         LẬP HÓA ĐƠN NHẬP</div>
     <div class="Add" style="height: 540px; width: 1011px;">
         <table style="width:62%; height: 434px;" align="center">
-            <tr>
-                <td align="center" colspan="2" class="style34">
-                    HÓA ĐƠN NHẬP</td>
-            </tr>
             <tr>
                 <td class="style32">
                     Người Nhập :</td>
@@ -78,88 +78,15 @@
                 </td>
             </tr>
             <tr>
-                <td class="style32">
-                    Ngày nhập :</td>
-                <td class="style31">
-                    Ngày : 
-                    <asp:DropDownList ID="dNgay" runat="server">
-                        <asp:ListItem>1</asp:ListItem>
-                        <asp:ListItem>2</asp:ListItem>
-                        <asp:ListItem>3</asp:ListItem>
-                        <asp:ListItem>4</asp:ListItem>
-                        <asp:ListItem>5</asp:ListItem>
-                        <asp:ListItem>6</asp:ListItem>
-                        <asp:ListItem>7</asp:ListItem>
-                        <asp:ListItem>8</asp:ListItem>
-                        <asp:ListItem>9</asp:ListItem>
-                        <asp:ListItem>10</asp:ListItem>
-                        <asp:ListItem>11</asp:ListItem>
-                        <asp:ListItem>12</asp:ListItem>
-                        <asp:ListItem>13</asp:ListItem>
-                        <asp:ListItem>14</asp:ListItem>
-                        <asp:ListItem>15</asp:ListItem>
-                        <asp:ListItem>16</asp:ListItem>
-                        <asp:ListItem>17</asp:ListItem>
-                        <asp:ListItem>18</asp:ListItem>
-                        <asp:ListItem>19</asp:ListItem>
-                        <asp:ListItem>20</asp:ListItem>
-                        <asp:ListItem>21</asp:ListItem>
-                        <asp:ListItem>22</asp:ListItem>
-                        <asp:ListItem>23</asp:ListItem>
-                        <asp:ListItem>24</asp:ListItem>
-                        <asp:ListItem>25</asp:ListItem>
-                        <asp:ListItem>26</asp:ListItem>
-                        <asp:ListItem>27</asp:ListItem>
-                        <asp:ListItem>28</asp:ListItem>
-                        <asp:ListItem>29</asp:ListItem>
-                        <asp:ListItem>30</asp:ListItem>
-                        <asp:ListItem>31</asp:ListItem>
-                    </asp:DropDownList>
-                    Tháng : 
-                    <asp:DropDownList ID="dThang" runat="server">
-                        <asp:ListItem>1</asp:ListItem>
-                        <asp:ListItem>2</asp:ListItem>
-                        <asp:ListItem>3</asp:ListItem>
-                        <asp:ListItem>4</asp:ListItem>
-                        <asp:ListItem>5</asp:ListItem>
-                        <asp:ListItem>6</asp:ListItem>
-                        <asp:ListItem>7</asp:ListItem>
-                        <asp:ListItem>8</asp:ListItem>
-                        <asp:ListItem>9</asp:ListItem>
-                        <asp:ListItem>10</asp:ListItem>
-                        <asp:ListItem>11</asp:ListItem>
-                        <asp:ListItem>12</asp:ListItem>
-                    </asp:DropDownList>
-                    Năm : <asp:TextBox ID="txtNam" runat="server" Width="60px"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
                 <td align="center" colspan="2" class="style35">
-                    <asp:Button ID="btnAddHD" runat="server" Text="Thêm" Width="73px" 
-                        onclick="btnAddHD_Click" />
+                    <asp:Button ID="btnAddHD" runat="server" Text="THÊM HÓA ĐƠN" Width="126px" 
+                        onclick="btnAddHD_Click" Height="41px" />
                 </td>
             </tr>
             <tr>
-                <td align="center" colspan="2" class="style33">
-                    CHI TIẾT HÓA ĐƠN NHẬP</td>
-            </tr>
-            <tr>
-                <td class="style32">
-                    Mã hóa đơn:</td>
-                <td class="style31">
-                    <asp:DropDownList ID="dMaHD" runat="server" DataSourceID="SqlDataSource2" 
-                        DataTextField="ID" DataValueField="ID">
-                    </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:MobileShopConnectionString %>" 
-                        
-                        SelectCommand="SELECT [ID], [ImporterUsername], [CreatedDate] FROM [ImportBill]"></asp:SqlDataSource>
-                </td>
-            </tr>
-            <tr>
-                <td class="style32">
+                <td class="style37">
                     Tên sản phẩm :</td>
-                <td class="style31">
+                <td class="style38">
                     <asp:TextBox ID="txtTenSp" runat="server" Width="190px" ></asp:TextBox>
                     <asp:Button ID="btnTenSp" runat="server" Text="Chọn sản phẩm" />
                 </td>
@@ -168,10 +95,10 @@
                 <td class="style32">
                     Loại sản phẩm :</td>
                 <td class="style31">
-                    <asp:RadioButtonList ID="rLoaiSp" runat="server" Width="124px" >
-                        <asp:ListItem Selected="True">Điện thoại</asp:ListItem>
-                        <asp:ListItem>Phụ kiện</asp:ListItem>
-                    </asp:RadioButtonList>
+                    <asp:RadioButton ID="rDienthoai" runat="server" AutoPostBack="True" 
+                        Checked="True" GroupName="chooser" Text="Điện thoại" />
+                    <asp:RadioButton ID="rPhukien" runat="server" AutoPostBack="True" 
+                        GroupName="chooser" Text="Phụ kiện" />
                 </td>
             </tr>
             <tr>
@@ -190,7 +117,7 @@
             </tr>
             <tr>
                 <td align="center" colspan="2" class="style36">
-                    <asp:Button ID="btnAddCTHD" runat="server" Text="Thêm" Width="74px" 
+                    <asp:Button ID="btnAddCTHD" runat="server" Text="Thêm hàng" Width="74px" 
                         onclick="btnAddCTHD_Click" />
                 </td>
             </tr>
@@ -212,17 +139,14 @@
                         <tr>
                             <td class="style26">
                                 <asp:GridView ID="gridImportBill" runat="server" AutoGenerateColumns="False" 
-                                    CellPadding="4" ForeColor="#333333" GridLines="None" 
-                                    onrowcancelingedit="gridImportBill_RowCancelingEdit" 
-                                    onrowdatabound="gridImportBill_RowDataBound" 
-                                    onrowediting="gridImportBill_RowEditing" 
+                                    CellPadding="4" ForeColor="#333333" GridLines="None"                                      
+                                    onrowdatabound="gridImportBill_RowDataBound"                                     
                                     onrowdeleting="gridImportBill_RowDeleting">
                                     <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                                     <Columns>
                                         <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" />
                                         <asp:BoundField DataField="FullName" HeaderText="Người nhập" />
                                         <asp:BoundField DataField="CreatedDate" HeaderText="Ngày nhập" />
-                                        <asp:CommandField ShowEditButton="True" />
                                         <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/Delete.jpg" 
                                             ShowDeleteButton="True" />
                                     </Columns>
@@ -243,19 +167,11 @@
                                     onrowdeleting="gridImportBillDt_RowDeleting"                         >
                         <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                         <Columns>
+                            <asp:BoundField DataField="ImportBillID" HeaderText="Mã HĐ" ReadOnly="True" />
                             <asp:BoundField DataField="ID" HeaderText="Mã CTHĐ" ReadOnly="True" />
-                            <asp:TemplateField HeaderText="Mã HĐ" SortExpression="ImportBillID">
-                                <ItemTemplate>
-                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("ImportBillID") %>'></asp:Label>
-                                </ItemTemplate>
-                                <EditItemTemplate>
-                                    <asp:DropDownList ID="DropDownList1" runat="server" 
-                                        DataSourceID="SqlDataSource2" DataTextField="ID" DataValueField="ID">
-                                    </asp:DropDownList>
-                                </EditItemTemplate>
-                            </asp:TemplateField>
                             <asp:BoundField DataField="Name" HeaderText="Tên sản phẩm" />
-                            <asp:BoundField DataField="IsPhone" HeaderText="Loại sản phẩm" />
+                            <asp:BoundField DataField="IsPhone" HeaderText="Loại sản phẩm" 
+                                ReadOnly="True" />
                             <asp:BoundField DataField="Number" HeaderText="Số lượng" />
                             <asp:BoundField DataField="Price" HeaderText="Đơn giá nhập" />
                             <asp:CommandField ShowEditButton="True" />
