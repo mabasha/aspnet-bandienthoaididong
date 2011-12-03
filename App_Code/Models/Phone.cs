@@ -37,7 +37,6 @@ public class Phone
     public string TVConnection;
     public string officeApps;
     public string otherApp;
-    public string screen;
     public string ringtone;
     public string downloadRingtone;
     public string speakerPhone;
@@ -63,6 +62,7 @@ public class Phone
     public string bluetooth;
     public string ultrared;
     public string USB;
+    public string screen;
     public string resolution;
     public string sizeScreen;
     public string sensor;
@@ -246,7 +246,7 @@ public class Phone
                                                         "MusicPlayer, FM, TV, Recorder, CallingRecorder, FMRecorder, Java, Game, TVConnection," +
                                                         "OfficeApps, OtherApp, Ringtone, DownloadRingtone, SpeakerPhone, Vibrate, JackPhone," +
                                                         "InternalStore, Ram, CPU, MemoryCard, MaximumMemoryCapacity, Contact, Message, Email," +
-                                                        "2Gband, 3Gband, MutilSimcard, GPRS, EDGE, 3G, Wifi, Browser, GPS, Bluetooth, Ultrared," +
+                                                        "[2Gband], [3Gband], MutilSimcard, GPRS, EDGE, [3G], Wifi, Browser, GPS, Bluetooth, Ultrared," +
                                                         "USB, Screen, Resolution, SizeScreen, Sensor, OS, Style, QwertyKeyboard, Size, Weight," +
                                                         "Warranty, Language, Battery, CapabilityBattery, CallingTime, WaittingTime, StandarBox, ResidualAmount)" +
                                         "VALUES(N'{0}', {1}, {2}, N'{3}', {4}, N'{5}', N'{6}', N'{7}', N'{8}', N'{9}', N'{10}'," +
@@ -264,6 +264,7 @@ public class Phone
                                         browser, GPS, bluetooth, ultrared, USB, screen, resolution, sizeScreen, sensor, OS, style,
                                         qwertyKeyboard, size, weight, warranty, language, battery, capabilityBattery, callingTime,
                                         waittingTime, standarBox, residualAmount);
+            //string query = "INSERT INTO Phone(ID, Name, ProducerID, DistributorID, Image, Price,SpecialFeature, Camera, VideoCall, RecorderCamera, SubCamera, VideoPlayer,MusicPlayer, FM, TV, Recorder, CallingRecorder, FMRecorder, Java, Game, TVConnection,OfficeApps, OtherApp, Ringtone, DownloadRingtone, SpeakerPhone, Vibrate, JackPhone,InternalStore, Ram, CPU, MemoryCard, MaximumMemoryCapacity, Contact, Message, Email,2Gband, 3Gband, MutilSimcard, GPRS, EDGE, 3G, Wifi, Browser, GPS, Bluetooth, Ultrared,USB, Screen, Resolution, SizeScreen, Sensor, OS, Style, QwertyKeyboard, Size, Weight,Warranty, Language, Battery, CapabilityBattery, CallingTime, WaittingTime, StandarBox, ResidualAmount) VALUES('23',N'dfdfdf', '1', '1', N'~/Images/Phone/', '223333', N'ẻwrwfewfef', N'ưefwfwf', N'fwefwef', N'fwfwe', N'fwfwe', N'v',N'fwfwe', N'fwfwe', N'fwfwe', N'v', N'vfwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe',N'fwfwe', N'fwfwe', N'fwfwe', N'vfwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe',N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe',N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'vfwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe',N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe', N'fwfwe',N'fwfwe', N'fwfwe', '4555')";
 
             AccessData.ExecuteNonQuery(query);
         }
