@@ -24,4 +24,9 @@ public class Utils
 
         return dt;
     }
+
+    public static bool SetIsPhoneRadioButton(bool isPhone)
+    {
+        return isPhone;
+    }
 }

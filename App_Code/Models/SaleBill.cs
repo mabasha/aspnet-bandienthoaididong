@@ -73,15 +73,24 @@ public class SaleBill
         string query = String.Format("update SaleBill "+
             "set SalerUsername = N'{0}', CustomName = N'{1}', Address = N'{2}', "+
             "Tel =  '{3}', CreatedDate = '{4}', CustomUsername = N'{5}' "+
-            "where ID = {6}", salerUsername, customName, address, tel, createdDate, customName, id);
+            "where ID = {6}", salerUsername, customName, address, tel, createdDate, customUsername, id);
         AccessData.ExecuteNonQuery(query);
         return true;
     }
 
     public void Delete()
     {
+        SaleBillDt.Delete(id);
         string query = String.Format("delete from SaleBill where ID = '{0}'", id);
         AccessData.ExecuteNonQuery(query);
+    }
+
+    public int GetNumberDetail()
+    {
+        string query = String.Format("select count(SaleBillDt.ID) from SaleBillDt, SaleBill "+
+            "where SaleBill.ID = SaleBillDt.SaleBillID and SaleBillID = {0}",id);
+        object oNum = AccessData.ExecuteScalar(query);
+        return Convert.ToInt32(oNum);
     }
 
     public static int GetMaxID()

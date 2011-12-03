@@ -36,7 +36,9 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
 
         if (IsPostBack == false)
         {
-            FillData();
+            FillDataAddSaleDt();
+            FillDataSale();
+            FillDataSaleDt();
 
             dtAddBillDt = Utils.CreateDataTable("ProductID", "ProductName",
             "ProductIMEI", "Number", "Price");
@@ -58,10 +60,53 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
 
     }
 
-    private void FillData()
+    private void FillDataAddSaleDt()
     {
         gAddDetail.DataSource = dtAddBillDt;
         gAddDetail.DataBind();
+    }
+
+    private void FillDataSale(string sortExp)
+    {
+        DataTable dt = SaleBill.GetAll();
+        if (sortExp != "")
+        {
+            dt.DefaultView.Sort = sortExp;
+        }
+        gShowBill.DataSource = dt;
+        gShowBill.DataBind();
+    }
+
+    private void FillDataSale()
+    {
+        FillDataSale("");
+    }
+
+    private void FillDataSaleDt(string sortExp)
+    {
+        if (gShowBill.Rows.Count > 0)
+        {
+            if (gShowBill.SelectedIndex == -1)
+            {
+                gShowBill.SelectedIndex = 0;
+            }
+
+            if (gShowBill.SelectedRow.Cells[0].Text != "")
+            {
+                DataTable dt = SaleBillDt.GetAll(gShowBill.SelectedRow.Cells[0].Text);
+                if (sortExp != "")
+                {
+                    dt.DefaultView.Sort = sortExp;
+                }
+                gShowBillDt.DataSource = dt;
+                gShowBillDt.DataBind();
+            }
+        }
+    }
+
+    private void FillDataSaleDt()
+    {
+        FillDataSaleDt("");
     }
     protected void bShowCustomerInfo_Click(object sender, EventArgs e)
     {
@@ -108,7 +153,7 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
             dtAddBillDt.Rows.Add(row);
             ViewState["dtAddBillDt"] = dtAddBillDt;
 
-            FillData();
+            FillDataAddSaleDt();
 
             tProductID.Text = "";
             lProductName.Text = "";
@@ -151,11 +196,11 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
                 int saleBillID = saleBill.id;
                 int productID = Convert.ToInt32(row.Cells[0].Text);
                 string sIMEI = row.Cells[2].Text;
-                int productIMEI=0;
+                string productIMEI="";
                 bool isPhone;
                 if (sIMEI != "&nbsp;")     //điện thoại
                 {
-                    productIMEI = Convert.ToInt32(sIMEI);
+                    productIMEI = sIMEI;
                     isPhone = true;
                 }
                 else
@@ -168,11 +213,16 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
                 SaleBillDt saleBillDt = new SaleBillDt(0, saleBillID, productID,
                     productIMEI, isPhone, number, price);
                 saleBillDt.Insert();
-            }
 
-            dtAddBillDt.Rows.Clear();
-            ViewState["dtAddBillDt"] = dtAddBillDt;
-            
+                dtAddBillDt.Rows.Clear();
+                ViewState["dtAddBillDt"] = dtAddBillDt;
+                FillDataSale();
+                FillDataSaleDt();
+
+                tCustomerName.Text = "";
+                tAddress.Text = "";
+                tPhone.Text = "";
+            }
         }
         else
         {
@@ -216,6 +266,190 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
     {
         dtAddBillDt.Rows[e.RowIndex].Delete();
         ViewState["dtAddBillDt"] = dtAddBillDt;
-        FillData();
+        FillDataSale();
+        FillDataAddSaleDt();
+    }
+    protected void gShowBillDt_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        
+    }
+    protected void gShowBill_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        FillDataSale();
+        FillDataSaleDt();
+    }
+    protected void gShowBill_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        SaleBill sale = new SaleBill(Convert.ToInt32(gShowBill.Rows[e.RowIndex].Cells[0].Text));
+        sale.Delete();
+        FillDataSale();
+        FillDataSaleDt();
+    }
+    protected void gShowBill_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow &&
+            (e.Row.RowState == DataControlRowState.Alternate ||
+            e.Row.RowState == DataControlRowState.Normal))
+        {
+            ImageButton bDelete = (ImageButton)e.Row.Cells[8].Controls[0];
+            bDelete.OnClientClick = "if(!confirm('Bạn có chắc muốn xóa hóa đơn này không ?')) return false;";
+
+        }
+    }
+    protected void gShowBill_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+    {
+        gShowBill.EditIndex = -1;
+        FillDataSale();
+        FillDataSaleDt();
+    }
+    protected void gShowBill_RowEditing(object sender, GridViewEditEventArgs e)
+    {
+        gShowBill.EditIndex = e.NewEditIndex;
+        FillDataSale();
+        FillDataSaleDt();
+
+        //Lấy dữ liệu từ trang popup
+        Button bChooseCustomUsername = (Button)gShowBill.Rows[gShowBill.EditIndex].FindControl("bChooseCustomUsername");
+        TextBox tCustomUsernameTmp = (TextBox)gShowBill.Rows[gShowBill.EditIndex].FindControl("tCustomUsernameTmp");
+        bChooseCustomUsername.OnClientClick = String.Format("window.open(\"AccountChooser.aspx?receiveID={0}\", 'mypopup', " +
+            "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", tCustomUsernameTmp.ClientID);
+    }
+    protected void gShowBill_RowUpdating(object sender, GridViewUpdateEventArgs e)
+    {
+        int id = Convert.ToInt32(gShowBill.Rows[e.RowIndex].Cells[0].Text);
+        SaleBill bill = new SaleBill(id);
+        bill.GetInfoByID();
+
+        TextBox tCustomerUsernameUpd = (TextBox)(TextBox)gShowBill.Rows[gShowBill.EditIndex].FindControl("tCustomUsernameTmp");
+        TextBox tCustomerNameUpd = (TextBox)gShowBill.Rows[e.RowIndex].Cells[3].Controls[0];
+        TextBox tAddressUpd = (TextBox)gShowBill.Rows[e.RowIndex].Cells[4].Controls[0];
+        TextBox tTelUpd = (TextBox)gShowBill.Rows[e.RowIndex].Cells[5].Controls[0];
+
+        if (tCustomerUsernameUpd.Text != "")
+        {
+            bill.customUsername = tCustomerUsernameUpd.Text;
+        }
+        else
+        {
+            bill.customName = tCustomerNameUpd.Text;
+            bill.address = tAddressUpd.Text;
+            bill.tel = tTelUpd.Text;
+            bill.customUsername = "";
+        }
+
+        bill.Update();
+        gShowBill.EditIndex = -1;
+        FillDataSale();
+        FillDataSaleDt();
+    }
+    protected void gShowBillDt_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow &&
+            (e.Row.RowState == DataControlRowState.Alternate ||
+            e.Row.RowState == DataControlRowState.Normal))
+        {
+            ImageButton bDelete = (ImageButton)e.Row.Cells[7].Controls[0];
+            bDelete.OnClientClick = "if(!confirm('Bạn có chắc muốn xóa chi tiết hóa đơn này không ?')) return false;";
+
+        }
+    }
+    protected void gShowBillDt_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        SaleBillDt sale = new SaleBillDt(Convert.ToInt32(gShowBillDt.Rows[e.RowIndex].Cells[0].Text));
+        sale.Delete();
+        FillDataSale();
+        FillDataSaleDt();
+    }
+    protected void gShowBillDt_RowEditing(object sender, GridViewEditEventArgs e)
+    {
+        gShowBillDt.EditIndex = e.NewEditIndex;
+        FillDataSale();
+        FillDataSaleDt();
+
+        //Lấy dữ liệu từ trang popup
+        RadioButton rPhoneTmp = (RadioButton)gShowBillDt.Rows[gShowBillDt.EditIndex].FindControl("rPhoneTmp");
+        Button bChoosePhoneIDTmp = (Button)gShowBillDt.Rows[gShowBillDt.EditIndex].FindControl("bChoosePhoneIDTmp");
+        Button bChooseAccessoryIDTmp = (Button)gShowBillDt.Rows[gShowBillDt.EditIndex].FindControl("bChooseAccessoryIDTmp");
+        TextBox tProductIDTmp = (TextBox)gShowBillDt.Rows[gShowBillDt.EditIndex].FindControl("tProductIDTmp");
+        bChoosePhoneIDTmp.OnClientClick = String.Format("window.open(\"PhoneChooser.aspx?receiveID={0}\", 'mypopup', " +
+                "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", tProductIDTmp.ClientID);
+
+        bChooseAccessoryIDTmp.OnClientClick = String.Format("window.open(\"AccessoryChooser.aspx?receiveID={0}\", 'mypopup', " +
+            "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", tProductIDTmp.ClientID);
+    }
+    protected void gShowBillDt_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+    {
+        gShowBillDt.EditIndex = -1;
+        FillDataSale();
+        FillDataSaleDt();
+    }
+    protected void gShowBillDt_RowUpdating(object sender, GridViewUpdateEventArgs e)
+    {
+        TextBox tProductIDUpd = (TextBox)(TextBox)gShowBillDt.Rows[gShowBillDt.EditIndex].FindControl("tProductIDTmp");
+        TextBox tIMEIUpd = (TextBox)gShowBillDt.Rows[e.RowIndex].Cells[3].Controls[0];
+        RadioButton rIsPhoneUpd = (RadioButton)gShowBillDt.Rows[gShowBillDt.EditIndex].FindControl("rPhoneTmp");
+        TextBox tNumberUpd = (TextBox)gShowBillDt.Rows[e.RowIndex].Cells[5].Controls[0];
+
+        if (tProductIDUpd.Text != "" && tNumberUpd.Text != "")
+        {
+            Phone phone;
+            Accessory accessory;
+            
+            //Lấy thông tin đầy đủ của BillDt hiện tại
+            int id = Convert.ToInt32(gShowBillDt.Rows[e.RowIndex].Cells[0].Text);
+            SaleBillDt bill = new SaleBillDt(id);
+            bill.GetInfoByID();
+
+            //Lấy giá sản phẩm, id
+            int productID = Convert.ToInt32(tProductIDUpd.Text);
+            double price;
+
+            if (rIsPhoneUpd.Checked == true)
+            {
+                phone = new Phone(productID);
+                phone.GetInfoByID();
+                price = phone.price;
+            }
+            else
+            {
+                accessory = new Accessory(productID);
+                accessory.GetInfoByID();
+                price = accessory.price;
+            }
+
+            bill.productID = productID;
+            bill.productIMEI = tIMEIUpd.Text;
+            bill.isPhone = rIsPhoneUpd.Checked;
+            bill.number = Convert.ToInt32(tNumberUpd.Text);
+            bill.price = price;
+
+            bill.Update();
+
+            gShowBillDt.EditIndex = -1;
+            FillDataSaleDt();
+        }
+        else
+        {
+            lInfoDt.Text = "<span class=error>Chưa nhập đầy đủ thông tin.</span>";
+        }
+        
+    }
+    protected void gShowBill_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        gShowBill.PageIndex = e.NewPageIndex;
+        FillDataSale();
+    }
+    protected void gShowBill_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        FillDataSale(e.SortExpression);
+    }
+    protected void gShowBillDt_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        gShowBillDt.PageIndex = e.NewPageIndex;
+        FillDataSaleDt();
+    }
+    protected void gShowBillDt_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        FillDataSaleDt(e.SortExpression);
     }
 }
