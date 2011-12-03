@@ -10,7 +10,7 @@ using System.Data;
 public class ImportBillDt
 {
     private int id;
-    private string IbID;
+    private int IbID;
     private string pID;
     private string isphone;
     private string number;
@@ -23,7 +23,7 @@ public class ImportBillDt
     {
         this.id = id;
     }
-    public ImportBillDt(int id, string IbID, string pID,  string isphone, string number, string price)
+    public ImportBillDt(int id, int IbID, string pID,  string isphone, string number, string price)
     {
         this.id = id;
         this.IbID = IbID;
@@ -34,7 +34,7 @@ public class ImportBillDt
     }
     public static DataTable GetAll()
     {
-        string query = "SELECT ImportBillDt.ID, ImportBillDt.ImportBillID, Phone.Name, ImportBillDt.IsPhone, ImportBillDt.Number, ImportBillDt.Price"
+        string query = "SELECT ImportBillDt.ImportBillID, ImportBillDt.ID, ImportBillDt.ImportBillID, Phone.Name , ImportBillDt.IsPhone, ImportBillDt.Number, ImportBillDt.Price"
                       + " FROM ImportBillDt, Phone"
                       + " WHERE ImportBillDt.ProductID=Phone.ID";
         return AccessData.GetTable(query);
