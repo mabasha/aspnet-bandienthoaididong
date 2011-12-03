@@ -9,13 +9,13 @@ using System.Data;
 /// </summary>
 public class SaleBillDt
 {
-    int id;
-    int saleBillID;
-    int productID;
-    int productIMEI;
-    bool isPhone;
-    int number;
-    double price;
+    public int id;
+    public int saleBillID;
+    public int productID;
+    public string productIMEI;
+    public bool isPhone;
+    public int number;
+    public double price;
 
     public SaleBillDt()
     {
@@ -26,7 +26,7 @@ public class SaleBillDt
         this.id = id;
     }
 
-    public SaleBillDt(int id, int saleBillID, int productID, int productIMEI,
+    public SaleBillDt(int id, int saleBillID, int productID, string productIMEI,
         bool isPhone, int number, double price)
     {
         this.id = id;
@@ -44,10 +44,10 @@ public class SaleBillDt
         DataTable dt = AccessData.GetTable(query);
         saleBillID = (int)dt.Rows[0]["SaleBillID"];
         productID = (int)dt.Rows[0]["ProductID"];
-        productIMEI = (int)dt.Rows[0]["ProductIMEI"];
+        productIMEI = (string)dt.Rows[0]["ProductIMEI"];
         isPhone = (bool)dt.Rows[0]["IsPhone"];
         number = (int)dt.Rows[0]["Number"];
-        price = (double)dt.Rows[0]["Price"];
+        price = Convert.ToDouble(dt.Rows[0]["Price"]);
     }
 
     public bool Insert()
@@ -55,7 +55,7 @@ public class SaleBillDt
         id = GetMaxID() + 1;
         string query = String.Format("insert into SaleBillDt" +
             "(ID, SaleBillID, ProductID, ProductIMEI, IsPhone, Number, Price) " +
-            "values('{0}',{1},{2}, {3}, '{4}', {5}, {6})",
+            "values('{0}',{1},{2}, '{3}', '{4}', {5}, {6})",
             id, saleBillID, productID, productIMEI, isPhone, number, price);
         AccessData.ExecuteNonQuery(query);
         return true;
@@ -64,8 +64,8 @@ public class SaleBillDt
     public bool Update()
     {
         string query = String.Format("update SaleBillDt " +
-            "set SaleBillID = {0}, ProductID = {1}, ProductIMEI = {2}, " +
-            "IsPhone = {3}, Number = {4}, Price = N{5} " +
+            "set SaleBillID = {0}, ProductID = {1}, ProductIMEI = '{2}', " +
+            "IsPhone = '{3}', Number = {4}, Price = {5} " +
             "where ID = {6}", saleBillID, productID, productIMEI, isPhone, number, price, id);
         AccessData.ExecuteNonQuery(query);
         return true;
@@ -76,6 +76,8 @@ public class SaleBillDt
         string query = String.Format("delete from SaleBillDt where ID = '{0}'", id);
         AccessData.ExecuteNonQuery(query);
     }
+
+    
 
     public static int GetMaxID()
     {
@@ -91,5 +93,17 @@ public class SaleBillDt
     public static DataTable GetAll()
     {
         return AccessData.GetTable("select * from SaleBillDt");
+    }
+
+    public static DataTable GetAll(string saleBillID)
+    {
+        string query = String.Format("select * from SaleBillDt where SaleBillID = {0}", saleBillID);
+        return AccessData.GetTable(query);
+    }
+
+    public static void Delete(int saleBillID)
+    {
+        string query = String.Format("delete from SaleBillDt where SaleBillID = {0}", saleBillID);
+        AccessData.ExecuteNonQuery(query);
     }
 }

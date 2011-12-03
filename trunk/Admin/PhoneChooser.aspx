@@ -13,7 +13,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    <div class="header">Chọn phụ kiện</div>
+    <div class="header">Chọn điện thoại</div>
         <div class="list">Tên:
             <asp:TextBox ID="tKeyword" runat="server"></asp:TextBox>
             <asp:Button ID="bSearch" runat="server" onclick="bSearch_Click" 

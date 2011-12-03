@@ -1,4 +1,7 @@
-﻿function OnKeyDownCheckNumber(event) {
+﻿
+//Sử dụng
+//$("#tPrice").keydown(OnKeyDownCheckNumber);
+function OnKeyDownCheckNumber(event) {
 
     // Cho phép phím xóa về, và phím xóa
     if (event.keyCode != 46 && event.keyCode != 8) {
