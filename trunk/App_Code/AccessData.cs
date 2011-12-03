@@ -58,7 +58,7 @@ public class AccessData
 
     public static int GetMaxID(string table)
     {
-        object result = ExecuteScalar("SELECT max(ID) FROM " + table);
+        object result = ExecuteScalar("SELECT MAX(ID) FROM " + table);
         try
         {
             return Convert.ToInt32(result);

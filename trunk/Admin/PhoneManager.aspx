@@ -1,10 +1,27 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PhoneManager.aspx.cs" Inherits="Admin_PhoneManager" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.validate.js" type="text/javascript"></script>
+    <title>Validate cho phần nhập Phone</title>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#form1").validate({
+                rules: {
+                    txt_Name: {
+                        minlength: 5,
+                        required: true
+                    }
+                }, messages: {}
+            });
+        });
+    </script>
     <style type="text/css">
         .style1
         {
@@ -25,7 +42,10 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
+       
+        <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+        </asp:ToolkitScriptManager>
+       
         <table class="style1">
             <tr>
                 <td class="style2" colspan="2" 
@@ -78,10 +98,29 @@
                                 UpdateImageUrl="~/Images/Apps/update.jpg" UpdateText="Cập nhật" />
                             <asp:BoundField DataField="ID" HeaderText="Mã" >
                             <ControlStyle Width="450px" />
+                            <HeaderStyle Width="150px" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Name" HeaderText="Tên điện thoại" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="Tên điện thoại *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_Name" runat="server" Text='<%# Bind("Name") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                        ControlToValidate="txt_Name" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_Name" runat="server" 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                        ControlToValidate="txt_Name" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
+
                             <asp:TemplateField HeaderText="Nhà sản xuất">
                                 <EditItemTemplate>
                                     <asp:DropDownList ID="ddl_Producer" runat="server" 
@@ -130,33 +169,92 @@
                             <asp:BoundField DataField="ResidualAmount" HeaderText="Số lượng tồn" >
                             <ControlStyle Width="450px" />
                             </asp:BoundField>
-                            <asp:TemplateField HeaderText="Hình ảnh">
+
+                            <asp:TemplateField HeaderText="Hình ảnh *">
                                 <EditItemTemplate>
                                     <asp:TextBox ID="txt_Image" runat="server" Enabled="False" 
                                         Text='<%# "~/Images/Phone/" + Eval("Image") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                                        ControlToValidate="txt_Image" ErrorMessage="Vui lòng chọn hình ảnh"></asp:RequiredFieldValidator>
+                                    <asp:Button ID="btn_InsertImage" runat="server" 
+                                        onclientclick="bChooseImage_Click" Text="..." />
                                 </EditItemTemplate>
                                 <InsertItemTemplate>
-                                    <asp:TextBox ID="txt_Image" runat="server" Enabled="False" 
-                                        Text='<%# "~/Images/Phone/" + Eval("Image") %>' Width="450px"></asp:TextBox>
+                                    <asp:TextBox ID="txt_Image" runat="server" Enabled="False" Width="450px" 
+                                        Height="26px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                                        ControlToValidate="txt_Image" ErrorMessage="Vui lòng chọn hình ảnh"></asp:RequiredFieldValidator>
+                                    <asp:Button ID="btn_InsertImage" runat="server" 
+                                        onclientclick="bChooseImage_Click" Text="..." />
                                 </InsertItemTemplate>
                                 <ItemTemplate>
                                     <asp:Image ID="Image1" runat="server" 
                                         ImageUrl='<%# "~/Images/Phone/" + Eval("Image") + ".jpg" %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="Price" DataFormatString="{0:#,##0 VNĐ}" 
-                                HeaderText="Giá bán" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
-                            <asp:TemplateField HeaderText="Tính năng nổi bật">
+                            <asp:TemplateField HeaderText="Giá bán *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_Price" runat="server" Text='<%# Bind("Price") %>' 
+                                        Width="100px"></asp:TextBox>
+                                    <asp:MaskedEditExtender ID="txt_Price_MaskedEditExtender" runat="server" 
+                                        CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
+                                        CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
+                                        CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
+                                        InputDirection="RightToLeft" Mask="999999999" MaskType="Number" 
+                                        TargetControlID="txt_Price">
+                                    </asp:MaskedEditExtender>
+                                    VNĐ<asp:MaskedEditExtender ID="txt_Price_MaskedEditExtender0" runat="server" 
+                                        CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
+                                        CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
+                                        CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
+                                        InputDirection="RightToLeft" Mask="999999999" MaskType="Number" 
+                                        TargetControlID="txt_Price">
+                                    </asp:MaskedEditExtender>
+                                    <asp:MaskedEditValidator ID="MaskedEditValidator1" runat="server" 
+                                        ControlExtender="txt_Price_MaskedEditExtender" ControlToValidate="txt_Price" 
+                                        Display="Dynamic" EmptyValueMessage="Ô này không thể để trống" 
+                                        InvalidValueMessage="Giá trị không hợp lệ" IsValidEmpty="False" 
+                                        MinimumValue="0" MinimumValueBlurredText="Giá phải lớn hơn 0" 
+                                        MinimumValueMessage="Giá phải lớn hơn 0" 
+                                        TooltipMessage="Bôi đen và nhấn Space để xóa và nhập lại"></asp:MaskedEditValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_Price" runat="server" 
+                                        Text='<%# Bind("Price") %>' Width="100px"></asp:TextBox>
+                                    VNĐ<asp:MaskedEditExtender ID="txt_Price_MaskedEditExtender" runat="server" 
+                                        CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
+                                        CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
+                                        CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
+                                        InputDirection="RightToLeft" Mask="999999999" MaskType="Number" 
+                                        TargetControlID="txt_Price">
+                                    </asp:MaskedEditExtender>
+                                    <asp:MaskedEditValidator ID="MaskedEditValidator1" runat="server" 
+                                        ControlExtender="txt_Price_MaskedEditExtender" ControlToValidate="txt_Price" 
+                                        Display="Dynamic" EmptyValueMessage="Ô này không thể để trống" 
+                                        InvalidValueMessage="Giá trị không hợp lệ" IsValidEmpty="False" 
+                                        MinimumValue="0" MinimumValueBlurredText="Giá phải lớn hơn 0" 
+                                        MinimumValueMessage="Giá phải lớn hơn 0" 
+                                        TooltipMessage="Bôi đen và nhấn Space để xóa và nhập lại"></asp:MaskedEditValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label2" runat="server" 
+                                        Text='<%# Bind("Price", "{0:#,##0 VNĐ}") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Tính năng nổi bật *">
                                 <EditItemTemplate>
                                     <asp:TextBox ID="txt_SpecialFeature" runat="server" 
                                         TextMode="MultiLine" Width="500px" 
                                         Height="100px" Text='<%# Eval("SpecialFeature") %>'></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                                        ControlToValidate="txt_SpecialFeature" ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
                                 </EditItemTemplate>
                                 <InsertItemTemplate>
                                     <asp:TextBox ID="txt_SpecialFeature" runat="server" TextMode="MultiLine" Width="500px" 
                                         Height="100px" Text='<%# Eval("SpecialFeature") %>'></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                                        ControlToValidate="txt_SpecialFeature" ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
                                 </InsertItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="lb_SpecialFeature" runat="server" 
@@ -164,7 +262,8 @@
                                         Text='<%# Eval("SpecialFeature") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="Camera" HeaderText="Máy ảnh" >
+                            <asp:BoundField DataField="Camera" 
+                                HeaderText="Máy ảnh" >
                             <ControlStyle Width="450px" />
                             </asp:BoundField>
                             <asp:BoundField DataField="VideoCall" HeaderText="VideoCall" >
@@ -234,46 +333,199 @@
                                     <asp:Label ID="lb_OtherApp" runat="server" Text='<%# Eval("OtherApp") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="Ringtone" HeaderText="Nhạc chuông" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="Nhạc chuông *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_Ringtone" runat="server" Text='<%# Bind("Ringtone") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                                        ControlToValidate="txt_Ringtone" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_Ringtone" runat="server" Text='<%# Bind("Ringtone") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
+                                        ControlToValidate="txt_Ringtone" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("Ringtone") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
                             <asp:BoundField DataField="DownloadRingtone" HeaderText="Tải nhạc chuông" >
                             <ControlStyle Width="450px" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="SpeakerPhone" HeaderText="Loa ngoài" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Vibrate" HeaderText="Báo rung" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="JackPhone" HeaderText="Tai nghe" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="InternalStore" HeaderText="Bộ nhớ trong" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="Loa ngoài *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_SpeakerPhone" runat="server" 
+                                        Text='<%# Bind("SpeakerPhone") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
+                                        ControlToValidate="txt_SpeakerPhone" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_SpeakerPhone" runat="server" 
+                                        Text='<%# Bind("SpeakerPhone") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
+                                        ControlToValidate="txt_SpeakerPhone" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label7" runat="server" Text='<%# Bind("SpeakerPhone") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Báo rung">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_Vibrate" runat="server" Text='<%# Bind("Vibrate") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
+                                        ControlToValidate="txt_Vibrate" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_Vibrate" runat="server" Text='<%# Bind("Vibrate") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
+                                        ControlToValidate="txt_Vibrate" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label6" runat="server" Text='<%# Bind("Vibrate") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Tai nghe">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_JackPhone" runat="server" Text='<%# Bind("JackPhone") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" 
+                                        ControlToValidate="txt_JackPhone" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_JackPhone" runat="server" Text='<%# Bind("JackPhone") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" 
+                                        ControlToValidate="txt_JackPhone" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("JackPhone") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Bộ nhớ trong *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_InternalStore" runat="server" 
+                                        Text='<%# Bind("InternalStore") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" 
+                                        ControlToValidate="txt_InternalStore" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_InternalStore" runat="server" 
+                                        Text='<%# Bind("InternalStore") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" 
+                                        ControlToValidate="txt_InternalStore" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("InternalStore") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
                             <asp:BoundField DataField="Ram" HeaderText="Ram" >
                             <ControlStyle Width="450px" />
                             </asp:BoundField>
                             <asp:BoundField DataField="CPU" HeaderText="Vi xử lý CPU" >
                             <ControlStyle Width="450px" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="MemoryCard" HeaderText="Thẻ nhớ ngoài" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="Thẻ nhớ ngoài *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_MemoryCard" runat="server" 
+                                        Text='<%# Bind("MemoryCard") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" 
+                                        ControlToValidate="txt_MemoryCard" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_MemoryCard" runat="server" 
+                                        Text='<%# Bind("MemoryCard") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" 
+                                        ControlToValidate="txt_MemoryCard" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label8" runat="server" Text='<%# Bind("MemoryCard") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
                             <asp:BoundField DataField="MaximumMemoryCapacity" 
                                 HeaderText="Hỗ trợ thẻ tối đa" >
                             <ControlStyle Width="450px" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Contact" HeaderText="Danh bạ" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Message" HeaderText="Tin nhắn" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Email" HeaderText="Email" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="Danh bạ *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_Contact" runat="server" Text='<%# Bind("Contact") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" 
+                                        ControlToValidate="txt_Contact" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_Contact" runat="server" Text='<%# Bind("Contact") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" 
+                                        ControlToValidate="txt_Contact" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label9" runat="server" Text='<%# Bind("Contact") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Tin nhắn *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_Message" runat="server" Text='<%# Bind("Message") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" 
+                                        ControlToValidate="txt_Message" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_Message" runat="server" Text='<%# Bind("Message") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" 
+                                        ControlToValidate="txt_Message" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label10" runat="server" Text='<%# Bind("Message") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Email *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_Email" runat="server" Text='<%# Bind("Email") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" 
+                                        ControlToValidate="txt_Email" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_Email" runat="server" Text='<%# Bind("Email") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" 
+                                        ControlToValidate="txt_Email" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label11" runat="server" Text='<%# Bind("Email") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
                             <asp:BoundField DataField="2Gband" HeaderText="2Gband" >
                             <ControlStyle Width="450px" />
                             </asp:BoundField>
@@ -310,15 +562,66 @@
                             <asp:BoundField DataField="USB" HeaderText="USB" >
                             <ControlStyle Width="450px" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Screen" HeaderText="Màn hình" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Resolution" HeaderText="Độ phân giải" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="SizeScreen" HeaderText="Kích thước màn hình" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="Màn hình *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_Screen" runat="server" Text='<%# Bind("Screen") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" 
+                                        ControlToValidate="txt_Screen" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_Screen" runat="server" Text='<%# Bind("Screen") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" 
+                                        ControlToValidate="txt_Screen" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label12" runat="server" Text='<%# Bind("Screen") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Độ phân giải *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_Resolution" runat="server" 
+                                        Text='<%# Bind("Resolution") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" 
+                                        ControlToValidate="txt_Resolution" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_Resolution" runat="server" 
+                                        Text='<%# Bind("Resolution") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" 
+                                        ControlToValidate="txt_Resolution" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label13" runat="server" Text='<%# Bind("Resolution") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Kích thước màn hình *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_SizeScreen" runat="server" 
+                                        Text='<%# Bind("SizeScreen") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" 
+                                        ControlToValidate="txt_SizeScreen" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_SizeScreen" runat="server" 
+                                        Text='<%# Bind("SizeScreen") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" 
+                                        ControlToValidate="txt_SizeScreen" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label14" runat="server" Text='<%# Bind("SizeScreen") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
                             <asp:BoundField DataField="Sensor" HeaderText="Cảm ứng" >
                             <ControlStyle Width="450px" />
                             </asp:BoundField>
@@ -331,33 +634,186 @@
                             <asp:BoundField DataField="QwertyKeyboard" HeaderText="Bàn phím Qwerty" >
                             <ControlStyle Width="450px" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Size" HeaderText="Kích thước" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Weight" HeaderText="Trọng lượng" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Warranty" HeaderText="Bảo hành" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Language" HeaderText="Ngôn ngữ" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Battery" HeaderText="Loại Pin" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="CapabilityBattery" HeaderText="Dung lượng Pin" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="CallingTime" HeaderText="Thời gian đàm thoại" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="WaittingTime" HeaderText="Thời gian chờ" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="StandarBox" HeaderText="Bộ bán hàng chuẩn" >
-                            <ControlStyle Width="450px" />
-                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="Kích thước *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_Size" runat="server" Text='<%# Bind("Size") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" 
+                                        ControlToValidate="txt_Size" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_Size" runat="server" Text='<%# Bind("Size") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" 
+                                        ControlToValidate="txt_Size" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label15" runat="server" Text='<%# Bind("Size") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Trọng lượng *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_Weight" runat="server" Text='<%# Bind("Weight") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" 
+                                        ControlToValidate="txt_Weight" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_Weight" runat="server" Text='<%# Bind("Weight") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator31" runat="server" 
+                                        ControlToValidate="txt_Weight" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label16" runat="server" Text='<%# Bind("Weight") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Bảo hành *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_Warranty" runat="server" Text='<%# Bind("Warranty") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator32" runat="server" 
+                                        ControlToValidate="txt_Warranty" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_Warranty" runat="server" Text='<%# Bind("Warranty") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator33" runat="server" 
+                                        ControlToValidate="txt_Warranty" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label17" runat="server" Text='<%# Bind("Warranty") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Ngôn ngữ *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_Language" runat="server" Text='<%# Bind("Language") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator34" runat="server" 
+                                        ControlToValidate="txt_Language" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_Language" runat="server" Text='<%# Bind("Language") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" 
+                                        ControlToValidate="txt_Language" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label18" runat="server" Text='<%# Bind("Language") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Loại Pin *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_Battery" runat="server" Text='<%# Bind("Battery") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator36" runat="server" 
+                                        ControlToValidate="txt_Battery" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_Battery" runat="server" Text='<%# Bind("Battery") %>' 
+                                        Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator37" runat="server" 
+                                        ControlToValidate="txt_Battery" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label19" runat="server" Text='<%# Bind("Battery") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Dung lượng Pin *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_CapabilityBattery" runat="server" 
+                                        Text='<%# Bind("CapabilityBattery") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator38" runat="server" 
+                                        ControlToValidate="txt_CapabilityBattery" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_CapabilityBattery" runat="server" 
+                                        Text='<%# Bind("CapabilityBattery") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator39" runat="server" 
+                                        ControlToValidate="txt_CapabilityBattery" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label20" runat="server" Text='<%# Bind("CapabilityBattery") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Thời gian đàm thoại *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_CallingTime" runat="server" 
+                                        Text='<%# Bind("CallingTime") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator40" runat="server" 
+                                        ControlToValidate="txt_CallingTime" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_CallingTime" runat="server" 
+                                        Text='<%# Bind("CallingTime") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator41" runat="server" 
+                                        ControlToValidate="txt_CallingTime" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label21" runat="server" Text='<%# Bind("CallingTime") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Thời gian chờ *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_WaittingTime" runat="server" 
+                                        Text='<%# Bind("WaittingTime") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator42" runat="server" 
+                                        ControlToValidate="txt_WaittingTime" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_WaittingTime" runat="server" 
+                                        Text='<%# Bind("WaittingTime") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator43" runat="server" 
+                                        ControlToValidate="txt_WaittingTime" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label22" runat="server" Text='<%# Bind("WaittingTime") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Bộ bán hàng chuẩn *">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_StandarBox" runat="server" 
+                                        Text='<%# Bind("StandarBox") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator44" runat="server" 
+                                        ControlToValidate="txt_StandarBox" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:TextBox ID="txt_StandarBox" runat="server" 
+                                        Text='<%# Bind("StandarBox") %>' Width="450px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator45" runat="server" 
+                                        ControlToValidate="txt_StandarBox" Display="Dynamic" 
+                                        ErrorMessage="Ô này không thể để trống"></asp:RequiredFieldValidator>
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label23" runat="server" Text='<%# Bind("StandarBox") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ControlStyle Width="450px" />
+                            </asp:TemplateField>
                         </Fields>
                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                         <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" 
