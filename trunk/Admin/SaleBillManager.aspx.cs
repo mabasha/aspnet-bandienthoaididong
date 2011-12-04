@@ -214,6 +214,8 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
                     productIMEI, isPhone, number, price);
                 saleBillDt.Insert();
 
+                
+
                 dtAddBillDt.Rows.Clear();
                 ViewState["dtAddBillDt"] = dtAddBillDt;
                 FillDataSale();
@@ -252,6 +254,8 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
         {
             tAddress.Enabled = false;
             tPhone.Enabled = false;
+            bChooseCustomer.Visible = true;
+            bShowCustomerInfo.Visible = true;
         }
     }
     protected void rUnregisted_CheckedChanged(object sender, EventArgs e)
@@ -260,6 +264,8 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
         {
             tAddress.Enabled = true;
             tPhone.Enabled = true;
+            bChooseCustomer.Visible = false;
+            bShowCustomerInfo.Visible = false;
         }
     }
     protected void gAddDetail_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -293,7 +299,6 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
         {
             ImageButton bDelete = (ImageButton)e.Row.Cells[8].Controls[0];
             bDelete.OnClientClick = "if(!confirm('Bạn có chắc muốn xóa hóa đơn này không ?')) return false;";
-
         }
     }
     protected void gShowBill_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)

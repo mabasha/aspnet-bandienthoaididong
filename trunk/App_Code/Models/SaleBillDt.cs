@@ -58,16 +58,46 @@ public class SaleBillDt
             "values('{0}',{1},{2}, '{3}', '{4}', {5}, {6})",
             id, saleBillID, productID, productIMEI, isPhone, number, price);
         AccessData.ExecuteNonQuery(query);
+
+        if (isPhone)
+        {
+            Phone phone = new Phone(productID);
+            int oldAmount = phone.GetAmount();
+            phone.SetAmount(oldAmount - number);
+        }
+        else
+        {
+            Accessory acc = new Accessory(productID);
+            int oldAmount = acc.GetAmount();
+            acc.SetAmount(oldAmount - number);
+        }
+
         return true;
     }
 
     public bool Update()
     {
+        int oldNumber = GetNumber();
         string query = String.Format("update SaleBillDt " +
             "set SaleBillID = {0}, ProductID = {1}, ProductIMEI = '{2}', " +
             "IsPhone = '{3}', Number = {4}, Price = {5} " +
             "where ID = {6}", saleBillID, productID, productIMEI, isPhone, number, price, id);
         AccessData.ExecuteNonQuery(query);
+
+        int deltaNumber = number - oldNumber;
+        if (isPhone)
+        {
+            Phone phone = new Phone(productID);
+            int oldAmount = phone.GetAmount();
+            phone.SetAmount(oldAmount - deltaNumber);
+        }
+        else
+        {
+            Accessory acc = new Accessory(productID);
+            int oldAmount = acc.GetAmount();
+            acc.SetAmount(oldAmount - deltaNumber);
+        }
+
         return true;
     }
 
@@ -75,9 +105,26 @@ public class SaleBillDt
     {
         string query = String.Format("delete from SaleBillDt where ID = '{0}'", id);
         AccessData.ExecuteNonQuery(query);
+
+        if (isPhone)
+        {
+            Phone phone = new Phone(productID);
+            int oldAmount = phone.GetAmount();
+            phone.SetAmount(oldAmount + number);
+        }
+        else
+        {
+            Accessory acc = new Accessory(productID);
+            int oldAmount = acc.GetAmount();
+            acc.SetAmount(oldAmount + number);
+        }
     }
 
-    
+    private int GetNumber()
+    {
+        string query = String.Format("select Number from SaleBillDt where ID = {0}", id);
+        return (int)AccessData.ExecuteScalar(query);
+    }
 
     public static int GetMaxID()
     {

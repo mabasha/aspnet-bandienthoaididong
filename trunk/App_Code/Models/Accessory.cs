@@ -15,6 +15,7 @@ public class Accessory
     public double price;
     public string image;
     public string description;
+    public int residualAmount;
 
     public Accessory()
     {
@@ -26,7 +27,7 @@ public class Accessory
     }
 
     public Accessory(int id, string name, int producerID,
-        double price, string image, string description)
+        double price, string image, string description, int residualAmount)
     {
         this.id = id;
         this.name = name;
@@ -34,6 +35,7 @@ public class Accessory
         this.price = price;
         this.image = image;
         this.description = description;
+        this.residualAmount = residualAmount;
     }
 
     public void GetInfoByID()
@@ -45,6 +47,7 @@ public class Accessory
         price = Convert.ToDouble(dt.Rows[0]["Price"]);
         image = (string)dt.Rows[0]["Image"];
         description = (string)dt.Rows[0]["Description"];
+        residualAmount = (int)(dt.Rows[0]["ResidualAmount"]);
     }
 
     public bool Insert()
@@ -53,8 +56,8 @@ public class Accessory
         if (isExist == false)
         {
             id = GetMaxID() + 1;
-            string query = String.Format("insert into Accessory(ID, Name, ProducerID, Price, Image, Description, IsSold)" +
-                "values('{0}',N'{1}','{2}','{3}',N'{4}',N'{5}',{6})", id, name, producerID, price, image, description, 0);
+            string query = String.Format("insert into Accessory(ID, Name, ProducerID, Price, Image, Description, ResidualAmount)" +
+                "values('{0}',N'{1}','{2}','{3}',N'{4}',N'{5}',{6})", id, name, producerID, price, image, description, residualAmount);
             AccessData.ExecuteNonQuery(query);
         }
         return !isExist;
@@ -66,8 +69,8 @@ public class Accessory
         if (isExist == false || (isExist == true && GetIDFromName(name) == id))
         {
             string query = String.Format("update Accessory set Name = N'{0}', ProducerID = N'{1}',"
-            + "Price = '{2}', Image = N'{3}', Description = N'{4}' where ID = {5}",
-            name, producerID, price, image, description, id);
+            + "Price = '{2}', Image = N'{3}', Description = N'{4}', ResidualAmount = {5} where ID = {6}",
+            name, producerID, price, image, description, residualAmount, id);
             AccessData.ExecuteNonQuery(query);
         }
         return !isExist;
@@ -85,6 +88,18 @@ public class Accessory
         int count = Convert.ToInt32(AccessData.ExecuteScalar(query));
         if (count > 0) return true;
         return false;
+    }
+
+    public int GetAmount()
+    {
+        String query = String.Format("select ResidualAmount from Accessory where ID = N'{0}'", id);
+        return (int)AccessData.ExecuteScalar(query);
+    }
+
+    public void SetAmount(int amount)
+    {
+        String query = String.Format("update Accessory set ResidualAmount = {0} where ID = {1}", amount, id);
+        AccessData.ExecuteNonQuery(query);
     }
 
     public static int GetMaxID()
