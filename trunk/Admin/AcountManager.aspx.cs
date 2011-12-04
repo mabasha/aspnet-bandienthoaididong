@@ -109,21 +109,28 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         else
         {
             string username = txt_Username.Text;
+            string email = txt_Email.Text;
             // Check xem user có tồn tại trong database hay chưa.
-            string sql = "Select Count(*) From Users Where Username='" + username + "'";
-            int temp = Convert.ToInt32(AccessData.ExecuteScalar(sql));
-            if (temp > 0)
+            string sql1 = "SELECT Count(*) FROM Users WHERE Username='" + username + "'";
+            string sql2 = "SELECT Count(*) FROM Users WHERE Email='" + email + "'";
+            int temp1 = Convert.ToInt32(AccessData.ExecuteScalar(sql1));
+            int temp2 = Convert.ToInt32(AccessData.ExecuteScalar(sql2));
+            if (temp1 > 0)
             {
                 lb_Note.ForeColor = System.Drawing.Color.Red;
                 lb_Note.Text = "Insert username:" + txt_Username.Text + " failed. This username is exist.";
                 //FillDataInGrid("Username");
+            }else if (temp2 > 0)
+            {
+                lb_Note.ForeColor = System.Drawing.Color.Red;
+                lb_Note.Text = "Insert username:" + txt_Username.Text + " failed. This email is exist.";
             }
             else
             {
-                sql = "Insert into Users (Username, Password, FullName, Email, Tel, BirthDay, Address, IDCard, Decentralize) Values (N'" +
+                sql1 = "Insert into Users (Username, Password, FullName, Email, Tel, BirthDay, Address, IDCard, Decentralize) Values (N'" +
                 username + "', N'" + txt_Password.Text + "', N'" + txt_Fullname.Text + "', N'" + txt_Email.Text + "','" + txt_Tel.Text + "', '" + txt_BirthDay.Text
                 + "', N'" + txt_Address.Text + "', " + int.Parse(txt_IDCard.Text) + ", '" + ddl_Decentralize.SelectedValue.ToString() + "')";
-                AccessData.ExecuteNonQuery(sql);
+                AccessData.ExecuteNonQuery(sql1);
                 lb_Note.ForeColor = System.Drawing.Color.Green;
                 lb_Note.Text = "Insert username:" + txt_Username.Text + " successfully";
                 //FillDataInGrid();
