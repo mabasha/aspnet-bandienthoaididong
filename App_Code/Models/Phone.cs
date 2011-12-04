@@ -272,6 +272,37 @@ public class Phone
         return !isExit;
     }
 
+    public bool Update()
+    {
+        bool isExit = IsExistName();
+        if (isExit==false)
+        {
+            string sql = String.Format("UPDATE Phone SET Name=N'{0}', ProducerID={1}, DistributorID={2}," +
+                "Image=N'{3}', Price={4}, SpecialFeature=N'{5}', Camera=N'{6}', VideoCall=N'{7}'," +
+                "RecorderCamera=N'{8}', SubCamera=N'{9}', VideoPlayer=N'{10}', MusicPlayer=N'{11}', FM=N'{12}'," + 
+                "TV=N'{13}', Recorder=N'{14}', CallingRecorder=N'{15}', FMRecorder=N'{16}', Java=N'{17}'," +
+                "Game=N'{18}', TVConnection=N'{19}', OfficeApps=N'{20}', OtherApp=N'{21}', Ringtone=N'{22}'," +
+                "DownloadRingtone=N'{23}', SpeakerPhone=N'{24}', Vibrate=N'{25}', JackPhone=N'{26}'," +
+                "InternalStore=N'{27}', Ram=N'{28}', CPU=N'{29}', MemoryCard=N'{30}', MaximumMemoryCapacity=N'{31}'," +
+                "Contact=N'{32}', Message=N'{33}', Email=N'{34}', [2Gband]=N'{35}', [3Gband]=N'{36}', MutilSimcard=N'{37}'," +
+                "GPRS=N'{38}', EDGE=N'{39}', [3G]=N'{40}', Wifi=N'{41}', Browser=N'{42}', GPS=N'{43}', Bluetooth=N'{44}'," +
+                "Ultrared=N'{45}', USB=N'{46}', Screen=N'{47}', Resolution=N'{48}', SizeScreen=N'{49}', Sensor=N'{50}'," +
+                "OS=N'{51}', Style=N'{52}', QwertyKeyboard=N'{53}', Size=N'{54}', Weight=N'{55}', Warranty=N'{56}'," +
+                "Language=N'{57}', Battery=N'{58}', CapabilityBattery=N'{59}', CallingTime=N'{60}', WaittingTime=N'{61}'," +
+                "StandarBox=N'{62}', ResidualAmount={63}",
+                name, producerID, distributorID, image, price, specialFeature, camera, videoCall,
+                recorderCamera, subCamera, videoPlayer, musicPlayer, FM, TV, recorder, callingRecorder,
+                FMRecorder, java, game, TVConnection, officeApps, otherApp, ringtone, downloadRingtone,
+                speakerPhone, vibrate, jackPhone, internalStore, ram, CPU, memoryCard, maximumMemoryCapacity,
+                contact, message, email, secondGband, threeGband, mutilSimcard, GPRS, EDGE, threeG, wifi,
+                browser, GPS, bluetooth, ultrared, USB, screen, resolution, sizeScreen, sensor, OS, style,
+                qwertyKeyboard, size, weight, warranty, language, battery, capabilityBattery, callingTime,
+                waittingTime, standarBox, residualAmount);
+            AccessData.ExecuteNonQuery(sql);
+        }
+        return !isExit;
+    }
+
     public void GetInfoByID()
     {
         String query = String.Format("select * from Phone where ID = N'{0}'", id);

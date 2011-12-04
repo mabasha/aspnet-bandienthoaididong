@@ -110,15 +110,18 @@ public partial class Admin_PhoneManager : System.Web.UI.Page
     {
         //ConvertTextBoxToHtml
         //int id=
-        string name = ((TextBox)dtview_Phone.Rows[2].Cells[1].Controls[0]).Text;
-        string specialFuture = ((TextBox)dtview_Phone.Rows[8].Cells[1].FindControl("txt_SpecialFeature")).Text.Replace("\n", "</br>");
-        string officeApps = ((TextBox)dtview_Phone.Rows[23].Cells[1].FindControl("txt_OfficeApps")).Text.Replace("\n", "</br>");
-        string otherApp = ((TextBox)dtview_Phone.Rows[24].Cells[1].FindControl("txt_OtherApp")).Text.Replace("\n", "</br>");
-        string query = String.Format("UPDATE Phone SET SpecialFeature=N'{0}' WHERE ID='{1}'", specialFuture, dtview_Phone.DataKey.Value);
-        AccessData.ExecuteNonQuery(query);
-        //GetDataFromDetailViewToPhone();
-        dtview_Phone.ChangeMode(DetailsViewMode.ReadOnly);
-        FillDataInDetailsView(Convert.ToInt32(dtview_Phone.DataKey.Value));
+        //string specialFuture = ((TextBox)dtview_Phone.Rows[8].Cells[1].FindControl("txt_SpecialFeature")).Text.Replace("\n", "</br>");
+        //string officeApps = ((TextBox)dtview_Phone.Rows[23].Cells[1].FindControl("txt_OfficeApps")).Text.Replace("\n", "</br>");
+        //string otherApp = ((TextBox)dtview_Phone.Rows[24].Cells[1].FindControl("txt_OtherApp")).Text.Replace("\n", "</br>");
+        //string query = String.Format("UPDATE Phone SET SpecialFeature=N'{0}' WHERE ID='{1}'", specialFuture, dtview_Phone.DataKey.Value);
+        //AccessData.ExecuteNonQuery(query);
+        GetDataFromDetailViewToPhone();
+        if (phone.Update())
+        {
+            dtview_Phone.ChangeMode(DetailsViewMode.ReadOnly);
+            FillDataInDetailsView(Convert.ToInt32(dtview_Phone.DataKey.Value));
+        }
+        
     }
     protected void dtview_Phone_ModeChanging(object sender, DetailsViewModeEventArgs e)
     {
