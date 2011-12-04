@@ -39,7 +39,7 @@
         }
         .style35
         {
-            height: 55px;
+            height: 35px;
         }
         .style36
         {
@@ -47,27 +47,36 @@
         }
         .style37
         {
-            width: 271px;
-            height: 61px;
+            width: 68%;
+            height: 34px;
         }
         .style38
         {
-            width: 549px;
-            height: 61px;
+            width: 427px;
         }
-    </style>
+        .style39
+        {
+            width: 271px;
+            height: 81px;
+        }
+        .style40
+        {
+            width: 549px;
+            height: 81px;
+        }
+        </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div class="header" align="center" 
         style="font-size: large; height: 62px; width: 1000px;">
         LẬP HÓA ĐƠN NHẬP</div>
-    <div class="Add" style="height: 540px; width: 1011px;">
-        <table style="width:62%; height: 434px;" align="center">
+    <div class="Add" style="height: 439px; width: 1011px;">
+        <table style="width:62%; height: 421px;" align="center">
             <tr>
-                <td class="style32">
+                <td class="style39">
                     Người Nhập :</td>
-                <td class="style31">
+                <td class="style40">
                     <asp:DropDownList ID="dNguoiNhap" runat="server" DataSourceID="SqlDataSource1" 
                         DataTextField="FullName" DataValueField="Username" 
                         onselectedindexchanged="dNguoiNhap_SelectedIndexChanged">
@@ -79,16 +88,6 @@
             </tr>
             <tr>
                 <td align="center" colspan="2" class="style35">
-                    <asp:Button ID="btnAddHD" runat="server" Text="THÊM HÓA ĐƠN" Width="126px" 
-                        onclick="btnAddHD_Click" Height="41px" />
-                </td>
-            </tr>
-            <tr>
-                <td class="style37">
-                    Tên sản phẩm :</td>
-                <td class="style38">
-                    <asp:TextBox ID="txtTenSp" runat="server" Width="190px" ></asp:TextBox>
-                    <asp:Button ID="btnTenSp" runat="server" Text="Chọn sản phẩm" />
                 </td>
             </tr>
             <tr>
@@ -99,6 +98,14 @@
                         Checked="True" GroupName="chooser" Text="Điện thoại" />
                     <asp:RadioButton ID="rPhukien" runat="server" AutoPostBack="True" 
                         GroupName="chooser" Text="Phụ kiện" />
+                </td>
+            </tr>
+            <tr>
+                <td class="style32">
+                    Tên sản phẩm :</td>
+                <td class="style31">
+                    <asp:TextBox ID="txtTenSp" runat="server" Width="52px" ></asp:TextBox>
+                    <asp:Button ID="btnTenSp" runat="server" Text="Chọn sản phẩm" />
                 </td>
             </tr>
             <tr>
@@ -117,12 +124,40 @@
             </tr>
             <tr>
                 <td align="center" colspan="2" class="style36">
-                    <asp:Button ID="btnAddCTHD" runat="server" Text="Thêm hàng" Width="74px" 
-                        onclick="btnAddCTHD_Click" />
+    
+    <asp:Button ID="btnAddViewstate" runat="server" onclick="btnAddViewstate_Click" 
+        Text="Thêm sản phẩm" />
+            
                 </td>
             </tr>
         </table>
     </div>
+    <table align="center" class="style37">
+        <tr>
+            <td>
+    
+    <asp:GridView ID="gridViewState" runat="server" AutoGenerateColumns="False" 
+                    onrowdeleting="gridViewState_RowDeleting" Width="533px">
+        <Columns>
+            <asp:BoundField DataField="ProductID" HeaderText="Mã sản Phẩm" />
+            <asp:BoundField DataField="ProductName" HeaderText="Tên sản phẩm" />
+            <asp:BoundField DataField="IsPhone" HeaderText="Là điện thoại" />
+            <asp:BoundField DataField="Number" HeaderText="Số lượng" />
+            <asp:BoundField DataField="Price" HeaderText="Giá" />
+            <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/Delete.jpg" 
+                ShowDeleteButton="True" />
+        </Columns>
+    </asp:GridView>
+    
+            </td>
+            <td align="center" class="style38">
+    
+    <asp:Button ID="btnThemHD" runat="server"  Text="THÊM HÓA ĐƠN" Height="66px" 
+            onclick="btnThemHD_Click" Width="135px" Visible="False" />
+    
+            </td>
+        </tr>
+    </table>
     <div style="height: 268px; width: 1000px; margin-bottom: 0px;" class="list">
         <table class="style4">
             <tr>
@@ -169,9 +204,29 @@
                         <Columns>
                             <asp:BoundField DataField="ImportBillID" HeaderText="Mã HĐ" ReadOnly="True" />
                             <asp:BoundField DataField="ID" HeaderText="Mã CTHĐ" ReadOnly="True" />
-                            <asp:BoundField DataField="Name" HeaderText="Tên sản phẩm" />
-                            <asp:BoundField DataField="IsPhone" HeaderText="Loại sản phẩm" 
-                                ReadOnly="True" />
+                            <asp:TemplateField HeaderText="Mã sản phẩm">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txtMaSpTemp" runat="server" style="margin-left: 2px" 
+                                        Width="50px"></asp:TextBox>
+                                    <asp:Button ID="btnChonDtTemp" runat="server" onclick="btnChonSpTemplate_Click" 
+                                        Text="Chọn điện thoại" Width="116px" />
+                                    <asp:Button ID="btnChonPkTemp" runat="server" Text="Chọn phụ kiện" />
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="lbProductID" runat="server" Text='<%# Eval("ProductID") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Là điện thoại">
+                                <EditItemTemplate>
+                                    <asp:RadioButton ID="rDtTemp" runat="server" Checked="True" 
+                                        GroupName="rtemplate" Text="Điện thoại" />
+                                    <asp:RadioButton ID="rPkTemp" runat="server" GroupName="rtemplate" 
+                                        Text="Phụ kiện" />
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="lbIsPhone" runat="server" Text='<%# Eval("IsPhone") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:BoundField DataField="Number" HeaderText="Số lượng" />
                             <asp:BoundField DataField="Price" HeaderText="Đơn giá nhập" />
                             <asp:CommandField ShowEditButton="True" />
@@ -187,7 +242,7 @@
                     </asp:GridView>
                             </td>
                         </tr>
-                    </table>
+                    </table>                    
                 </td>
             </tr>
         </table>
