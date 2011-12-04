@@ -34,9 +34,9 @@ public class ImportBillDt
     }
     public static DataTable GetAll()
     {
-        string query = "SELECT ImportBillDt.ImportBillID, ImportBillDt.ID, ImportBillDt.ImportBillID, Phone.Name , ImportBillDt.IsPhone, ImportBillDt.Number, ImportBillDt.Price"
-                      + " FROM ImportBillDt, Phone"
-                      + " WHERE ImportBillDt.ProductID=Phone.ID";
+        string query = "SELECT ImportBillDt.ImportBillID, ImportBillDt.ID, ImportBillDt.ImportBillID, ImportBillDt.ProductID , ImportBillDt.IsPhone, ImportBillDt.Number, ImportBillDt.Price"
+                      + " FROM ImportBillDt";
+                      //+ " WHERE ImportBillDt.ProductID=Phone.ID";
         return AccessData.GetTable(query);
     }
     public void Insert()

@@ -4,9 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 public partial class Admin_ImportBill : System.Web.UI.Page
 {
+    DataTable dtAddBillDt;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (rDienthoai.Checked == true)
@@ -18,11 +20,19 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         {
             btnTenSp.OnClientClick = "window.open(\"AccessoryChooser.aspx?receiveID=txtTenSp\", 'mypopup', " +
                     "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;";
-        }
+        }        
         if (IsPostBack == false)
         {
             FillData();
             FillDataDt();
+            FillDataViewstate();
+            dtAddBillDt = Utils.CreateDataTable("ProductID", "ProductName", "IsPhone", "Number", "Price");
+
+            ViewState["dtAddBillDt"] = dtAddBillDt;
+        }
+        else
+        {
+            dtAddBillDt = (DataTable)ViewState["dtAddBillDt"];
         }
     }
     private void FillData()
@@ -34,6 +44,11 @@ public partial class Admin_ImportBill : System.Web.UI.Page
     {
         gridImportBillDt.DataSource = ImportBillDt.GetAll();
         gridImportBillDt.DataBind();
+    }
+    private void FillDataViewstate()
+    {
+        gridViewState.DataSource = dtAddBillDt;
+        gridViewState.DataBind();
     }
     protected void gridImportBillDt_RowDataBound1(object sender, GridViewRowEventArgs e)
     {
@@ -49,6 +64,18 @@ public partial class Admin_ImportBill : System.Web.UI.Page
     {
         gridImportBillDt.EditIndex = e.NewEditIndex;
         FillDataDt();
+        RadioButton rDt = (RadioButton)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("rPkTemp");
+        RadioButton rPk = (RadioButton)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("rPkTemp");
+        Button btnChonDtTemp = (Button)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("btnChonDtTemp");
+        Button btnChonPkTemp = (Button)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("btnChonPkTemp");
+        TextBox txtMaTemp = (TextBox)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("txtMaSpTemp");
+        
+        btnChonDtTemp.OnClientClick = String.Format("window.open(\"PhoneChooser.aspx?receiveID={0}\", 'mypopup', " +
+                "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", txtMaTemp.ClientID);
+
+        btnChonPkTemp.OnClientClick = String.Format("window.open(\"AccessoryChooser.aspx?receiveID=txtMaTemp\", 'mypopup', " +
+                "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", txtMaTemp.ClientID);
+        
     }
     protected void gridImportBillDt_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
     {
@@ -74,18 +101,18 @@ public partial class Admin_ImportBill : System.Web.UI.Page
     //    gridImportBill.EditIndex = -1;
     //    FillData();
     //}
-    protected void btnAddCTHD_Click(object sender, EventArgs e)
-    {      
-        object re = AccessData.ExecuteScalar("select max(ID) from ImportBill");
-        int cMaHD = Convert.ToInt32(re);              
-        ImportBillDt idt = new ImportBillDt(0, cMaHD, txtTenSp.Text, getrLoaisp(), txtNumber.Text, txtPrice.Text);
-        idt.Insert();
-        lbThongbaoCTHD.Text = "<p class=info>* Thêm thành công Chi tiết hóa đơn.</p>";
-        txtTenSp.Text = "";
-        txtNumber.Text = "";
-        txtPrice.Text = "";
-        FillDataDt();
-    }
+    //protected void btnAddCTHD_Click(object sender, EventArgs e)
+    //{      
+    //    object re = AccessData.ExecuteScalar("select max(ID) from ImportBill");
+    //    int cMaHD = Convert.ToInt32(re);              
+    //    ImportBillDt idt = new ImportBillDt(0, cMaHD, txtTenSp.Text, getrLoaisp(), txtNumber.Text, txtPrice.Text);
+    //    idt.Insert();
+    //    lbThongbaoCTHD.Text = "<p class=info>* Thêm thành công Chi tiết hóa đơn.</p>";
+    //    txtTenSp.Text = "";
+    //    txtNumber.Text = "";
+    //    txtPrice.Text = "";
+    //    FillDataDt();
+    //}
     private string getrLoaisp()
     {
         if(rDienthoai.Checked == true)
@@ -112,15 +139,85 @@ public partial class Admin_ImportBill : System.Web.UI.Page
     {
         
     }
-    protected void btnAddHD_Click(object sender, EventArgs e)
-    {
-        ImportBill imp = new ImportBill(0, dNguoiNhap.SelectedValue.ToString(), getCurrentTime());
-        imp.Insert();
-        lbThongbaoHD.Text = "<p class=info>* Thêm thành công Hóa đơn.</p>";              
-        FillData();
-    }   
+    //protected void btnAddHD_Click(object sender, EventArgs e)
+    //{
+    //    ImportBill imp = new ImportBill(0, dNguoiNhap.SelectedValue.ToString(), getCurrentTime());
+    //    imp.Insert();
+    //    lbThongbaoHD.Text = "<p class=info>* Thêm thành công Hóa đơn.</p>";              
+    //    FillData();
+    //}   
     private string getCurrentTime()
     {
         return DateTime.Now.ToShortDateString();       
     }    
+    protected void btnAddViewstate_Click(object sender, EventArgs e)
+    {
+        string query = null;
+        if (rDienthoai.Checked == true)
+        {
+            query = String.Format("select Name from Phone where ID = {0}", txtTenSp.Text);
+        }
+        else if (rPhukien.Checked == true)
+        {
+            query = String.Format("select Name from Accessory where ID = {0}", txtTenSp.Text);            
+        }
+        object re = AccessData.ExecuteScalar(query);
+        string productName = Convert.ToString(re);
+
+        object[] row = new object[5];
+        row[0] = txtTenSp.Text;
+        row[1] = productName;
+        row[2] = getrLoaisp();
+        row[3] = txtNumber.Text;
+        row[4] = txtPrice.Text;
+        
+
+        dtAddBillDt.Rows.Add(row);
+        ViewState["dtAddBillDt"] = dtAddBillDt;
+
+        FillDataViewstate();
+
+        txtTenSp.Text = "";
+        txtNumber.Text = "";
+        txtPrice.Text = "";
+        if (gridViewState.Rows.Count > 0)
+            btnThemHD.Visible = true;
+        else btnThemHD.Visible = false;
+    }
+    protected void btnThemHD_Click(object sender, EventArgs e)
+    {
+        if (gridViewState.Rows.Count > 0)
+        {
+            ImportBill imp = new ImportBill(0, dNguoiNhap.SelectedValue.ToString(), getCurrentTime());
+            imp.Insert();
+            lbThongbaoHD.Text = "<p class=info>* Thêm thành công Hóa đơn.</p>";
+            FillData();
+        }
+        object re = AccessData.ExecuteScalar("select max(ID) from ImportBill");
+        int cMaHD = Convert.ToInt32(re);
+        foreach (GridViewRow r in gridViewState.Rows)
+        {            
+            string maSp = r.Cells[0].Text;
+            string loaiSp = r.Cells[2].Text;
+            string sl = r.Cells[3].Text;
+            string price = r.Cells[4].Text;
+            ImportBillDt idt = new ImportBillDt(0, cMaHD, maSp, loaiSp, sl, price);
+            idt.Insert();
+
+            dtAddBillDt.Rows.Clear();
+            ViewState["dtAddBillDt"] = dtAddBillDt;
+
+            FillDataDt();
+        }
+    }
+    protected void gridViewState_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        dtAddBillDt.Rows[e.RowIndex].Delete();
+        ViewState["dtAddBillDt"] = dtAddBillDt;
+        FillDataViewstate();
+    }
+    protected void btnChonSpTemplate_Click(object sender, EventArgs e)
+    {
+
+    }
 }
