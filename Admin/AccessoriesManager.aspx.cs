@@ -60,7 +60,7 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
     protected void bAdd_Click(object sender, EventArgs e)
     {
         Accessory acc = new Accessory(0, tName.Text, Convert.ToInt32(cProducer.SelectedItem.Value),
-            Convert.ToDouble(tPrice.Text),tImageName.Text,tDescription.Text);
+            Convert.ToDouble(tPrice.Text),tImageName.Text,tDescription.Text, 0);
         bool isSuccess = acc.Insert();
         if (isSuccess == true)
         {
@@ -131,7 +131,7 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
 
         if (name != "" && tPriceUpdate.Text != "" && imageName != "" && description != null)
         {
-            Accessory acc = new Accessory(ID, name, producerID, price, imageName, description);
+            Accessory acc = new Accessory(ID, name, producerID, price, imageName, description, 0);
             acc.Update();
             gShow.EditIndex = -1;
             FillData();

@@ -319,6 +319,18 @@ public class Phone
         return false;
     }
 
+    public int GetAmount()
+    {
+        String query = String.Format("select ResidualAmount from Phone where ID = N'{0}'", id);
+        return (int)AccessData.ExecuteScalar(query);
+    }
+
+    public void SetAmount(int amount)
+    {
+        String query = String.Format("Update Phone set ResidualAmount = {0} where ID = {1}", amount, id);
+        AccessData.ExecuteNonQuery(query);
+    }
+
     public static DataTable GetAllWithKeyword(string keyword)
     {
         String query = String.Format("select * from Phone where Name like N'%{0}%'", keyword);
