@@ -108,4 +108,29 @@ public class SaleBill
     {
         return AccessData.GetTable("select * from SaleBill");
     }
+
+    public static DataTable EmployeeReport(string keyword)
+    {
+        string query = String.Format("select Users.Username, Users.Fullname, " +
+            "SUM(price*number) as ValueSold, SUM(number) as NumberSold from Users, SaleBillDt, SaleBill " +
+            "where SaleBillDt.SaleBillID = SaleBill.ID " +
+            "and SaleBill.SalerUsername = Users.Username " +
+            "and (Users.Decentralize = 'Administrator' or Users.Decentralize = 'Employee') " +
+            "and (Username like '%{0}%' or FullName like '%{0}%')" +
+            "group by Username, FullName", keyword);
+        return AccessData.GetTable(query);
+    }
+
+    public static DataTable EmployeeReport(string keyword, DateTime from, DateTime to)
+    {
+        string query = String.Format("select Users.Username, Users.Fullname, " +
+            "SUM(price*number) as ValueSold, SUM(number) as NumberSold from Users, SaleBillDt, SaleBill " +
+            "where SaleBillDt.SaleBillID = SaleBill.ID " +
+            "and SaleBill.SalerUsername = Users.Username " +
+            "and (Users.Decentralize = 'Administrator' or Users.Decentralize = 'Employee') " +
+            "and (Username like '%{0}%' or FullName like '%{0}%') "+
+            "and CreatedDate between '{1}' and '{2}' " +
+            "group by Username, FullName", keyword, from, to);
+        return AccessData.GetTable(query);
+    }
 }
