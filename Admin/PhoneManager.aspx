@@ -36,6 +36,7 @@
         .style3
         {
             width: 297px;
+            background-color: #996600;
         }
     </style>
 </head>
@@ -49,8 +50,24 @@
         <table class="style1">
             <tr>
                 <td class="style2" colspan="2" 
-                    style="color: #3333CC; background-color: #CCCC00" width="300px">
-                    QUẢN LÝ ĐIỆN THOẠI</td>
+                    style="color: #3333CC; background-color: #CCCC00" width="100%">
+                    <asp:Label ID="Label24" runat="server" Font-Size="XX-Large" 
+                        Text="QUẢN LÝ ĐIỆN THOẠI"></asp:Label>
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td class="style3" valign="middle" width="300px" align="center" height="50">
+                    <asp:Label ID="Label25" runat="server" Font-Bold="True" Font-Size="Large" 
+                        ForeColor="#3366FF" Text="DANH SÁCH ĐIỆN THOẠI"></asp:Label>
+                </td>
+                <td align="center" height="50" style="background-color: #996600" 
+                    valign="middle">
+                    <asp:Label ID="Label26" runat="server" Font-Bold="True" Font-Size="Large" 
+                        ForeColor="#3366FF" Text="CHI TIẾT ĐIỆN THOẠI"></asp:Label>
+                    <br />
+                    <asp:Label ID="lb_Note" runat="server"></asp:Label>
+                </td>
             </tr>
             <tr>
                 <td class="style3" valign="top" width="300px">
@@ -77,8 +94,7 @@
                 <td>
                     <asp:DetailsView ID="dtview_Phone" runat="server" AutoGenerateRows="False" 
                         CellPadding="4" EnableModelValidation="True" ForeColor="#333333" 
-                        GridLines="None" Height="50px" Width="100%" 
-                        HeaderText="CHI TIẾT ĐIỆN THOẠI" ondatabound="dtview_Phone_DataBound" 
+                        GridLines="None" Height="50px" Width="100%" ondatabound="dtview_Phone_DataBound" 
                         onitemdeleting="dtview_Phone_ItemDeleting" 
                         onitemcommand="dtview_Phone_ItemCommand" 
                         onitemupdating="dtview_Phone_ItemUpdating" 
@@ -89,13 +105,30 @@
                         <EditRowStyle BackColor="#2461BF" />
                         <FieldHeaderStyle BackColor="#DEE8F5" Font-Bold="True" />
                         <Fields>
-                            <asp:CommandField ButtonType="Image" CancelImageUrl="~/Images/Apps/delete.png" 
-                                CancelText="Hủy" DeleteImageUrl="~/Images/Apps/delete.png" DeleteText="Xóa" 
-                                EditImageUrl="~/Images/Apps/edit.png" EditText="Sửa" 
-                                InsertImageUrl="~/Images/Apps/add.png" InsertText="Ghi" 
-                                NewImageUrl="~/Images/Apps/add.png" NewText="Thêm" ShowDeleteButton="True" 
-                                ShowEditButton="True" ShowInsertButton="True" 
-                                UpdateImageUrl="~/Images/Apps/update.jpg" UpdateText="Cập nhật" />
+                            <asp:TemplateField ShowHeader="False">
+                                <EditItemTemplate>
+                                    <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
+                                        CommandName="Update" ImageUrl="~/Images/Apps/update.jpg" Text="Cập nhật" />
+                                    &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
+                                        CommandName="Cancel" ImageUrl="~/Images/Apps/delete.png" Text="Hủy" />
+                                    &nbsp;
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
+                                        CommandName="Insert" ImageUrl="~/Images/Apps/add.png" Text="Ghi" />
+                                    &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
+                                        CommandName="Cancel" ImageUrl="~/Images/Apps/delete.png" Text="Hủy" />
+                                    &nbsp;
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
+                                        CommandName="Edit" ImageUrl="~/Images/Apps/edit.png" Text="Sửa" />
+                                    &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
+                                        CommandName="New" ImageUrl="~/Images/Apps/add.png" Text="Thêm" />
+                                    &nbsp;<asp:ImageButton ID="imgBtn_Delete" runat="server" CausesValidation="False" 
+                                        CommandName="Delete" ImageUrl="~/Images/Apps/delete.png" Text="Xóa" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:BoundField DataField="ID" HeaderText="Mã" >
                             <ControlStyle Width="450px" />
                             <HeaderStyle Width="150px" />
@@ -172,15 +205,15 @@
 
                             <asp:TemplateField HeaderText="Hình ảnh *">
                                 <EditItemTemplate>
-                                    <asp:TextBox ID="txt_Image" runat="server" Enabled="False" 
-                                        Text='<%# "~/Images/Phone/" + Eval("Image") %>' Width="450px"></asp:TextBox>
+                                    <asp:TextBox ID="txt_Image" runat="server" 
+                                        Text='<%# Eval("Image") %>' Width="450px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                         ControlToValidate="txt_Image" ErrorMessage="Vui lòng chọn hình ảnh"></asp:RequiredFieldValidator>
                                     <asp:Button ID="btn_InsertImage" runat="server" 
                                         onclientclick="bChooseImage_Click" Text="..." />
                                 </EditItemTemplate>
                                 <InsertItemTemplate>
-                                    <asp:TextBox ID="txt_Image" runat="server" Enabled="False" Width="450px" 
+                                    <asp:TextBox ID="txt_Image" runat="server" Width="450px" 
                                         Height="26px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                         ControlToValidate="txt_Image" ErrorMessage="Vui lòng chọn hình ảnh"></asp:RequiredFieldValidator>
@@ -189,34 +222,17 @@
                                 </InsertItemTemplate>
                                 <ItemTemplate>
                                     <asp:Image ID="Image1" runat="server" 
-                                        ImageUrl='<%# "~/Images/Phone/" + Eval("Image") + ".jpg" %>' />
+                                        ImageUrl='<%# "~/Images/Phone/" + Eval("Image") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Giá bán *">
                                 <EditItemTemplate>
                                     <asp:TextBox ID="txt_Price" runat="server" Text='<%# Bind("Price") %>' 
                                         Width="100px"></asp:TextBox>
-                                    <asp:MaskedEditExtender ID="txt_Price_MaskedEditExtender" runat="server" 
-                                        CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
-                                        CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
-                                        CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
-                                        InputDirection="RightToLeft" Mask="999999999" MaskType="Number" 
-                                        TargetControlID="txt_Price">
-                                    </asp:MaskedEditExtender>
-                                    VNĐ<asp:MaskedEditExtender ID="txt_Price_MaskedEditExtender0" runat="server" 
-                                        CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
-                                        CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
-                                        CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
-                                        InputDirection="RightToLeft" Mask="999999999" MaskType="Number" 
-                                        TargetControlID="txt_Price">
-                                    </asp:MaskedEditExtender>
-                                    <asp:MaskedEditValidator ID="MaskedEditValidator1" runat="server" 
-                                        ControlExtender="txt_Price_MaskedEditExtender" ControlToValidate="txt_Price" 
-                                        Display="Dynamic" EmptyValueMessage="Ô này không thể để trống" 
-                                        InvalidValueMessage="Giá trị không hợp lệ" IsValidEmpty="False" 
-                                        MinimumValue="0" MinimumValueBlurredText="Giá phải lớn hơn 0" 
-                                        MinimumValueMessage="Giá phải lớn hơn 0" 
-                                        TooltipMessage="Bôi đen và nhấn Space để xóa và nhập lại"></asp:MaskedEditValidator>
+                                    VNĐ<asp:RangeValidator ID="RangeValidator1" runat="server" 
+                                        ControlToValidate="txt_Price" Display="Dynamic" 
+                                        ErrorMessage="Vui lòng nhập giá từ 0-100.000.000 VNĐ" MaximumValue="100000000" 
+                                        MinimumValue="0" ToolTip="Vui lòng nhập giá từ 0-100.000.000 VNĐ" Type="Double"></asp:RangeValidator>
                                 </EditItemTemplate>
                                 <InsertItemTemplate>
                                     <asp:TextBox ID="txt_Price" runat="server" 
@@ -228,13 +244,10 @@
                                         InputDirection="RightToLeft" Mask="999999999" MaskType="Number" 
                                         TargetControlID="txt_Price">
                                     </asp:MaskedEditExtender>
-                                    <asp:MaskedEditValidator ID="MaskedEditValidator1" runat="server" 
-                                        ControlExtender="txt_Price_MaskedEditExtender" ControlToValidate="txt_Price" 
-                                        Display="Dynamic" EmptyValueMessage="Ô này không thể để trống" 
-                                        InvalidValueMessage="Giá trị không hợp lệ" IsValidEmpty="False" 
-                                        MinimumValue="0" MinimumValueBlurredText="Giá phải lớn hơn 0" 
-                                        MinimumValueMessage="Giá phải lớn hơn 0" 
-                                        TooltipMessage="Bôi đen và nhấn Space để xóa và nhập lại"></asp:MaskedEditValidator>
+                                    <asp:RangeValidator ID="RangeValidator2" runat="server" 
+                                        ControlToValidate="txt_Price" Display="Dynamic" 
+                                        ErrorMessage="Vui lòng nhập giá từ 0-100.000.000 VNĐ" MaximumValue="100000000" 
+                                        MinimumValue="0"></asp:RangeValidator>
                                 </InsertItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="Label2" runat="server" 

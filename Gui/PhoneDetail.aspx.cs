@@ -26,7 +26,7 @@ public partial class Admin_PhoneDetail : System.Web.UI.Page
             id = int.Parse(Request.QueryString["id"]);
             FillDataInGridAccessory(id);
             phone = new Phone(id);
-            img_Phone.ImageUrl = "~/Images/Phone/" + phone.image + ".jpg";
+            img_Phone.ImageUrl = "~/Images/Phone/" + phone.image;
             //int price = phone.price;
             //string temp = String.Format("{0:0,0 VNĐ}", phone.price);
             lb_Price.Text = String.Format("{0:0,0 VNĐ}", phone.price);
