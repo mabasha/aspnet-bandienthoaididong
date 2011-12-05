@@ -60,4 +60,11 @@ public class ImportBillDt
         string query = String.Format("delete from ImportBillDt where ID = '{0}'", id);
         AccessData.ExecuteNonQuery(query);
     }
+    public void Update()
+    {
+        string query = String.Format("update ImportBillDt "
+                                   + "SET ProductID = '{0}', IsPhone = '{1}', Number = '{2}', Price = '{3}' "
+                                   + "WHERE ID = '{4}'", pID, isphone, number, price, id);
+        AccessData.ExecuteNonQuery(query);
+    }
 }
