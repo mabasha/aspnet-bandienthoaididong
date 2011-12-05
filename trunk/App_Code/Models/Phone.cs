@@ -79,7 +79,9 @@ public class Phone
     public string waittingTime;
     public string standarBox;
     public int residualAmount;
-    
+    public string oldName;// Dùng để kiểm tra mỗi khi Update, sẽ lưu giá trị tên của phone trước khi sửa để khi nhấn Submit 
+    //thì sẽ kiểm tra xem là tên mới và tên cũ có giống nhau không, nếu không giống nhau thì phải xem tên mới đã có trong 
+    //database chưa thì mới cho update.
 	public Phone()
 	{
 		//
@@ -92,6 +94,7 @@ public class Phone
         this.id = _id;
         DataTable dt = AccessData.GetTable("SELECT * FROM Phone WHERE id=" + id);
         name = dt.Rows[0]["Name"].ToString();
+        oldName = dt.Rows[0]["Name"].ToString();
         producerID = int.Parse(dt.Rows[0]["ProducerID"].ToString());
         distributorID = int.Parse(dt.Rows[0]["DistributorID"].ToString());
         image = dt.Rows[0]["Image"].ToString();
@@ -275,8 +278,13 @@ public class Phone
     public bool Update()
     {
         bool isExit = IsExistName();
-        if (isExit==false)
+        DataTable dt = AccessData.GetTable("SELECT * FROM Phone WHERE id=" + id);
+        //name = dt.Rows[0]["Name"].ToString();
+        oldName = dt.Rows[0]["Name"].ToString();
+        if (String.Compare(oldName, name) != 0 && isExit == true)
         {
+            return false;
+        }else{
             string sql = String.Format("UPDATE Phone SET Name=N'{0}', ProducerID={1}, DistributorID={2}," +
                 "Image=N'{3}', Price={4}, SpecialFeature=N'{5}', Camera=N'{6}', VideoCall=N'{7}'," +
                 "RecorderCamera=N'{8}', SubCamera=N'{9}', VideoPlayer=N'{10}', MusicPlayer=N'{11}', FM=N'{12}'," + 
@@ -289,7 +297,7 @@ public class Phone
                 "Ultrared=N'{45}', USB=N'{46}', Screen=N'{47}', Resolution=N'{48}', SizeScreen=N'{49}', Sensor=N'{50}'," +
                 "OS=N'{51}', Style=N'{52}', QwertyKeyboard=N'{53}', Size=N'{54}', Weight=N'{55}', Warranty=N'{56}'," +
                 "Language=N'{57}', Battery=N'{58}', CapabilityBattery=N'{59}', CallingTime=N'{60}', WaittingTime=N'{61}'," +
-                "StandarBox=N'{62}', ResidualAmount={63}",
+                "StandarBox=N'{62}', ResidualAmount={63} WHERE ID={64}",
                 name, producerID, distributorID, image, price, specialFeature, camera, videoCall,
                 recorderCamera, subCamera, videoPlayer, musicPlayer, FM, TV, recorder, callingRecorder,
                 FMRecorder, java, game, TVConnection, officeApps, otherApp, ringtone, downloadRingtone,
@@ -297,10 +305,11 @@ public class Phone
                 contact, message, email, secondGband, threeGband, mutilSimcard, GPRS, EDGE, threeG, wifi,
                 browser, GPS, bluetooth, ultrared, USB, screen, resolution, sizeScreen, sensor, OS, style,
                 qwertyKeyboard, size, weight, warranty, language, battery, capabilityBattery, callingTime,
-                waittingTime, standarBox, residualAmount);
+                waittingTime, standarBox, residualAmount, id);
             AccessData.ExecuteNonQuery(sql);
+            return true;
         }
-        return !isExit;
+        //return isExit;
     }
 
     public void GetInfoByID()

@@ -13,6 +13,7 @@ public partial class Admin_PhoneManager : System.Web.UI.Page
 {
     int id;
     Phone phone = new Phone();
+    //public string oldName;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -61,8 +62,8 @@ public partial class Admin_PhoneManager : System.Web.UI.Page
     {
         if (dtview_Phone.Rows.Count>0 && dtview_Phone.CurrentMode == DetailsViewMode.ReadOnly)
         {
-            ImageButton delete = (ImageButton)dtview_Phone.Rows[0].Cells[0].Controls[2];
-            delete.OnClientClick = "if(!confirm('Bạn có đồng ý xóa điện thoại này không?')) return false;";
+            ImageButton delete = (ImageButton)dtview_Phone.Rows[0].Cells[0].FindControl("imgBtn_Delete");
+           delete.OnClientClick = "if(!confirm('Bạn có đồng ý xóa điện thoại này không?')) return false;";
         }
 
         //ẩn ID khi sửa hoặc thêm mới một điện thoại.
@@ -95,14 +96,18 @@ public partial class Admin_PhoneManager : System.Web.UI.Page
     {
         switch (e.CommandName)
         {
-            case "Edit": dtview_Phone.ChangeMode(DetailsViewMode.Edit);
+            case "Edit": 
+                dtview_Phone.ChangeMode(DetailsViewMode.Edit);
                 FillDataInDetailsView(Convert.ToInt32(dtview_Phone.DataKey.Value));
                 ConvertHtmlToTextBox(dtview_Phone);
+                //oldName = ((TextBox)dtview_Phone.Rows[2].Cells[1].FindControl("txt_Name")).Text;
                 break;
-            case "Cancel": dtview_Phone.ChangeMode(DetailsViewMode.ReadOnly);
+            case "Cancel":
+                dtview_Phone.ChangeMode(DetailsViewMode.ReadOnly);
                 FillDataInDetailsView(Convert.ToInt32(grid_Phone.DataKeys[0].Value));
                 break;
-            case "New": dtview_Phone.ChangeMode(DetailsViewMode.Insert);
+            case "New":
+                dtview_Phone.ChangeMode(DetailsViewMode.Insert);
                 break;
         }
     }
@@ -118,8 +123,22 @@ public partial class Admin_PhoneManager : System.Web.UI.Page
         GetDataFromDetailViewToPhone();
         if (phone.Update())
         {
+            //Label lb_Note = (Label)dtview_Phone.Rows[0].Cells[0].FindControl("lb_Note");
+            
             dtview_Phone.ChangeMode(DetailsViewMode.ReadOnly);
             FillDataInDetailsView(Convert.ToInt32(dtview_Phone.DataKey.Value));
+            FillDataInGrid("Name");
+            lb_Note.ForeColor = Color.Green;
+            lb_Note.Text = "Cập nhật thành công";
+            //Note_Seccessfull(dtview_Phone);
+            
+        }
+        else
+        {
+            //Label lb_Note = (Label)dtview_Phone.Rows[0].Cells[0].FindControl("lb_Note");
+            lb_Note.ForeColor = Color.Red;
+            lb_Note.Text = "Cập nhật lỗi. Tên điện thoại đã có trong dữ liệu, vui lòng nhập tên khác.";
+            //lb_Note.Text += " Old Name : " + phone.oldName + " name : " + phone.name;
         }
         
     }
@@ -136,6 +155,7 @@ public partial class Admin_PhoneManager : System.Web.UI.Page
         officeApps.Text = officeApps.Text.Replace("</br>", "\n");
         TextBox otherApp = (TextBox)dtview_Phone.Rows[24].Cells[0].FindControl("txt_OtherApp");
         otherApp.Text = otherApp.Text.Replace("</br>", "\n");
+        //oldName = ((TextBox)dtview_Phone.Rows[2].Cells[1].FindControl("txt_Name")).Text;
     }
 
     private void ConvertTextBoxToHtml(DetailsView dtview_Phone)
@@ -146,14 +166,32 @@ public partial class Admin_PhoneManager : System.Web.UI.Page
     protected void dtview_Phone_ItemInserting(object sender, DetailsViewInsertEventArgs e)
     {
         GetDataFromDetailViewToPhone();
-        phone.Insert();
-        dtview_Phone.ChangeMode(DetailsViewMode.ReadOnly);
-        FillDataInGrid("Name");
-        FillDataInDetailsView(AccessData.GetMaxID("Phone"));
+        if (phone.Insert())
+        {
+            dtview_Phone.ChangeMode(DetailsViewMode.ReadOnly);
+            FillDataInGrid("Name");
+            FillDataInDetailsView(AccessData.GetMaxID("Phone"));
+            //Label lb_Note = (Label)dtview_Phone.Rows[0].Cells[0].FindControl("lb_Note");
+            lb_Note.ForeColor = Color.Green;
+            lb_Note.Text = "Cập nhật thành công";
+        } 
+        else
+        {
+            //Label lb_Note = (Label)dtview_Phone.Rows[0].Cells[0].FindControl("lb_Note");
+            lb_Note.ForeColor = Color.Red;
+            lb_Note.Text = "Cập nhật lỗi. Tên điện thoại đã có trong dữ liệu, vui lòng nhập tên khác.";
+        }
+        
+        
     }
 
     private void GetDataFromDetailViewToPhone()
     {
+        if (dtview_Phone.CurrentMode==DetailsViewMode.Edit)
+        {
+            phone.id = Convert.ToInt32(((TextBox)dtview_Phone.Rows[1].Cells[1].Controls[0]).Text);
+            //phone.oldName = oldName;
+        }
         //phone.id = Convert.ToInt32(((TextBox)dtview_Phone.Rows[1].Cells[1].Controls[0]).Text);
         phone.name = ((TextBox)dtview_Phone.Rows[2].Cells[1].FindControl("txt_Name")).Text;
         phone.producerID = Convert.ToInt32(((DropDownList)dtview_Phone.Rows[3].Cells[1].FindControl("ddl_Producer")).SelectedValue);
@@ -222,4 +260,5 @@ public partial class Admin_PhoneManager : System.Web.UI.Page
 
 
     }
+
 }

@@ -59,7 +59,7 @@
             onpageindexchanging="grid_Phone_PageIndexChanging">
             <Columns>
                 <asp:ImageField DataImageUrlField="Image" 
-                    DataImageUrlFormatString="~/Images/Phone/{0}.jpg" HeaderText="Hình ảnh">
+                    DataImageUrlFormatString="~/Images/Phone/{0}" HeaderText="Hình ảnh">
                 </asp:ImageField>
                 <asp:TemplateField HeaderText="Giới thiệu chung">
                     <ItemTemplate>
