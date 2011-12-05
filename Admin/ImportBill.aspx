@@ -10,7 +10,7 @@
     <style type="text/css">
         .style4
         {
-            width: 97%;
+            width: 100%;
             height: 135px;
         }
         .style5
@@ -18,7 +18,7 @@
         }
         .style25
         {
-            width: 98%;
+            width: 82%;
             height: 181px;
         }
         .style26
@@ -158,7 +158,7 @@
             </td>
         </tr>
     </table>
-    <div style="height: 268px; width: 1000px; margin-bottom: 0px;" class="list">
+    <div style="height: 260px; width: 1284px; margin-bottom: 0px;" class="list">
         <table class="style4">
             <tr>
                 <td class="style5" align="center">
@@ -199,7 +199,8 @@
                                     onrowcancelingedit="gridImportBillDt_RowCancelingEdit" 
                                     onrowediting="gridImportBillDt_RowEditing" 
                                     onrowdatabound="gridImportBillDt_RowDataBound1" 
-                                    onrowdeleting="gridImportBillDt_RowDeleting"                         >
+                                    onrowdeleting="gridImportBillDt_RowDeleting" 
+                                    onrowupdating="gridImportBillDt_RowUpdating"                         >
                         <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                         <Columns>
                             <asp:BoundField DataField="ImportBillID" HeaderText="Mã HĐ" ReadOnly="True" />
@@ -208,9 +209,10 @@
                                 <EditItemTemplate>
                                     <asp:TextBox ID="txtMaSpTemp" runat="server" style="margin-left: 2px" 
                                         Width="50px"></asp:TextBox>
-                                    <asp:Button ID="btnChonDtTemp" runat="server" onclick="btnChonSpTemplate_Click" 
+                                    <asp:Button ID="btnChonDtTemp" runat="server" onclick="btnChonDtTemp_Click" 
                                         Text="Chọn điện thoại" Width="116px" />
-                                    <asp:Button ID="btnChonPkTemp" runat="server" Text="Chọn phụ kiện" />
+                                    <asp:Button ID="btnChonPkTemp" runat="server" Text="Chọn phụ kiện" 
+                                        onclick="btnChonPkTemp_Click" />
                                 </EditItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="lbProductID" runat="server" Text='<%# Eval("ProductID") %>'></asp:Label>
@@ -219,14 +221,18 @@
                             <asp:TemplateField HeaderText="Là điện thoại">
                                 <EditItemTemplate>
                                     <asp:RadioButton ID="rDtTemp" runat="server" Checked="True" 
-                                        GroupName="rtemplate" Text="Điện thoại" />
+                                        GroupName="rtemplate" Text="Điện thoại" Enabled="False" 
+                                        oncheckedchanged="rDtTemp_CheckedChanged" />
                                     <asp:RadioButton ID="rPkTemp" runat="server" GroupName="rtemplate" 
-                                        Text="Phụ kiện" />
+                                        Text="Phụ kiện" Enabled="False" 
+                                        oncheckedchanged="rPkTemp_CheckedChanged" />
                                 </EditItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="lbIsPhone" runat="server" Text='<%# Eval("IsPhone") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <%--<asp:BoundField DataField="ProductID" HeaderText="Mã sản phẩm" />--%>
+                            <%--<asp:BoundField DataField="IsPhone" HeaderText="Là điện thoại" />--%>
                             <asp:BoundField DataField="Number" HeaderText="Số lượng" />
                             <asp:BoundField DataField="Price" HeaderText="Đơn giá nhập" />
                             <asp:CommandField ShowEditButton="True" />
