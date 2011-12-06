@@ -23,7 +23,7 @@
         });
 
     </script>
-    <title></title>
+    <title>Báo cáo nhân viên</title>
 </head>
 <body>
     <form id="form1" runat="server">

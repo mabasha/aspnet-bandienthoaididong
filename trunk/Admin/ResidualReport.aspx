@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
-    <title></title>
+    <title>Báo cáo tồn</title>
 </head>
 <body>
     <form id="form1" runat="server">
