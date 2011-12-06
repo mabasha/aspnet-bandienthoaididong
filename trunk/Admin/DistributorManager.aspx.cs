@@ -100,4 +100,8 @@ public partial class Admin_DistributorManager : System.Web.UI.Page
     {
         FillData(e.SortExpression);
     }
+    protected void gShow_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }
