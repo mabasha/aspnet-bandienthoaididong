@@ -61,7 +61,8 @@
                 onrowdeleting="gShow_RowDeleting" onrowediting="gShow_RowEditing" 
                 onrowupdating="gShow_RowUpdating" CellPadding="4" ForeColor="#333333" 
                 GridLines="None" AllowPaging="True" AllowSorting="True" 
-                onpageindexchanging="gShow_PageIndexChanging" onsorting="gShow_Sorting">
+                onpageindexchanging="gShow_PageIndexChanging" onsorting="gShow_Sorting" 
+                onselectedindexchanged="gShow_SelectedIndexChanged">
                 <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                 <Columns>
                     <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
@@ -85,5 +86,6 @@
         </div>
     </div>
     </form>
+
 </body>
 </html>
