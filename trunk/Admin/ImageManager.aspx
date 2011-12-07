@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<head runat="server">
+<head>
 
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
 
@@ -12,12 +12,12 @@
         var clip = null;
         
         $("document").ready(function() {
-            $("#bCopyToClipboard").click(CopyToClipBoard);
+        $("#<% =bCopyToClipboard.ClientID%>").click(CopyToClipBoard);
         });
 
         function CopyToClipBoard() {
             if (window.clipboardData) {
-                window.clipboardData.setData("Text", $("#hChoosedImage").val());
+                window.clipboardData.setData("Text", $("#<% =hChoosedImage.ClientID%>").val());
             }
             else {
                 alert('Chỉ hỗ trợ IE');

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 using System.Data;
 
 public partial class Admin_AccessoriesManager : System.Web.UI.Page
@@ -20,8 +21,11 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
 
             FillData();
 
-            bChooseImage.OnClientClick = "window.open(\"ImageManager.aspx?receiveInputID=tImageName\", 'mypopup', " +
-                "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;";
+
+            string script = String.Format("window.open(\"ImageManager.aspx?receiveInputID={0}\", 'mypopup', " +
+                "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", tImageName.ClientID);
+            bChooseImage.OnClientClick = script;
+
         }
     }
 

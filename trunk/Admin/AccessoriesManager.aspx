@@ -13,13 +13,13 @@
         $("document").ready(OnPageReady);
 
         function OnPageReady() {
-            $("#tPrice").keydown(OnKeyDownCheckNumber);
-            $("#bAdd").click(OnAddClick);
+            $("#<% =tPrice.ClientID%>").keydown(OnKeyDownCheckNumber);
+            $("#<% =bAdd.ClientID%>").click(OnAddClick);
             
         }
         
         function OnAddClick() {
-            if ($("#tName").val() == "" || $("#tPrice").val() == "" || $("#tImageName").val() == "") {
+            if ($("#<% =tName.ClientID%>").val() == "" || $("#<% =tPrice.ClientID%>").val() == "" || $("#<% =tImageName.ClientID%>").val() == "") {
                 alert("Bạn chưa nhập đầy đủ thông tin");
                 return false;
             }
