@@ -1,0 +1,39 @@
+﻿body {
+}
+
+div
+{
+	/*border:dotted 1px;*/
+}
+#wrapper
+{
+	width:1000px;
+}
+
+#header
+{
+	background-image: url('../Images/Apps/header.jpg'); 
+	height: 80px;
+}
+#main
+{
+	width:1000px;
+}
+
+#content
+{
+	width:800px;
+	float:left;
+}
+
+#right-panel
+{
+	float:left;
+	width:200px;
+}
+
+#footer
+{
+	background-color:Yellow;
+	height:40px;
+}

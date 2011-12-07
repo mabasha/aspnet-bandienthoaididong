@@ -1,0 +1,24 @@
+﻿div 
+{
+	/*border:dotted 1px;*/
+}
+
+#news
+{
+	height:auto;	
+}
+#news-banner
+{
+	width:600px; 
+	float:left;
+}
+#news-detail
+{
+	float:left;
+	width:200px;
+	overflow:auto;
+}
+#search
+{
+	clear:both;
+}

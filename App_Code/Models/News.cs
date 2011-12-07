@@ -89,4 +89,12 @@ public class News
             "or Author like N'%{0}%' or IntroContent like N'%{0}%'", keyword);
         return AccessData.GetTable(query);
     }
+
+    public static DataTable GetTitles(int number, string orderby, bool isAsc)
+    {
+        string query = String.Format("select top {0} ID, Title from News order by {1} ", number, orderby);
+        if (isAsc == false)
+            query += "desc";
+        return AccessData.GetTable(query);
+    }
 }

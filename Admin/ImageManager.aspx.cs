@@ -36,7 +36,7 @@ public partial class Admin_ImageManager : System.Web.UI.Page
         {
             receiveInputID = "tImageName";
         }
-        string javascript = String.Format("window.opener.$(\"#{0}\").val($(\"#hChoosedImage\").val()); self.close();", receiveInputID);
+        string javascript = String.Format("window.opener.$(\"#{0}\").val($(\"#{1}\").val()); self.close();", receiveInputID, hChoosedImage.ClientID);
         bClose.OnClientClick = javascript;
         
     }
