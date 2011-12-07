@@ -1,13 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AcountManager.aspx.cs" Inherits="Admin_AcountManager" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Admin/Admin.master" CodeFile="AcountManager.aspx.cs" Inherits="Admin_AcountManager" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<head runat=server>
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
     <script src="../Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
     <script src="../Scripts/jquery.validate.js" type="text/javascript"></script>
@@ -70,9 +66,8 @@
     </style>
     
 </head>
-<body>
-<center>
-    <form id="form1" runat="server">
+
+
     <div>
     
         <table class="style1">
@@ -277,7 +272,5 @@
         </table>
     
     </div>
-    </form>
     </center>
-</body>
-</html>
+    </asp:Content>

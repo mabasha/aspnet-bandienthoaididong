@@ -195,7 +195,8 @@ width:195px;
 float:left;
 padding:30px 0 0 20px;
 }
-.right_content{
+.right_content
+{
 width:625px;
 float:left;
 padding:30px 0 0 30px;
@@ -283,20 +284,20 @@ margin:7px 0 0 8px;
 #rounded-corner
 {
 margin:0px;
-width:625px;
 text-align: left;
 border-collapse: collapse;
 }
-#rounded-corner thead th.rounded-company
+#rounded-corner td.rounded-company
 {
 width:26px;
-background: #60c8f2 url('images/left.jpg') left top no-repeat;
+background: #60c8f2 url('images/left.jpg') left top no-repeat ;
+
 }
 #rounded-corner thead th.rounded-q4
 {
 background: #60c8f2 url('images/right.jpg') right top no-repeat;
 }
-#rounded-corner th
+#rounded-corner ee
 {
 padding: 8px;
 font-weight: normal;
@@ -306,6 +307,7 @@ background: #60c8f2;
 }
 #rounded-corner td
 {
+font-size:large;
 padding: 8px;
 background: #ecf8fd;
 border-top: 1px solid #fff;
@@ -321,7 +323,7 @@ background: #ecf8fd url('images/botright.jpg') right bottom no-repeat;
 }
 #rounded-corner tbody tr:hover td
 {
-background: #d2e7f0;
+
 }
 
 

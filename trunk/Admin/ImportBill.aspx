@@ -1,11 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ImportBill.aspx.cs" Inherits="Admin_ImportBill" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin/Admin.master" CodeFile="ImportBill.aspx.cs" Inherits="Admin_ImportBill" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
     <style type="text/css">
         .style4
@@ -66,8 +63,6 @@
         }
         </style>
 </head>
-<body>
-    <form id="form1" runat="server">
     <div class="header" align="center" 
         style="font-size: large; height: 62px; width: 1000px;">
         LẬP HÓA ĐƠN NHẬP</div>
@@ -253,6 +248,4 @@
             </tr>
         </table>
     </div>
-    </form>
-</body>
-</html>
+    </asp:Content>

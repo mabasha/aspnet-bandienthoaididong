@@ -1,10 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PhoneManager.aspx.cs" Inherits="Admin_PhoneManager" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin/Admin.master" CodeFile="PhoneManager.aspx.cs" Inherits="Admin_PhoneManager" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
     <script src="../Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
@@ -40,18 +37,17 @@
         }
     </style>
 </head>
-<body>
-    <form id="form1" runat="server">
+
     <div>
        
-        <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+        <asp:ToolkitScriptManager ID="ToolkitScriptManager1">
         </asp:ToolkitScriptManager>
        
         <table class="style1">
             <tr>
                 <td class="style2" colspan="2" 
                     style="color: #3333CC; background-color: #CCCC00" width="100%">
-                    <asp:Label ID="Label24" runat="server" Font-Size="XX-Large" 
+                    <asp:Label ID="Label24"  Font-Size="XX-Large" 
                         Text="QUẢN LÝ ĐIỆN THOẠI"></asp:Label>
                     <br />
                 </td>
@@ -237,7 +233,7 @@
                                 <InsertItemTemplate>
                                     <asp:TextBox ID="txt_Price" runat="server" 
                                         Text='<%# Bind("Price") %>' Width="100px"></asp:TextBox>
-                                    VNĐ<asp:MaskedEditExtender ID="txt_Price_MaskedEditExtender" runat="server" 
+                                    VNĐ<asp:MaskedEditExtender ID="txt_Price_MaskedEditExtender"
                                         CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
                                         CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
                                         CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
@@ -851,6 +847,4 @@
         </table>
     
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>

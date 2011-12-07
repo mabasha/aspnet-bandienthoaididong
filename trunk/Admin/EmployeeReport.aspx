@@ -1,8 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="EmployeeReport.aspx.cs" Inherits="Admin_EmployeeReport" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Admin/Admin.master" CodeFile="EmployeeReport.aspx.cs" Inherits="Admin_EmployeeReport" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <head runat="server">
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
 
@@ -25,8 +23,7 @@
     </script>
     <title>Báo cáo nhân viên</title>
 </head>
-<body>
-    <form id="form1" runat="server">
+
     <div class=wrapper>
         <div class="header">
             Báo cáo kết quả bán của nhân viên</div>
@@ -64,6 +61,4 @@
             </asp:GridView>
         </div>
     </div>
-    </form>
-</body>
-</html>
+ </asp:Content>

@@ -1,8 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DistributorManager.aspx.cs" Inherits="Admin_DistributorManager" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Admin/Admin.master" CodeFile="DistributorManager.aspx.cs" Inherits="Admin_DistributorManager" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
 
@@ -30,8 +29,7 @@
         }
     </style>
 </head>
-<body>
-    <form id="form1" runat="server">
+
     <div>
         <div class="header">Quản lý nhà phân phối</div>
         <div class="add">
@@ -85,7 +83,4 @@
             </asp:GridView>
         </div>
     </div>
-    </form>
-
-</body>
-</html>
+</asp:Content>

@@ -1,8 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SaleBillManager.aspx.cs" Inherits="Admin_SaleBillManager" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
 <head runat="server">
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
 
@@ -66,8 +66,7 @@
         }
     </style>
 </head>
-<body>
-    <form id="form1" runat="server">
+
     <div class=wrapper>
         <div class=header>Quản lý hóa đơn bán</div>
         <div class=add>
@@ -324,6 +323,4 @@
             <div class=clearboth></div>
         </div>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>
