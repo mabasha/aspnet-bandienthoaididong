@@ -72,8 +72,8 @@ public partial class Admin_ImportBill : System.Web.UI.Page
 
         btnChonDtTemp.OnClientClick = String.Format("window.open(\"PhoneChooser.aspx?receiveID={0}\", 'mypopup', " +
                 "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", txtMaTemp.ClientID);
-
-        btnChonPkTemp.OnClientClick = String.Format("window.open(\"AccessoryChooser.aspx?receiveID=txtMaTemp\", 'mypopup', " +
+      
+        btnChonPkTemp.OnClientClick = String.Format("window.open(\"AccessoryChooser.aspx?receiveID={0}\", 'mypopup', " +
                 "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", txtMaTemp.ClientID);               
     }
     protected void gridImportBillDt_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -82,8 +82,7 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         TextBox sl = (TextBox)gridImportBillDt.Rows[gridImportBillDt.EditIndex].Cells[4].Controls[0];
         TextBox price = (TextBox)gridImportBillDt.Rows[gridImportBillDt.EditIndex].Cells[5].Controls[0];
         int id= Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[1].Text);
-        int ImpId = Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[0].Text);
-        //string iphone = "True";     
+        int ImpId = Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[0].Text);           
         
         ImportBillDt iDt = new ImportBillDt(id, ImpId, maSp.Text, isPhoneEdit, sl.Text, price.Text);
         iDt.Update();
@@ -95,6 +94,15 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         gridImportBillDt.EditIndex = -1;
         FillDataDt();
     }
+    protected void gridImportBillDt_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        int id = Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[1].Text);
+
+        ImportBillDt impdt = new ImportBillDt(id);
+        impdt.Delete();
+        lbThongbaoCTHD.Text = "<p class=info>* Bạn đã xóa thành công Chi tiết hóa đơn.</p>";
+        FillDataDt();
+    }
     protected void gridImportBill_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType == DataControlRowType.DataRow && (e.Row.RowState == DataControlRowState.Alternate ||
@@ -104,46 +112,18 @@ public partial class Admin_ImportBill : System.Web.UI.Page
             btnDelete.OnClientClick = "if (!confirm('Bạn có đồng ý xóa Hóa đơn nhập?')) return false";
         }      
     }
-    //protected void gridImportBill_RowEditing(object sender, GridViewEditEventArgs e)
-    //{
-    //    gridImportBill.EditIndex = e.NewEditIndex;
-    //    FillData();
-    //}
-    //protected void gridImportBill_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-    //{
-    //    gridImportBill.EditIndex = -1;
-    //    FillData();
-    //}
-    //protected void btnAddCTHD_Click(object sender, EventArgs e)
-    //{      
-    //    object re = AccessData.ExecuteScalar("select max(ID) from ImportBill");
-    //    int cMaHD = Convert.ToInt32(re);              
-    //    ImportBillDt idt = new ImportBillDt(0, cMaHD, txtTenSp.Text, getrLoaisp(), txtNumber.Text, txtPrice.Text);
-    //    idt.Insert();
-    //    lbThongbaoCTHD.Text = "<p class=info>* Thêm thành công Chi tiết hóa đơn.</p>";
-    //    txtTenSp.Text = "";
-    //    txtNumber.Text = "";
-    //    txtPrice.Text = "";
-    //    FillDataDt();
-    //}
+   
     private string getrLoaisp()
     {
         if(rDienthoai.Checked == true)
             return "True";
         return "False";
-    }
-    protected void gridImportBillDt_RowDeleting(object sender, GridViewDeleteEventArgs e)
-    {
-        ImportBillDt impdt = new ImportBillDt(Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[0].Text));
-        impdt.Delete();
-        lbThongbaoCTHD.Text = "<p class=info>* Bạn đã xóa thành công Chi tiết hóa đơn.</p>";
-        FillDataDt();
-    }
+    }   
 
     protected void gridImportBill_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
         ImportBill imp = new ImportBill(Convert.ToInt32(gridImportBill.Rows[e.RowIndex].Cells[0].Text));
-        imp.Delete();
+        imp.Delete();      
         lbThongbaoHD.Text = "<p class=info>* Bạn đã xóa thành công hóa đơn.</p>";
         FillData();
         FillDataDt();
@@ -204,22 +184,24 @@ public partial class Admin_ImportBill : System.Web.UI.Page
             imp.Insert();
             lbThongbaoHD.Text = "<p class=info>* Thêm thành công Hóa đơn.</p>";
             FillData();
-        }
-        object re = AccessData.ExecuteScalar("select max(ID) from ImportBill");
-        int cMaHD = Convert.ToInt32(re);
-        foreach (GridViewRow r in gridViewState.Rows)
-        {            
-            string maSp = r.Cells[0].Text;
-            string loaiSp = r.Cells[2].Text;
-            string sl = r.Cells[3].Text;
-            string price = r.Cells[4].Text;
-            ImportBillDt idt = new ImportBillDt(0, cMaHD, maSp, loaiSp, sl, price);
-            idt.Insert();
 
-            dtAddBillDt.Rows.Clear();
-            ViewState["dtAddBillDt"] = dtAddBillDt;
+            object re = AccessData.ExecuteScalar("select max(ID) from ImportBill");
+            int cMaHD = Convert.ToInt32(re);
+            foreach (GridViewRow r in gridViewState.Rows)
+            {
+                string maSp = r.Cells[0].Text;
+                string loaiSp = r.Cells[2].Text;
+                string sl = r.Cells[3].Text;
+                string price = r.Cells[4].Text;
+                ImportBillDt idt = new ImportBillDt(0, cMaHD, maSp, loaiSp, sl, price);
+                idt.Insert();
 
-            FillDataDt();
+                dtAddBillDt.Rows.Clear();
+                ViewState["dtAddBillDt"] = dtAddBillDt;
+
+                FillDataDt();
+                FillDataViewstate();
+            }
         }
     }
     protected void gridViewState_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -228,14 +210,14 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         ViewState["dtAddBillDt"] = dtAddBillDt;
         FillDataViewstate();
     }
-    private string isPhoneEdit = "false";    
+    private string isPhoneEdit = "True";    
     protected void btnChonDtTemp_Click(object sender, EventArgs e)
     {
-        isPhoneEdit = "true";
+        isPhoneEdit = "True";        
     }
     protected void btnChonPkTemp_Click(object sender, EventArgs e)
     {
-        isPhoneEdit = "false";
+        isPhoneEdit = "False";
     }
     protected void rDtTemp_CheckedChanged(object sender, EventArgs e)
     {

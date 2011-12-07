@@ -96,7 +96,7 @@ public class Phone
         name = dt.Rows[0]["Name"].ToString();
         oldName = dt.Rows[0]["Name"].ToString();
         producerID = int.Parse(dt.Rows[0]["ProducerID"].ToString());
-        distributorID = int.Parse(dt.Rows[0]["DistributorID"].ToString());
+        //distributorID = int.Parse(dt.Rows[0]["DistributorID"].ToString());
         image = dt.Rows[0]["Image"].ToString();
         price = int.Parse(dt.Rows[0]["Price"].ToString());
         specialFeature = dt.Rows[0]["SpecialFeature"].ToString();
