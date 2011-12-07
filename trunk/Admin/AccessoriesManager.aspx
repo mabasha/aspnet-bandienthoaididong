@@ -27,50 +27,40 @@
 
     </script>
     <title>Quản lý phụ kiện</title>
-    <style type="text/css">
-        .style1
-        {
-            width: 100%;
-        }
-    </style>
 
-    <div>
-        
-        <div class="header"> Quản lý phụ kiện</div>
-        <div class="add">
-            <table class="style1">
+            <table class="style1" border=2 width=100px>
                 <tr>
-                    <td class="left-add">
-                        Tên</td>
+                    <td colspan=2 align=center>
+                    <div class=""> Quản lý phụ kiện</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-add">Tên</td>
                     <td>
                         <asp:TextBox ID="tName" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        Nhà sản xuất</td>
+                    <td> Nhà sản xuất</td>
                     <td>
                         <asp:DropDownList ID="cProducer" runat="server">
                         </asp:DropDownList>
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        Giá</td>
+                    <td>Giá</td>
                     <td>
                         <asp:TextBox ID="tPrice" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        Mô tả</td>
+                    <td>Mô tả</td>
                     <td>
                         <asp:TextBox ID="tDescription" runat="server" TextMode="MultiLine"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td id="tDes">
-                        Hình ảnh</td>
+                    <td>Hình ảnh</td>
                     <td>
                         <asp:TextBox ID="tImageName" runat="server"></asp:TextBox>
                         <asp:Button ID="bChooseImage" runat="server" Text="..." 
@@ -80,19 +70,23 @@
                     </td>
                 </tr>
                 <tr>
-                    <td id="tDes">
-                        &nbsp;</td>
-                    <td>
-                        <asp:Image ID="iAdd" runat="server" />
+                    <td colspan=2>
+                        <asp:Image ID="iAdd" runat="server"/>
                     </td>
                 </tr>
-                </table>
-            <asp:Button ID="bAdd" runat="server" Text="Thêm" onclick="bAdd_Click" />
-            <br />
-            <asp:Label ID="lThongBao" runat="server"></asp:Label>
-        </div>
-        
-        <div class="list">
+                <tr>
+                    <td colspan=2>
+                    <asp:Button ID="bAdd" runat="server" Text="Thêm" onclick="bAdd_Click" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=2>
+                        <asp:Label ID="lThongBao" runat="server"></asp:Label>
+                    </td>
+                </tr>
+ 
+                <tr>
+                    <td colspan=2>
             <asp:GridView ID="gShow" runat="server" AutoGenerateColumns="False" 
                 AllowPaging="True" AllowSorting="True" CellPadding="4" ForeColor="#333333" 
                 GridLines="None" onpageindexchanging="gShow_PageIndexChanging" 
@@ -108,15 +102,7 @@
                     <ItemTemplate><asp:Label ID="lNSX" runat="server" Text='<%# Eval("ProducerName") %>'></asp:Label>
                         
                     </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:DropDownList ID="dProducerName" runat="server" 
-                                DataSourceID="dsProducerName" DataTextField="Name" DataValueField="ID" 
-                                SelectedValue='<%# Eval("ID") %>'>
-                            </asp:DropDownList>
-                            <asp:SqlDataSource ID="dsProducerName" runat="server" 
-                                ConnectionString="<%$ ConnectionStrings:MobileShopConnectionString %>" 
-                                SelectCommand="SELECT [ID], [Name] FROM [Producer]"></asp:SqlDataSource>
-                        </EditItemTemplate>
+                        
                     </asp:TemplateField>
                     <asp:BoundField DataField="Price" HeaderText="Giá" SortExpression="Price" />
                     <asp:TemplateField HeaderText="Ảnh" SortExpression="Image">
@@ -150,6 +136,7 @@
                 <EditRowStyle BackColor="#999999" />
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             </asp:GridView>
-        </div>
-    </div>
+                    </td>
+                    </tr>
+    </table>
 </asp:Content>

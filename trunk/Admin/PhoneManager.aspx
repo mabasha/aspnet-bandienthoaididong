@@ -45,8 +45,7 @@
        
         <table class="style1">
             <tr>
-                <td class="style2" colspan="2" 
-                    style="color: #3333CC; background-color: #CCCC00" width="100%">
+                <td>
                     <asp:Label ID="Label24"  Font-Size="XX-Large" 
                         Text="QUẢN LÝ ĐIỆN THOẠI"></asp:Label>
                     <br />
