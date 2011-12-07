@@ -1,8 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Producer.aspx.cs" Inherits="Admin_Producer" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
     <style type="text/css">
@@ -51,8 +50,7 @@
 // ]]>
     </script>--%>
 </head>
-<body>
-    <form id="form1" runat="server">
+
     
         <div class="header">
             <div align="center" class="header">
@@ -113,7 +111,4 @@
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     </asp:GridView>
                     </div>
-    
-    </form>
-</body>
-</html>
+</asp:Content>

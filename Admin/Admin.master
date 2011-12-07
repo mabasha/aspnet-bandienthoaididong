@@ -1,15 +1,15 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="Admin_AdminSite_Template_Default" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Admin.master.cs" Inherits="Admin_Admin" %>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IN ADMIN PANEL | Powered by INDEZINER</title>
-<link rel="stylesheet" type="text/css" href="style.css" />
-<script type="text/javascript" src="clockp.js"></script>
-<script type="text/javascript" src="clockh.js"></script> 
-<script type="text/javascript" src="jquery.min.js"></script>
-<script type="text/javascript" src="ddaccordion.js"></script>
+<link rel="stylesheet" type="text/css" href="AdminSite/Template/style.css" />
+<script type="text/javascript" src="AdminSite/Template/clockp.js"></script>
+<script type="text/javascript" src="AdminSite/Template/clockh.js"></script> 
+<script type="text/javascript" src="AdminSite/Template/jquery.min.js"></script>
+<script type="text/javascript" src="AdminSite/Template/ddaccordion.js"></script>
 <script type="text/javascript">
     ddaccordion.init({
         headerclass: "submenuheader", //Shared CSS class name of headers group
@@ -33,7 +33,7 @@
     })
 </script>
 
-<script type="text/javascript" src="jconfirmaction.jquery.js"></script>
+<script type="text/javascript" src="AdminSite/Template/jconfirmaction.jquery.js"></script>
 <script type="text/javascript">
 
     $(document).ready(function () {
@@ -42,8 +42,8 @@
 	
 </script>
 
-<script language="javascript" type="text/javascript" src="niceforms.js"></script>
-<link rel="stylesheet" type="text/css" media="all" href="niceforms-default.css" />
+<script language="javascript" type="text/javascript" src="AdminSite/Template/niceforms.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="AdminSite/Template/niceforms-default.css" />
 
 </head>
 <body>
@@ -51,7 +51,7 @@
 <div id="main_container">
 
 	<div class="header">
-    <div class="logo"><a href="#"><img src="images/logo.gif" alt="" title="" border="0" /></a></div>
+    <div class="logo"><a href="#"><img src="AdminSite/Template/images/logo.gif" alt="" title="" border="0" /></a></div>
     
     <div class="right_header">Welcome Admin, <a href="#">Visit site</a> | <a href="#" class="messages">(3) Messages</a> | <a href="#" class="logout">Logout</a></div>
     <div id="clock_a"></div>
@@ -61,8 +61,8 @@
     
                     <div class="menu">
                     <ul>
-                    <li><a class="current" href="index.html">Admin Home</a></li>
-                    <li><a href="list.html">Điện Thoại<!--[if IE 7]><!--></a><!--<![endif]-->
+                    <li><a class="current" href="#">Admin Home</a></li>
+                    <li><a href="#">Điện Thoại<!--[if IE 7]><!--></a><!--<![endif]-->
                     <!--[if lte IE 6]><table><tr><td><![endif]-->
                         <ul>
                         <li><a href="" title="">Lorem ipsum dolor sit amet</a></li>
@@ -73,7 +73,7 @@
                         </ul>
                     <!--[if lte IE 6]></td></tr></table></a><![endif]-->
                     </li>
-                    <li><a href="login.html">Phụ Kiện<!--[if IE 7]><!--></a><!--<![endif]-->
+                    <li><a href="#">Phụ Kiện<!--[if IE 7]><!--></a><!--<![endif]-->
                     <!--[if lte IE 6]><table><tr><td><![endif]-->
                         <ul>
                         <li><a href="" title="">Lorem ipsum dolor sit amet</a></li>
@@ -105,7 +105,7 @@
                         </ul>
                     <!--[if lte IE 6]></td></tr></table></a><![endif]-->
                     </li>
-                    <li><a href="login.html">Nhà Phân Phối<!--[if IE 7]><!--></a><!--<![endif]-->
+                    <li><a href="#">Nhà Phân Phối<!--[if IE 7]><!--></a><!--<![endif]-->
                     <!--[if lte IE 6]><table><tr><td><![endif]-->
                         <ul>
                         <li><a href="http://localhost:1208/ASP.NET/Admin/DistributorManager.aspx" title="">level 1</a></li>
@@ -137,7 +137,7 @@
                         </ul>
                     <!--[if lte IE 6]></td></tr></table></a><![endif]-->
                     </li>
-                    <li><a href="login.html">Users<!--[if IE 7]><!--></a><!--<![endif]-->
+                    <li><a href="#">Users<!--[if IE 7]><!--></a><!--<![endif]-->
                     <!--[if lte IE 6]><table><tr><td><![endif]-->
                         <ul>
                         <li><a href="" title="">Lorem ipsum dolor sit amet</a></li>
@@ -186,7 +186,7 @@
     
     		<div class="sidebar_search">
             <input type="text" name="" class="search_input" value="search keyword" onclick="this.value=''" />
-            <input type="image" class="search_submit" src="images/search.png" />
+            <input type="image" class="search_submit" src="AdminSite/Template/images/search.png" />
             </div>
     
             <div class="sidebarmenu">
@@ -292,7 +292,9 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 <table id="rounded-corner">      
     <tbody>
     	<tr>
-        	<td>                             
+        	<td>              
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
             </td>
         </tr>
         
@@ -431,4 +433,5 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 </body>
 </html>
 </form>
+
 
