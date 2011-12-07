@@ -22,18 +22,14 @@
     </script>
 
     <title></title>
-    <style type="text/css">
-        .style1
-        {
-            width: 100%;
-        }
-    </style>
+
 </head>
 
-    <div>
-        <div class="header">Quản lý nhà phân phối</div>
         <div class="add">
-            <table class="style1">
+            <table class="style1" border=2 width=870px>
+                <tr>
+                    <td colspan=2 align=center><font color=maroon size=+4 >QUẢN LÝ NHÀ PHÂN PHỐI</font></td>
+                </tr>
                 <tr>
                     <td class="left-add" >
                         Tên</td>
@@ -48,11 +44,19 @@
                         <asp:TextBox ID="tAddress" runat="server" Width="222px"></asp:TextBox>
                     </td>
                 </tr>
-            </table>
+            <tr>
+                <td colspan=2>
             <asp:Button ID="bAdd" runat="server" onclick="bAdd_Click" Text="Add" />
-            <br />
+                </td>
+            </tr>
+            <tr>
+                <td colspan=2>
             <asp:Label ID="lThongBao" runat="server" Text="tThongBao"></asp:Label>
+                </td>
+            </tr>
         </div>
+            <tr>
+               <td colspan=2>
         <div class="list">
             <asp:GridView ID="gShow" runat="server" AutoGenerateColumns="False" 
                 onrowcancelingedit="gShow_RowCancelingEdit" onrowdatabound="gShow_RowDataBound" 
@@ -82,5 +86,7 @@
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             </asp:GridView>
         </div>
-    </div>
+        </td>
+        </tr>
+     </table>
 </asp:Content>
