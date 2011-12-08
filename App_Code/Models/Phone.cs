@@ -346,5 +346,10 @@ public class Phone
         return AccessData.GetTable(query);
     }
 
-    
+    public string GetNameFromID(int id)
+    {
+        string query = String.Format("select Name from Phone where ID = N'{0}'", id);
+        object re = AccessData.ExecuteScalar(query);
+        return Convert.ToString(re);
+    }
 }
