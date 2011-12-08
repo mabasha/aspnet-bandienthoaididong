@@ -78,16 +78,18 @@ public partial class Admin_ImportBill : System.Web.UI.Page
     }
     protected void gridImportBillDt_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
+
         TextBox maSp = (TextBox)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("txtMaSpTemp");
         TextBox sl = (TextBox)gridImportBillDt.Rows[gridImportBillDt.EditIndex].Cells[4].Controls[0];
         TextBox price = (TextBox)gridImportBillDt.Rows[gridImportBillDt.EditIndex].Cells[5].Controls[0];
-        int id= Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[1].Text);
-        int ImpId = Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[0].Text);           
-        
+        int id = Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[1].Text);
+        int ImpId = Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[0].Text);
+
         ImportBillDt iDt = new ImportBillDt(id, ImpId, maSp.Text, isPhoneEdit, sl.Text, price.Text);
         iDt.Update();
         gridImportBillDt.EditIndex = -1;
-        FillDataDt();        
+
+        FillDataDt();
     }
     protected void gridImportBillDt_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
     {
@@ -131,14 +133,7 @@ public partial class Admin_ImportBill : System.Web.UI.Page
     protected void dNguoiNhap_SelectedIndexChanged(object sender, EventArgs e)
     {
         
-    }
-    //protected void btnAddHD_Click(object sender, EventArgs e)
-    //{
-    //    ImportBill imp = new ImportBill(0, dNguoiNhap.SelectedValue.ToString(), getCurrentTime());
-    //    imp.Insert();
-    //    lbThongbaoHD.Text = "<p class=info>* Thêm thành công Hóa đơn.</p>";              
-    //    FillData();
-    //}   
+    }      
     private string getCurrentTime()
     {
         return DateTime.Now.ToShortDateString();       
@@ -210,7 +205,7 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         ViewState["dtAddBillDt"] = dtAddBillDt;
         FillDataViewstate();
     }
-    private string isPhoneEdit = "True";    
+    private string isPhoneEdit;    
     protected void btnChonDtTemp_Click(object sender, EventArgs e)
     {
         isPhoneEdit = "True";        
@@ -227,4 +222,18 @@ public partial class Admin_ImportBill : System.Web.UI.Page
     {
 
     }
+   
+    //protected void gridImportBillDt_RowCommand(object sender, GridViewCommandEventArgs e)
+    //{
+    //    String buttonName = e.CommandName;
+        
+    //    if (buttonName == "Telephone")
+    //    {
+    //        isPhoneEdit = "True";
+    //    }
+    //    else if (buttonName == "PartTelephone")
+    //    {
+    //        isPhoneEdit = "False";
+    //    }
+    //}
 }

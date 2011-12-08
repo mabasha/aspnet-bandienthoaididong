@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<head runat="server">
+<head>
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
     <style type="text/css">
         .style4
@@ -62,6 +62,7 @@
             height: 81px;
         }
         </style>
+    <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
 </head>
     <div class="header" align="center" 
         style="font-size: large; height: 62px; width: 1000px;">
@@ -195,7 +196,8 @@
                                     onrowediting="gridImportBillDt_RowEditing" 
                                     onrowdatabound="gridImportBillDt_RowDataBound1" 
                                     onrowdeleting="gridImportBillDt_RowDeleting" 
-                                    onrowupdating="gridImportBillDt_RowUpdating"                         >
+                                    onrowupdating="gridImportBillDt_RowUpdating"                                                              
+                                    >
                         <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                         <Columns>
                             <asp:BoundField DataField="ImportBillID" HeaderText="Mã HĐ" ReadOnly="True" />

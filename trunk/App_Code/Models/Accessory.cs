@@ -130,4 +130,9 @@ public class Accessory
         return AccessData.GetTable(query);
     }
 
+    public string GetNameFromID(int id)
+    {
+        String query = String.Format("select Name from Accessory where ID = N'{0}'", id);
+        return Convert.ToString(AccessData.ExecuteScalar(query));
+    }
 }
