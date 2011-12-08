@@ -1,11 +1,17 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin/Admin.master" CodeFile="AccountChooser.aspx.cs" Inherits="Admin_AccountChooser" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AccountChooser.aspx.cs" Inherits="Admin_AccountChooser" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
 
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
 
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
     <div>
     <div class=header>Chọn tên</div>
     <div class=list>Phân quyền :
@@ -51,4 +57,6 @@
         <asp:HiddenField ID="hChoosed" runat="server" Value="test" />
         </div>
     </div>
-</asp:Content>
+    </form>
+</body>
+</html>

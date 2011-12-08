@@ -1,7 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin/Admin.master" CodeFile="PhoneChooser.aspx.cs" Inherits="Admin_PhoneChooser" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PhoneChooser.aspx.cs" Inherits="Admin_PhoneChooser" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
 
@@ -9,7 +10,8 @@
 
     <title></title>
 </head>
-
+<body>
+    <form id="form1" runat="server">
     <div>
     <div class="header">Chọn điện thoại</div>
         <div class="list">Tên:
@@ -40,4 +42,6 @@
             <asp:Button ID="bClose" runat="server" CssClass="right-float" Text="Đóng" />
         </div>
     </div>
-</asp:Content>
+    </form>
+</body>
+</html>
