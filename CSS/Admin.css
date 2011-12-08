@@ -101,3 +101,12 @@ td.right-add
 {
 	float:right;
 }
+
+.style
+{
+    background-color:Orange;
+    width:930px;
+    -moz-border-radius:20px;
+    -webkit-border-radius:20px;
+    font-size:x-large;
+}

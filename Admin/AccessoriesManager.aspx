@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="AdminSite/Template/style.css" />
 
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
 
@@ -27,13 +28,15 @@
 
     </script>
     <title>Quản lý phụ kiện</title>
-
-            <table class="style1" border=2 width=100px>
+            <table border=0 width=100px>
                 <tr>
                     <td colspan=2 align=center>
-                    <div class=""> Quản lý phụ kiện</div>
+                    <div class="style">QUẢN LÝ PHỤ KIỆN</div>              
                     </td>
                 </tr>
+            </table>
+            <br />
+            <table border=0 width=100px>               
                 <tr>
                     <td class="left-add">Tên</td>
                     <td>
@@ -119,11 +122,11 @@
                     </asp:TemplateField>
                     <asp:BoundField DataField="Description" HeaderText="Mô tả" 
                         SortExpression="Description" />
-                    <asp:CommandField ButtonType="Button" SelectText="Chọn" 
-                        ShowSelectButton="True" />
-                    <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/delete.png" 
+                    <asp:CommandField ButtonType="Image" SelectText="Chọn" 
+                        ShowSelectButton="True" SelectImageUrl="AdminSite/Template/images/valid.png"/>
+                    <asp:CommandField ButtonType="Image" DeleteImageUrl="AdminSite/Template/images/error.png" 
                         ShowDeleteButton="True" />
-                    <asp:CommandField CancelText="Hủy" EditText="Sửa" ShowEditButton="True" 
+                    <asp:CommandField CancelText="Hủy" EditText="Sửa" ShowEditButton="True"
                         UpdateText="Cập nhật" />
                 </Columns>
                 <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

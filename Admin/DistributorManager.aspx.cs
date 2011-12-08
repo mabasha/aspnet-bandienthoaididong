@@ -38,14 +38,14 @@ public partial class Admin_DistributorManager : System.Web.UI.Page
         bool isSuccess = dis.Insert();
         if (isSuccess == true)
         {
-            lThongBao.Text = "<p class=info>* Thêm thành công.</p>";
+            lThongBao.Text = "<div class=valid_box>THÊM THÀNH CÔNG </div>";
             tName.Text = "";
             tAddress.Text = "";
             FillData();
         }
         else
         {
-            lThongBao.Text = "<p class=error>* Tên đã tồn tại.</p>";
+            lThongBao.Text = "<div class=error_box>TÊN ĐÃ TỒN TẠI </div>";
         }
     }
     protected void gShow_RowDataBound(object sender, GridViewRowEventArgs e)

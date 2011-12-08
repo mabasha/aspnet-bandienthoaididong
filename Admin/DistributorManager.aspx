@@ -4,6 +4,7 @@
 
 <head runat="server">
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="AdminSite/Template/style.css" />
 
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -26,7 +27,7 @@
 </head>
 
         <div class="add">
-            <table class="style1" border=2 width=870px>
+            <table class="style1" border= width=870px>
                 <tr>
                     <td colspan=2 align=center><font color=maroon size=+4 >QUẢN LÝ NHÀ PHÂN PHỐI</font></td>
                 </tr>
@@ -51,7 +52,8 @@
             </tr>
             <tr>
                 <td colspan=2>
-            <asp:Label ID="lThongBao" runat="server" Text="tThongBao"></asp:Label>
+                    <br />
+                    <asp:Label ID="lThongBao"  runat="server" Text="tThongBao"></asp:Label>
                 </td>
             </tr>
         </div>
