@@ -199,7 +199,8 @@
                         onrowdeleting="grid_Users_RowDeleting" 
                         onrowcancelingedit="grid_Users_RowCancelingEdit" AllowPaging="True" 
                         onpageindexchanging="grid_Users_PageIndexChanging" PageSize="15" 
-                        AllowSorting="True" onsorting="grid_Users_Sorting">
+                        AllowSorting="True" onsorting="grid_Users_Sorting" 
+                        DataSourceID="SqlDataSource_User">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
                             <asp:BoundField DataField="Username" HeaderText="Username" ReadOnly="True" 
