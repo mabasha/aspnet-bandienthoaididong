@@ -109,7 +109,7 @@ background-color:White;
 .left_footer_login a{color:#FFFFFF;text-decoration:none;}
 .right_footer_login{float:right;padding:15px 10px 0 0;}
 /*---------------- menu----------------------*/
-.menu {font-size:11px;padding:0px 10px 0 10px; float:left; width:1213px;
+.menu {font-size:11px;padding:0px 0px 0 0px; float:left; width:1200px; background-color:Orange;  
 }
 
 /* remove all the bullets, borders and padding from the default list styling */
@@ -128,7 +128,7 @@ background-color:White;
 
 /* style the links for the top level */
 .menu a, .menu a:visited {display:block;float:left;height:100%;font-size:11px;text-decoration:none;color:#fff;padding:0 21px 0 17px;}
-.menu a.current{background:url(images/menu_bg.gif) repeat-x center;}
+.menu a.current{background:url(images/menu_bg.gif) repeat-x center;  }
 /* style the sub level links */
 .menu ul ul a, .menu ul ul a:visited {display:block;background:#57c0e8; border-bottom:1px #81dafc solid; color:#fff;width:12em;height:100%;line-height:1em;padding:1em 1em;}
 .menu ul table ul a, .menu ul table ul a:visited  {width:14em; width:12em;}
@@ -136,7 +136,9 @@ background-color:White;
 
 /* style the table so that it takes no part in the layout - required for IE to work */
 .menu table {position:absolute; left:0; top:0; font-size:1em; z-index:-1;}
-.menu ul ul table {left:-1px;}
+.menu ul ul table {left:-1px;
+    width: 16px;
+}
 .menu ul ul table ul.left {margin-left:2px;}
 
 .menu li:hover {position:relative;}
@@ -217,6 +219,8 @@ width:195px;
 }
 .sidebarmenu a.menuitem{background:url(images/sidebar_menu_top.gif) no-repeat center top;
 color: #fff;display: block;position: relative;width:185px;height:31px;margin:0 0 5px 0;line-height:31px;padding:0px 0 0 10px;text-decoration: none;
+    top: 0px;
+    left: 0px;
 }
 .sidebarmenu a.menuitem_green{background:url(images/green_bt.gif) no-repeat center top;
 color: #fff;display: block;position: relative;width:185px;height:31px;margin:0 0 5px 0;line-height:31px;padding:0px 0 0 10px;text-decoration: none;
@@ -300,6 +304,7 @@ border-collapse: collapse;
 width:26px;
 background: #60c8f2 url('images/left.jpg') left top no-repeat ;
 
+
 }
 #rounded-corner thead th.rounded-q4
 {
@@ -313,13 +318,17 @@ font-size: 13px;
 color: #039;
 background: #60c8f2;
 }
-#rounded-corner td
+#rounded-corner
 {
 font-size:large;
 padding: 8px;
 background: #ecf8fd;
 border-top: 1px solid #fff;
 color: #669;
+-moz-border-radius:20px;
+    -webkit-border-radius:20px;
+    width:930px;
+
 }
 #rounded-corner tfoot td.rounded-foot-left
 {

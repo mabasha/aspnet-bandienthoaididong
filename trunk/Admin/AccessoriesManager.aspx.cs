@@ -151,4 +151,8 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
     {
 
     }
+    protected void gShow_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }
