@@ -28,7 +28,7 @@
 
     </script>
     <title>Quản lý phụ kiện</title>
-            <table border=0 width=100px>
+            <table>
                 <tr>
                     <td colspan=2 align=center>
                     <div class="style">QUẢN LÝ PHỤ KIỆN</div>              
@@ -36,7 +36,7 @@
                 </tr>
             </table>
             <br />
-            <table border=0 width=100px>               
+            <table>               
                 <tr>
                     <td class="left-add">Tên</td>
                     <td>
@@ -78,8 +78,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan=2>
-                    <asp:Button ID="bAdd" runat="server" Text="Thêm" onclick="bAdd_Click" />
+                    <td colspan=2 align=center>
+                    <asp:Button ID="bAdd" runat="server" Text="Thêm" onclick="bAdd_Click" 
+                            BackColor="#99FF99" Height="36px" Width="105px" />
+                    
                     </td>
                 </tr>
                 <tr>

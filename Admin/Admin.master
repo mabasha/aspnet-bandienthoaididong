@@ -39,11 +39,6 @@
     $(document).ready(function () {
         $('.ask').jConfirmAction();
 
-        $('#menu1 li').click(function(){
-            $('#menu1 li.current').removeClass('current').addClass('hover');
-            $(this).addClass('current').removeClass('hover'); 
-                                        });
-
     });
 
 </script>
@@ -59,19 +54,27 @@
 	<div class="header">
     <div class="logo"><a href="#"><img src="AdminSite/Template/images/logo.gif" alt="" title="" border="0" /></a></div>
     
-    <div class="right_header">Welcome Admin, <a href="#">Visit site</a> | <a href="#" class="messages">(3) Messages</a> | <a href="#" class="logout">Logout</a></div>
+    <div class="right_header">Welcome Admin, <a href="#">Visit site</a> | <a href="#" class="messages">Messages</a> | <a href="#" class="logout">Logout</a></div>
     <div id="clock_a"></div>
     </div>
     
     <div class="main_content">
           <div>
                     <div class="menu">
-                    <ul id="menu1">
-                    <li><a class="current" href="http://localhost:1981/ASP.NET/Admin/DistributorManager.aspx">Admin Home</a></li>
-                    <li><a  class="hover" href="http://localhost:1981/ASP.NET/Admin/PhoneManager.aspx">Điện Thoại</a></li>
-                    <li><a class="hover" href="http://localhost:1981/ASP.NET/Admin/AccessoriesManager.aspx">Phụ Kiện</a></li>
-                    <li><a class="hover" href="http://localhost:1981/ASP.NET/Admin/DistributorManager.aspx">Nhà Phân Phối</a></li>
-                    <li><a class="hover" href="#">Users</a></li>
+                    <ul>
+                    <li><a href="http://localhost:1981/ASP.NET/Admin/DistributorManager.aspx">Admin Home</a></li>
+                    <li><a href="http://localhost:1981/ASP.NET/Admin/PhoneManager.aspx">Điện Thoại</a></li>
+                    <li><a href="http://localhost:1981/ASP.NET/Admin/AccessoriesManager.aspx">Phụ Kiện</a>
+                        <ul>
+                            <li><a href="http://localhost:1981/ASP.NET/Admin/AccessoryChooser.aspx">Chọn Phụ Kiện</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="http://localhost:1981/ASP.NET/Admin/DistributorManager.aspx">Nhà Phân Phối</a></li>
+                    <li><a href="http://localhost:1981/ASP.NET/Admin/AcountManager.aspx">Users</a>
+                        <ul>
+                            <li><a href="http://localhost:1981/ASP.NET/Admin/AccountChooser.aspx">Chọn Users</a></li>
+                        </ul>
+                    </li>
                     </ul>
            </div>
                     
@@ -193,7 +196,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
         
     </tbody>
 </table>
-
+    <!--
 	 <a href="#" class="bt_green"><span class="bt_green_lft"></span><strong>Add new item</strong><span class="bt_green_r"></span></a>
      <a href="#" class="bt_blue"><span class="bt_blue_lft"></span><strong>View all items from category</strong><span class="bt_blue_r"></span></a>
      <a href="#" class="bt_red"><span class="bt_red_lft"></span><strong>Delete items</strong><span class="bt_red_r"></span></a> 
@@ -218,7 +221,6 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
      
      </div><!-- end of right content-->
             
-                    
   </div>   <!--end of center content -->               
                     
                     

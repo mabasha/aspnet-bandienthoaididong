@@ -1,8 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AccountChooser.aspx.cs" Inherits="Admin_AccountChooser" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Admin/Admin.master" CodeFile="AccountChooser.aspx.cs" Inherits="Admin_AccountChooser" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <head runat="server">
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
 
@@ -10,11 +8,15 @@
 
     <title></title>
 </head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-    <div class=header>Chọn tên</div>
-    <div class=list>Phân quyền :
+    <table>
+    <tr>
+    <td align=center><div class="style">ACCOUNT CHOOSER</div>   </td>
+    </tr>
+    </table>
+    <br />
+    <table width=100%>
+    <tr>
+        <td>Phân quyền :
         <asp:DropDownList ID="dDecentralize" runat="server">
             <asp:ListItem>Tất cả</asp:ListItem>
             <asp:ListItem>Administrator</asp:ListItem>
@@ -27,8 +29,10 @@
         <asp:TextBox ID="tKeyword" runat="server"></asp:TextBox>
         <asp:Button ID="bRefresh" runat="server" onclick="bRefresh_Click" 
             Text="Tìm kiếm" />
-        <br />
-        <br />
+            </td>
+            </tr>
+        <tr>
+            <td>
         <asp:GridView ID="gShow" runat="server" AllowPaging="True" AllowSorting="True" 
             AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" 
             GridLines="None" onpageindexchanging="gShow_PageIndexChanging" 
@@ -55,8 +59,7 @@
         <br />
         <asp:Button ID="bClose" runat="server" CssClass="right-float" Text="Đóng" />
         <asp:HiddenField ID="hChoosed" runat="server" Value="test" />
-        </div>
-    </div>
-    </form>
-</body>
-</html>
+            </td>
+        </tr>
+        </table>
+</asp:Content>
