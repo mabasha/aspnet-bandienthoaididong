@@ -280,7 +280,7 @@ public class Phone
         bool isExit = IsExistName();
         DataTable dt = AccessData.GetTable("SELECT * FROM Phone WHERE id=" + id);
         //name = dt.Rows[0]["Name"].ToString();
-        oldName = dt.Rows[0]["Name"].ToString();
+        //oldName = dt.Rows[0]["Name"].ToString();
         if (String.Compare(oldName, name) != 0 && isExit == true)
         {
             return false;
