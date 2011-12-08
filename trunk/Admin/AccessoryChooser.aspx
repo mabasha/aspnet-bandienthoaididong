@@ -1,23 +1,30 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AccessoryChooser.aspx.cs" Inherits="Admin_AccessoryChooser" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin/Admin.master" CodeFile="AccessoryChooser.aspx.cs" Inherits="Admin_AccessoryChooser" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
     <title></title>
 </head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-        <div class="header">Chọn phụ kiện</div>
-        <div class="list">Tên:
-            <asp:TextBox ID="tKeyword" runat="server"></asp:TextBox>
+        <table>
+        <tr>
+        <td align=center><div class="style">CHỌN PHỤ KIỆN</div>  </td>
+        </tr>
+        </table>
+        <br />
+        <table width=100%>
+        <tr>
+        <td>Tên:
+        <asp:TextBox ID="tKeyword" runat="server"></asp:TextBox>
             <asp:Button ID="bSearch" runat="server" onclick="bSearch_Click" 
                 Text="Tìm tên" />
             <br />
+        </td>
+        </tr>
+        <tr>
+            <td colspan=2>
             <asp:GridView ID="gShow" runat="server" AllowPaging="True" AllowSorting="True" 
                 AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" 
                 GridLines="None" onpageindexchanging="gShow_PageIndexChanging" 
@@ -39,8 +46,7 @@
             </asp:GridView>
             <asp:HiddenField ID="hChoosed" runat="server" />
             <asp:Button ID="bClose" runat="server" CssClass="right-float" Text="Đóng" />
-        </div>
-    </div>
-    </form>
-</body>
-</html>
+            </td>
+        </tr>
+        </table>
+</asp:Content>

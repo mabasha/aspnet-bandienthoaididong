@@ -3,7 +3,9 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
 <head runat=server>
+    <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
     <script src="../Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
     <script src="../Scripts/jquery.validate.js" type="text/javascript"></script>
@@ -66,26 +68,16 @@
     </style>
     
 </head>
-
-
-    <div>
     
-        <table class="style1">
+        <table width=100%>
             <tr>
-                <td style="text-align: center">
-                    <h1>
-                        <b>DANH SÁCH USERS</b></h1>
-                    <div class="style2">
-                        &nbsp;
-&nbsp;<%--<div id="datePicker">
-                            <asp:Calendar id="calEventDate" OnSelectionChanged="calEventDate_SelectionChanged" Runat="server" />
-                        </div>--%>&nbsp;&nbsp; &nbsp;&nbsp;
-                        <br />
-                        &nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <br />
-                        
-                            <table class="style2" width="650px" >
+                <td align=center>
+                    <div class="style">DANH SÁCH USERS</div>      
+                </td>
+            </tr>
+        </table>
+         <br />
+         <table width=100% >
                                 <tr>
                                     <td class="style5">
                                         <asp:Label ID="Label1" runat="server" Text="Username :" ></asp:Label>
@@ -170,25 +162,20 @@
                             <asp:Button ID="btn_Add" runat="server" Text="Add" onclick="btn_Add_Click" />
                                     </td>
                                 </tr>
-                            </table>
-                       
-
-                        <br />
-                        <br />
-                        <center>
+                            <tr>
+                                <td>
                             <asp:Label ID="lb_Note" runat="server" ForeColor="#33CC33" Font-Bold="True" 
                                 Font-Size="15pt"></asp:Label>
-                            <br />
-                        </center>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: center">
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td>
+                                </td>
+                             </tr>
+            </table>
+            <table>
+                        <tr>
+                            <td style="text-align: center">
+                                &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
     
                     <asp:GridView ID="grid_Users" runat="server" AutoGenerateColumns="False" 
                         CellPadding="4" DataKeyNames="Username" 
@@ -200,7 +187,7 @@
                         onrowcancelingedit="grid_Users_RowCancelingEdit" AllowPaging="True" 
                         onpageindexchanging="grid_Users_PageIndexChanging" PageSize="15" 
                         AllowSorting="True" onsorting="grid_Users_Sorting" 
-                        DataSourceID="SqlDataSource_User">
+                        DataSourceID="">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
                             <asp:BoundField DataField="Username" HeaderText="Username" ReadOnly="True" 
@@ -271,7 +258,5 @@
                 </td>
             </tr>
         </table>
-    
-    </div>
-    </center>
+  
     </asp:Content>
