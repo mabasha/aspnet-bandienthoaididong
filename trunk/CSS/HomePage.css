@@ -21,4 +21,31 @@
 #search
 {
 	clear:both;
+	background-image:url(../Images/Apps/Front/bg-search.png);
+	padding:3px 1px 3px 1px;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+.border-top
+{
+	background-image:url(../Images/Apps/Front/bd-top.png);
+	height: 6px;
+	margin-top:10px;
+	background-color: white;
+}
+
+.border-left
+{
+	background-image:url(../Images/Apps/Front/bd-left.png);
+	background-position: left top;
+	background-repeat:repeat-y;
+	text-align:left;
+}
+
+.border-right
+{
+	background-image:url(../Images/Apps/Front/bd-right.png);
+	background-position: right top;
+	background-repeat:repeat-y;
 }

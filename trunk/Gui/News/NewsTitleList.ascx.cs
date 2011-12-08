@@ -32,9 +32,12 @@ public partial class Gui_News_NewsTitleList : System.Web.UI.UserControl
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        DataTable dt = News.GetTitles(number, orderby, isAsc);
+        if (!IsPostBack)
+        {
+            DataTable dt = News.GetTitles(number, orderby, isAsc);
 
-        DataList1.DataSource = dt;
-        DataList1.DataBind();
+            DataList1.DataSource = dt;
+            DataList1.DataBind();
+        }
     }
 }
