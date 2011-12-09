@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data; 
+using System.Data;
 
-public partial class Gui_HomePage : System.Web.UI.Page
+public partial class Gui_Products_AccessoryHome : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -16,8 +16,8 @@ public partial class Gui_HomePage : System.Web.UI.Page
             dt.DefaultView.Sort = "Name";
 
             dProducer.DataSource = dt;
-            dProducer.DataTextField="Name";
-            dProducer.DataValueField="Name";
+            dProducer.DataTextField = "Name";
+            dProducer.DataValueField = "Name";
             dProducer.DataBind();
             dProducer.Items.Add("Tất cả các hãng");
             dProducer.SelectedIndex = dProducer.Items.Count - 1;
@@ -38,25 +38,25 @@ public partial class Gui_HomePage : System.Web.UI.Page
 
     protected void bSearch_Click(object sender, ImageClickEventArgs e)
     {
-        string url = "~/Gui/Products/ShowProducts.aspx";
+        string url = "~/Gui/Products/ShowAccessory.aspx";
         string param = "";
-        
+
         string keyword = tKeyword.Text;
-        if(keyword != "")
-            param = AddParam(param, "Keyword="+keyword);
-        
+        if (keyword != "")
+            param = AddParam(param, "Keyword=" + keyword);
+
 
         string producerName = dProducer.SelectedValue.ToString();
-        if(producerName != "Tất cả các hãng")
-            param = AddParam(param, "ProducerName="+producerName);
-        
-        if(dPriceFrom.SelectedIndex!=0)
+        if (producerName != "Tất cả các hãng")
+            param = AddParam(param, "ProducerName=" + producerName);
+
+        if (dPriceFrom.SelectedIndex != 0)
         {
             string sPriceFrom = dPriceFrom.SelectedValue.ToString();
             sPriceFrom = sPriceFrom.Replace(".", "");
             param = AddParam(param, "PriceFrom=" + sPriceFrom);
         }
-        if(dPriceTo.SelectedIndex!=0)
+        if (dPriceTo.SelectedIndex != 0)
         {
             string sPriceTo = dPriceTo.SelectedValue.ToString();
             sPriceTo = sPriceTo.Replace(".", "");
@@ -65,44 +65,41 @@ public partial class Gui_HomePage : System.Web.UI.Page
 
         if (param != "")
         {
-            url+="?"+param;
+            url += "?" + param;
         }
 
         Response.Redirect(url);
-        
+
     }
+
     protected void dNumberShow_SelectedIndexChanged(object sender, EventArgs e)
     {
-        spSuper.Number = spHigh.Number = spMedium.Number = spNormal.Number = Convert.ToInt32(dNumberShow.SelectedValue);
-        spSuper.FillData();
-        spHigh.FillData();
-        spMedium.FillData();
-        spNormal.FillData();
+        saHigh.Number = saNormal.Number = Convert.ToInt32(dNumberShow.SelectedValue);
+        saHigh.FillData();
+        saNormal.FillData();
     }
     protected void dOrderBy_SelectedIndexChanged(object sender, EventArgs e)
     {
         switch (dOrderBy.SelectedValue.ToString())
         {
             case "A->Z":
-                spSuper.OrderBy = spHigh.OrderBy = spMedium.OrderBy = spNormal.OrderBy = "Name";
-                spSuper.IsAsc = spHigh.IsAsc = spMedium.IsAsc = spNormal.IsAsc = true;
+                saHigh.OrderBy = saNormal.OrderBy = "Name";
+                saHigh.IsAsc = saNormal.IsAsc = true;
                 break;
             case "Z->A":
-                spSuper.OrderBy = spHigh.OrderBy = spMedium.OrderBy = spNormal.OrderBy = "Name";
-                spSuper.IsAsc = spHigh.IsAsc = spMedium.IsAsc = spNormal.IsAsc = false;
+                saHigh.OrderBy = saNormal.OrderBy = "Name";
+                saHigh.IsAsc = saNormal.IsAsc = false;
                 break;
             case "Giá tăng dần":
-                spSuper.OrderBy = spHigh.OrderBy = spMedium.OrderBy = spNormal.OrderBy = "Price";
-                spSuper.IsAsc = spHigh.IsAsc = spMedium.IsAsc = spNormal.IsAsc = true;
+                saHigh.OrderBy = saNormal.OrderBy = "Price";
+                saHigh.IsAsc = saNormal.IsAsc = true;
                 break;
             case "Giá giảm dần":
-                spSuper.OrderBy = spHigh.OrderBy = spMedium.OrderBy = spNormal.OrderBy = "Price";
-                spSuper.IsAsc = spHigh.IsAsc = spMedium.IsAsc = spNormal.IsAsc = false;
+                saHigh.OrderBy = saNormal.OrderBy = "Price";
+                saHigh.IsAsc = saNormal.IsAsc = false;
                 break;
         }
-        spSuper.FillData();
-        spHigh.FillData();
-        spMedium.FillData();
-        spNormal.FillData();
+        saHigh.FillData();
+        saNormal.FillData();
     }
 }

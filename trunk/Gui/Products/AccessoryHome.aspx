@@ -1,12 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Gui/Frame.master" AutoEventWireup="true" CodeFile="HomePage.aspx.cs" Inherits="Gui_HomePage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Gui/Frame.master" AutoEventWireup="true" CodeFile="AccessoryHome.aspx.cs" Inherits="Gui_Products_AccessoryHome" %>
 
-<%@ Register src="Products/ShowPhoneSmall.ascx" tagname="ShowPhoneSmall" tagprefix="uc1" %>
+<%@ Register src="ShowAccessorySmall.ascx" tagname="ShowAccessorySmall" tagprefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <link href="../CSS/HomePage.css" rel="stylesheet" type="text/css" />
+    <link href="../../CSS/HomePage.css" rel="stylesheet" type="text/css" />
 </asp:Content>
-
-
 <asp:Content ID="Content2" ContentPlaceHolderID="cMain" Runat="Server">
     <div id="products">
     
@@ -23,27 +21,21 @@
                 </asp:DropDownList>
                 <asp:DropDownList ID="dPriceFrom" runat="server">
                     <asp:ListItem>Giá từ ...</asp:ListItem>
-                    <asp:ListItem>300.000</asp:ListItem>
+                    <asp:ListItem>50.000</asp:ListItem>
+                    <asp:ListItem>200.000</asp:ListItem>
+                    <asp:ListItem>500.000</asp:ListItem>
                     <asp:ListItem>1.000.000</asp:ListItem>
                     <asp:ListItem>2.000.000</asp:ListItem>
-                    <asp:ListItem>3.000.000</asp:ListItem>
                     <asp:ListItem>5.000.000</asp:ListItem>
-                    <asp:ListItem>7.000.000</asp:ListItem>
-                    <asp:ListItem>10.000.000</asp:ListItem>
-                    <asp:ListItem>12.000.000</asp:ListItem>
-                    <asp:ListItem>15.000.000</asp:ListItem>
                 </asp:DropDownList>
                 <asp:DropDownList ID="dPriceTo" runat="server">
                     <asp:ListItem>Giá đến ...</asp:ListItem>
-                    <asp:ListItem>300.000</asp:ListItem>
+                    <asp:ListItem>50.000</asp:ListItem>
+                    <asp:ListItem>200.000</asp:ListItem>
+                    <asp:ListItem>500.000</asp:ListItem>
                     <asp:ListItem>1.000.000</asp:ListItem>
-                    <asp:ListItem>2.000.000</asp:ListItem>
-                    <asp:ListItem>3.000.000</asp:ListItem>
                     <asp:ListItem>5.000.000</asp:ListItem>
-                    <asp:ListItem>7.000.000</asp:ListItem>
-                    <asp:ListItem>10.000.000</asp:ListItem>
-                    <asp:ListItem>12.000.000</asp:ListItem>
-                    <asp:ListItem>15.000.000</asp:ListItem>
+                    <asp:ListItem>2.000.000</asp:ListItem>
                 </asp:DropDownList>
     &nbsp;<asp:ImageButton ID="bSearch" runat="server" 
                     ImageUrl="~/Images/Apps/Front/b-search.png" onclick="bSearch_Click" />
@@ -69,48 +61,24 @@
             </div>
             <div class="list-product">
                 <div class="list-title">
-                    <div class="list-title-left">Điện thoại siêu cấp</div>
+                    <div class="list-title-left">Phụ kiện cao cấp</div>
                     <div class="list-title-right"></div>
                 </div>
                 <div class="list-detail"> <center>
-                    <uc1:ShowPhoneSmall ID="spSuper" runat="server" 
-                    PriceFrom="10000000" Number="8"/></center>
+                    <uc1:ShowAccessorySmall ID="saHigh" runat="server" PriceFrom="2000000" />
+                    </center>
                 </div>
             </div>
             
             <div class="list-product">
                 <div class="list-title">
-                    <div class="list-title-left">Điện thoại cao cấp</div>
+                    <div class="list-title-left">Phụ kiện thông thường</div>
                     <div class="list-title-right"></div>
                 </div>
                 <div class="list-detail">
                     <center>
-                        <uc1:ShowPhoneSmall ID="spHigh" runat="server" 
-                        PriceFrom="5000000" PriceTo="10000000" Number="8"/></center>
-                </div>
-            </div>
-            
-            <div class="list-product">
-                <div class="list-title">
-                    <div class="list-title-left">Điện thoại trung cấp</div>
-                    <div class="list-title-right"></div>
-                </div>
-                <div class="list-detail">
-                    <center>
-                        <uc1:ShowPhoneSmall ID="spMedium" runat="server" PriceFrom="2000000" 
-                            PriceTo="5000000" Number="8"/></center>
-                </div>
-            </div>
-            
-            <div class="list-product">
-                <div class="list-title">
-                    <div class="list-title-left">Điện thoại phổ thông</div>
-                    <div class="list-title-right"></div>
-                </div>
-                <div class="list-detail">
-                    <center>
-                        <uc1:ShowPhoneSmall ID="spNormal" runat="server" PriceTo="2000000" 
-                            Number="8"/></center>
+                        <uc1:ShowAccessorySmall ID="saNormal" runat="server" PriceTo="2000000" />
+                        </center>
                 </div>
             </div>
        </div>   <!-- border left end-->
@@ -122,6 +90,5 @@
             <div class="border-bottom-right"></div>
        </div>
     </div>
-    
 </asp:Content>
 
