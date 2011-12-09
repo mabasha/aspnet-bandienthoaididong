@@ -71,5 +71,22 @@ public partial class Admin_WarrantyReceipt : System.Web.UI.Page
         string rDate = "";
         WarrantyReceipt war = new WarrantyReceipt(0, isphone, proID, imei, cdate, reason, cusName, tel, isRe, rDate, des);        
         war.Insert();
+        txtMasp.Text = "";
+        txtIMEI.Text = "";
+        txtTenKH.Text = "";
+        txtSoDt.Text = "";
+        txtReason.Text = "";
+        txtMota.Text = "";
+        btnAdd.Visible = false;
+        lbLapphieuBh.Text = "";
+        lbLoaiSp.Text = "";
+        lbTenSp.Text = "";
+        lbIMEI.Text = "";
+        lbNgay.Text = "";
+        lbTenKH.Text = "";
+        lbSoDt.Text = "";
+        lbLydo.Text = "";
+        lbMota.Text = "";
+        lbThongbao.Text = "<p class=info>* Lập phiếu bảo hành thành công!!.</p>";
     }
 }
