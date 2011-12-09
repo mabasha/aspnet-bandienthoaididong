@@ -27,7 +27,8 @@
                                     <td>
                                         <asp:Image ID="iArrow" runat="server" 
                                             ImageUrl="~/Images/Apps/Front/arrow.gif" />
-                                        <asp:HyperLink ID="hName" runat="server" Text='<%# Eval("Name") %>'></asp:HyperLink>
+                                        <asp:HyperLink ID="hName" runat="server" Text='<%# Eval("Name") %>' 
+                                            NavigateUrl='<%# "~/Gui/Products/ShowProducts.aspx?ProducerName="+Eval("Name") %>'></asp:HyperLink>
                                     </td>
                                 </tr>
                             </table>

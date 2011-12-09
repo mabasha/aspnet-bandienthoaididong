@@ -23,24 +23,27 @@ public partial class Gui_ShowProducts : System.Web.UI.Page
     AccessData ac = new AccessData();
     private void FillDataInGrid()
     {
-        SqlConnection conn = new SqlConnection(AccessData.ConnectString);
-        SqlDataAdapter sqldata = new SqlDataAdapter("SELECT Phone.*, Producer.Name FROM Phone INNER JOIN Producer cd ON Phone.ProducerID = cd.ID", conn);
-        DataTable dt = new DataTable();
-        try
-        {
-            conn.Open();
-            sqldata.Fill(dt);
-            grid_Phone.DataSource = dt;
-            grid_Phone.DataBind();
-        }
-        catch (Exception ex)
-        {
-            Response.Write("<script>alert(" + ex.Message + ")</script>");
-        }
-        finally
-        {
-            conn.Close();
-        }
+        string keyword="";
+        string orderBy="Price";
+        string producerName="";
+        double priceFrom=0, priceTo = 100000000;
+        bool isAsc = false;
+        
+        if(Request.QueryString["keyword"]!=null)
+            keyword = Request.QueryString["keyword"];
+        if(Request.QueryString["orderby"]!=null)
+            orderBy = Request.QueryString["orderby"];
+        if(Request.QueryString["ProducerName"]!=null)
+            producerName = Request.QueryString["ProducerName"];
+        if(Request.QueryString["priceFrom"]!=null)
+            priceFrom = Convert.ToDouble(Request.QueryString["priceFrom"]);
+        if(Request.QueryString["priceTo"]!=null)
+            priceTo = Convert.ToDouble(Request.QueryString["priceTo"]);
+        if (Request.QueryString["IsAsc"] != null)
+            isAsc = Convert.ToBoolean(Request.QueryString["IsAsc"]);
+
+        grid_Phone.DataSource = Phone.GetAll(keyword, priceFrom, priceTo, orderBy, producerName);
+        grid_Phone.DataBind();
     }
     protected void grid_Phone_RowCommand(object sender, GridViewCommandEventArgs e)
     {

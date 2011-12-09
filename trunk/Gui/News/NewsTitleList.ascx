@@ -15,7 +15,7 @@
                 <td>
                     <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/Apps/Front/dot.jpg" />
                     &nbsp;<asp:HyperLink ID="HyperLink1" runat="server" 
-                        NavigateUrl='<%# "News/NewsDetail.aspx?id="+Eval("ID") %>' 
+                        NavigateUrl='<%# "~/Gui/News/NewsDetail.aspx?id="+Eval("ID") %>' 
                         Text='<%# Eval("Title") %>'></asp:HyperLink>
                 </td>
             </tr>
