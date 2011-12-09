@@ -10,7 +10,7 @@
         .style1
         {
             width: 100%;
-            height: 409px;
+            height: 392px;
         }
         .style2
         {
@@ -98,6 +98,11 @@
                 <td align="center" class="style2" colspan="2">
                     <asp:Button ID="btnLapphieu" runat="server" Height="38px" Text="Lập phiếu" 
                         Width="101px" onclick="btnLapphieu_Click" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center" class="style2" colspan="2">
+                    <asp:Label ID="lbThongbao" runat="server"></asp:Label>
                 </td>
             </tr>
         </table>
