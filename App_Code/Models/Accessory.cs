@@ -135,4 +135,21 @@ public class Accessory
         String query = String.Format("select Name from Accessory where ID = N'{0}'", id);
         return Convert.ToString(AccessData.ExecuteScalar(query));
     }
+
+    public static DataTable GetTop(int number, double priceFrom, double priceTo, string orderBy, bool isAsc)
+    {
+        String query = String.Format("select top {0} * from Accessory where Price > {1} and Price < {2} order by {3} ", number, priceFrom, priceTo, orderBy);
+        if (isAsc == false)
+        {
+            query += "desc";
+        }
+        return AccessData.GetTable(query);
+    }
+
+    public static DataTable GetAllByID(int id)
+    {
+        String query = String.Format("select Accessory.*, Producer.Name as ProducerName from Accessory, Producer "+
+            "where Accessory.ProducerID = Producer.ID and Accessory.ID = N'{0}'", id);
+        return AccessData.GetTable(query);
+    }
 }

@@ -9,6 +9,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="../CSS/FrontMasterPage.css" rel="stylesheet" type="text/css" />
+    
     <title></title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -17,7 +18,24 @@
     <form id="form1" runat="server">
     <div id="wrapper">
         <div id="header"></div>
-        <div id="menu"></div>
+        <div id="menu">
+            <ul id="topnav">
+                <li><a href="<% =ResolveClientUrl("~") %>Gui/HomePage.aspx">Điện thoại</a></li>
+                <li><a href="<% =ResolveClientUrl("~") %>Gui/Products/AccessoryHome.aspx">Phụ kiện</a></li>
+                <li>
+                    <a href="<% =ResolveClientUrl("~") %>Gui/News/ShowNews.aspx">Tin tức</a>
+                    <span>
+                        <a href="<% =ResolveClientUrl("~") %>Gui/News/ShowNews.aspx?Category=Sản phẩm">Sản phẩm</a>
+                        <a href="<% =ResolveClientUrl("~") %>Gui/News/ShowNews.aspx?Category=Công nghệ">Công nghệ</a>
+                        <a href="<% =ResolveClientUrl("~") %>Gui/News/ShowNews.aspx?Category=Nhân vật">Nhân vật</a>
+                        <a href="<% =ResolveClientUrl("~") %>Gui/News/ShowNews.aspx?Category=Thủ thuật">Thủ thuật</a>
+                    </span>
+                </li>
+                <li><a href="<% =ResolveClientUrl("~") %>Gui/News/ShowNews.aspx?Category=Khuyến mại">Khuyến mại</a></li>
+                <li><a href="<% =ResolveClientUrl("~") %>Gui/News/ShowNews.aspx?Category=Khuyến mại">Giới thiệu</a></li>
+            </ul>
+            <div style="clear:both"></div>
+        </div>
         <div id="main">
             <div id="content">
                 <asp:ContentPlaceHolder ID="cMain" runat="server">

@@ -143,3 +143,13 @@
 	background-repeat:no-repeat;
 	height: 6px;
 }
+
+.filter
+{
+	text-align: right; 
+	margin-top: 10px; 
+	background-color: #FFFFCC; 
+	margin-left: 3px; 
+	padding-right: 5px;
+	margin-right:3px;
+}

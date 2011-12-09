@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Gui_Products_ShowPhoneSmall : System.Web.UI.UserControl
+public partial class Gui_Products_ShowAccessorySmall : System.Web.UI.UserControl
 {
     public double PriceFrom
     {
@@ -28,7 +28,7 @@ public partial class Gui_Products_ShowPhoneSmall : System.Web.UI.UserControl
     public string OrderBy
     {
         get { return orderby; }
-        set { orderby = value;}
+        set { orderby = value; }
     }
 
     public bool IsAsc
@@ -37,10 +37,10 @@ public partial class Gui_Products_ShowPhoneSmall : System.Web.UI.UserControl
         set { isAsc = value; }
     }
 
-    double priceFrom=0;
-    double priceTo=1000000000;
-    int number = 10;
-    string orderby="Price";
+    double priceFrom = 0;
+    double priceTo = 1000000000;
+    int number = 8;
+    string orderby = "Price";
     bool isAsc = false;
 
     protected void Page_Load(object sender, EventArgs e)
@@ -53,7 +53,7 @@ public partial class Gui_Products_ShowPhoneSmall : System.Web.UI.UserControl
 
     public void FillData()
     {
-        gShow.DataSource = Phone.GetTop(number, priceFrom, priceTo, orderby, isAsc);
+        gShow.DataSource = Accessory.GetTop(number, priceFrom, priceTo, orderby, isAsc);
         gShow.DataBind();
     }
 }
