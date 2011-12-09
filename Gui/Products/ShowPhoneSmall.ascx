@@ -6,11 +6,11 @@
                 ImageUrl='<%# "~/Images/Phone/"+Eval("Image") %>' />
             <br />
             <asp:HyperLink ID="hName" runat="server" 
-                NavigateUrl='<%# "~/Gui/PhoneDetail.aspx?id="+Eval("ID") %>' 
+                NavigateUrl='<%# "~/Gui/Products/PhoneDetail.aspx?id="+Eval("ID") %>' 
                 Text='<%# Eval("Name") %>'></asp:HyperLink>
             <br />
             <asp:Label ID="lPrice" runat="server" ForeColor="#FF3300" 
-                Text='<%# Eval("Price")+"đồng" %>'></asp:Label>
+                Text='<%# Eval("Price", "{0:#,##0}")+" đồng" %>'></asp:Label>
         </div>
     </ItemTemplate>
 </asp:DataList>

@@ -352,13 +352,21 @@ public class Phone
         object re = AccessData.ExecuteScalar(query);
         return Convert.ToString(re);
     }
-    public static DataTable GetAll(int number, double priceFrom, double priceTo, string orderBy, bool isAsc)
+    public static DataTable GetTop(int number, double priceFrom, double priceTo, string orderBy, bool isAsc)
     {
         String query = String.Format("select top {0} * from Phone where Price > {1} and Price < {2} order by {3} ", number, priceFrom, priceTo, orderBy);
         if (isAsc == false)
         {
             query += "desc";
         }
+        return AccessData.GetTable(query);
+    }
+    public static DataTable GetAll(string keyword, double priceFrom, double priceTo, string orderBy, string producerName)
+    {
+        String query = String.Format("select Phone.*, Producer.Name as ProducerName from Phone, Producer "+
+            "where (Phone.ProducerID = Producer.ID) and (Price between {0} and {1}) "+
+            "and Producer.Name like N'%{2}%' and Phone.Name like N'%{3}%' "+
+            "order by {4}", priceFrom, priceTo, producerName, keyword, orderBy);
         return AccessData.GetTable(query);
     }
     

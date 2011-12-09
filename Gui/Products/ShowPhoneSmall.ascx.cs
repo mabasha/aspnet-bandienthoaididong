@@ -47,7 +47,7 @@ public partial class Gui_Products_ShowPhoneSmall : System.Web.UI.UserControl
     {
         if (!IsPostBack)
         {
-            gShow.DataSource = Phone.GetAll(number, priceFrom, priceTo, orderby, isAsc);
+            gShow.DataSource = Phone.GetTop(number, priceFrom, priceTo, orderby, isAsc);
             gShow.DataBind();
         }
     }

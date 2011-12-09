@@ -52,8 +52,7 @@
                 <td>
     <div align="center">
     
-        <asp:GridView ID="grid_Phone" runat="server" AutoGenerateColumns="False" 
-            DataSourceID="SqlDataSource_PhoneView" EnableModelValidation="True" 
+        <asp:GridView ID="grid_Phone" runat="server" AutoGenerateColumns="False" EnableModelValidation="True" 
             AllowPaging="True" AllowSorting="True" style="text-align: left" 
             Width="100%" onrowcommand="grid_Phone_RowCommand" 
             onpageindexchanging="grid_Phone_PageIndexChanging">
@@ -75,7 +74,7 @@
                             <tr>
                                 <td align="left">
                                     <b>Hãng sản xuất</b> <b>:</b>
-                                    <asp:Label ID="lb_Producer" runat="server" Text='<%# Eval("Expr1") %>'></asp:Label>
+                                    <asp:Label ID="lb_Producer" runat="server" Text='<%# Eval("ProducerName") %>'></asp:Label>
                                 </td>
                             </tr>
                             <tr>
