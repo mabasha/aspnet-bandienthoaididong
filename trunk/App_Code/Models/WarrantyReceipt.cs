@@ -21,12 +21,18 @@ public class WarrantyReceipt
     private string rDate;
     private string description;
 
-	public WarrantyReceipt()
+	public WarrantyReceipt(int id)
 	{
-		//
-		// TODO: Add constructor logic here
-		//
+        this.id = id;
 	}
+    public WarrantyReceipt(int id, string reason, bool isReturned, string rDate, string description)
+    {
+        this.id = id;        
+        this.reason = reason;        
+        this.isReturned = isReturned;
+        this.rDate = rDate;
+        this.description = description;
+    }
     public WarrantyReceipt(int id, bool isphone, int proID, string Imei, 
                             string cDate, string reason, string cusName, 
                             string tel, bool isReturned, string rDate, string description)
@@ -66,5 +72,17 @@ public class WarrantyReceipt
         }
         catch (Exception) { }
         return 0;
+    }
+    public void Delete()
+    {
+        string query = String.Format("DELETE FROM WarrantyReceipt WHERE ID = {0}", id);
+        AccessData.ExecuteNonQuery(query);
+    }
+    public void Update()
+    {
+        string query = String.Format("UPDATE WarrantyReceipt "
+                                    + "SET IsReturned = '{0}', Reason = '{1}', Description = '{2}', ReturnedDate = '{3}' "
+                                    + "WHERE ID = {4}", isReturned, reason, description, rDate, id);
+        AccessData.ExecuteNonQuery(query);
     }
 }

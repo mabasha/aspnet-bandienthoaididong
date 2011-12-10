@@ -204,16 +204,7 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         dtAddBillDt.Rows[e.RowIndex].Delete();
         ViewState["dtAddBillDt"] = dtAddBillDt;
         FillDataViewstate();
-    }
-    private string isPhoneEdit;    
-    protected void btnChonDtTemp_Click(object sender, EventArgs e)
-    {
-        isPhoneEdit = "True";        
-    }
-    protected void btnChonPkTemp_Click(object sender, EventArgs e)
-    {
-        isPhoneEdit = "False";
-    }
+    }       
     protected void rDtTemp_CheckedChanged(object sender, EventArgs e)
     {
 
@@ -221,19 +212,19 @@ public partial class Admin_ImportBill : System.Web.UI.Page
     protected void rPkTemp_CheckedChanged(object sender, EventArgs e)
     {
 
+    }  
+    static string isPhoneEdit = "False"; 
+    protected void gridImportBillDt_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "btnDt")
+        {
+            //int index = Convert.ToInt32(e.CommandArgument);
+            //GridViewRow row = gridImportBillDt.Rows[index];
+            isPhoneEdit = "True";
+        }
+        else if (e.CommandName == "btnPk")
+        {
+            isPhoneEdit = "False";
+        }
     }
-   
-    //protected void gridImportBillDt_RowCommand(object sender, GridViewCommandEventArgs e)
-    //{
-    //    String buttonName = e.CommandName;
-        
-    //    if (buttonName == "Telephone")
-    //    {
-    //        isPhoneEdit = "True";
-    //    }
-    //    else if (buttonName == "PartTelephone")
-    //    {
-    //        isPhoneEdit = "False";
-    //    }
-    //}
 }
