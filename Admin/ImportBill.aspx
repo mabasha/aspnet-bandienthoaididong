@@ -196,7 +196,7 @@
                                     onrowediting="gridImportBillDt_RowEditing" 
                                     onrowdatabound="gridImportBillDt_RowDataBound1" 
                                     onrowdeleting="gridImportBillDt_RowDeleting" 
-                                    onrowupdating="gridImportBillDt_RowUpdating"                                                              
+                                    onrowupdating="gridImportBillDt_RowUpdating" onrowcommand="gridImportBillDt_RowCommand"                                                              
                                     >
                         <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                         <Columns>
@@ -206,16 +206,16 @@
                                 <EditItemTemplate>
                                     <asp:TextBox ID="txtMaSpTemp" runat="server" style="margin-left: 2px" 
                                         Width="50px"></asp:TextBox>
-                                    <asp:Button ID="btnChonDtTemp" runat="server" onclick="btnChonDtTemp_Click" 
-                                        Text="Chọn điện thoại" Width="116px" />
-                                    <asp:Button ID="btnChonPkTemp" runat="server" Text="Chọn phụ kiện" 
-                                        onclick="btnChonPkTemp_Click" />
+                                    <asp:Button ID="btnChonDtTemp" runat="server"
+                                        Text="Chọn ĐT" CommandName="btnDt" />
+                                    <asp:Button ID="btnChonPkTemp" runat="server" Text="Chọn PK" 
+                                        CommandName="btnPk"  />
                                 </EditItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="lbProductID" runat="server" Text='<%# Eval("ProductID") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Là điện thoại">
+                            <asp:TemplateField HeaderText="Loại sản phẩm">
                                 <EditItemTemplate>
                                     <asp:RadioButton ID="rDtTemp" runat="server" Checked="True" 
                                         GroupName="rtemplate" Text="Điện thoại" Enabled="False" 
@@ -225,7 +225,7 @@
                                         oncheckedchanged="rPkTemp_CheckedChanged" />
                                 </EditItemTemplate>
                                 <ItemTemplate>
-                                    <asp:Label ID="lbIsPhone" runat="server" Text='<%# Eval("IsPhone") %>'></asp:Label>
+                                    <asp:Label ID="lbIsPhone" runat="server" Text='<%# Eval("IsPhone").ToString()=="True" ?"Điện thoại":"Phụ kiện" %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <%--<asp:BoundField DataField="ProductID" HeaderText="Mã sản phẩm" />--%>
