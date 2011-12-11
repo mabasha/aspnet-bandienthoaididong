@@ -33,12 +33,7 @@ public class ImportBill
         return AccessData.GetTable(query);
     }
     public void Delete()
-    {
-        //ImportBillDt i =new ImportBillDt();       
-        //ImportBillDt impdt = new ImportBillDt(i.GetIDFromImportBillID(id));        
-        //impdt.Delete();
-        //string query_impdt = String.Format("delete from ImportBillDt where ImportBillID = '{0}'", id);
-        //AccessData.ExecuteNonQuery(query_impdt);
+    {        
         string query_imp = String.Format("delete from ImportBill where ID = '{0}'", id);
         AccessData.ExecuteNonQuery(query_imp);        
     }

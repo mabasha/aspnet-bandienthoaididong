@@ -23,12 +23,13 @@ public class ImportBillDt
     {
         this.id = id;
     }   
-    public ImportBillDt(int id, string pID, string isphone, string number)
+    public ImportBillDt(int id, string pID, string isphone, string number, string price)
     {
         this.id = id;        
         this.pID = pID;
         this.isphone = isphone;
-        this.number = number;        
+        this.number = number;
+        this.price = price;
     }
     public ImportBillDt(int id, int IbID, string pID,  string isphone, string number, string price)
     {
@@ -194,9 +195,4 @@ public class ImportBillDt
         object re = AccessData.ExecuteScalar(query);
         return Convert.ToInt32(re);
     }
-    //public int GetIDFromImportBillID(int ImportBillID)
-    //{
-    //    string query = String.Format("select ID from ImportBillDt where ImportBillID = {0}", ImportBillID);
-    //    return Convert.ToInt32(AccessData.ExecuteScalar(query));
-    //}
 }

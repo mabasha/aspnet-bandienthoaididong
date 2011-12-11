@@ -52,8 +52,7 @@ public partial class Admin_WarrantyReceiptManager : System.Web.UI.Page
         btnCapnhat.Enabled = true;
         btnHuy.Enabled = true; 
      
-        id = Convert.ToInt32(gridPBH.SelectedRow.Cells[0].Text);
-        //WarrantyReceipt war = new WarrantyReceipt(id);
+        id = Convert.ToInt32(gridPBH.SelectedRow.Cells[0].Text);        
         Label lydo = (Label)gridPBH.SelectedRow.FindControl("lbReason");
         Label mota = (Label)gridPBH.SelectedRow.FindControl("lbDes");
         Label tinhtrang = (Label)gridPBH.SelectedRow.FindControl("lbIsRe");
