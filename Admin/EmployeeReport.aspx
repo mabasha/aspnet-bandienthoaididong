@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Admin/Admin.master" CodeFile="EmployeeReport.aspx.cs" Inherits="Admin_EmployeeReport" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<head runat="server">
+<head>
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
 
     <script src="../Scripts/jqueryui/jquery-1.6.4.min.js" type="text/javascript"></script>
@@ -23,27 +23,59 @@
     </script>
     <title>Báo cáo nhân viên</title>
 </head>
-
-    <div class=wrapper>
-        <div class="header">
-            Báo cáo kết quả bán của nhân viên</div>
-        <div class="list">
-            <div style="width:300px; float: left;">Từ ngày
-            <asp:TextBox ID="tFrom" runat="server"></asp:TextBox></div> 
+             <table>
+                <tr>
+                    <td colspan=2 align=center><div class="style">BÁO CÁO KẾT QUẢ BÁN HÀNG</div></td>
+                </tr
+            </table
+            <br />
+            <table>
+            <tr>
+                <td class="left-add">
+                Từ ngày
+                </td>
+                <td>
+                        <asp:TextBox ID="tFrom" runat="server" CssClass="styleText" BorderStyle="None" 
+                            Height="33px" Width="214px"></asp:TextBox></div> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Đến ngày
+                </td>
+                <td>
+                        <asp:TextBox ID="tTo" runat="server" CssClass="styleText" BorderStyle="None" 
+                            Height="28px" Width="213px"></asp:TextBox>
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    Nhân viên
+                </td>
+                <td>
+                    <asp:TextBox ID="tKeyword" runat="server" CssClass="styleText" 
+                        BorderStyle="None" Height="31px" Width="213px"></asp:TextBox>
+                </td>
+            </tr>
             
-            <div style="margin-left:40px; width: 300px; float: left;">Đến ngày
-                <asp:TextBox ID="tTo" runat="server"></asp:TextBox>
-            </div>
-            <div style="float:left; clear:left">Nhân viên<asp:TextBox ID="tKeyword" runat="server"></asp:TextBox></div>
-&nbsp;
-<div class=clearboth></div>
-            <asp:Button ID="bView" runat="server" Text="Xem" onclick="bView_Click" />
+            <tr>
+                <td align="center" colspan=2>
+                    <br />
+                    <asp:Button ID="bView" runat="server" Text="Xem" onclick="bView_Click" 
+                        CssClass="styleButtonAdd" BorderStyle="None" Height="41px" Width="71px" />
+                </td>
+            </tr>
+           
+
+           
             <br />
             <br />
-            <asp:GridView ID="gShow" runat="server" AutoGenerateColumns="False" 
-                BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" 
-                CellPadding="3">
-                <RowStyle ForeColor="#000066" />
+            <tr>
+                <td colspan=2>
+            <asp:GridView class="styleGrid" ID="gShow" runat="server" AutoGenerateColumns="False" 
+                CellPadding="4" ForeColor="#333333" GridLines="None">
+                <RowStyle BackColor="#EFF3FB" />
+                <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="FullName" HeaderText="Tên nhân viên" 
                         SortExpression="FullName" />
@@ -54,11 +86,17 @@
                     <asp:BoundField DataField="ValueSold" HeaderText="Giá trị đã bán (đ)" 
                         SortExpression="ValueSold" />
                 </Columns>
-                <FooterStyle BackColor="White" ForeColor="#000066" />
-                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
-                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                <EditRowStyle BackColor="#2461BF" />
+                <FooterStyle BackColor="#507CD1" ForeColor="White" Font-Bold="True" />
+                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                <SortedDescendingHeaderStyle BackColor="#4870BE" />
             </asp:GridView>
-        </div>
-    </div>
+            </td>
+            </tr>
+        </table>
  </asp:Content>

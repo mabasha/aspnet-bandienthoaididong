@@ -70,7 +70,7 @@ public partial class Admin_ImageManager : System.Web.UI.Page
         }
         else
         {
-            lThongBao.Text = "<p class = error>Loại tệp không đúng</p>";
+            lThongBao.Text = "<div class=error_box>Loại tệp không đúng</div>";
         }
     }
 

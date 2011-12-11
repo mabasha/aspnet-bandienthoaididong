@@ -68,7 +68,7 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
         bool isSuccess = acc.Insert();
         if (isSuccess == true)
         {
-            lThongBao.Text = "<p class=info>* Thêm thành công.</p>";
+            lThongBao.Text = "<div class=valid_box>THÊM THÀNH CÔNG </div>";
             tName.Text = "";
             tPrice.Text = "";
             tImageName.Text = "";
@@ -77,7 +77,7 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
         }
         else
         {
-            lThongBao.Text = "<p class=error>* Tên đã tồn tại.</p>";
+            lThongBao.Text = "<div class=error_box>TÊN ĐÃ TỒN TẠI </div>";
         }
     }
     protected void gShow_PageIndexChanging(object sender, GridViewPageEventArgs e)

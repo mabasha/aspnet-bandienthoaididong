@@ -28,47 +28,94 @@
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
     <title></title>
 </head>
+             <table>
+                <tr>
+                    <td colspan=2 align=center><div class="style"> QUẢN LÝ HÌNH ẢNH</div></td>
+                </tr
+            </table>
 
-    <div class=header>
-        Quản lý hình ảnh
-        </div>
-    <div style="padding: 20px" class="round">
-        Chọn thư mục hình ảnh :<br />
-        <asp:RadioButton ID="rPhone" runat="server" Checked="True" Text="Điện thoại" 
+            <table>
+            
+            <tr>
+                <br />
+                <td colspan=2 align="center" class="styleText">
+                     Chọn thư mục hình ảnh
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br />
+                    <asp:RadioButton ID="rPhone" runat="server" Checked="True" Text="Điện thoại" 
             GroupName="folder" />
-        <asp:RadioButton ID="rAccessory" runat="server" Text="Phụ kiện" 
+                     <asp:RadioButton ID="rAccessory" runat="server" Text="Phụ kiện" 
             GroupName="folder"/>
-    &nbsp;
-        <asp:Button ID="bChangeFolder" runat="server" onclick="bChangeFolder_Click" 
-            Text="Xác nhận" />
-    </div>
-    
-    <div class="round">
-        <div class="small-header">Thêm hình mới</div>
-        <p id="fileUpload">
-            <asp:FileUpload ID="fileUpload" runat="server" />
-&nbsp;<asp:Button ID="bUpload" runat="server" Text="Tải lên" onclick="bUpload_Click" />
-        </p>
-        <p>
-            <asp:Label ID="lThongBao" runat="server"></asp:Label>
-        </p>
-        </div>
-    <div class="round">
-        <div class="small-header">Danh sách hình :</div>
-        <i style="font-size : 11px"><br />
+                </td>
+                <td>
+                <br />
+                <asp:Button ID="bChangeFolder" runat="server" onclick="bChangeFolder_Click" CssClass="styleButton" 
+            Text="Xác nhận" BorderStyle="None" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br />
+                </td>
+            </tr>
+
+              <tr>
+                <br />
+                <td colspan=2 align="center" class="styleText">
+                     Thêm hình mới
+                </td>
+            </tr>
+            <tr>
+                
+                <td>
+                <br />
+                    <asp:FileUpload ID="fileUpload" runat="server"  CssClass="styleButton" 
+                        BorderStyle="None" />
+                </td>
+                <td align=right>
+                <br />
+                    <asp:Button ID="bUpload" runat="server" Text="Tải lên"  onclick="bUpload_Click"   CssClass="styleButton" BorderStyle="None"/>                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan=3>  
+                    <br />            
+                    <asp:Label ID="lThongBao" runat="server"></asp:Label>
+                </td>
+            </tr>
+            </table>
+            <table>
+            <tr>
+                <br />
+                <td colspan=2 align="center" class="style">
+                     Danh sách hình
+                </td>
+            </tr>
+            
+             <tr>
+                <br />
+                <td colspan=2 align="center">
+                            <i style="font-size : 11px"><br />
         Để chọn hình, check vào một checkbox, nhấn Chọn, sau 
-        đó nhấn Đóng để đóng cửa sổ lại</i><br />
+        đó nhấn Đóng để đóng cửa sổ lại</i><br /> 
+                </td>
+            </tr>
+           </table>
+
         <br />
         <br />
-        <asp:Button ID="bSelect" runat="server" Text="Chọn" onclick="bSelect_Click" 
+        <asp:Button ID="bSelect" runat="server" Text="Chọn" onclick="bSelect_Click" CssClass="styleButton" 
             Height="26px" />
-        <asp:Button ID="bClose" runat="server" Text="Đóng" />
+        <asp:Button ID="bClose" runat="server" Text="Đóng" CssClass="styleButton"  />
             &nbsp;&nbsp;&nbsp;
         <asp:Button ID="bDelete" runat="server" 
-                Text="Xóa" onclick="bDelete_Click" />
-        <asp:Button ID="bRename" runat="server" Text="Đổi tên" 
+                Text="Xóa" onclick="bDelete_Click" CssClass="styleButton" />
+        <asp:Button ID="bRename" runat="server" Text="Đổi tên" CssClass="styleButton" 
             onclick="bRename_Click" />
-        &nbsp;<asp:Button ID="bCopyToClipboard" runat="server" 
+        &nbsp;<asp:Button ID="bCopyToClipboard" runat="server" CssClass="styleButton" 
             Text="Chép vào Clipboard (chỉ IE)" />
         <br />
         <asp:TextBox ID="tNewName" runat="server" Visible="False"></asp:TextBox>
@@ -81,6 +128,5 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
             &nbsp;
         </asp:Panel></i>
-    </div>
 
 </asp:Content>
