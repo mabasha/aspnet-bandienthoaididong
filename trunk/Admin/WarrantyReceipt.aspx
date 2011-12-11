@@ -1,79 +1,63 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="WarrantyReceipt.aspx.cs" Inherits="Admin_WarrantyReceipt" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin/Admin.master" CodeFile="WarrantyReceipt.aspx.cs" Inherits="Admin_WarrantyReceipt" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head>
     <title></title>
+    <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="AdminSite/Template/style.css" />
     <script type="text/javascript" src="../Scripts/jquery-1.7.1.js"></script>
-    <style type="text/css">
-        .style1
-        {
-            width: 100%;
-            height: 392px;
-        }
-        .style2
-        {
-        }
-        .style3
-        {
-            width: 87%;
-            height: 341px;
-        }
-        .style4
-        {
-            width: 602px;
-        }
-    </style>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div align="center" class="header" style="height: 60px">
     
-        LẬP PHIẾU BẢO HÀNH</div>
-    <div style="height: 427px">
-        <table class="style1">
+</head>
+     <table>
+                <tr>
+                    <td colspan=2 align=center><div class="style">LẬP PHIẾU BẢO HÀNH</div></td>
+                </tr
+     </table>
+     <table width=100%>
             <tr>
-                <td class="style2">
+                <br />
+                <td>
                     Loại sản phẩm* :</td>
                 <td>
                     <asp:RadioButton ID="rDienthoai" runat="server" AutoPostBack="True" 
-                        Checked="True" GroupName="isphone" Text="Điện thoại" />
+                        Checked="True" GroupName="isphone" Text="Điện thoại" CssClass="styleText" />
                     <asp:RadioButton ID="rPhukien" runat="server" AutoPostBack="True" 
-                        GroupName="isphone" Text="Phụ kiện" />
+                        GroupName="isphone" Text="Phụ kiện" CssClass="styleText" />
                 </td>
             </tr>
             <tr>
-                <td class="style2">
+                <td >
                     Tên sản phẩm * :</td>
                 <td>
                     <asp:TextBox ID="txtMasp" runat="server" Width="64px"></asp:TextBox>
-                    <asp:Button ID="btnChonSp" runat="server" Text="Chọn sản phẩm" />
+                    <asp:Button ID="btnChonSp" runat="server" Text="Chọn sản phẩm" 
+                        CssClass="styleButton" BorderStyle="None"  />
                 </td>
             </tr>
             <tr>
-                <td class="style2">
+                <td class="">
                     IMEI :</td>
                 <td>
                     <asp:TextBox ID="txtIMEI" runat="server" Width="200px"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="style2">
+                <td class="">
                     Tên khách hàng*:</td>
                 <td>
                     <asp:TextBox ID="txtTenKH" runat="server" Width="200px"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="style2">
+                <td class="">
                     Số điện thoại *:</td>
                 <td>
                     <asp:TextBox ID="txtSoDt" runat="server" Width="200px"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="style2">
+                <td class="">
                     Lý do :</td>
                 <td>
                     <asp:TextBox ID="txtReason" runat="server" Height="100px" TextMode="MultiLine" 
@@ -81,7 +65,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="style2">
+                <td class="">
                     Mô tả :</td>
                 <td>
                     <asp:TextBox ID="txtMota" runat="server" Height="100px" TextMode="MultiLine" 
@@ -89,25 +73,23 @@
                 </td>
             </tr>
             <tr>
-                <td class="style2">
+                <td class="">
                     &nbsp;</td>
                 <td>
                     &nbsp;</td>
             </tr>
             <tr>
-                <td align="center" class="style2" colspan="2">
-                    <asp:Button ID="btnLapphieu" runat="server" Height="38px" Text="Lập phiếu" 
-                        Width="101px" onclick="btnLapphieu_Click" />
+                <td align="center" class="" colspan="2">
+                    <asp:Button ID="btnLapphieu" runat="server" Height="38px" Text="Lập phiếu" CssClass="styleButton"
+                        Width="101px" onclick="btnLapphieu_Click" BorderStyle="None" />
                 </td>
             </tr>
             <tr>
-                <td align="center" class="style2" colspan="2">
+                <td align="center" class="" colspan="2">
                     <asp:Label ID="lbThongbao" runat="server"></asp:Label>
                 </td>
             </tr>
         </table>
-    </div>
-    <div style="height: 356px; margin-top: 0px">
         <table class="style3">
             <tr>
                 <td class="style4">
@@ -122,12 +104,9 @@
         <p><asp:Label ID="lbMota" runat="server"></asp:Label>  </p>
                 </td>
                 <td>
-                    <asp:Button ID="btnAdd" runat="server" Height="55px" onclick="btnAdd_Click" 
+                    <asp:Button ID="btnAdd" runat="server" Height="55px" onclick="btnAdd_Click" CssClass="styleButton" 
                         Text="DONE" Visible="False" Width="110px" />
                 </td>
             </tr>
         </table>
-    </div>
-    </form>
-    </body>
-</html>
+</asp:Content>

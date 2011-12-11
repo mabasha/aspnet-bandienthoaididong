@@ -52,11 +52,11 @@
 <div id="main_container">
 
 	<div class="header">
-    <div class="logo"><a href="#"><img src="AdminSite/Template/images/logo.gif" alt="" title="" border="0" /></a></div>
+    <div class="logo"><b>ADMIN PANEL</b></div>
     
     <div class="right_header">Welcome Admin, <a href="#">Visit site</a> | <a href="#" class="messages">Messages</a> | <a href="#" class="logout">Logout</a></div>
-    <div id="clock_a"></div>
-    </div>
+
+</div>
     
     <div class="main_content">
           <div>
@@ -75,6 +75,9 @@
                             <li><a href="http://localhost/ASP.NET/Admin/AccountChooser.aspx">Chọn Users</a></li>
                         </ul>
                     </li>
+                    <li><a href="http://localhost/ASP.NET/Admin/AcountManager.aspx">Quản Lý Hình Ảnh</a>
+                    <li><a href="http://localhost/ASP.NET/Admin/AcountManager.aspx">Import Bill</a>
+                    <li><a href="http://localhost/ASP.NET/Admin/AcountManager.aspx">Quản Lý Tin Tức</a>
                     </ul>
                     </div>
                     
@@ -95,6 +98,8 @@
         	<td>              
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
+            </td>
+            <td>
             </td>
         </tr>
         

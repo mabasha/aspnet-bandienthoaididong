@@ -2,7 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<head runat="server">
+<head>
+    <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="AdminSite/Template/style.css" />
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
     <script src="../Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
     <script src="../Scripts/jquery.validate.js" type="text/javascript"></script>
@@ -38,52 +40,53 @@
     </style>
 </head>
 
-    <div>
-       
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1">
         </asp:ToolkitScriptManager>
        
-        <table class="style1">
+       <table>
             <tr>
-                <td>
-                    <asp:Label ID="Label24"  Font-Size="XX-Large" 
-                        Text="QUẢN LÝ ĐIỆN THOẠI"></asp:Label>
-                    <br />
-                </td>
+                <td colspan=2 align=center><div class="style">QUẢN LÝ ĐIỆN THOẠI</div></td>
             </tr>
+        </table>
+        <table>
             <tr>
-                <td class="style3" valign="middle" width="300px" align="center" height="50">
+                <br />
+                <td  valign="middle" width="300px" align="center" height="50" class="styleText">
                     <asp:Label ID="Label25" runat="server" Font-Bold="True" Font-Size="Large" 
-                        ForeColor="#3366FF" Text="DANH SÁCH ĐIỆN THOẠI"></asp:Label>
+                       Text="DANH SÁCH ĐIỆN THOẠI"></asp:Label>
                 </td>
-                <td align="center" height="50" style="background-color: #996600" 
+                <td align="center" height="50"  class="styleText"
                     valign="middle">
                     <asp:Label ID="Label26" runat="server" Font-Bold="True" Font-Size="Large" 
-                        ForeColor="#3366FF" Text="CHI TIẾT ĐIỆN THOẠI"></asp:Label>
+                         Text="CHI TIẾT ĐIỆN THOẠI"></asp:Label>
                     <br />
                     <asp:Label ID="lb_Note" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
-                <td class="style3" valign="top" width="300px">
+                <td valign="top" width="300px">
                     <asp:GridView ID="grid_Phone" runat="server" AllowPaging="True" 
-                        AutoGenerateColumns="False" CellPadding="4" EnableModelValidation="True" 
+                        AutoGenerateColumns="False" CellPadding="4" 
                         ForeColor="#333333" GridLines="None" PageSize="20" DataKeyNames="ID" 
                         onpageindexchanging="grid_Phone_PageIndexChanging" 
                         onrowcommand="grid_Phone_RowCommand" Width="100%" AllowSorting="True" 
                         onsorting="grid_Phone_Sorting">
-                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                        <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:BoundField DataField="ID" HeaderText="Mã" SortExpression="ID" />
                             <asp:ButtonField CommandName="ChoosePhone" DataTextField="Name" HeaderText="Tên điện thoại" 
                                 Text="Tên điện thoại" SortExpression="Name" />
                         </Columns>
-                        <EditRowStyle BackColor="#999999" />
-                        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                        <EditRowStyle BackColor="#2461BF" />
+                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle BackColor="#EFF3FB" />
+                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
                     </asp:GridView>
                 </td>
                 <td>

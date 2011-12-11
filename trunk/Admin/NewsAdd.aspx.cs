@@ -24,7 +24,7 @@ public partial class Admin_NewsAdd : System.Web.UI.Page
 
                 Page.Title = "Cập nhật tin tức.";
                 bAdd.Text = "Cập nhật";
-                lTitle.Text = "Cập nhật tin tức";
+
             }
         }
     }
@@ -32,7 +32,7 @@ public partial class Admin_NewsAdd : System.Web.UI.Page
     {
         if (ckContent.Text == "")
         {
-            tInfo.Text = "<span class = error>Bạn chưa nhập nội dung.</span>";
+            tInfo.Text = "<div class=error_box>Bạn chưa nhập nội dụng</div>";
             return;
         }
         int id = Convert.ToInt32(Request.QueryString["id"]);
