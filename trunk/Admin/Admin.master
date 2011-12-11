@@ -62,21 +62,21 @@
           <div>
                     <div class="menu">
                     <ul>
-                    <li><a href="http://localhost:1981/ASP.NET/Admin/DistributorManager.aspx">Admin Home</a></li>
-                    <li><a href="http://localhost:1981/ASP.NET/Admin/PhoneManager.aspx">Điện Thoại</a></li>
-                    <li><a href="http://localhost:1981/ASP.NET/Admin/AccessoriesManager.aspx">Phụ Kiện</a>
+                    <li><a href="http://localhost/ASP.NET/Admin/DistributorManager.aspx">Admin Home</a></li>
+                    <li><a href="http://localhost/ASP.NET/Admin/PhoneManager.aspx">Điện Thoại</a></li>
+                    <li><a href="http://localhost/ASP.NET/Admin/AccessoriesManager.aspx">Phụ Kiện</a>
                         <ul>
-                            <li><a href="http://localhost:1981/ASP.NET/Admin/AccessoryChooser.aspx">Chọn Phụ Kiện</a></li>
+                            <li><a href="http://localhost/ASP.NET/Admin/AccessoryChooser.aspx">Chọn Phụ Kiện</a></li>
                         </ul>
                     </li>
-                    <li><a href="http://localhost:1981/ASP.NET/Admin/DistributorManager.aspx">Nhà Phân Phối</a></li>
-                    <li><a href="http://localhost:1981/ASP.NET/Admin/AcountManager.aspx">Users</a>
+                    <li><a href="http://localhost/ASP.NET/Admin/DistributorManager.aspx">Nhà Phân Phối</a></li>
+                    <li><a href="http://localhost/ASP.NET/Admin/AcountManager.aspx">Users</a>
                         <ul>
-                            <li><a href="http://localhost:1981/ASP.NET/Admin/AccountChooser.aspx">Chọn Users</a></li>
+                            <li><a href="http://localhost/ASP.NET/Admin/AccountChooser.aspx">Chọn Users</a></li>
                         </ul>
                     </li>
                     </ul>
-           </div>
+                    </div>
                     
        </div> 
                     
@@ -86,90 +86,7 @@
     <div class="center_content">  
     
     
-    
-    <div class="left_content">
-    
-    		<div class="sidebar_search">
-            <input type="text" name="" class="search_input" value="search keyword" onclick="this.value=''" />
-            <input type="image" class="search_submit" src="AdminSite/Template/images/search.png" />
-            </div>
-    
-            <div class="sidebarmenu">               
-                <a class="menuitem submenuheader" href="">Add new products</a>
-                <div class="submenu">
-                    <ul>
-                    <li><a href="">Sidebar submenu</a></li>
-                    <li><a href="">Sidebar submenu</a></li>
-                    <li><a href="">Sidebar submenu</a></li>
-                    <li><a href="">Sidebar submenu</a></li>
-                    <li><a href="">Sidebar submenu</a></li>
-                    </ul>
-                </div>
-                <a class="menuitem" href="">Blue button</a>
-                
-                <a class="menuitem_green" href="">Green button</a>
-                
-                <a class="menuitem_red" href="">Red button</a>
-                    
-            </div>
-            
-            
-            <div class="sidebar_box">
-                <div class="sidebar_box_top"></div>
-                <div class="sidebar_box_content">
-                <h3>User help desk</h3>
-                <img src="AdminSite/Template/images/info.png" alt="" title="" class="sidebar_icon_right" />
-                <p>
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>                
-                </div>
-                <div class="sidebar_box_bottom"></div>
-            </div>
-            
-            <div class="sidebar_box">
-                <div class="sidebar_box_top"></div>
-                <div class="sidebar_box_content">
-                <h4>Important notice</h4>
-                <img src="AdminSite/Template/images/notice.png" alt="" title="" class="sidebar_icon_right" />
-                <p>
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>                
-                </div>
-                <div class="sidebar_box_bottom"></div>
-            </div>
-            
-            <div class="sidebar_box">
-                <div class="sidebar_box_top"></div>
-                <div class="sidebar_box_content">
-                <h5>Download photos</h5>
-                <img src="AdminSite/Template/images/photo.png" alt="" title="" class="sidebar_icon_right" />
-                <p>
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>                
-                </div>
-                <div class="sidebar_box_bottom"></div>
-            </div>  
-            
-            <div class="sidebar_box">
-                <div class="sidebar_box_top"></div>
-                <div class="sidebar_box_content">
-                <h3>To do List</h3>
-                <img src="AdminSite/Template/images/info.png" alt="" title="" class="sidebar_icon_right" />
-                <ul>
-                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                 <li>Lorem ipsum dolor sit ametconsectetur <strong>adipisicing</strong> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-                  <li>Lorem ipsum dolor sit amet, consectetur <a href="#">adipisicing</a> elit.</li>
-                   <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                     <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                </ul>                
-                </div>
-                <div class="sidebar_box_bottom"></div>
-            </div>
-              
-    
-    </div>  
-    
+   
     <div class="right_content">            
                                        
 <table id="rounded-corner">      
@@ -182,46 +99,15 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
         </tr>
         
     	<tr>
-            <!--
-        	<td><input type="checkbox" name="" /></td>
-            <td>Product name</td>
-            <td>details</td>
-            <td>150$</td>
-            <td>12/05/2010</td>
-
-            <td><a href="#"><img src="images/user_edit.png" alt="" title="" border="0" /></a></td>
-            <td><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0" /></a></td>
-            -->
+          
         </tr>    
         
     </tbody>
 </table>
-    <!--
-	 <a href="#" class="bt_green"><span class="bt_green_lft"></span><strong>Add new item</strong><span class="bt_green_r"></span></a>
-     <a href="#" class="bt_blue"><span class="bt_blue_lft"></span><strong>View all items from category</strong><span class="bt_blue_r"></span></a>
-     <a href="#" class="bt_red"><span class="bt_red_lft"></span><strong>Delete items</strong><span class="bt_red_r"></span></a> 
-     
-     
-        <div class="pagination">
-        <span class="disabled"><< prev</span><span class="current">1</span><a href="">2</a><a href="">3</a><a href="">4</a><a href="">5</a>…<a href="">10</a><a href="">11</a><a href="">12</a>...<a href="">100</a><a href="">101</a><a href="">next >></a>
-        </div> 
-     
-     <h2>Warning Box examples</h2>
-      
-     <div class="warning_box">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.
-     </div>
-     <div class="valid_box">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.
-     </div>
-     <div class="error_box">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.
-     </div>  
-           
-     
-     </div><!-- end of right content-->
+   
             
-  </div>   <!--end of center content -->               
+  </div>   
+  </div>     
                     
                     
     
@@ -236,7 +122,6 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 </div>		
 </body>
-</html>
 </form>
 
 

@@ -27,10 +27,13 @@
 </head>
 
         <div class="add">
-            <table class="style1" border= width=870px>
+            <table>
                 <tr>
-                    <td colspan=2 align=center><font color=maroon size=+4 >QUẢN LÝ NHÀ PHÂN PHỐI</font></td>
-                </tr>
+                    <td colspan=2 align=center><div class="style">QUẢN LÝ NHÀ PHÂN PHỐI</div></td>
+                </tr
+            </table>
+
+            <table>
                 <tr>
                     <td class="left-add" >
                         Tên</td>
