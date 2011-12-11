@@ -4,7 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<head runat="server" />
+<head runat="server" >
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
     <script src="../Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
@@ -214,7 +214,6 @@
                               </asp:DropDownList> 
                             </EditItemTemplate> 
                             </asp:TemplateField> 
-                            <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
                             <asp:CommandField ButtonType="Button" DeleteImageUrl="~/Images/Apps/delete.png" 
                                 ShowDeleteButton="True" >
                             <HeaderStyle VerticalAlign="Middle" />

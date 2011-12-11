@@ -56,47 +56,47 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         if (e.Row.RowType == DataControlRowType.DataRow && (e.Row.RowState == DataControlRowState.Alternate ||
                    e.Row.RowState == DataControlRowState.Normal))
         {
-            ImageButton btnDelete = (ImageButton)e.Row.Cells[8].Controls[0];
+            ImageButton btnDelete = (ImageButton)e.Row.Cells[7].Controls[0];
             btnDelete.OnClientClick = "if (!confirm('Bạn có đồng ý xóa Chi Tiết Hóa đơn nhập?')) return false";
         }
     }   
-    protected void gridImportBillDt_RowEditing(object sender, GridViewEditEventArgs e)
-    {
-        gridImportBillDt.EditIndex = e.NewEditIndex;
-        FillDataDt();
+    //protected void gridImportBillDt_RowEditing(object sender, GridViewEditEventArgs e)
+    //{
+    //    gridImportBillDt.EditIndex = e.NewEditIndex;
+    //    FillDataDt();
         
-        RadioButton rDt = (RadioButton)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("rPkTemp");
-        RadioButton rPk = (RadioButton)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("rPkTemp");
-        Button btnChonDtTemp = (Button)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("btnChonDtTemp");
-        Button btnChonPkTemp = (Button)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("btnChonPkTemp");
-        TextBox txtMaTemp = (TextBox)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("txtMaSpTemp");
+    //    RadioButton rDt = (RadioButton)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("rPkTemp");
+    //    RadioButton rPk = (RadioButton)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("rPkTemp");
+    //    Button btnChonDtTemp = (Button)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("btnChonDtTemp");
+    //    Button btnChonPkTemp = (Button)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("btnChonPkTemp");
+    //    TextBox txtMaTemp = (TextBox)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("txtMaSpTemp");
 
-        btnChonDtTemp.OnClientClick = String.Format("window.open(\"PhoneChooser.aspx?receiveID={0}\", 'mypopup', " +
-                "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", txtMaTemp.ClientID);
+    //    btnChonDtTemp.OnClientClick = String.Format("window.open(\"PhoneChooser.aspx?receiveID={0}\", 'mypopup', " +
+    //            "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", txtMaTemp.ClientID);
       
-        btnChonPkTemp.OnClientClick = String.Format("window.open(\"AccessoryChooser.aspx?receiveID={0}\", 'mypopup', " +
-                "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", txtMaTemp.ClientID);               
-    }
-    protected void gridImportBillDt_RowUpdating(object sender, GridViewUpdateEventArgs e)
-    {
+    //    btnChonPkTemp.OnClientClick = String.Format("window.open(\"AccessoryChooser.aspx?receiveID={0}\", 'mypopup', " +
+    //            "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", txtMaTemp.ClientID);               
+    //}
+    //protected void gridImportBillDt_RowUpdating(object sender, GridViewUpdateEventArgs e)
+    //{
 
-        TextBox maSp = (TextBox)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("txtMaSpTemp");
-        TextBox sl = (TextBox)gridImportBillDt.Rows[gridImportBillDt.EditIndex].Cells[4].Controls[0];
-        TextBox price = (TextBox)gridImportBillDt.Rows[gridImportBillDt.EditIndex].Cells[5].Controls[0];
-        int id = Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[1].Text);
-        int ImpId = Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[0].Text);
+    //    TextBox maSp = (TextBox)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("txtMaSpTemp");
+    //    TextBox sl = (TextBox)gridImportBillDt.Rows[gridImportBillDt.EditIndex].Cells[4].Controls[0];
+    //    TextBox price = (TextBox)gridImportBillDt.Rows[gridImportBillDt.EditIndex].Cells[5].Controls[0];
+    //    int id = Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[1].Text);
+    //    //int ImpId = Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[0].Text);
 
-        ImportBillDt iDt = new ImportBillDt(id, ImpId, maSp.Text, isPhoneEdit, sl.Text, price.Text);
-        iDt.Update();
-        gridImportBillDt.EditIndex = -1;
+    //    ImportBillDt iDt = new ImportBillDt(id, maSp.Text, isPhoneEdit, sl.Text, price.Text);
+    //    iDt.Update();
+    //    gridImportBillDt.EditIndex = -1;
 
-        FillDataDt();
-    }
-    protected void gridImportBillDt_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-    {
-        gridImportBillDt.EditIndex = -1;
-        FillDataDt();
-    }
+    //    FillDataDt();
+    //}
+    //protected void gridImportBillDt_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+    //{
+    //    gridImportBillDt.EditIndex = -1;
+    //    FillDataDt();
+    //}
     protected void gridImportBillDt_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
         int id = Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[1].Text);
@@ -185,6 +185,8 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         if (gridViewState.Rows.Count > 0)
             btnThemHD.Visible = true;
         else btnThemHD.Visible = false;
+        btnCapnhat.Visible = false;
+        btnHuy.Visible = false;
     }
     protected void btnThemHD_Click(object sender, EventArgs e)
     {
@@ -207,12 +209,14 @@ public partial class Admin_ImportBill : System.Web.UI.Page
                 idt.Insert();
 
                 dtAddBillDt.Rows.Clear();
-                ViewState["dtAddBillDt"] = dtAddBillDt;
-
-                FillDataDt();
-                FillDataViewstate();
+                ViewState["dtAddBillDt"] = dtAddBillDt;                
             }
         }
+        FillDataDt();
+        FillDataViewstate();
+        btnThemHD.Visible = false;
+        btnCapnhat.Visible = false;
+        btnHuy.Visible = false;
     }
      
     static string isPhoneEdit = "False"; 
@@ -225,5 +229,48 @@ public partial class Admin_ImportBill : System.Web.UI.Page
     private string getCurrentTime()
     {
         return DateTime.Now.ToShortDateString();
-    }    
+    }
+    static int id;
+    protected void gridImportBillDt_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        btnCapnhat.Visible = true;
+        btnHuy.Visible = true;
+
+        id = Convert.ToInt32(gridImportBillDt.SelectedRow.Cells[1].Text);
+        Label productID=(Label) gridImportBillDt.SelectedRow.FindControl("lbProductID");
+        Label isphone=(Label) gridImportBillDt.SelectedRow.FindControl("lbIsPhone");
+        string number = gridImportBillDt.SelectedRow.Cells[4].Text;
+        string price = gridImportBillDt.SelectedRow.Cells[5].Text;
+        if (isphone.Text == "Điện thoại")
+        {
+            rDienthoai.Checked = true;
+            rPhukien.Checked = false;
+        }
+        else
+        {
+            rPhukien.Checked = true;
+            rDienthoai.Checked = false;
+        }
+        txtTenSp.Text = productID.Text;
+        txtNumber.Text = number;
+        txtPrice.Text = price;
+    }
+    protected void btnCapnhat_Click(object sender, EventArgs e)
+    {
+        ImportBillDt imp = new ImportBillDt(id, txtTenSp.Text, getrLoaisp(), txtNumber.Text, txtPrice.Text);
+        imp.Update();
+        FillDataDt();
+        btnCapnhat.Visible = false;
+        btnHuy.Visible = false;
+    }
+    protected void btnHuy_Click(object sender, EventArgs e)
+    {
+        rDienthoai.Checked = true;
+        rPhukien.Checked = false;
+        txtTenSp.Text = "";
+        txtNumber.Text = "";
+        txtPrice.Text = "";
+        btnCapnhat.Visible = false;
+        btnHuy.Visible = false;
+    }
 }
