@@ -22,7 +22,7 @@ public class ImportBillDt
     public ImportBillDt(int id)
     {
         this.id = id;
-    }
+    }   
     public ImportBillDt(int id, string pID, string isphone, string number)
     {
         this.id = id;        
@@ -159,15 +159,19 @@ public class ImportBillDt
         query = String.Format("select ImportBillID from ImportBillDt where ID = {0}", id);
         result = AccessData.ExecuteScalar(query);
         IbID = Convert.ToInt32(result);
+        
         query = String.Format("select ProductID from ImportBillDt where ID = {0}", id);
         result = AccessData.ExecuteScalar(query);
         pID = Convert.ToString(result);
+        
         query = String.Format("select IsPhone from ImportBillDt where ID = {0}", id);
         result = AccessData.ExecuteScalar(query);
         isphone = Convert.ToString(result);
+        
         query = String.Format("select Number from ImportBillDt where ID = {0}", id);
         result = AccessData.ExecuteScalar(query);
         number = Convert.ToString(result);
+        
         query = String.Format("select Price from ImportBillDt where ID = {0}", id);
         result = AccessData.ExecuteScalar(query);
         price = Convert.ToString(result);
@@ -190,4 +194,9 @@ public class ImportBillDt
         object re = AccessData.ExecuteScalar(query);
         return Convert.ToInt32(re);
     }
+    //public int GetIDFromImportBillID(int ImportBillID)
+    //{
+    //    string query = String.Format("select ID from ImportBillDt where ImportBillID = {0}", ImportBillID);
+    //    return Convert.ToInt32(AccessData.ExecuteScalar(query));
+    //}
 }

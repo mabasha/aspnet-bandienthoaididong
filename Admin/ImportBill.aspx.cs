@@ -50,12 +50,13 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         gridViewState.DataSource = dtAddBillDt;
         gridViewState.DataBind();
     }
+    
     protected void gridImportBillDt_RowDataBound1(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType == DataControlRowType.DataRow && (e.Row.RowState == DataControlRowState.Alternate ||
                    e.Row.RowState == DataControlRowState.Normal))
         {
-            ImageButton btnDelete = (ImageButton)e.Row.Cells[7].Controls[0];
+            ImageButton btnDelete = (ImageButton)e.Row.Cells[8].Controls[0];
             btnDelete.OnClientClick = "if (!confirm('Bạn có đồng ý xóa Chi Tiết Hóa đơn nhập?')) return false";
         }
     }   
@@ -105,6 +106,20 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         lbThongbaoCTHD.Text = "<p class=info>* Bạn đã xóa thành công Chi tiết hóa đơn.</p>";
         FillDataDt();
     }
+    protected void gridImportBillDt_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "btnDt")
+        {
+            //int index = Convert.ToInt32(e.CommandArgument);
+            //GridViewRow row = gridImportBillDt.Rows[index];
+            isPhoneEdit = "True";
+        }
+        else if (e.CommandName == "btnPk")
+        {
+            isPhoneEdit = "False";
+        }
+    }
+
     protected void gridImportBill_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType == DataControlRowType.DataRow && (e.Row.RowState == DataControlRowState.Alternate ||
@@ -114,30 +129,30 @@ public partial class Admin_ImportBill : System.Web.UI.Page
             btnDelete.OnClientClick = "if (!confirm('Bạn có đồng ý xóa Hóa đơn nhập?')) return false";
         }      
     }
-   
-    private string getrLoaisp()
-    {
-        if(rDienthoai.Checked == true)
-            return "True";
-        return "False";
-    }   
-
     protected void gridImportBill_RowDeleting(object sender, GridViewDeleteEventArgs e)
-    {
+    {        
+        foreach (GridViewRow r in gridImportBillDt.Rows)
+        {
+            if (r.Cells[0].Text == gridImportBill.Rows[e.RowIndex].Cells[0].Text)
+            {                
+                ImportBillDt impdt = new ImportBillDt(Convert.ToInt32(r.Cells[1].Text));
+                impdt.Delete();                               
+            }
+        }
         ImportBill imp = new ImportBill(Convert.ToInt32(gridImportBill.Rows[e.RowIndex].Cells[0].Text));
         imp.Delete();      
         lbThongbaoHD.Text = "<p class=info>* Bạn đã xóa thành công hóa đơn.</p>";
         FillData();
         FillDataDt();
     }
-    protected void dNguoiNhap_SelectedIndexChanged(object sender, EventArgs e)
+
+    protected void gridViewState_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-        
-    }      
-    private string getCurrentTime()
-    {
-        return DateTime.Now.ToShortDateString();       
-    }    
+        dtAddBillDt.Rows[e.RowIndex].Delete();
+        ViewState["dtAddBillDt"] = dtAddBillDt;
+        FillDataViewstate();
+    }       
+    
     protected void btnAddViewstate_Click(object sender, EventArgs e)
     {
         string query = null;
@@ -199,32 +214,16 @@ public partial class Admin_ImportBill : System.Web.UI.Page
             }
         }
     }
-    protected void gridViewState_RowDeleting(object sender, GridViewDeleteEventArgs e)
-    {
-        dtAddBillDt.Rows[e.RowIndex].Delete();
-        ViewState["dtAddBillDt"] = dtAddBillDt;
-        FillDataViewstate();
-    }       
-    protected void rDtTemp_CheckedChanged(object sender, EventArgs e)
-    {
-
-    }
-    protected void rPkTemp_CheckedChanged(object sender, EventArgs e)
-    {
-
-    }  
+     
     static string isPhoneEdit = "False"; 
-    protected void gridImportBillDt_RowCommand(object sender, GridViewCommandEventArgs e)
+    private string getrLoaisp()
     {
-        if (e.CommandName == "btnDt")
-        {
-            //int index = Convert.ToInt32(e.CommandArgument);
-            //GridViewRow row = gridImportBillDt.Rows[index];
-            isPhoneEdit = "True";
-        }
-        else if (e.CommandName == "btnPk")
-        {
-            isPhoneEdit = "False";
-        }
+        if (rDienthoai.Checked == true)
+            return "True";
+        return "False";
     }
+    private string getCurrentTime()
+    {
+        return DateTime.Now.ToShortDateString();
+    }    
 }

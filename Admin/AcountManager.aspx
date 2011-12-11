@@ -4,7 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<head>
+<head runat="server" />
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
     <script src="../Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
@@ -169,8 +169,7 @@
                         onrowdeleting="grid_Users_RowDeleting" 
                         onrowcancelingedit="grid_Users_RowCancelingEdit" AllowPaging="True" 
                         onpageindexchanging="grid_Users_PageIndexChanging" PageSize="15" 
-                        AllowSorting="True" onsorting="grid_Users_Sorting" 
-                        DataSourceID="" onselectedindexchanged="grid_Users_SelectedIndexChanged">
+                        AllowSorting="True" onsorting="grid_Users_Sorting"  >
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
                             <asp:BoundField DataField="Username" HeaderText="Username" ReadOnly="True" 
