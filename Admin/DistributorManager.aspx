@@ -26,7 +26,6 @@
 
 </head>
 
-        <div class="add">
             <table>
                 <tr>
                     <td colspan=2 align=center><div class="style">QUẢN LÝ NHÀ PHÂN PHỐI</div></td>
@@ -67,7 +66,6 @@
                     <asp:Label ID="lThongBao"  runat="server" Text="tThongBao"></asp:Label>
                 </td>
             </tr>
-        </div>
 
             <tr>
                <td colspan=2>

@@ -3,7 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<head runat="server">
+<head>
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
 
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
@@ -55,23 +55,39 @@
         }
     </script>
     <title></title>
-    <style type="text/css">
-        .style1
-        {
-            width: 100%;
-        }
-        .style2
-        {
-            width: 100%;
-        }
-    </style>
-</head>
 
-    <div class=wrapper>
-        <div class=header>Quản lý hóa đơn bán</div>
-        <div class=add>
-            <b>Thông tin hóa đơn</b><br />
-            <table class="style1" style="border-style: solid; border-width: 1px">
+</head>
+            <table>
+                <tr>
+                    <td colspan=2 align=center><div class="style">QUẢN LÝ HÓA ĐƠN</div></td>
+                </tr
+            </table>
+            
+             <table>
+                <tr>
+                    <td>
+                        <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b class="styleText">Thông tin hóa đơn </b><br />
+                    </td>
+                </tr>
+            <tr>
+                <td colspan=2 align=center>
+               
+                </td>
+            </tr>
+            <tr>
+                <td colspan=2>
+                    <br />
+                    
+                </td>
+            </tr>
+            </table>
+            
+            <table width=100%>
                 <tr>
                     <td class="left-add">
                         Người bán</td>
@@ -97,9 +113,11 @@
                         Tên khách hàng</td>
                     <td>
                         <asp:TextBox ID="tCustomerName" runat="server"></asp:TextBox>
-                        <asp:Button ID="bChooseCustomer" runat="server" Text="Chọn khách hàng" />
+                        <asp:Button ID="bChooseCustomer" runat="server" Text="Chọn khách hàng" 
+                            CssClass="styleButton" BorderStyle="None" />
                         <asp:Button ID="bShowCustomerInfo" runat="server" 
-                            onclick="bShowCustomerInfo_Click" Text="Hiện thông tin khác" />
+                            onclick="bShowCustomerInfo_Click" Text="Hiện thông tin khác" 
+                            CssClass="styleButton" BorderStyle="None" />
                     </td>
                 </tr>
                 <tr>
@@ -118,15 +136,15 @@
                 </tr>
                 </table>
             <br />
+            <hr />
             <br />
-            <b>Chi tiết hóa đơn<br />
+            <b class="styleText"> Chi tiết hóa đơn <br />
             </b>
             <asp:Label ID="lInfoDt" runat="server" Text="Label"></asp:Label>
             <br />
-            <table class="style2" width="50%" 
-                style="border-style: solid; border-width: 1px">
+            <table  width="100%" >
                 <tr>
-                    <td width="50%" class="left-add">
+                    <td >
                         Loại hàng</td>
                     <td>
                         <asp:RadioButton ID="rPhone" runat="server" Text="Điện thoại" Checked="True" 
@@ -137,11 +155,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td width="50%" class="left-add">
+                    <td>
                         &nbsp;</td>
                     <td>
-                        <asp:Button ID="bChooseProduct" runat="server" CssClass="margin-left" 
-                            Text="Chọn mặt hàng" />
+                        <asp:Button ID="bChooseProduct" runat="server" CssClass="styleButton" 
+                            Text="Chọn mặt hàng" BorderStyle="None" />
                     </td>
                 </tr>
                 <tr>
@@ -149,8 +167,8 @@
                         Mã mặt hàng</td>
                     <td>
                         <asp:TextBox ID="tProductID" runat="server"></asp:TextBox>
-                        <asp:Button ID="bShowName" runat="server" onclick="bShowName_Click" 
-                            Text="Lấy thông tin sản phẩm" />
+                        <asp:Button ID="bShowName" runat="server" onclick="bShowName_Click" CssClass="styleButton"
+                            Text="Lấy thông tin sản phẩm" BorderStyle="None" />
                     </td>
                 </tr>
                 <tr>
@@ -165,7 +183,7 @@
                         Đơn giá</td>
                     <td>
                         <asp:Label ID="lPrice" runat="server"></asp:Label>
-&nbsp;đ</td>
+&nbsp;</td>
                 </tr>
                 <tr>
                     <td width="50%" class="left-add">
@@ -185,17 +203,18 @@
                     <td width="50%" class="left-add">
                         &nbsp;</td>
                     <td>
-                        <asp:Button ID="bAddBillDt" runat="server" CssClass="margin" 
-                            Text="Thêm mặt hàng" onclick="bAddBillDt_Click" />
+                        <asp:Button ID="bAddBillDt" runat="server" CssClass="styleButton"
+                            Text="Thêm mặt hàng" onclick="bAddBillDt_Click" BorderStyle="None" />
                     </td>
                 </tr>
             </table>
             <br />
-            <asp:GridView ID="gAddDetail" runat="server" AutoGenerateColumns="False" 
-                CellPadding="3" 
-                onrowdeleting="gAddDetail_RowDeleting" BackColor="White" 
-                BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
-                <RowStyle ForeColor="#000066" />
+            <asp:GridView CssClass="styleGrid" ID="gAddDetail" runat="server" AutoGenerateColumns="False" 
+                CellPadding="4" 
+                onrowdeleting="gAddDetail_RowDeleting" ForeColor="#333333" 
+        GridLines="None">
+                <RowStyle BackColor="#EFF3FB" />
+                <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="ProductID" HeaderText="Mã sản phẩm" />
                     <asp:BoundField DataField="ProductName" HeaderText="Tên sản phẩm" />
@@ -205,19 +224,25 @@
                     <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/delete.jpg" 
                         ShowDeleteButton="True" />
                 </Columns>
-                <FooterStyle BackColor="White" ForeColor="#000066" />
-                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
-                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                <EditRowStyle BackColor="#2461BF" />
+                <FooterStyle BackColor="#507CD1" ForeColor="White" Font-Bold="True" />
+                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                <SortedDescendingHeaderStyle BackColor="#4870BE" />
             </asp:GridView>
             <br />
-            <asp:Button ID="bAdd" runat="server" Text="Thêm hóa đơn" onclick="bAdd_Click" />
+            <asp:Button ID="bAdd" runat="server" Text="Thêm hóa đơn" 
+        onclick="bAdd_Click" CssClass="styleButtonAdd" BorderStyle="None" />
             <div class=clearboth></div>
         </div>
         
         <div class=list>
             <div id="div-bill">
-                <asp:GridView ID="gShowBill" runat="server" AutoGenerateColumns="False" 
+                <asp:GridView CssClass="styleGrid" ID="gShowBill" runat="server" AutoGenerateColumns="False" 
                     CellPadding="3" AllowPaging="True" AllowSorting="True" BackColor="White" 
                     BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" 
                     onpageindexchanging="gShowBill_PageIndexChanging" 

@@ -104,11 +104,12 @@ td.right-add
 
 .style
 {
-    background-color:Orange;
+    background-color:#002952;
     width:930px;
     -moz-border-radius:20px;
     -webkit-border-radius:20px;
     font-size:x-large;
+    color:White;
 }
 
 .styleGrid
@@ -125,6 +126,7 @@ td.right-add
     color:#FFFFFF;
     text-shadow:1px 1px #3597bf;
     background-color:#3D9FDA;
+    margin-top: 0px;
 }
 
 .styleButtonAdd

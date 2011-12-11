@@ -52,10 +52,15 @@ public partial class Admin_ImageManager : System.Web.UI.Page
             string imageURL = "~/Images/" + ViewState["folder"] + file.Name;
             img.ImageUrl = imageURL;
             img.Height = 80;
+            img.Width = 80;
 
             CheckBox chk = new CheckBox();
             chk.Text = file.Name;
 
+            Label tx = new Label();
+            tx.Text = "<br><hr>";
+
+            pImage.Controls.Add(tx);
             pImage.Controls.Add(img);
             pImage.Controls.Add(chk);
         }
@@ -65,7 +70,7 @@ public partial class Admin_ImageManager : System.Web.UI.Page
         if (CheckFileType(fileUpload.FileName) == true)
         {
             fileUpload.SaveAs(Server.MapPath("~/Images/") + ViewState["folder"] + fileUpload.FileName);
-            lThongBao.Text = "<p class = info>Upload thành công<p>";
+            lThongBao.Text = "<div class=valid_box>Upload ảnh thành công</div>";
             LoadImage();
         }
         else

@@ -1,9 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Producer.aspx.cs" Inherits="Admin_Producer" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Admin/Admin.master" CodeFile="Producer.aspx.cs" Inherits="Admin_Producer" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<head runat="server">
+<head>
+
     <title></title>
+     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="AdminSite/Template/style.css" />
+
     <style type="text/css">
         .style1
         {
@@ -52,41 +57,43 @@
 </head>
 
     
-        <div class="header">
-            <div align="center" class="header">
-                CẬP NHẬT NHÀ SẢN XUẤT</div>
-        </div>
-        <div align="center" class="add">
-    
-        <table class="style1" align="center">
+         <table>
+                <tr>
+                    <td colspan=2 align=center><div class="style">QUẢN LÝ NHÀ PHÂN PHỐI</div></td>
+                </tr
+         </table>
+
+         <table width=100%>
             <tr>
+                <br />
                 <td align="center">
                     Tên nhà sản xuất:
-                    <asp:TextBox ID="txtTenNsx" runat="server" Width="221px"></asp:TextBox>
+                    <asp:TextBox ID="txtTenNsx" runat="server" Width="221px" CssClass="styleText" 
+                        BorderStyle="None"></asp:TextBox>
+                </td>
+            </tr>
+
+             <tr>
+                <td>
                 </td>
             </tr>
             <tr>
-                <td class="style2">
-                </td>
-            </tr>
-            <tr>
-                <td align="center" class="style3">
-                    <asp:Button ID="btnThem" runat="server" Text="Thêm" onclick="btnThem_Click" 
-                        Width="73px"/>
+                <td align="center" >
+                    <asp:Button ID="btnThem" runat="server" Text="Thêm" onclick="btnThem_Click" CssClass="styleButtonAdd" 
+                        Width="88px" BorderStyle="None" Height="38px"/>
                     &nbsp;</td>
             </tr>
             <tr>
-                <td align="center" class="style4">
+                <td align="center" >
                     <asp:Label ID="lbThongbao" runat="server"></asp:Label>
                     </td>
             </tr>
-            </table>
-    
-        </div>
-        <div align="center" class="list">
-                    <asp:GridView ID="gridNsx" runat="server" AutoGenerateColumns="False" 
+
+             <tr>
+                <td align="center">
+                    <asp:GridView CssClass="styleGrid" ID="gridNsx" runat="server" AutoGenerateColumns="False" 
                         CellPadding="4" DataKeyNames="ID" ForeColor="#333333" GridLines="None"                                                 
-                        ShowFooter="True" Width="327px" PageSize="5" 
+                        ShowFooter="True" PageSize="5" 
                         onrowdatabound="gridNsx_RowDataBound" 
                 onrowcancelingedit="gridNsx_RowCancelingEdit" 
                 onrowdeleting="gridNsx_RowDeleting" onrowediting="gridNsx_RowEditing" 
@@ -94,14 +101,21 @@
                         <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                         <Columns>
                             <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" 
-                                ReadOnly="True" />
+                                ReadOnly="True" >
+                            <HeaderStyle HorizontalAlign="Left" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="Name" HeaderText="Nhà sản xuất" 
-                                SortExpression="Name" />
+                                SortExpression="Name" >
+                            <HeaderStyle HorizontalAlign="Left" />
+                            </asp:BoundField>
                             <asp:CommandField ButtonType="Button" SelectText="Chọn" 
                                 ShowSelectButton="True" />
                             <asp:CommandField ButtonType="Image" ShowDeleteButton="True" 
                                 DeleteImageUrl="~/Images/Apps/Delete.jpg" />
-                            <asp:CommandField CancelText="Không" EditText="Sửa" ShowEditButton="True" />
+                            <asp:CommandField CancelText="Không" EditText="Sửa" ShowEditButton="True" 
+                                ButtonType="Image" CancelImageUrl="~/Admin/AdminSite/Template/images/error.png" 
+                                EditImageUrl="~/Admin/AdminSite/Template/images/user_edit.png" 
+                                UpdateImageUrl="~/Admin/AdminSite/Template/images/valid.png" />
                         </Columns>
                         <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                         <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
@@ -109,6 +123,13 @@
                         <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                         <EditRowStyle BackColor="#999999" />
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
                     </asp:GridView>
-                    </div>
+                    </td>
+            </tr>
+         </table>
+
 </asp:Content>

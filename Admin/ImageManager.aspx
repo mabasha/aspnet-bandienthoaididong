@@ -108,25 +108,27 @@
         <br />
         <br />
         <asp:Button ID="bSelect" runat="server" Text="Chọn" onclick="bSelect_Click" CssClass="styleButton" 
-            Height="26px" />
-        <asp:Button ID="bClose" runat="server" Text="Đóng" CssClass="styleButton"  />
+            Height="26px" BorderStyle="None" />
+        <asp:Button ID="bClose" runat="server" Text="Đóng" CssClass="styleButton" 
+        BorderStyle="None"  />
             &nbsp;&nbsp;&nbsp;
         <asp:Button ID="bDelete" runat="server" 
-                Text="Xóa" onclick="bDelete_Click" CssClass="styleButton" />
+                Text="Xóa" onclick="bDelete_Click" CssClass="styleButton" 
+        BorderStyle="None" />
         <asp:Button ID="bRename" runat="server" Text="Đổi tên" CssClass="styleButton" 
-            onclick="bRename_Click" />
+            onclick="bRename_Click" BorderStyle="None" />
         &nbsp;<asp:Button ID="bCopyToClipboard" runat="server" CssClass="styleButton" 
-            Text="Chép vào Clipboard (chỉ IE)" />
+            Text="Chép vào Clipboard (chỉ IE)" BorderStyle="None" />
         <br />
         <asp:TextBox ID="tNewName" runat="server" Visible="False"></asp:TextBox>
         <asp:Button ID="bDone" runat="server" onclick="bDone_Click" Text="Đồng ý" 
             Visible="False" />
+
         <asp:HiddenField ID="hChoosedImage" runat="server" />
         </b>
         <i style="font-size : 11px">
         <asp:Panel ID="pImage" runat="server">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-            &nbsp;
+            
         </asp:Panel></i>
 
 </asp:Content>

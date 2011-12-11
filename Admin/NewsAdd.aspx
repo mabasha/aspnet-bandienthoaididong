@@ -1,11 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="NewsAdd.aspx.cs" Inherits="Admin_NewsAdd" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Admin/Admin.master" CodeFile="NewsAdd.aspx.cs" Inherits="Admin_NewsAdd" %>
 
 <%@ Register assembly="CKEditor.NET" namespace="CKEditor.NET" tagprefix="CKEditor" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<head>
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
 
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
@@ -26,31 +24,33 @@
         }
     </script>
     <title>Thêm tin tức</title>
-    <style type="text/css">
-        .style1
-        {
-            width: 100%;
-        }
-    </style>
 </head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-        <div class="header">
-            <asp:Label ID="lTitle" runat="server" Text="Thêm tin tức"></asp:Label>
-        </div>
-        <div class="add">
-            <br />
-            <asp:Label ID="tInfo" runat="server"></asp:Label>
-            <table class="style1">
-                <tr>
-                    <td class="left-add">
-                        Tiêu đề *</td>
-                    <td>
-                        <asp:TextBox ID="tTitle" runat="server" Width="300px"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
+
+        <table>
+            <tr>
+                <td align="center">
+                    <div class="style">Thêm tin tức</div>
+                </td>
+            </tr>
+        </table>
+
+        <table width=100% >
+            <tr>
+                <td colspan=2>
+                    <asp:Label ID="tInfo" runat="server"></asp:Label>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                     Tiêu đề *
+                </td> 
+                <td>
+                        <asp:TextBox ID="tTitle" runat="server" Width="300px" ></asp:TextBox>
+                </td>           
+            </tr>
+
+            <tr>
                     <td>
                         Chuyên mục *</td>
                     <td>
@@ -64,8 +64,8 @@
                             <asp:ListItem>Công ty</asp:ListItem>
                         </asp:DropDownList>
                     </td>
-                </tr>
-                <tr>
+            </tr>
+             <tr>
                     <td>
                         Tác giả *</td>
                     <td>
@@ -101,13 +101,10 @@ TextColor|BGColor">
                 <tr>
                     <td>
                         &nbsp;</td>
-                    <td>
-                        <asp:Button ID="bAdd" runat="server" onclick="bAdd_Click" Text="Thêm" />
+                    <td align=right>
+                        <asp:Button ID="bAdd" runat="server" onclick="bAdd_Click" Text="Thêm" 
+                            CssClass="styleButtonAdd" BorderStyle="None" Height="41px" Width="76px" />
                     </td>
                 </tr>
-            </table>
-        </div>
-    </div>
-    </form>
-</body>
-</html>
+        </table>
+ </asp:Content>

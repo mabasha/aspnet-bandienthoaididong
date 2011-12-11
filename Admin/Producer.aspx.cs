@@ -21,13 +21,13 @@ public partial class Admin_Producer : System.Web.UI.Page
         bool isSuccess = pro.Insert();
         if (isSuccess == true)
         {
-            lbThongbao.Text = "<p class=info>* Thêm thành công Nhà sản xuất.</p>";
+            lbThongbao.Text = "<div class=valid_box>THÊM THÀNH CÔNG </div>";
             txtTenNsx.Text = "";            
             FillData();
         }
         else
         {
-            lbThongbao.Text = "<p class=error>* Tên đã tồn tại.</p>";
+            lbThongbao.Text = "<div class=error_box>TÊN ĐÃ TỒN TẠI </div>";
         }
     }
     
@@ -68,7 +68,7 @@ public partial class Admin_Producer : System.Web.UI.Page
     {
         Producer pro = new Producer(Convert.ToInt32(gridNsx.Rows[e.RowIndex].Cells[0].Text));
         pro.Delete();
-        lbThongbao.Text = "<p class=info>* Bạn đã xóa thành công!.</p>";
+        lbThongbao.Text = "<div class=valid_box>XÓA THÀNH CÔNG </div>";
         FillData();
     }
     private void FillData()

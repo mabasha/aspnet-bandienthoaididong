@@ -163,7 +163,7 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
         }
         else
         {
-            lInfoDt.Text = "<span class=error>Chưa hiện chi tiết sản phẩm.</span>";
+            lInfoDt.Text = "<div class=error_box>Chưa hiển thị chi tiết sản phẩm </div>";
         }
     }
     protected void bAdd_Click(object sender, EventArgs e)
@@ -228,7 +228,7 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
         }
         else
         {
-            lInfoDt.Text = "<span class=error>Chưa có sản phẩm nào.</span>";
+            lInfoDt.Text = "<div class=error_box>Chưa có sản phẩm nào</div>";
         }
 
 
@@ -435,7 +435,7 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
         }
         else
         {
-            lInfoDt.Text = "<span class=error>Chưa nhập đầy đủ thông tin.</span>";
+            lInfoDt.Text = "<div class=error_box> Chưa nhập đầy đủ thông tin </div>";
         }
         
     }

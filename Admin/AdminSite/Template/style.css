@@ -1,6 +1,5 @@
 body
 {
-background:url(images/bg.jpg) no-repeat center top #310b28;
 font-family:Arial, Helvetica, sans-serif;
 padding:0;
 font-size:12px;
@@ -39,14 +38,18 @@ padding:0 0 0 18px;
 display:block;
 margin:15px 20px 0 0;
 }
-#main_container{
+#main_container
+{
+background:#002952;
 margin:0 auto;
 width:1200px;
+height:40%;
 padding:0px 0 0px 0;
 }
 .header{
 width:1200px;
 height:100px;
+
 }
 .header_login{
 width:600px;
@@ -55,24 +58,17 @@ margin:auto;
 .logo{
 float:left;
 padding:35px 0 0 0;
+color:White;
+font-size:xx-large;
 }
-#clock_a{
-float:right;
-padding:15px 0 0 0;
-}
-.jclock{
-color:#FFFFFF;
-float:right;
-font-size:22px;
-font-weight:bold;
-padding:34px 25px 0 0;
-}
+
 .right_header{
-width:350px;
+width:650px;
 float:right;
-text-align:right;
 color:#FFFFFF;
-padding:40px 0 0 0;
+text-align:right;
+padding:0 20px 0 0;
+font-size:small;
 }
 .right_header a{
 margin:0 5px 0 5px;
@@ -96,7 +92,9 @@ padding:0px 0 50px 0;
 background-color:White;
 -moz-border-radius:10px;
     -webkit-border-radius:10px;  
-/*background:url(images/menu_bg.jpg) no-repeat  top #fff;*/
+     box-shadow: 0px 0px 0px 0px #818181;
+    -webkit-box-shadow: 0px 0px 1px 1px #818181;
+    -moz-box-shadow: 1px 1px 1px 1px #818181;
 }
 .footer{width:1200px;height:87px;background:url(images/footer_bg.jpg) no-repeat center top;}
 .footer_login{width:600px;margin:auto;}
@@ -109,7 +107,8 @@ background-color:White;
 .left_footer_login a{color:#FFFFFF;text-decoration:none;}
 .right_footer_login{float:right;padding:15px 10px 0 0;}
 /*---------------- menu----------------------*/
-.menu {font-size:11px;padding:0px 0px 0 0px; float:left; width:1200px; background-color:Orange;  
+.menu {font-size:11px;padding:0px 0px 0 0px; float:left; width:1200px; background-color:Orange;  -moz-border-radius:10px;
+    -webkit-border-radius:10px;  
 }
 
 /* remove all the bullets, borders and padding from the default list styling */
@@ -155,7 +154,8 @@ background-color:White;
 
 /* style the level hovers */
 /* first */
-.menu a:hover {color:#fff;background:url(images/menu_bg.gif) repeat-x center;}
+.menu a:hover {color:#fff;background:url(images/menu_bg.gif) repeat-x center;-moz-border-radius:10px;
+    -webkit-border-radius:10px; }
 .menu :hover > a {color:#fff;background:url(images/menu_bg.gif) repeat-x center;}
 /* second */
 .menu ul ul a:hover{color:#fff;background:url(images/menu_bg_a.gif) repeat-x center;}
