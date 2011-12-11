@@ -68,9 +68,13 @@
         <asp:GridView ID="gridPBH" runat="server" AutoGenerateColumns="False" 
             Width="1182px" onrowdatabound="gridPBH_RowDataBound" 
             onrowdeleting="gridPBH_RowDeleting" 
-            onselectedindexchanged="gridPBH_SelectedIndexChanged" >
+            onselectedindexchanged="gridPBH_SelectedIndexChanged" AllowPaging="True" 
+            AllowSorting="True" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" 
+            BorderWidth="1px" CellPadding="3" 
+            onpageindexchanging="gridPBH_PageIndexChanging" onsorting="gridPBH_Sorting" >
+            <RowStyle ForeColor="#000066" />
             <Columns>
-                <asp:BoundField DataField="ID" HeaderText="ID" />
+                <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
                 <asp:TemplateField HeaderText="Loại sản phẩm">
                     <ItemTemplate>
                         <asp:Label ID="lbIsPhone" runat="server" 
@@ -88,7 +92,8 @@
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField DataField="IMEI" HeaderText="IMEI" />
-                <asp:BoundField DataField="CreatedDate" HeaderText="Ngày lập" />
+                <asp:BoundField DataField="CreatedDate" HeaderText="Ngày lập" 
+                    SortExpression="CreatedDate" />
                 <asp:TemplateField HeaderText="Lý do ">
                     <EditItemTemplate>
                         <asp:TextBox ID="txtReason" runat="server" Height="80px" TextMode="MultiLine" 
@@ -98,8 +103,10 @@
                         <asp:Label ID="lbReason" runat="server" Text='<%# Eval("Reason") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="CustomerName" HeaderText="Tên khách hàng " />
-                <asp:BoundField DataField="Tel" HeaderText="Số điện thoại" />
+                <asp:BoundField DataField="CustomerName" HeaderText="Tên khách hàng " 
+                    SortExpression="CustomerName" />
+                <asp:BoundField DataField="Tel" HeaderText="Số điện thoại" 
+                    SortExpression="Tel" />
                 <asp:TemplateField HeaderText="Tình trạng">
                     <EditItemTemplate>
                         <asp:RadioButton ID="rDoi" runat="server" GroupName="rTinhtrang" 
@@ -112,7 +119,7 @@
                             Text='<%# Eval("IsReturned").ToString()=="True" ?"Đã đổi":"Chưa đổi" %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Ngày trả">
+                <asp:TemplateField HeaderText="Ngày đổi">
                     <ItemTemplate>
                         <asp:Label ID="lReDate" runat="server" Text='<%# Eval("ReturnedDate") %>'></asp:Label>
                     </ItemTemplate>
@@ -131,7 +138,10 @@
                 <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/Delete.jpg" 
                     ShowDeleteButton="True" />
             </Columns>
-            <SelectedRowStyle BackColor="#66FFFF" />
+            <FooterStyle BackColor="White" ForeColor="#000066" />
+            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
         </asp:GridView>
     </div>    
     </form>

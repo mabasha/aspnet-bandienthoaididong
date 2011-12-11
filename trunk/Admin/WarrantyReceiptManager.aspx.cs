@@ -15,10 +15,16 @@ public partial class Admin_WarrantyReceiptManager : System.Web.UI.Page
             FillData();
         }
     }
+    private void FillData(string sort)
+    {
+        DataTable grid = WarrantyReceipt.GetAll();
+        grid.DefaultView.Sort = sort;
+        gridPBH.DataSource = grid;
+        gridPBH.DataBind();
+    }
     private void FillData()
     {
-        gridPBH.DataSource = WarrantyReceipt.GetAll();
-        gridPBH.DataBind();
+        FillData("");
     }
     protected void gridPBH_RowDataBound(object sender, GridViewRowEventArgs e)
     {
@@ -47,7 +53,7 @@ public partial class Admin_WarrantyReceiptManager : System.Web.UI.Page
         btnHuy.Enabled = true; 
      
         id = Convert.ToInt32(gridPBH.SelectedRow.Cells[0].Text);
-        WarrantyReceipt war = new WarrantyReceipt(id);
+        //WarrantyReceipt war = new WarrantyReceipt(id);
         Label lydo = (Label)gridPBH.SelectedRow.FindControl("lbReason");
         Label mota = (Label)gridPBH.SelectedRow.FindControl("lbDes");
         Label tinhtrang = (Label)gridPBH.SelectedRow.FindControl("lbIsRe");
@@ -89,5 +95,14 @@ public partial class Admin_WarrantyReceiptManager : System.Web.UI.Page
         txtMota.Enabled = false;
         btnCapnhat.Enabled = false;
         btnHuy.Enabled = false;
+    }
+    protected void gridPBH_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        gridPBH.PageIndex = e.NewPageIndex;
+        FillData();
+    }
+    protected void gridPBH_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        FillData(e.SortExpression);
     }
 }

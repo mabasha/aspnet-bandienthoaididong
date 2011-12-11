@@ -74,8 +74,7 @@
                     Người Nhập :</td>
                 <td class="style40">
                     <asp:DropDownList ID="dNguoiNhap" runat="server" DataSourceID="SqlDataSource1" 
-                        DataTextField="FullName" DataValueField="Username" 
-                        onselectedindexchanged="dNguoiNhap_SelectedIndexChanged">
+                        DataTextField="FullName" DataValueField="Username" >
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                         ConnectionString="<%$ ConnectionStrings:MobileShopConnectionString %>" 
@@ -133,7 +132,9 @@
             <td>
     
     <asp:GridView ID="gridViewState" runat="server" AutoGenerateColumns="False" 
-                    onrowdeleting="gridViewState_RowDeleting" Width="533px">
+                    onrowdeleting="gridViewState_RowDeleting" Width="533px" BackColor="White" 
+                    BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
+        <RowStyle ForeColor="#000066" />
         <Columns>
             <asp:BoundField DataField="ProductID" HeaderText="Mã sản Phẩm" />
             <asp:BoundField DataField="ProductName" HeaderText="Tên sản phẩm" />
@@ -143,6 +144,10 @@
             <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/Delete.jpg" 
                 ShowDeleteButton="True" />
         </Columns>
+        <FooterStyle BackColor="White" ForeColor="#000066" />
+        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
     </asp:GridView>
     
             </td>
@@ -170,10 +175,11 @@
                         <tr>
                             <td class="style26">
                                 <asp:GridView ID="gridImportBill" runat="server" AutoGenerateColumns="False" 
-                                    CellPadding="4" ForeColor="#333333" GridLines="None"                                      
+                                    CellPadding="3"                                      
                                     onrowdatabound="gridImportBill_RowDataBound"                                     
-                                    onrowdeleting="gridImportBill_RowDeleting">
-                                    <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                                    onrowdeleting="gridImportBill_RowDeleting" BackColor="White" 
+                                    BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+                                    <RowStyle ForeColor="#000066" />
                                     <Columns>
                                         <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" />
                                         <asp:BoundField DataField="FullName" HeaderText="Người nhập" />
@@ -181,24 +187,24 @@
                                         <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/Delete.jpg" 
                                             ShowDeleteButton="True" />
                                     </Columns>
-                                    <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                                    <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                                    <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                                    <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                                    <EditRowStyle BackColor="#999999" />
-                                    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
                                 </asp:GridView>
                             </td>
                             <td class="style30">
                     <asp:GridView ID="gridImportBillDt" runat="server" AutoGenerateColumns="False" 
-                        CellPadding="4" ForeColor="#333333" GridLines="None" 
+                        CellPadding="3" 
                                     onrowcancelingedit="gridImportBillDt_RowCancelingEdit" 
                                     onrowediting="gridImportBillDt_RowEditing" 
                                     onrowdatabound="gridImportBillDt_RowDataBound1" 
                                     onrowdeleting="gridImportBillDt_RowDeleting" 
-                                    onrowupdating="gridImportBillDt_RowUpdating" onrowcommand="gridImportBillDt_RowCommand"                                                              
+                                    onrowupdating="gridImportBillDt_RowUpdating" 
+                                    onrowcommand="gridImportBillDt_RowCommand" BackColor="White" 
+                                    BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px"                                                              
                                     >
-                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                        <RowStyle ForeColor="#000066" />
                         <Columns>
                             <asp:BoundField DataField="ImportBillID" HeaderText="Mã HĐ" ReadOnly="True" />
                             <asp:BoundField DataField="ID" HeaderText="Mã CTHĐ" ReadOnly="True" />
@@ -218,11 +224,9 @@
                             <asp:TemplateField HeaderText="Loại sản phẩm">
                                 <EditItemTemplate>
                                     <asp:RadioButton ID="rDtTemp" runat="server" Checked="True" 
-                                        GroupName="rtemplate" Text="Điện thoại" Enabled="False" 
-                                        oncheckedchanged="rDtTemp_CheckedChanged" />
+                                        GroupName="rtemplate" Text="Điện thoại" Enabled="False" />
                                     <asp:RadioButton ID="rPkTemp" runat="server" GroupName="rtemplate" 
-                                        Text="Phụ kiện" Enabled="False" 
-                                        oncheckedchanged="rPkTemp_CheckedChanged" />
+                                        Text="Phụ kiện" Enabled="False" />
                                 </EditItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="lbIsPhone" runat="server" Text='<%# Eval("IsPhone").ToString()=="True" ?"Điện thoại":"Phụ kiện" %>'></asp:Label>
@@ -232,16 +236,16 @@
                             <%--<asp:BoundField DataField="IsPhone" HeaderText="Là điện thoại" />--%>
                             <asp:BoundField DataField="Number" HeaderText="Số lượng" />
                             <asp:BoundField DataField="Price" HeaderText="Đơn giá nhập" />
+                            <asp:CommandField ButtonType="Image" 
+                                SelectImageUrl="~/Images/Apps/edit-icon.jpg" ShowSelectButton="True" />
                             <asp:CommandField ShowEditButton="True" />
                             <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/Delete.jpg" 
                                 ShowDeleteButton="True" />
                         </Columns>
-                        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                        <EditRowStyle BackColor="#999999" />
-                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
                     </asp:GridView>
                             </td>
                         </tr>
