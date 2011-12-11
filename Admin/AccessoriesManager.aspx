@@ -128,8 +128,9 @@
                         ShowSelectButton="True" SelectImageUrl="AdminSite/Template/images/valid.png"/>
                     <asp:CommandField ButtonType="Image" DeleteImageUrl="AdminSite/Template/images/error.png" 
                         ShowDeleteButton="True" />
-                    <asp:CommandField CancelText="Hủy" EditText="Sửa" ShowEditButton="True"
-                        UpdateText="Cập nhật" />
+                    <asp:CommandField CancelText="Hủy" ShowEditButton="True" SelectImageUrl="AdminSite/Template/images/valid.png"
+                        UpdateText="Cập nhật" 
+                        EditImageUrl="~/Admin/AdminSite/Template/images/user_edit.png" />
                 </Columns>
                 <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                 <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
