@@ -81,7 +81,7 @@ public class WarrantyReceipt
     public void Update()
     {
         string query = String.Format("UPDATE WarrantyReceipt "
-                                    + "SET IsReturned = '{0}', Reason = '{1}', Description = '{2}', ReturnedDate = '{3}' "
+                                    + "SET IsReturned = '{0}', Reason = N'{1}', Description = N'{2}', ReturnedDate = '{3}' "
                                     + "WHERE ID = {4}", isReturned, reason, description, rDate, id);
         AccessData.ExecuteNonQuery(query);
     }

@@ -1,9 +1,28 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin/Admin.master" CodeFile="ImportBill.aspx.cs" Inherits="Admin_ImportBill" %>
+﻿<%--<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin/Admin.master" CodeFile="ImportBill.aspx.cs" Inherits="Admin_ImportBill" %>--%>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ImportBill.aspx.cs" Inherits="Admin_ImportBill" %>
 
-<head>
+<%--<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">--%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
+    <script src="../Scripts/Utils.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $("document").ready(OnPageReady);
+        function OnPageReady() {
+            $("#btnAddViewstate").click(AddViewstate);
+            $("#txtNumber").keydown(OnKeyDownCheckNumber);
+            $("#txtPrice").keydown(OnKeyDownCheckNumber);
+        }
+        function AddViewstate() {
+            if ($('#txtTenSp').val() == "" || $('#txtNumber').val() == "" || $('#txtPrice').val() == "") {
+                alert("Vui lòng nhập đầy đủ thông tin!");
+                return false;
+            }
+        }
+    </script>
     <style type="text/css">
         .style4
         {
@@ -38,15 +57,6 @@
         {
             height: 52px;
         }
-        .style37
-        {
-            width: 68%;
-            height: 34px;
-        }
-        .style38
-        {
-            width: 427px;
-        }
         .style39
         {
             width: 161px;
@@ -63,6 +73,8 @@
         </style>
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
 </head>
+<body>
+<form id="form1" runat="server">
     <div class="header" align="center" 
         style="font-size: large; height: 62px; width: 1000px;">
         LẬP HÓA ĐƠN NHẬP</div>
@@ -108,7 +120,7 @@
             </tr>
             <tr>
                 <td class="style32">
-                    Loại sản phẩm :</td>
+                    Loại sản phẩm *:</td>
                 <td class="style41">
                     <asp:RadioButton ID="rDienthoai" runat="server" AutoPostBack="True" 
                         Checked="True" GroupName="chooser" Text="Điện thoại" />
@@ -118,7 +130,7 @@
             </tr>
             <tr>
                 <td class="style32">
-                    Tên sản phẩm :</td>
+                    Tên sản phẩm *:</td>
                 <td class="style41">
                     <asp:TextBox ID="txtTenSp" runat="server" Width="52px" ></asp:TextBox>
                     <asp:Button ID="btnTenSp" runat="server" Text="Chọn sản phẩm" />
@@ -126,14 +138,14 @@
             </tr>
             <tr>
                 <td class="style32">
-                    Số lượng :</td>
+                    Số lượng *:</td>
                 <td class="style41">
                     <asp:TextBox ID="txtNumber" runat="server" Width="190px" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="style32">
-                    Đơn giá nhập :</td>
+                    Đơn giá nhập* :</td>
                 <td class="style41">
                     <asp:TextBox ID="txtPrice" runat="server" Width="190px" ></asp:TextBox>
                 </td>
@@ -252,4 +264,7 @@
             </tr>
         </table>
     </div>
-    </asp:Content>
+<%--</asp:Content>--%>
+</form>
+</body>
+</html>
