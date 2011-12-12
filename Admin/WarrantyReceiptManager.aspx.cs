@@ -78,7 +78,7 @@ public partial class Admin_WarrantyReceiptManager : System.Web.UI.Page
         string returnedDate = DateTime.Now.ToShortDateString();
         WarrantyReceipt war = new WarrantyReceipt(id , txtLydo.Text, returned, returnedDate, txtMota.Text);
         war.Update();
-        FillData();
+        FillData(); 
         rChua.Enabled = false;
         rTra.Enabled = false;
         txtLydo.Enabled = false;
