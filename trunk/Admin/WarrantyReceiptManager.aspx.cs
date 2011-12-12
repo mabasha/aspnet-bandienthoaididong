@@ -31,7 +31,7 @@ public partial class Admin_WarrantyReceiptManager : System.Web.UI.Page
         if (e.Row.RowType == DataControlRowType.DataRow && (e.Row.RowState == DataControlRowState.Alternate ||
                    e.Row.RowState == DataControlRowState.Normal))
         {
-            ImageButton btnDelete = (ImageButton)e.Row.Cells[12].Controls[0];
+            ImageButton btnDelete = (ImageButton)e.Row.Cells[13].Controls[0];
             btnDelete.OnClientClick = "if (!confirm('Bạn có đồng ý xóa Phiếu bảo hành không?')) return false";
         }
     }

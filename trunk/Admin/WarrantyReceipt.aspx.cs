@@ -42,6 +42,10 @@ public partial class Admin_WarrantyReceipt : System.Web.UI.Page
         }
         lbIMEI.Text = "IMEI : " + txtIMEI.Text;
         lbNgay.Text = "Ngày lập phiếu : " + DateTime.Now.ToShortDateString();
+
+        int thang = Convert.ToInt32(txtHanBH.Text);
+        DateTime hanBh = DateTime.Now.AddMonths(thang);
+        lbHanBH.Text = "Hạn bảo hành : " + txtHanBH.Text + " tháng" + " (đến hết ngày " + hanBh.Day.ToString() + "/" + hanBh.Month.ToString() + "/" + hanBh.Year.ToString() + ")";
         lbTenKH.Text = "Tên khách hàng : " + txtTenKH.Text;
         lbSoDt.Text = "Số điện thoại : " + txtSoDt.Text;
         lbLydo.Text = "Lý do : " + txtReason.Text;
@@ -63,13 +67,14 @@ public partial class Admin_WarrantyReceipt : System.Web.UI.Page
         }
         int proID = Convert.ToInt32(txtMasp.Text);
         string cdate = DateTime.Now.ToShortDateString();
+        string outofdate = DateTime.Now.AddMonths(Convert.ToInt32(txtHanBH.Text)).ToShortDateString();
         string reason = txtReason.Text;
         string cusName = txtTenKH.Text;
         string tel = txtSoDt.Text;
         string des = txtMota.Text;
         bool isRe = false;
         string rDate = "";
-        WarrantyReceipt war = new WarrantyReceipt(0, isphone, proID, imei, cdate, reason, cusName, tel, isRe, rDate, des);        
+        WarrantyReceipt war = new WarrantyReceipt(0, isphone, proID, imei, cdate, reason, cusName, tel, isRe, rDate, des, outofdate);        
         war.Insert();
         txtMasp.Text = "";
         txtIMEI.Text = "";
@@ -87,6 +92,7 @@ public partial class Admin_WarrantyReceipt : System.Web.UI.Page
         lbSoDt.Text = "";
         lbLydo.Text = "";
         lbMota.Text = "";
+        lbHanBH.Text = "";
         lbThongbao.Text = "<p class=info>* Lập phiếu bảo hành thành công!!.</p>";
     }
 }
