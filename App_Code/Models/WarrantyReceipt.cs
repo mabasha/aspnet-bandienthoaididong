@@ -20,6 +20,7 @@ public class WarrantyReceipt
     private bool isReturned;
     private string rDate;
     private string description;
+    private string outofdate;
 
 	public WarrantyReceipt(int id)
 	{
@@ -31,11 +32,11 @@ public class WarrantyReceipt
         this.reason = reason;        
         this.isReturned = isReturned;
         this.rDate = rDate;
-        this.description = description;
+        this.description = description;        
     }
     public WarrantyReceipt(int id, bool isphone, int proID, string Imei, 
-                            string cDate, string reason, string cusName, 
-                            string tel, bool isReturned, string rDate, string description)
+                            string cDate, string reason, string cusName,
+                            string tel, bool isReturned, string rDate, string description, string outofdate)
     {
         this.id = id;
         this.isphone = isphone;
@@ -48,10 +49,11 @@ public class WarrantyReceipt
         this.isReturned = isReturned;
         this.rDate = rDate;
         this.description = description;
+        this.outofdate = outofdate;
     }
     public static DataTable GetAll()
     {
-        string query = "SELECT ID, IsPhone, ProductID, IMEI, CreatedDate, Reason, CustomerName, Tel, IsReturned, ReturnedDate, Description "
+        string query = "SELECT ID, IsPhone, ProductID, IMEI, CreatedDate, OutofDate, Reason, CustomerName, Tel, IsReturned, ReturnedDate, Description "
                       + "FROM WarrantyReceipt";
 
         return AccessData.GetTable(query);
@@ -59,8 +61,8 @@ public class WarrantyReceipt
     public void Insert()
     {
         id = GetMaxID() + 1;
-        string query = String.Format("INSERT INTO WarrantyReceipt(ID, IsPhone, ProductID, IMEI, CreatedDate, Reason, CustomerName, Tel, IsReturned, ReturnedDate, Description) "
-                                    + "VALUES ('{0}', N'{1}', N'{2}', N'{3}', N'{4}', N'{5}', N'{6}', N'{7}', N'{8}', N'{9}', N'{10}')", id, isphone, proID, Imei, cDate, reason, cusName, tel, isReturned, rDate, description);               
+        string query = String.Format("INSERT INTO WarrantyReceipt(ID, IsPhone, ProductID, IMEI, CreatedDate, Reason, CustomerName, Tel, IsReturned, ReturnedDate, Description, OutOfDate) "
+                                    + "VALUES ('{0}', N'{1}', N'{2}', N'{3}', N'{4}', N'{5}', N'{6}', N'{7}', N'{8}', N'{9}', N'{10}', N'{11}')", id, isphone, proID, Imei, cDate, reason, cusName, tel, isReturned, rDate, description, outofdate);               
         AccessData.ExecuteNonQuery(query);
     }
     public static int GetMaxID()

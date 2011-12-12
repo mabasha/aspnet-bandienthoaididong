@@ -94,6 +94,7 @@
                 <asp:BoundField DataField="IMEI" HeaderText="IMEI" />
                 <asp:BoundField DataField="CreatedDate" HeaderText="Ngày lập" 
                     SortExpression="CreatedDate" />
+                <asp:BoundField DataField="OutOfDate" HeaderText="Hạn bảo hành" />
                 <asp:TemplateField HeaderText="Lý do ">
                     <EditItemTemplate>
                         <asp:TextBox ID="txtReason" runat="server" Height="80px" TextMode="MultiLine" 
