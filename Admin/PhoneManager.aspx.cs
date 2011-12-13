@@ -21,6 +21,7 @@ public partial class Admin_PhoneManager : System.Web.UI.Page
             FillDataInGrid("Name");
             id = Convert.ToInt32(grid_Phone.DataKeys[0].Value);
             FillDataInDetailsView(id);
+            FillDataInDropDownList();
         }
     }
 
@@ -39,6 +40,27 @@ public partial class Admin_PhoneManager : System.Web.UI.Page
         dt.DefaultView.Sort = sort.ToString();
         grid_Phone.DataSource = dt;
         grid_Phone.DataBind();
+    }
+
+    protected void FillDataInDropDownList()
+    {
+        DataTable dt = AccessData.GetTable("SELECT * FROM Producer");
+        dt.DefaultView.Sort = "Name";
+        ddl_Producer.DataSource = dt;
+        ddl_Producer.DataTextField = "Name";
+        ddl_Producer.DataValueField = "ID";
+        ddl_Producer.DataBind();
+        ddl_Producer.Items.Add("Tất cả");
+        ddl_Producer.SelectedIndex = ddl_Producer.Items.Count - 1;
+
+        dt = AccessData.GetTable("SELECT * FROM Distributor");
+        dt.DefaultView.Sort = "Name";
+        ddl_Distributor.DataSource = dt;
+        ddl_Distributor.DataTextField = "Name";
+        ddl_Distributor.DataValueField = "ID";
+        ddl_Distributor.DataBind();
+        ddl_Distributor.Items.Add("Tất cả");
+        ddl_Distributor.SelectedIndex = ddl_Distributor.Items.Count - 1;
     }
     protected void grid_Phone_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
@@ -261,4 +283,11 @@ public partial class Admin_PhoneManager : System.Web.UI.Page
 
     }
 
+    protected void btn_Search_Click(object sender, ImageClickEventArgs e)
+    {
+        DataTable dt = phone.Search(grid_Phone, txt_PhoneName.Text, ddl_Producer.SelectedValue, ddl_Distributor.SelectedValue);
+        dt.DefaultView.Sort = "Name";
+        grid_Phone.DataSource = dt;
+        grid_Phone.DataBind();
+    }
 }

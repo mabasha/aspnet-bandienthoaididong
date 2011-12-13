@@ -280,7 +280,7 @@ public class Phone
         bool isExit = IsExistName();
         DataTable dt = AccessData.GetTable("SELECT * FROM Phone WHERE id=" + id);
         //name = dt.Rows[0]["Name"].ToString();
-        //oldName = dt.Rows[0]["Name"].ToString();
+        oldName = dt.Rows[0]["Name"].ToString();
         if (String.Compare(oldName, name) != 0 && isExit == true)
         {
             return false;
@@ -369,5 +369,43 @@ public class Phone
             "order by {4}", priceFrom, priceTo, producerName, keyword, orderBy);
         return AccessData.GetTable(query);
     }
-    
+
+    public DataTable Search(GridView grid_Phone, string keyword, string producerID, string distributorID)
+    {
+        String query = String.Format("SELECT * FROM Phone");
+        DataTable dt = AccessData.GetTable(query);
+        DataRow[] rows;
+        string filterExpression = "";
+
+        // Lọc tên
+        if (keyword != "")
+        {
+            dt = GetAllWithKeyword(keyword);
+        }
+
+        // Lọc producerID
+        if (producerID != "Tất cả")
+        {
+            filterExpression = String.Format("producerID={0}", producerID);
+            rows = dt.Select(filterExpression);
+            dt = dt.Clone();
+            for (int i = 0; i < rows.Length; i++)
+            {
+                dt.ImportRow(rows[i]);
+            }
+        }
+
+        // Lọc distributorID
+        if (distributorID != "Tất cả")
+        {
+            filterExpression = String.Format("distributorID={0}", distributorID);
+            rows = dt.Select(filterExpression);
+            dt = dt.Clone();
+            for (int i = 0; i < rows.Length; i++)
+            {
+                dt.ImportRow(rows[i]);
+            }
+        }
+        return dt;
+    }
 }
