@@ -91,6 +91,11 @@ public class Distributor
         return AccessData.GetTable("select * from Distributor");
     }
 
+    public static DataTable GetName()
+    {
+        return AccessData.GetTable("select Name from Distributor");
+    }
+
     public static int GetIDFromName(String name)
     {
         String query = String.Format("select ID from Distributor where Name=N'{0}'", name);
