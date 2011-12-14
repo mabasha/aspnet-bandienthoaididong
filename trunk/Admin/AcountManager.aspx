@@ -12,33 +12,33 @@
         $(document).ready(function() {
             $("#form1").validate({
                 rules: {
-                    txt_Username: {
+                    <%#txt_Username.UniqueID %>: {
                         minlength: 5,
                         required: true
                     },
-                    txt_Password: {
+                    <%#txt_Password.UniqueID %>: {
                         minlength: 6,
                         required: true
                     },
-                    txt_Fullname: {                       
+                    <%#txt_Fullname.ClientID%>: {                       
                         required: true,
                         //email:true
                         //minlenght: 5
                     },
-                    txt_Email: {                       
+                    <%#txt_Email.ClientID%>: {                       
                         required: true,
                         email:true
                     },
-                    txt_BirthDay: {                       
+                    <%#txt_BirthDay.ClientID%>: {                       
                         required: true,
                     },
-                    txt_Tel: {                       
+                    <%#txt_Tel.ClientID%>: {                       
                         required: true,
                     },
-                    txt_Address: {
+                    <%#txt_Address.ClientID%>: {
                         required: true
                     },
-                    txt_IDCard: {
+                    <%#txt_IDCard.ClientID%>: {
                         required: true,
                         number: true
                     }
