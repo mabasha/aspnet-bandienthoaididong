@@ -98,7 +98,7 @@
                 onrowcancelingedit="gridNsx_RowCancelingEdit" 
                 onrowdeleting="gridNsx_RowDeleting" onrowediting="gridNsx_RowEditing" 
                 onrowupdating="gridNsx_RowUpdating">
-                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                        <RowStyle BackColor="#EFF3FB" />
                         <Columns>
                             <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" 
                                 ReadOnly="True" >
@@ -117,12 +117,12 @@
                                 EditImageUrl="~/Admin/AdminSite/Template/images/user_edit.png" 
                                 UpdateImageUrl="~/Admin/AdminSite/Template/images/valid.png" />
                         </Columns>
-                        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                        <EditRowStyle BackColor="#999999" />
-                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <EditRowStyle BackColor="#2461BF" />
+                        <AlternatingRowStyle BackColor="White" />
                         <SortedAscendingCellStyle BackColor="#F5F7FB" />
                         <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                         <SortedDescendingCellStyle BackColor="#E9EBEF" />
