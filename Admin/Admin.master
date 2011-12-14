@@ -10,6 +10,9 @@
 <script type="text/javascript" src="AdminSite/Template/clockh.js"></script> 
 <script type="text/javascript" src="AdminSite/Template/jquery.min.js"></script>
 <script type="text/javascript" src="AdminSite/Template/ddaccordion.js"></script>
+<link rel="stylesheet" type="text/css" href="AdminSite/Template/ddsmoothmenu.css" />
+<link rel="stylesheet" type="text/css" href="AdminSite/Template/ddsmoothmenu-v.css" />
+<script type="text/javascript" src="../ddsmoothmenu.js">
 <script type="text/javascript">
     ddaccordion.init({
         headerclass: "submenuheader", //Shared CSS class name of headers group
@@ -31,7 +34,17 @@
             //do nothing
         }
     })
+
+    ddsmoothmenu.init({
+        mainmenuid: "smoothmenu1", //menu DIV id
+        orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+        classname: 'ddsmoothmenu', //class added to menu's outer DIV
+        //customtheme: ["#1c5a80", "#18374a"],
+        contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+    })
+
 </script>
+
 
 <script type="text/javascript" src="AdminSite/Template/jconfirmaction.jquery.js"></script>
 <script type="text/javascript">
@@ -59,33 +72,22 @@
 </div>
     
     <div class="main_content">
-          <div>
-                    <div class="menu">
-                    <ul>
-                    <li><a href="http://localhost/ASP.NET/Admin/DistributorManager.aspx">Admin Home</a></li>
-                    <li><a href="http://localhost/ASP.NET/Admin/PhoneManager.aspx">Điện Thoại</a></li>
-                    <li><a href="http://localhost/ASP.NET/Admin/AccessoriesManager.aspx">Phụ Kiện</a>
-                        <ul>
-                            <li><a href="http://localhost/ASP.NET/Admin/AccessoryChooser.aspx">Chọn Phụ Kiện</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="http://localhost/ASP.NET/Admin/DistributorManager.aspx">Nhà Phân Phối</a></li>
-                    <li><a href="http://localhost/ASP.NET/Admin/AcountManager.aspx">Users</a>
-                        <ul>
-                            <li><a href="http://localhost/ASP.NET/Admin/AccountChooser.aspx">Chọn Users</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="http://localhost/ASP.NET/Admin/AcountManager.aspx">Quản Lý Hình Ảnh</a>
-                    <li><a href="http://localhost/ASP.NET/Admin/AcountManager.aspx">Import Bill</a>
-                    <li><a href="http://localhost/ASP.NET/Admin/AcountManager.aspx">Quản Lý Tin Tức</a>
-                    </ul>
-                    </div>
+          <div id="smoothmenu1" class="ddsmoothmenu">
+            <ul>
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Folder 0</a></li>
+                <li><a href="#">Folder 1</a></li>
+                <li><a href="#">Item 3</a></li>
+                <li><a href="#">Folder 2</a></li>
+                <li><a href="#">Item 3</a></li>
+                <li><a href="#">Folder 2</a></li>
+                <li><a href="#">Item 3</a></li>
+                <li><a href="#">Folder 2</a></li>
+            </ul>
+            </div> 
+            
                     
-       </div> 
-                    
-                    
-                    
-                    
+                                   
     <div class="center_content">  
     
     
