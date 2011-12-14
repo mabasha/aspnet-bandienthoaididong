@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Admin/Admin.master" CodeFile="AccountChooser.aspx.cs" Inherits="Admin_AccountChooser" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<head runat="server">
+    <head>
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
 
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
@@ -33,7 +33,7 @@
             </tr>
         <tr>
             <td>
-        <asp:GridView ID="gShow" runat="server" AllowPaging="True" AllowSorting="True" 
+        <asp:GridView CssClass="styleGrid" ID="gShow" runat="server" AllowPaging="True" AllowSorting="True" 
             AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" 
             GridLines="None" onpageindexchanging="gShow_PageIndexChanging" 
             onselectedindexchanged="gShow_SelectedIndexChanged" 
@@ -57,7 +57,12 @@
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         </asp:GridView>
         <br />
-        <asp:Button ID="bClose" runat="server" CssClass="right-float" Text="Đóng" />
+        </td>
+        </tr>
+        <tr>
+            <td align=right>
+        <asp:Button ID="bClose" runat="server" Text="Đóng" CssClass="styleButtonCancle" 
+                    BorderStyle="None" Height="40px" Width="79px" />
         <asp:HiddenField ID="hChoosed" runat="server" Value="test" />
             </td>
         </tr>

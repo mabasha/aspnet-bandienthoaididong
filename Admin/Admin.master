@@ -65,69 +65,47 @@
 <div id="main_container">
 
 	<div class="header">
-    <div class="logo"><b>ADMIN PANEL</b></div>
+        <div class="logo"><b>ADMIN PANEL</b></div>
     
-    <div class="right_header">Welcome Admin, <a href="#">Visit site</a> | <a href="#" class="messages">Messages</a> | <a href="#" class="logout">Logout</a></div>
+        <div class="right_header">Welcome Admin, <a href="#">Visit site</a> | <a href="#" class="messages">Messages</a> | <a href="#" class="logout">Logout</a></div>
 
-</div>
-    
-    <div class="main_content">
-          <div id="smoothmenu1" class="ddsmoothmenu">
-            <ul>
-                <li><a href="#">Item 1</a></li>
-                <li><a href="#">Folder 0</a></li>
-                <li><a href="#">Folder 1</a></li>
-                <li><a href="#">Item 3</a></li>
-                <li><a href="#">Folder 2</a></li>
-                <li><a href="#">Item 3</a></li>
-                <li><a href="#">Folder 2</a></li>
-                <li><a href="#">Item 3</a></li>
-                <li><a href="#">Folder 2</a></li>
-            </ul>
-            </div> 
-            
-                    
-                                   
-    <div class="center_content">  
-    
-    
-   
-    <div class="right_content">            
-                                       
-<table id="rounded-corner">      
-    <tbody>
-    	<tr>
-        	<td>              
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
-            </td>
-            <td>
-            </td>
-        </tr>
-        
-    	<tr>
-          
-        </tr>    
-        
-    </tbody>
-</table>
-   
-            
-  </div>   
-  </div>     
-                    
-                    
-    
-    
-    <div class="clear"></div>
-    </div> <!--end of main content-->
-	
-    
-    	<div class="left_footer">ADMIN PANEL - MOBILE SHOP <a href=""></a></div>
-    
     </div>
 
-</div>		
+    <div class="menu_content">
+          <div id="smoothmenu1" class="ddsmoothmenu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="../Admin/AccessoriesManager.aspx">Phụ Kiện</a></li>
+                <li><a href="../Admin/PhoneManager.aspx">Điện Thoại</a></li>
+                <li><a href="../Admin/AcountManager.aspx">Users</a></li>
+                <li><a href="../Admin/EmployeeReport.aspx">Báo Cáo</a></li>
+                <li><a href="../Admin/ImageManager.aspx">Hình Ảnh</a></li>
+                <li><a href="../Admin/NewsManager.aspx">Tin Tức</a></li>
+                <li><a href="../Admin/Producer.aspx">Nhà Sản Xuất</a></li>
+                <li><a href="../Admin/WarrantyReceiptManager.aspx">Bảo Hành</a></li>
+            </ul>
+           </div> 
+    </div>
+                                                                         
+    <div class="main_content">                                  
+                    <table id="rounded-corner">      
+    	                    <tr>
+        	                    <td align=center>              
+                                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                    </asp:ContentPlaceHolder>
+                                </td>
+                            </tr>     
+                    </table>
+          
+     </div>  
+  
+   
+    <div class="clear"></div>
+	
+    <div class="left_footer">ADMIN PANEL - MOBILE SHOP <a href=""></a></div>
+   
+ 
+		
 </body>
 </form>
 
