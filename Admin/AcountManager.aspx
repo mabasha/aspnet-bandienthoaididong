@@ -1,44 +1,43 @@
-Ôªø<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Admin/Admin.master" CodeFile="AcountManager.aspx.cs" Inherits="Admin_AcountManager" %>
+<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Admin/Admin.master" CodeFile="AcountManager.aspx.cs" Inherits="Admin_AcountManager" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+    <head runat="Server">
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
-    <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
-    <script src="../Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
-    <script src="../Scripts/jquery.validate.js" type="text/javascript"></script>
+    </head>
     <script type="text/javascript">
-<head runat="server">
         $(document).ready(function() {
-            $("#form1").validate({
+            $("#aspnetForm").validate({
                 rules: {
-                    <%#txt_Username.UniqueID %>: {
-                        minlength: 5,
+                    <%=txt_Username.UniqueID %>: {
+                        minlength: 2,
                         required: true
                     },
-                    <%#txt_Password.UniqueID %>: {
+                    <%=txt_Password.UniqueID %>: {
                         minlength: 6,
                         required: true
                     },
-                    <%#txt_Fullname.ClientID%>: {                       
+                    <%=txt_Fullname.UniqueID %>: {                       
                         required: true,
                         //email:true
                         //minlenght: 5
                     },
-                    <%#txt_Email.ClientID%>: {                       
+                     <%=txt_Email.UniqueID %>: {                       
                         required: true,
                         email:true
                     },
-                    <%#txt_BirthDay.ClientID%>: {                       
+                    <%=txt_BirthDay.UniqueID %>: {                       
                         required: true,
                     },
-                    <%#txt_Tel.ClientID%>: {                       
+                    <%=txt_Tel.UniqueID %>: {                       
                         required: true,
                     },
-                    <%#txt_Address.ClientID%>: {
+                    <%=txt_Address.UniqueID %>: {
                         required: true
                     },
-                    <%#txt_IDCard.ClientID%>: {
+                    <%=txt_IDCard.UniqueID %>: {
                         required: true,
                         number: true
                     }
@@ -46,92 +45,92 @@
             });
         });
     </script>
-    <title></title>
-  </head>
+    
+    <form id="aspnetForm">
         <table width=100%>
             <tr>
                 <td align=center>
-                    <div class="style">DANH S√ÅCH USERS</div>      
+                    <div class="style">DANH S¡CH USERS</div>      
                 </td>
             </tr>
         </table>
          <br />
          <table width=100% >
                                 <tr>
-                                    <td class="style5">
+                                    <td class="style5" width="100">
                                         <asp:Label ID="Label1" runat="server" Text="Username :" ></asp:Label>
                                     </td>
                                     <td class="style4">
                             <asp:TextBox ID="txt_Username" runat="server" style="text-align: left" 
-                                Width="50%" CssClass="styleText" BorderStyle="None"></asp:TextBox>
+                                Width="400px" CssClass="styleText" BorderStyle="None"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="style5">
+                                    <td class="style5" width="100">
                                         <asp:Label ID="Label2" runat="server" Text="Password :"></asp:Label>
                                     </td>
                                     <td class="style4">
-                            <asp:TextBox ID="txt_Password" runat="server" TextMode="Password" Width="50%" 
+                            <asp:TextBox ID="txt_Password" runat="server" TextMode="Password" Width="400px" 
                                             CssClass="styleText" BorderStyle="None"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="style5">
+                                    <td class="style5" width="100">
                                         <asp:Label ID="Label3" runat="server" Text="Fullname :"></asp:Label>
                                     </td>
                                     <td class="style4">
-                            <asp:TextBox ID="txt_Fullname" runat="server" Width="50%" CssClass="styleText" 
+                            <asp:TextBox ID="txt_Fullname" runat="server" Width="400px" CssClass="styleText" 
                                             BorderStyle="None"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="style5">
+                                    <td class="style5" width="100">
                                         <asp:Label ID="Label9" runat="server" Text="Email :"></asp:Label>
                                     </td>
                                     <td class="style4">
-                                        <asp:TextBox ID="txt_Email" runat="server" Width="50%" CssClass="styleText" 
+                                        <asp:TextBox ID="txt_Email" runat="server" Width="400px" CssClass="styleText" 
                                             BorderStyle="None"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="style5">
+                                    <td class="style5" width="100">
                                         <asp:Label ID="Label4" runat="server" Text="BirthDay :&nbsp;&nbsp;"></asp:Label>
                                     </td>
                                     <td class="style4">
-                                        <asp:TextBox ID="txt_BirthDay" runat="server" Width="50%" CssClass="styleText" 
+                                        <asp:TextBox ID="txt_BirthDay" runat="server" Width="400px" CssClass="styleText" 
                                             BorderStyle="None" ></asp:TextBox>
                             <asp:CalendarExtender ID="CalendarExtender1" TargetControlID="txt_BirthDay" runat="server"  />
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="style5">
+                                    <td class="style5" style="height: 8px" width="100">
                                         <asp:Label ID="Label5" runat="server" Text="Tel :"></asp:Label>
                                     </td>
-                                    <td class="style4">
-                            <asp:TextBox ID="txt_Tel" runat="server" Width="50%" CssClass="styleText" 
+                                    <td class="style4" style="height: 8px">
+                            <asp:TextBox ID="txt_Tel" runat="server" Width="400px" CssClass="styleText" 
                                             BorderStyle="None"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="style5">
+                                    <td class="style5" width="100">
                                         <asp:Label ID="Label6" runat="server" Text="Address :"></asp:Label>
                                     </td>
-                                    <td class="style4">
-                            <asp:TextBox ID="txt_Address" runat="server" Width="70%" TextMode="MultiLine" 
+                                    <td class="style4" valign="middle" align="left" style="text-align: left">
+                            <asp:TextBox ID="txt_Address" runat="server" Width="400px" TextMode="MultiLine" 
                                 Height="50px" CssClass="styleText" BorderStyle="None"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="style5">
+                                    <td class="style5" width="100">
                                         <asp:Label ID="Label7" runat="server" Text="IDCard :"></asp:Label>
                                     </td>
                                     <td class="style4">
-                            <asp:TextBox ID="txt_IDCard" runat="server" Width="50%" CssClass="styleText" 
+                            <asp:TextBox ID="txt_IDCard" runat="server" Width="400px" CssClass="styleText" 
                                             BorderStyle="None"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="style5">
+                                    <td class="style5" width="100">
                                         <asp:Label ID="Label8" runat="server" Text="Decentralize :" Width="100%"></asp:Label>
                                     </td>
                                     <td class="style4">
@@ -143,21 +142,21 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td  colspan=2>
+                                    <td  colspan=2 width="100">
                                             <br />
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="center" colspan="2" style="text-align: center">
-                            <asp:Button ID="btn_Add" runat="server" Text="Th√™m" onclick="btn_Add_Click" 
+                                    <td align="center" colspan="2" style="text-align: center" width="100">
+                            <asp:Button ID="btn_Add" runat="server" Text="ThÍm" onclick="btn_Add_Click" 
                                             CssClass="styleButtonAdd" BorderStyle="None" Height="40px" Width="87px" />
-                            <asp:Button ID="btn_Add0" runat="server" Text="X√≥a" onclick="btn_Add_Click" 
+                            <asp:Button ID="btn_Add0" runat="server" Text="XÛa" onclick="btn_Add_Click" 
                                             CssClass="styleButtonCancle" BorderStyle="None" Height="40px" Width="87px" />
                                     </td>
                                 </tr>
                       
                             <tr>
-                                <td>
+                                <td width="100">
                             <asp:Label ID="lb_Note" runat="server" ForeColor="#33CC33" Font-Bold="True" 
                                 Font-Size="15pt"></asp:Label>
                                 </td>
@@ -257,5 +256,5 @@
                 </td>
             </tr>
         </table>
-
+        </form>
     </asp:Content>
