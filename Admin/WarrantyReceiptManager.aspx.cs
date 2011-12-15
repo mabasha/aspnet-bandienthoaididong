@@ -20,7 +20,7 @@ public partial class Admin_WarrantyReceiptManager : System.Web.UI.Page
         DataTable grid = WarrantyReceipt.GetAll();
         grid.DefaultView.Sort = sort;
         gridPBH.DataSource = grid;
-        gridPBH.DataBind();
+        gridPBH.DataBind();       
     }
     private void FillData()
     {

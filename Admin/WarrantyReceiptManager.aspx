@@ -71,7 +71,8 @@
             onselectedindexchanged="gridPBH_SelectedIndexChanged" AllowPaging="True" 
             AllowSorting="True" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" 
             BorderWidth="1px" CellPadding="3" 
-            onpageindexchanging="gridPBH_PageIndexChanging" onsorting="gridPBH_Sorting" >
+            onpageindexchanging="gridPBH_PageIndexChanging" 
+            onsorting="gridPBH_Sorting" PageSize="5" >
             <RowStyle ForeColor="#000066" />
             <Columns>
                 <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
