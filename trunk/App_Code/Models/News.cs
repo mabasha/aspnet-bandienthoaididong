@@ -97,4 +97,73 @@ public class News
             query += "desc";
         return AccessData.GetTable(query);
     }
+    public static DataTable GetAll_Sanpham()
+    {
+        return AccessData.GetTable("select * from News where Category = N'Sản phẩm' order by ID desc");
+    }
+    public static DataTable GetAll_Thuthuat()
+    {
+        return AccessData.GetTable("select * from News where Category = N'Thủ thuật' order by ID desc");
+    }
+    public static DataTable GetAll_Congnghe()
+    {
+        return AccessData.GetTable("select * from News where Category = N'Công nghệ' order by ID desc");
+    }
+    public static DataTable GetAll_Nhanvat()
+    {
+        return AccessData.GetTable("select * from News where Category = N'Nhân vật' order by ID desc");
+    }
+    public static int GetMaxID_Sanpham()
+    {
+        return Convert.ToInt32(AccessData.ExecuteScalar("select MAX(ID) from News where Category=N'Sản phẩm'"));
+    }    
+    public static int GetMaxID_Thuthuat()
+    {
+        return Convert.ToInt32(AccessData.ExecuteScalar("select MAX(ID) from News where Category=N'Thủ thuật'"));
+    }
+    public static int GetMaxID_Congnghe()
+    {
+        return Convert.ToInt32(AccessData.ExecuteScalar("select MAX(ID) from News where Category=N'Công nghệ'"));
+    }
+    public static int GetMaxID_Nhanvat()
+    {
+        return Convert.ToInt32(AccessData.ExecuteScalar("select MAX(ID) from News where Category=N'Nhân vật'"));
+    }
+    public static string GetTitle(int id)
+    {
+        return Convert.ToString(AccessData.ExecuteScalar(String.Format("select Title from News where ID = {0}", id)));
+    }
+    public static string GetIntro(int id)
+    {
+        return Convert.ToString(AccessData.ExecuteScalar(String.Format("select IntroContent from News where ID = {0}", id)));
+    }
+    public static string GetAuthor(int id)
+    {
+        return Convert.ToString(AccessData.ExecuteScalar(String.Format("select Author from News where ID = {0}", id)));
+    }
+    public static string GetCreatedDate(int id)
+    {
+        return Convert.ToString(AccessData.ExecuteScalar(String.Format("select CreatedDate from News where ID = {0}", id)));
+    }
+    public static string GetImage(int id)
+    {
+        return Convert.ToString(AccessData.ExecuteScalar(String.Format("select ImageUrl from News where ID = {0}", id)));
+    }
+    public static string GetContents(int id)
+    {
+        return Convert.ToString(AccessData.ExecuteScalar(String.Format("select Contents from News where ID = {0}", id)));
+    }
+    public static string GetCategory(int id)
+    {
+        return Convert.ToString(AccessData.ExecuteScalar(String.Format("select Category from News where ID = {0}", id)));
+    }
+    //Lấy phần tử có ID lớn thứ i
+    public static int GetElementIDNo(int No, string category)
+    {
+        string query=String.Format("SELECT max(ID) "
+                                    + "FROM News "
+                                    + "WHERE ID NOT IN (SELECT top {0} ID FROM News WHERE Category = N'{1}' ORDER BY ID DESC) "
+                                    + "AND Category = N'{1}'", No - 1, category);
+        return Convert.ToInt32(AccessData.ExecuteScalar(query));
+    }
 }

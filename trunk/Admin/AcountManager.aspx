@@ -247,10 +247,10 @@
                         <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
                         <RowStyle BackColor="#EFF3FB" />
                         <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                        <%--<SortedAscendingCellStyle BackColor="#F5F7FB" />
                         <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                         <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                        <SortedDescendingHeaderStyle BackColor="#4870BE" />--%>
                     </asp:GridView>
                     <asp:SqlDataSource ID="SqlDataSource_User" runat="server" 
                         ConnectionString="<%$ ConnectionStrings:MobileShopConnectionString %>" 
