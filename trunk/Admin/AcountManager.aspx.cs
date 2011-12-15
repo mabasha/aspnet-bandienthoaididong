@@ -11,6 +11,7 @@ using System.Drawing;
 
 public partial class Admin_AcountManager : System.Web.UI.Page
 {
+    private Account user = new Account();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -54,26 +55,20 @@ public partial class Admin_AcountManager : System.Web.UI.Page
     }
     protected void grid_Users_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
-        string username = grid_Users.DataKeys[e.RowIndex].Value.ToString();
-        TextBox password = (TextBox)grid_Users.Rows[e.RowIndex].Cells[1].Controls[0];
-        TextBox fullName = (TextBox)grid_Users.Rows[e.RowIndex].Cells[2].Controls[0];
-        TextBox email = (TextBox)grid_Users.Rows[e.RowIndex].Cells[3].Controls[0];
-        TextBox birthDay = (TextBox)grid_Users.Rows[e.RowIndex].Cells[4].FindControl("Birthday");
-        TextBox tel = (TextBox)grid_Users.Rows[e.RowIndex].Cells[5].Controls[0];
-        TextBox address = (TextBox)grid_Users.Rows[e.RowIndex].Cells[6].Controls[0];
-        TextBox idCard = (TextBox)grid_Users.Rows[e.RowIndex].Cells[7].Controls[0];
-        //TextBox decentralize = (TextBox)grid_Users.Rows[e.RowIndex].Cells[7].Controls[0];
-        DropDownList decentralize = (DropDownList)grid_Users.Rows[e.RowIndex].FindControl("cmbDecentralize");
-
-        string sql = "UPDATE Users SET Password=N'" + password.Text + "', FullName=N'" + fullName.Text + "', Tel='" +
-            tel.Text + "', Email='"+email.Text+"', BirthDay='"+birthDay.Text+"',Address=N'" + address.Text + "', IDCard='" + idCard.Text + "', Decentralize='" +
-            decentralize.SelectedValue.ToString() + "' Where Username='" + username + "'";
-
-        AccessData.ExecuteNonQuery(sql);
+        GetDataForUserFromGrid(e);
+        if (user.Update())
+        {
+            grid_Users.EditIndex = -1;
+            FillDataInGrid("Username");
+            lb_Note.ForeColor = System.Drawing.Color.Green;
+            lb_Note.Text = "Update username:" + user.username + " successfully";
+        } 
+        else
+        {
+            lb_Note.ForeColor = System.Drawing.Color.Red;
+            lb_Note.Text = "Update username:" + user.username + " failed. This email is exist.";
+        }
         
-        //ac.ExeCuteNonquery("UPDATE User SET Password='" + password.Text + "', FullName='" + fullName.Text + "', BirthDay='" + birthDay.Text + "', Tel='" + tel.Text + "', Address='" + address.Text + "', IDCard='" + idCard.Text + "', Decentralize='" + decentralize.Text + "' WHERE Username=" + int.Parse(username.Text) + "");
-        grid_Users.EditIndex = -1;
-        FillDataInGrid("Username");
     }
     protected void grid_Users_RowEditing(object sender, GridViewEditEventArgs e)
     {
@@ -108,35 +103,26 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         } 
         else
         {
-            string username = txt_Username.Text;
-            string email = txt_Email.Text;
+            GetDataForUserFromTextbox();
             // Check xem user có tồn tại trong database hay chưa.
-            string sql1 = "SELECT Count(*) FROM Users WHERE Username='" + username + "'";
-            string sql2 = "SELECT Count(*) FROM Users WHERE Email='" + email + "'";
-            int temp1 = Convert.ToInt32(AccessData.ExecuteScalar(sql1));
-            int temp2 = Convert.ToInt32(AccessData.ExecuteScalar(sql2));
-            if (temp1 > 0)
+            int temp = user.Insert();
+            if (temp == 0)
             {
                 lb_Note.ForeColor = System.Drawing.Color.Red;
-                lb_Note.Text = "Insert username:" + txt_Username.Text + " failed. This username is exist.";
+                lb_Note.Text = "Insert username:" + user.username + " failed. This username is exist.";
                 //FillDataInGrid("Username");
-            }else if (temp2 > 0)
+            }else if (temp == 1)
             {
                 lb_Note.ForeColor = System.Drawing.Color.Red;
-                lb_Note.Text = "Insert username:" + txt_Username.Text + " failed. This email is exist.";
+                lb_Note.Text = "Insert username:" + user.username + " failed. This email is exist.";
             }
             else
             {
-                sql1 = "Insert into Users (Username, Password, FullName, Email, Tel, BirthDay, Address, IDCard, Decentralize) Values (N'" +
-                username + "', N'" + txt_Password.Text + "', N'" + txt_Fullname.Text + "', N'" + txt_Email.Text + "','" + txt_Tel.Text + "', '" + txt_BirthDay.Text
-                + "', N'" + txt_Address.Text + "', " + int.Parse(txt_IDCard.Text) + ", '" + ddl_Decentralize.SelectedValue.ToString() + "')";
-                AccessData.ExecuteNonQuery(sql1);
                 lb_Note.ForeColor = System.Drawing.Color.Green;
                 lb_Note.Text = "Insert username:" + txt_Username.Text + " successfully";
-                //FillDataInGrid();
+                FillDataInGrid("Username");
             }
         }
-        FillDataInGrid("Username");
     }
     protected void grid_Users_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
     {
@@ -151,5 +137,32 @@ public partial class Admin_AcountManager : System.Web.UI.Page
     protected void grid_Users_Sorting(object sender, GridViewSortEventArgs e)
     {
         FillDataInGrid(e.SortExpression);
+    }
+
+    private void GetDataForUserFromTextbox()
+    {
+        user.username = txt_Username.Text;
+        user.password = txt_Password.Text;
+        user.fullname = txt_Fullname.Text;
+        user.email = txt_Email.Text;
+        user.birthDay = Convert.ToDateTime(txt_BirthDay.Text);
+        user.tel = txt_Tel.Text;
+        user.address = txt_Address.Text;
+        user.idCard = Convert.ToInt32(txt_IDCard.Text);
+        user.decentralize = ddl_Decentralize.SelectedValue.ToString();
+    }
+
+    private void GetDataForUserFromGrid(GridViewUpdateEventArgs e)
+    {
+        user.username = grid_Users.DataKeys[e.RowIndex].Value.ToString();
+        user.password = ((TextBox)grid_Users.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
+        user.fullname = ((TextBox)grid_Users.Rows[e.RowIndex].Cells[2].Controls[0]).Text;
+        user.email = ((TextBox)grid_Users.Rows[e.RowIndex].Cells[3].Controls[0]).Text;
+        user.birthDay = Convert.ToDateTime(((TextBox)grid_Users.Rows[e.RowIndex].Cells[4].FindControl("Birthday")).Text);
+        user.tel = ((TextBox)grid_Users.Rows[e.RowIndex].Cells[5].Controls[0]).Text;
+        user.address = ((TextBox)grid_Users.Rows[e.RowIndex].Cells[6].Controls[0]).Text;
+        user.idCard = Convert.ToInt32(((TextBox)grid_Users.Rows[e.RowIndex].Cells[7].Controls[0]).Text);
+        //TextBox decentralize = (TextBox)grid_Users.Rows[e.RowIndex].Cells[7].Controls[0];
+        user.decentralize = ((DropDownList)grid_Users.Rows[e.RowIndex].FindControl("cmbDecentralize")).SelectedValue.ToString();
     }
 }
