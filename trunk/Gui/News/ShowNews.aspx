@@ -53,9 +53,9 @@
             </tr>
             <tr __designer:mapid="bf">
                 <td __designer:mapid="c0" colspan="2">
-                    <asp:HyperLink ID="hlSp1" runat="server">[hlSp1]</asp:HyperLink>
+                    <asp:HyperLink ID="hlSp2" runat="server" Font-Size="Small" ForeColor="Gray">[hlSp2]</asp:HyperLink>
                     <br />
-                    <asp:HyperLink ID="hlSp3" runat="server">[hlSp3]</asp:HyperLink>
+                    <asp:HyperLink ID="hlSp3" runat="server" Font-Size="Small" ForeColor="Gray">[hlSp3]</asp:HyperLink>
                     <br />
                 </td>
             </tr>
@@ -83,9 +83,9 @@
             </tr>
             <tr __designer:mapid="bf">
                 <td __designer:mapid="c0" colspan="2">
-                    <asp:HyperLink ID="hlCn2" runat="server">[hlCn2]</asp:HyperLink>
+                    <asp:HyperLink ID="hlCn2" runat="server" Font-Size="Small" ForeColor="Gray">[hlCn2]</asp:HyperLink>
                     <br />
-                    <asp:HyperLink ID="hlCn3" runat="server">[hlCn3]</asp:HyperLink>
+                    <asp:HyperLink ID="hlCn3" runat="server" Font-Size="Small" ForeColor="Gray">[hlCn3]</asp:HyperLink>
                 </td>
             </tr>
         </table>
@@ -112,9 +112,9 @@
             </tr>
             <tr __designer:mapid="bf">
                 <td __designer:mapid="c0" colspan="2">
-                    <asp:HyperLink ID="hlTt2" runat="server">[hlTt2]</asp:HyperLink>
+                    <asp:HyperLink ID="hlTt2" runat="server" Font-Size="Small" ForeColor="Gray">[hlTt2]</asp:HyperLink>
                     <br />
-                    <asp:HyperLink ID="hlTt3" runat="server">[hlTt3]</asp:HyperLink>
+                    <asp:HyperLink ID="hlTt3" runat="server" Font-Size="Small" ForeColor="Gray">[hlTt3]</asp:HyperLink>
                 </td>
             </tr>
         </table>
@@ -141,9 +141,9 @@
             </tr>
             <tr __designer:mapid="bf">
                 <td __designer:mapid="c0" colspan="2">
-                    <asp:HyperLink ID="hlNv2" runat="server">[hlNv2]</asp:HyperLink>
+                    <asp:HyperLink ID="hlNv2" runat="server" Font-Size="Small" ForeColor="Gray">[hlNv2]</asp:HyperLink>
                     <br />
-                    <asp:HyperLink ID="hlNv3" runat="server">[hlNv3]</asp:HyperLink>
+                    <asp:HyperLink ID="hlNv3" runat="server" Font-Size="Small" ForeColor="Gray">[hlNv3]</asp:HyperLink>
                 </td>
             </tr>
         </table>

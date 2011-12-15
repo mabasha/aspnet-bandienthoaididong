@@ -15,8 +15,8 @@ public partial class Gui_News_ShowNews : System.Web.UI.Page
         {
             Sanpham_Load();
             Congnghe_Load();
-            //Thuthuat_Load();
-            //Nhanvat_Load();
+            Thuthuat_Load();
+            Nhanvat_Load();
         }
     }
     private void Sanpham_Load()
