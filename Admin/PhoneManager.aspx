@@ -2,8 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<head>
-<head>
+<head runat="Server" >
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="AdminSite/Template/style.css" />
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
@@ -28,6 +27,17 @@
             background-color: #996600;
             text-align: center;
         }
+        .style4
+        {
+            background-color: #002952;
+            width: 1100px;
+            -moz-border-radius: 20px;
+            -webkit-border-radius: 20px;
+            font-size: x-large;
+            color: White;
+            font-family: Cambria;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -36,7 +46,7 @@
        
        <table>
             <tr>
-                <td colspan=2 align=center><div class="style">QUẢN LÝ ĐIỆN THOẠI</div></td>
+                <td colspan=2 align=center><div class="style4">QUẢN LÝ ĐIỆN THOẠI</div></td>
             </tr>
         </table>
         <table>
@@ -106,7 +116,7 @@
                 </td>
                 <td>
                     <asp:DetailsView ID="dtview_Phone" runat="server" AutoGenerateRows="False" 
-                        CellPadding="4" EnableModelValidation="True" ForeColor="#333333" 
+                        CellPadding="4" ForeColor="#333333" 
                         GridLines="None" Height="50px" Width="100%" ondatabound="dtview_Phone_DataBound" 
                         onitemdeleting="dtview_Phone_ItemDeleting" 
                         onitemcommand="dtview_Phone_ItemCommand" 
@@ -846,6 +856,12 @@
                                     <asp:Label ID="Label23" runat="server" Text='<%# Bind("StandarBox") %>'></asp:Label>
                                 </ItemTemplate>
                                 <ControlStyle Width="400px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Phụ kiện tương thích">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_Accessory" runat="server" Width="300px"></asp:TextBox>
+                                    <asp:Button ID="btn_ChooseAccessory" runat="server" Text="..." />
+                                </EditItemTemplate>
                             </asp:TemplateField>
                         </Fields>
                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

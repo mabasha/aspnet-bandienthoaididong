@@ -99,6 +99,10 @@ public partial class Admin_PhoneManager : System.Web.UI.Page
             TextBox tImageNameTemplate = (TextBox)dtview_Phone.Rows[6].Cells[1].FindControl("txt_Image");
             bChooseImageTemplate.OnClientClick = String.Format("window.open(\"ImageManager.aspx?receiveInputID={0}\", 'mypopup', " +
                 "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", tImageNameTemplate.ClientID);
+            Button bChooseAccessoryTemplate = (Button)dtview_Phone.Rows[66].Cells[1].FindControl("btn_ChooseAccessory");
+            TextBox tAccessoryNameTemplate = (TextBox)dtview_Phone.Rows[66].Cells[1].FindControl("txt_Accessory");
+            bChooseAccessoryTemplate.OnClientClick = String.Format("window.open(\"AccessoryChooser.aspx?receiveInputID={0}\", 'mypopup', " +
+                "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", tAccessoryNameTemplate.ClientID);
         
         }
     }
@@ -135,13 +139,6 @@ public partial class Admin_PhoneManager : System.Web.UI.Page
     }
     protected void dtview_Phone_ItemUpdating(object sender, DetailsViewUpdateEventArgs e)
     {
-        //ConvertTextBoxToHtml
-        //int id=
-        //string specialFuture = ((TextBox)dtview_Phone.Rows[8].Cells[1].FindControl("txt_SpecialFeature")).Text.Replace("\n", "</br>");
-        //string officeApps = ((TextBox)dtview_Phone.Rows[23].Cells[1].FindControl("txt_OfficeApps")).Text.Replace("\n", "</br>");
-        //string otherApp = ((TextBox)dtview_Phone.Rows[24].Cells[1].FindControl("txt_OtherApp")).Text.Replace("\n", "</br>");
-        //string query = String.Format("UPDATE Phone SET SpecialFeature=N'{0}' WHERE ID='{1}'", specialFuture, dtview_Phone.DataKey.Value);
-        //AccessData.ExecuteNonQuery(query);
         GetDataFromDetailViewToPhone();
         if (phone.Update())
         {

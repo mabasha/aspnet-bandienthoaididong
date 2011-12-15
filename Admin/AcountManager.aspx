@@ -46,7 +46,7 @@
         });
     </script>
     
-    <form id="aspnetForm">
+    
         <table width=100%>
             <tr>
                 <td align=center>
@@ -55,7 +55,9 @@
             </tr>
         </table>
          <br />
+         
          <table width=100% >
+         <form id="aspnetForm">
                                 <tr>
                                     <td class="style5" width="100">
                                         <asp:Label ID="Label1" runat="server" Text="Username :" ></asp:Label>
@@ -152,16 +154,14 @@
                                             CssClass="styleButtonAdd" BorderStyle="None" Height="40px" Width="87px" />
                             <asp:Button ID="btn_Add0" runat="server" Text="Xóa" onclick="btn_Add_Click" 
                                             CssClass="styleButtonCancle" BorderStyle="None" Height="40px" Width="87px" />
+                                        <br />
+                            <asp:Label ID="lb_Note" runat="server" ForeColor="#33CC33" Font-Bold="True" 
+                                Font-Size="15pt" style="text-align: center"></asp:Label>
                                     </td>
                                 </tr>
-                      
-                            <tr>
-                                <td width="100">
-                            <asp:Label ID="lb_Note" runat="server" ForeColor="#33CC33" Font-Bold="True" 
-                                Font-Size="15pt"></asp:Label>
-                                </td>
-                             </tr>
-            </table>
+                            </form>
+                            </table>
+                            
             <table>
                         <tr>
                             <td style="text-align: center">
@@ -181,8 +181,15 @@
                         AllowSorting="True" onsorting="grid_Users_Sorting" GridLines="None"  >
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
-                            <asp:BoundField DataField="Username" HeaderText="Username" ReadOnly="True" 
-                                SortExpression="Username" />
+                            <asp:TemplateField HeaderText="Username" SortExpression="Username">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_Username_Update" runat="server" 
+                                        Text='<%# Eval("Username") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label10" runat="server" Text='<%# Eval("Username") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:BoundField DataField="Password" HeaderText="Password" 
                                 SortExpression="Password" />
                             <asp:BoundField DataField="FullName" HeaderText="FullName" 
@@ -256,5 +263,5 @@
                 </td>
             </tr>
         </table>
-        </form>
+     
     </asp:Content>
