@@ -1,12 +1,12 @@
 <%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Admin/Admin.master" CodeFile="AcountManager.aspx.cs" Inherits="Admin_AcountManager" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-
+<asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
+    <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-    <head runat="Server">
-    <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
-    </head>
+    
     <script type="text/javascript">
         $(document).ready(function() {
             $("#aspnetForm").validate({
@@ -101,7 +101,8 @@
                                     <td class="style4">
                                         <asp:TextBox ID="txt_BirthDay" runat="server" Width="400px" CssClass="styleText" 
                                             BorderStyle="None" ></asp:TextBox>
-                            <asp:CalendarExtender ID="CalendarExtender1" TargetControlID="txt_BirthDay" runat="server"  />
+                            <asp:CalendarExtender ID="CalendarExtender1" TargetControlID="txt_BirthDay" runat="server" 
+                                            DaysModeTitleFormat="dd/MM/yyyy" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -199,11 +200,14 @@
                             <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
                             <asp:TemplateField HeaderText="BirthDay" > 
                             <EditItemTemplate> 
-                              <asp:TextBox ID="Birthday" runat="server"  Text='<%# Eval("BirthDay","{0:dd/mm/yyyy}") %>' /> 
+                              <asp:TextBox ID="Birthday" runat="server"  
+                                    Text='<%# Eval("BirthDay","{0:mm/dd/yyyy}") %>' /> 
                                 <asp:CalendarExtender ID="CalendarExtender2" TargetControlID="Birthday" runat="server"></asp:CalendarExtender>
                             </EditItemTemplate> 
                             <ItemTemplate> 
-                              <asp:Label ID="lbBirthDay" runat="server" Text='<%# Eval("BirthDay","{0:dd/mm/yyyy}") %>' DataFormatString="{0:dd/mm/yyyy}"></asp:Label> 
+                              <asp:Label ID="lbBirthDay" runat="server" 
+                                    Text='<%# Eval("BirthDay","{0:mm/dd/yyyy}") %>' 
+                                    DataFormatString="{0:dd/mm/yyyy}"></asp:Label> 
                             </ItemTemplate> 
                             </asp:TemplateField>
                             <asp:BoundField DataField="Tel" HeaderText="Tel" SortExpression="Tel" />

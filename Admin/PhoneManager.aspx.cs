@@ -101,7 +101,7 @@ public partial class Admin_PhoneManager : System.Web.UI.Page
                 "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", tImageNameTemplate.ClientID);
             Button bChooseAccessoryTemplate = (Button)dtview_Phone.Rows[66].Cells[1].FindControl("btn_ChooseAccessory");
             TextBox tAccessoryNameTemplate = (TextBox)dtview_Phone.Rows[66].Cells[1].FindControl("txt_Accessory");
-            bChooseAccessoryTemplate.OnClientClick = String.Format("window.open(\"AccessoryChooser.aspx?receiveInputID={0}\", 'mypopup', " +
+            bChooseAccessoryTemplate.OnClientClick = String.Format("window.open(\"AccessoryChooser.aspx?receiveID={0}\", 'mypopup', " +
                 "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", tAccessoryNameTemplate.ClientID);
         
         }

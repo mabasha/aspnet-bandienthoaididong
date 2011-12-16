@@ -153,3 +153,9 @@
 	padding-right: 5px;
 	margin-right:3px;
 }
+
+/*Định dạng chữ màu đỏ khi báo lỗi*/
+.error
+{
+	color : Red;
+}

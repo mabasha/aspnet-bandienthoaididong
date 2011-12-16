@@ -145,6 +145,8 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         user.password = txt_Password.Text;
         user.fullname = txt_Fullname.Text;
         user.email = txt_Email.Text;
+        //FormatProvider f = new FormatProvider();
+        //IFormatProvider culture = new System.Globalization.CultureInfo("en-US", true);
         user.birthDay = Convert.ToDateTime(txt_BirthDay.Text);
         user.tel = txt_Tel.Text;
         user.address = txt_Address.Text;
