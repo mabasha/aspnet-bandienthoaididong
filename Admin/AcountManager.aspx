@@ -201,12 +201,12 @@
                             <asp:TemplateField HeaderText="BirthDay" > 
                             <EditItemTemplate> 
                               <asp:TextBox ID="Birthday" runat="server"  
-                                    Text='<%# Eval("BirthDay","{0:mm/dd/yyyy}") %>' /> 
+                                    Text='<%# Eval("BirthDay","{0:MM/dd/yyyy}") %>' /> 
                                 <asp:CalendarExtender ID="CalendarExtender2" TargetControlID="Birthday" runat="server"></asp:CalendarExtender>
                             </EditItemTemplate> 
                             <ItemTemplate> 
                               <asp:Label ID="lbBirthDay" runat="server" 
-                                    Text='<%# Eval("BirthDay","{0:mm/dd/yyyy}") %>' 
+                                    Text='<%# Eval("BirthDay","{0:MM/dd/yyyy}") %>' 
                                     DataFormatString="{0:dd/mm/yyyy}"></asp:Label> 
                             </ItemTemplate> 
                             </asp:TemplateField>
@@ -217,7 +217,7 @@
                                 SortExpression="IDCard" />
                             <%--<asp:BoundField DataField="Decentralize" HeaderText="Decentralize" 
                                 SortExpression="Decentralize" />--%>
-                            <asp:TemplateField HeaderText="Gender"> 
+                            <asp:TemplateField HeaderText="Decentralize"> 
                             <%--<FooterTemplate> 
                               <asp:DropDownList ID="cmbNewDecentralize" runat="server" >
                                 <asp:ListItem Text="Adminitrator" Value="Adminitrator"></asp:ListItem> 

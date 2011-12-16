@@ -22,7 +22,6 @@
                         required: true
                     },
                     <%=txt_Password.UniqueID %>: {
-                        minlength: 6,
                         required: true
                     }
                 }, messages: {}
