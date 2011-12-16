@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<head runat="Server" >
+<head >
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="AdminSite/Template/style.css" />
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
@@ -42,7 +42,8 @@
 </head>
 
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1">
-        </asp:ToolkitScriptManager>
+            
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </asp:ToolkitScriptManager>
        
        <table>
             <tr>

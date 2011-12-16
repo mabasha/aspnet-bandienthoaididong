@@ -2,7 +2,7 @@
 
 
 
-<head>
+<head runat="Server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IN ADMIN PANEL | Powered by INDEZINER</title>
 <link rel="stylesheet" type="text/css" href="AdminSite/Template/style.css" />
@@ -14,6 +14,8 @@
 <script type="text/javascript" src="AdminSite/Template/ddaccordion.js"></script>
 <link rel="stylesheet" type="text/css" href="AdminSite/Template/ddsmoothmenu.css" />
 <link rel="stylesheet" type="text/css" href="AdminSite/Template/ddsmoothmenu-v.css" />
+<asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
 <script type="text/javascript" src="../ddsmoothmenu.js">
 <script type="text/javascript">
     ddaccordion.init({
