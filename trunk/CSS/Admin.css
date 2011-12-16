@@ -209,3 +209,25 @@ td.right-add
 {
     background-color:#00abeb;
 }
+
+.styleButtonHome
+{     
+    width:50%;
+    height:130px;
+     -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    color:#FFFFFF;
+    text-shadow:1px 1px #3597bf;
+    background-color:#62ACDA;
+     box-shadow: 3px 3px ##4065BD;
+    -webkit-box-shadow: 3px 3px #4065BD;
+    -moz-box-shadow: 3px 3px #4065BD;
+    
+    -webkit-transition: all .5s;
+}
+
+.styleButtonHome:hover
+{     
+    -webkit-transform:scale(1.1);
+     background-color:#2F4A8A;
+}
