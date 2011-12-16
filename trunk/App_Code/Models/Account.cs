@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
+using System.Security.Cryptography;
+using System.Text;
 
 public class Account
 {
@@ -19,6 +21,20 @@ public class Account
 	public Account()
 	{   
 	}
+
+    public Account(string _username, string _password, string _fullname, string _email, DateTime _birthDay,
+                    string _tel, string _address, int _idCard)
+    {
+        username = _username;
+        password = _password;
+        fullname = _fullname;
+        email = _email;
+        birthDay = _birthDay;
+        tel = _tel;
+        address = _address;
+        idCard = _idCard;
+        decentralize = "Client";
+    }
 
     public Account(string username)
     {
@@ -158,5 +174,16 @@ public class Account
     {
         string query = String.Format("select * from Users where Username = N'{0}'", username);
         return AccessData.GetTable(query);
+    }
+
+    // Hàm mã khóa mật khẩu
+    public string EncryptionPassword(string password)
+    {
+        UnicodeEncoding encoding = new UnicodeEncoding();
+        Byte[] hashBytes = encoding.GetBytes(password);
+        // Compute the SHA-1 hash
+        SHA1CryptoServiceProvider sha1 = new SHA1CryptoServiceProvider();
+        Byte[] cryptPassword = sha1.ComputeHash(hashBytes);
+        return BitConverter.ToString(cryptPassword);
     }
 }

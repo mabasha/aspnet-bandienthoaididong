@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Gui/Frame.master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Gui_Register" %>
 
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
         .style2
@@ -75,6 +77,8 @@
     <form id="aspnetForm">
         <tr>
             <td colspan="2" valign="bottom">
+                <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+                </asp:ToolkitScriptManager>
                 Vui lòng nhập username, password và một số thông tin cần thiết khác vào form bên 
                 dưới :
                 <br />
@@ -94,7 +98,7 @@
                 Password :
             </td>
             <td class="style3" valign="middle">
-                <asp:TextBox ID="txt_Password" runat="server" Width="200px"></asp:TextBox>
+                <asp:TextBox ID="txt_Password" runat="server" Width="200px" TextMode="Password"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -102,7 +106,8 @@
                 Confirm Password :
             </td>
             <td class="style3" valign="middle">
-                <asp:TextBox ID="txt_ConfirmPassword" runat="server" Width="200px"></asp:TextBox>
+                <asp:TextBox ID="txt_ConfirmPassword" runat="server" Width="200px" 
+                    TextMode="Password"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -134,6 +139,9 @@
             </td>
             <td class="style3" valign="middle">
                 <asp:TextBox ID="txt_BirthDay" runat="server" Width="200px"></asp:TextBox>
+                <asp:CalendarExtender ID="txt_BirthDay_CalendarExtender" runat="server" 
+                    TargetControlID="txt_BirthDay">
+                </asp:CalendarExtender>
             </td>
         </tr>
         <tr>
