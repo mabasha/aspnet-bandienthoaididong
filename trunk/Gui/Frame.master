@@ -28,10 +28,10 @@
                 <li>
                     <a href="<% =ResolveClientUrl("~") %>Gui/News/ShowNews.aspx">Tin tức</a>
                     <span>
-                        <a href="<% =ResolveClientUrl("~") %>Gui/News/ShowNews.aspx?Category=Sản phẩm">Sản phẩm</a>
-                        <a href="<% =ResolveClientUrl("~") %>Gui/News/ShowNews.aspx?Category=Công nghệ">Công nghệ</a>
-                        <a href="<% =ResolveClientUrl("~") %>Gui/News/ShowNews.aspx?Category=Nhân vật">Nhân vật</a>
-                        <a href="<% =ResolveClientUrl("~") %>Gui/News/ShowNews.aspx?Category=Thủ thuật">Thủ thuật</a>
+                        <a href="<% =ResolveClientUrl("~") %>Gui/News/San_pham.aspx">Sản phẩm</a>
+                        <a href="<% =ResolveClientUrl("~") %>Gui/News/Cong_nghe.aspx">Công nghệ</a>
+                        <a href="<% =ResolveClientUrl("~") %>Gui/News/Nhan_vat.aspx">Nhân vật</a>
+                        <a href="<% =ResolveClientUrl("~") %>Gui/News/Thu_thuat.aspx">Thủ thuật</a>
                     </span>
                 </li>
                 <li><a href="<% =ResolveClientUrl("~") %>Gui/News/ShowNews.aspx?Category=Khuyến mại">Khuyến mại</a></li>

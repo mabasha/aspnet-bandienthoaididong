@@ -25,7 +25,8 @@
                           Text='<%# Eval("Name") %>'></asp:Label>
                       <br />
                       <br />
-                      Nhà sản xuất :<asp:HyperLink ID="lProducerName" runat="server">[lProducerName]</asp:HyperLink>
+                      Nhà sản xuất :<asp:HyperLink ID="lProducerName" runat="server" 
+                          Text='<%# Eval("ProducerName") %>'></asp:HyperLink>
                       <br />
                       Giá bán :&nbsp;
                       <asp:Label ID="lPrice" runat="server" ForeColor="Red" 

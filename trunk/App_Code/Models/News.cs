@@ -119,15 +119,36 @@ public class News
     }    
     public static int GetMaxID_Thuthuat()
     {
-        return Convert.ToInt32(AccessData.ExecuteScalar("select MAX(ID) from News where Category=N'Thủ thuật'"));
+        try
+        {
+            return Convert.ToInt32(AccessData.ExecuteScalar("select MAX(ID) from News where Category=N'Thủ thuật'"));
+        }
+        catch
+        {
+            return -1;
+        }
     }
     public static int GetMaxID_Congnghe()
     {
-        return Convert.ToInt32(AccessData.ExecuteScalar("select MAX(ID) from News where Category=N'Công nghệ'"));
+        try
+        {
+            return Convert.ToInt32(AccessData.ExecuteScalar("select MAX(ID) from News where Category=N'Công nghệ'"));
+        }
+        catch
+        {
+            return -1;
+        }
     }
     public static int GetMaxID_Nhanvat()
     {
-        return Convert.ToInt32(AccessData.ExecuteScalar("select MAX(ID) from News where Category=N'Nhân vật'"));
+        try
+        {
+            return Convert.ToInt32(AccessData.ExecuteScalar("select MAX(ID) from News where Category=N'Nhân vật'"));
+        }
+        catch
+        {
+            return -1;
+        }
     }
     public static string GetTitle(int id)
     {
@@ -164,6 +185,13 @@ public class News
                                     + "FROM News "
                                     + "WHERE ID NOT IN (SELECT top {0} ID FROM News WHERE Category = N'{1}' ORDER BY ID DESC) "
                                     + "AND Category = N'{1}'", No - 1, category);
-        return Convert.ToInt32(AccessData.ExecuteScalar(query));
+        try
+        {
+            return Convert.ToInt32(AccessData.ExecuteScalar(query));
+        }
+        catch
+        {
+            return -1;
+        }
     }
 }
