@@ -94,4 +94,6 @@ line-height:32px;
 /*Hidden*/
 .NFhidden {opacity:0; z-index:-1; position:relative;}
 /*Safari*/
-select, input, textarea, button {outline:none; resize:none;}
+select, input, textarea, button {outline:none; resize:none;
+	height: 26px;
+}

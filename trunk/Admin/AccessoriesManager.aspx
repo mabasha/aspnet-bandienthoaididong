@@ -1,10 +1,7 @@
 ﻿<%@ Page Language="C#"  MasterPageFile="~/Admin/Admin.master" AutoEventWireup="true" CodeFile="AccessoriesManager.aspx.cs" Inherits="Admin_AccessoriesManager" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-
+<asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="AdminSite/Template/style.css" />
-
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
 
     <script src="../Scripts/Utils.js" type="text/javascript"></script>
@@ -16,9 +13,9 @@
         function OnPageReady() {
             $("#<% =tPrice.ClientID%>").keydown(OnKeyDownCheckNumber);
             $("#<% =bAdd.ClientID%>").click(OnAddClick);
-            
+
         }
-        
+
         function OnAddClick() {
             if ($("#<% =tName.ClientID%>").val() == "" || $("#<% =tPrice.ClientID%>").val() == "" || $("#<% =tImageName.ClientID%>").val() == "") {
                 alert("Bạn chưa nhập đầy đủ thông tin");
@@ -28,6 +25,9 @@
 
     </script>
     <title>Quản lý phụ kiện</title>
+</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
             <table>
                 <tr>
                     <td colspan=2 align=center>
@@ -99,7 +99,13 @@
                 </tr>
  
                 <tr>
-                    <td colspan=2>
+                    <td colspan="2">Tìm kiếm
+                        <asp:TextBox ID="tInput" runat="server"></asp:TextBox>
+                        <asp:Button ID="bSearch" runat="server" onclick="bSearch_Click" Text="Tìm" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
             <asp:GridView class="styleGrid" ID="gShow" runat="server" AutoGenerateColumns="False" 
                 AllowPaging="True" AllowSorting="True" CellPadding="4" ForeColor="#333333" 
                 GridLines="None" onpageindexchanging="gShow_PageIndexChanging" 
@@ -108,6 +114,7 @@
                 onrowediting="gShow_RowEditing" onrowupdating="gShow_RowUpdating">
                 <RowStyle BackColor="#EFF3FB" />
                 <Columns>
+                    <asp:BoundField DataField="ID" HeaderText="Mã" SortExpression="ID" />
                     <asp:BoundField DataField="Name" HeaderText="Tên" SortExpression="Name" >
                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:BoundField>
@@ -152,7 +159,7 @@
                         UpdateText="Cập nhật" 
                         EditImageUrl="~/Admin/AdminSite/Template/images/user_edit.png" 
                         ButtonType="Image" 
-                        CancelImageUrl="~/Admin/AdminSite/Template/images/error.png" 
+                        CancelImageUrl="~/Images/Apps/cancel-icon.png" 
                         UpdateImageUrl="~/Admin/AdminSite/Template/images/valid.png" >
                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:CommandField>

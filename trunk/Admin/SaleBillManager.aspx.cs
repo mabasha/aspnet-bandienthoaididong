@@ -20,18 +20,18 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
         dSaler.DataValueField = "Username";
         dSaler.DataBind();
 
-        bChooseCustomer.OnClientClick = "window.open(\"AccountChooser.aspx?receiveID=tCustomerName\", 'mypopup', " +
-                "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;";
+        bChooseCustomer.OnClientClick = String.Format("window.open(\"AccountChooser.aspx?receiveID={0}\", 'mypopup', " +
+                "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", tCustomerName.ClientID);
 
         if (rPhone.Checked == true)
         {
-            bChooseProduct.OnClientClick = "window.open(\"PhoneChooser.aspx?receiveID=tProductID\", 'mypopup', " +
-                    "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;";
+            bChooseProduct.OnClientClick = String.Format("window.open(\"PhoneChooser.aspx?receiveID={0}\", 'mypopup', " +
+                    "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", tProductID.ClientID);
         }
         else if (rAccessory.Checked == true)
         {
-            bChooseProduct.OnClientClick = "window.open(\"AccessoryChooser.aspx?receiveID=tProductID\", 'mypopup', " +
-                    "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;";
+            bChooseProduct.OnClientClick = String.Format("window.open(\"AccessoryChooser.aspx?receiveID={0}\", 'mypopup', " +
+                    "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", tProductID.ClientID);
         }
 
         if (IsPostBack == false)
