@@ -36,12 +36,13 @@ public partial class Gui_Register : System.Web.UI.Page
             {
                 lb_Note.ForeColor = System.Drawing.Color.Red;
                 lb_Note.Text = String.Format("Lỗi : username {0} đã có người sử dụng, vui lòng chọn username khác.", txt_Username.Text);
-                //FillDataInGrid("Username");
+                DeleteImages();
             }
             else if (temp == 1)
             {
                 lb_Note.ForeColor = System.Drawing.Color.Red;
                 lb_Note.Text = String.Format("Lỗi : Email {0} đã có người sử dụng, vui lòng nhập email khác.", txt_Email.Text);
+                DeleteImages();
             }
             else
             {
