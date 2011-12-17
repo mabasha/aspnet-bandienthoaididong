@@ -74,6 +74,11 @@ public class Account
         return 2;
     }
 
+    public void Delete()
+    {
+        string query = String.Format("DELETE FROM Users WHERE Username='{0}'", username);
+        AccessData.ExecuteNonQuery(query);
+    }
     public bool Update()
     {
         DataTable dt = GetUser(username);
@@ -176,6 +181,30 @@ public class Account
         return AccessData.GetTable(query);
     }
 
+    /*
+     * Tìm kiếm dựa vào các thông số : username, fullname, decentralize
+     * Được dùng ở trang AddAccount
+     */
+    public DataTable Search(string _username, string _fullname, string _decentralize)
+    {
+        
+        string query = String.Format("SELECT * FROM Users WHERE Username LIKE N'%{0}%' AND Fullname LIKE N'%{1}%'",
+                                    _username, _fullname);
+        DataTable dt = AccessData.GetTable(query);
+        if (_decentralize != "Tất cả")
+        {
+            DataRow[] rows;
+            string filter = String.Format("Decentralize=", _decentralize);
+            rows=dt.Select(filter);
+            dt = dt.Clone();
+            foreach(DataRow row in rows)
+            {
+                dt.ImportRow(row);
+            }
+            
+        }
+        return dt;
+    }
     // Hàm mã khóa mật khẩu
     public string EncryptionPassword(string password)
     {

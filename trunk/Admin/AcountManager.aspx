@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Admin/Admin.master" CodeFile="AcountManager.aspx.cs" Inherits="Admin_AcountManager" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Admin/Admin.master" CodeFile="AcountManager.aspx.cs" Inherits="Admin_AcountManager" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
@@ -8,7 +8,7 @@
         <table width=100%>
             <tr>
                 <td align=center>
-                    <div class="style">DANH S�CH USERS</div>      
+                    <div class="style">DANH SÁCH USERS</div>      
                 </td>
             </tr>
         </table>
@@ -17,7 +17,27 @@
             <table>
                         <tr>
                             <td style="text-align: center">
+                                <asp:TextBox ID="txt_Username_Search" runat="server" BorderStyle="None" 
+                                    CssClass="styleText" Width="200px"></asp:TextBox>
+&nbsp;&nbsp;
+                                <asp:TextBox ID="txt_Fullname_Search" runat="server" BorderStyle="None" 
+                                    CssClass="styleText" Width="200px"></asp:TextBox>
+&nbsp;&nbsp;
+        <asp:DropDownList ID="ddl_Decentralize_Search" runat="server" CssClass="styleText" >
+            <asp:ListItem>Tất cả</asp:ListItem>
+            <asp:ListItem>Administrator</asp:ListItem>
+            <asp:ListItem>Employee</asp:ListItem>
+            <asp:ListItem>Client</asp:ListItem>
+        </asp:DropDownList>
+                &nbsp;&nbsp;
+                                <asp:ImageButton ID="btn_Search" runat="server" CssClass="styleButtonAdd" 
+                                    Height="20px" ImageUrl="~/Images/Apps/search.png" Width="20px" 
+                                    onclick="btn_Search_Click" />
+                                <br />
+                                <br />
                                 <asp:Label ID="lb_Note" runat="server"></asp:Label>
+                                <br />
+                                <br />
                             </td>
                         </tr>
                         <tr>
