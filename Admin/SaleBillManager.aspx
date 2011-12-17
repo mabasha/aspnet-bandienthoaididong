@@ -1,9 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin/Admin.master" CodeFile="SaleBillManager.aspx.cs" Inherits="Admin_SaleBillManager" %>
 
-
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-
-<head>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
 
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
@@ -12,20 +9,20 @@
     <script type="text/javascript">
         $("document").ready(OnPageReady);
         function OnPageReady() {
-            $("#bAddBillDt").click(OnAddBillDetail);
-            $("#bAdd").click(OnAddBill);
-            $("#tIMEI").keydown(OnKeyDownCheckNumber);
-            $("#tNumber").keydown(OnKeyDownCheckNumber);
-            $("#tProductID").keydown(OnKeyDownCheckNumber);
+            $("#<% =bAddBillDt.ClientID %>").click(OnAddBillDetail);
+            $("#<% =bAdd.ClientID %>").click(OnAddBill);
+            $("#<% =tIMEI.ClientID %>").keydown(OnKeyDownCheckNumber);
+            $("#<% =tNumber.ClientID %>").keydown(OnKeyDownCheckNumber);
+            $("#<% =tProductID.ClientID %>").keydown(OnKeyDownCheckNumber);
         }
 
         function OnAddBillDetail() {
             var ok = true;
-            if ($('#tProductID').val() == "" || $('#tNumber').val() == "") {
+            if ($('#<% =tProductID.ClientID %>').val() == "" || $('#<% =tNumber.ClientID %>').val() == "") {
                 ok = false;
             }
-            if ($("#rPhone").attr("checked") == "checked") {
-                if ($('tIMEI').val() == '')
+            if ($("#<% =rPhone.ClientID %>").attr("checked") == "checked") {
+                if ($('#<% =tIMEI.ClientID %>').val() == '')
                     ok = false;
             }
 
@@ -36,17 +33,17 @@
         }
 
         function OnAddBill() {
-            if ($("#rRegisted").attr("checked") == "checked")
+            if ($("#<% =rRegisted.ClientID %>").attr("checked") == "checked")
             {
-                if($('#tCustomerName').val() == "")
+                if($('#<% =tCustomerName.ClientID %>').val() == "")
                 {
                     alert('Thiếu thông tin hóa đơn');
                     return false;
                 }
             }
-            else if($("#rUnregisted").attr("checked") == "checked")
+            else if($("#<% =rUnregisted.ClientID %>").attr("checked") == "checked")
             {
-                if($('#tCustomerName').val() == "" || $('#tAddress').val() == "" ||$('#tPhone').val() == "")
+                if ($('#<% =tCustomerName.ClientID %>').val() == "" || $('#<% =tAddress.ClientID %>').val() == "" || $('#<% =tPhone.ClientID %>').val() == "")
                 {
                     alert('Thiếu thông tin hóa đơn');
                     return false;
@@ -54,13 +51,17 @@
             }
         }
     </script>
-    <title></title>
+    <title>Quản lý hóa đơn bán</title>
 
-</head>
+</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+
+
             <table>
                 <tr>
                     <td colspan=2 align=center><div class="style">QUẢN LÝ HÓA ĐƠN</div></td>
-                </tr
+                </tr>
             </table>
             
              <table>
@@ -347,5 +348,5 @@
             </div>
             <div class=clearboth></div>
         </div>
-    </div>
+
 </asp:Content>

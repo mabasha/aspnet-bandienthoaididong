@@ -1,7 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Admin/Admin.master" CodeFile="EmployeeReport.aspx.cs" Inherits="Admin_EmployeeReport" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<head>
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
+
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
 
     <script src="../Scripts/jqueryui/jquery-1.6.4.min.js" type="text/javascript"></script>
@@ -11,23 +13,27 @@
 
     <script src="../Scripts/jqueryui/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
 
-    <script>
-        $(function() {
-            $("#tFrom").datepicker();/*{dateFormat: 'yy-mm-dd' }*/
+    <script type="text/javascript">
+        $(function () {
+            $("#<% =tFrom.ClientID%>").datepicker(); /*{dateFormat: 'yy-mm-dd' }*/
         });
 
-        $(function() {
-            $("#tTo").datepicker();
+        $(function () {
+            $("#<% =tTo.ClientID%>").datepicker();
         });
 
     </script>
     <title>Báo cáo nhân viên</title>
-</head>
+
+</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+                    </asp:ToolkitScriptManager>
              <table>
                 <tr>
-                    <td colspan=2 align=center><div class="style">BÁO CÁO KẾT QUẢ BÁN HÀNG</div></td>
-                </tr
-            </table
+                    <td colspan="2" align="center"><div class="style">BÁO CÁO KẾT QUẢ BÁN HÀNG</div></td>
+                </tr>
+            </table>
             <br />
             <table>
             <tr>
@@ -36,7 +42,10 @@
                 </td>
                 <td>
                         <asp:TextBox ID="tFrom" runat="server" CssClass="styleText" BorderStyle="None" 
-                            Height="33px" Width="214px"></asp:TextBox></div> 
+                            Height="33px" Width="214px"></asp:TextBox>
+                            <asp:CalendarExtender ID="tFrom_CalendarExtender" runat="server" 
+                        TargetControlID="tFrom">
+                            </asp:CalendarExtender>
                 </td>
             </tr>
             <tr>
@@ -46,6 +55,9 @@
                 <td>
                         <asp:TextBox ID="tTo" runat="server" CssClass="styleText" BorderStyle="None" 
                             Height="28px" Width="213px"></asp:TextBox>
+                        <asp:CalendarExtender ID="tTo_CalendarExtender" runat="server" 
+                            TargetControlID="tTo">
+                            </asp:CalendarExtender>
                 </td>
             </tr>
              <tr>

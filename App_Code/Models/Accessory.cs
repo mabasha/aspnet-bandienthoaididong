@@ -126,7 +126,9 @@ public class Accessory
 
     public static DataTable GetAllWithKeyword(string keyword)
     {
-        String query = String.Format("select * from Accessory where Name like N'%{0}%'", keyword);
+        String query = String.Format("select Accessory.*, Producer.Name as ProducerName"+
+            " from Accessory , Producer "+
+            "where Accessory.ProducerID = Producer.ID and Accessory.Name like N'%{0}%'", keyword);
         return AccessData.GetTable(query);
     }
 

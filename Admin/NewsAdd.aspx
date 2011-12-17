@@ -10,14 +10,14 @@
 
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
 
-    <script>
+    <script type="text/javascript">
         $('document').ready(OnPageReady);
         function OnPageReady() {
-            $('#bAdd').click(OnAddClick);
+            $('#<% =bAdd.ClientID %>').click(OnAddClick);
         }
 
         function OnAddClick() {
-            if ($('#tTitle').val() == "" || $('#tAuthor').val() == "" || $('#tIntro').val() == "") {
+            if ($('#<% =tTitle.ClientID %>').val() == "" || $('#<% =tAuthor.ClientID %>').val() == "" || $('#<% =tIntro.ClientID %>').val() == "") {
                 alert('Bạn chưa nhập đầy đủ thông tin');
                 return false;
             }

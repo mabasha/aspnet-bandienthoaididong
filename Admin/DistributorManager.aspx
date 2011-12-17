@@ -1,8 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Admin/Admin.master" CodeFile="DistributorManager.aspx.cs" Inherits="Admin_DistributorManager" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-
-<head>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="AdminSite/Template/style.css" />
 
@@ -22,14 +19,13 @@
         }
     </script>
 
-    <title></title>
-
-</head>
-
+    <title>Quản lý nhà phân phối</title>
+</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
             <table>
                 <tr>
                     <td colspan=2 align=center><div class="style">QUẢN LÝ NHÀ PHÂN PHỐI</div></td>
-                </tr
+                </tr>
             </table>
 
             <table>

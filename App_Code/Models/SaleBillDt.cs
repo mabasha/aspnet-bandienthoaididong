@@ -45,7 +45,7 @@ public class SaleBillDt
         saleBillID = (int)dt.Rows[0]["SaleBillID"];
         productID = (int)dt.Rows[0]["ProductID"];
         productIMEI = (string)dt.Rows[0]["ProductIMEI"];
-        isPhone = (bool)dt.Rows[0]["IsPhone"];
+        isPhone = Convert.ToBoolean(dt.Rows[0]["IsPhone"]);
         number = (int)dt.Rows[0]["Number"];
         price = Convert.ToDouble(dt.Rows[0]["Price"]);
     }
@@ -77,25 +77,41 @@ public class SaleBillDt
 
     public bool Update()
     {
-        int oldNumber = GetNumber();
+        //Trả về tồn trước khi thêm
+        SaleBillDt oldSaleBillDt = new SaleBillDt(id);
+        oldSaleBillDt.GetInfoByID();
+
+        if (oldSaleBillDt.isPhone == true)
+        {
+            Phone phone = new Phone(oldSaleBillDt.productID);
+            int oldAmount = phone.GetAmount();
+            phone.SetAmount(oldAmount + oldSaleBillDt.number);
+        }
+        else
+        {
+            Accessory acc = new Accessory(oldSaleBillDt.productID);
+            int oldAmount = acc.GetAmount();
+            acc.SetAmount(oldAmount + oldSaleBillDt.number);
+        }
+
         string query = String.Format("update SaleBillDt " +
             "set SaleBillID = {0}, ProductID = {1}, ProductIMEI = '{2}', " +
             "IsPhone = '{3}', Number = {4}, Price = {5} " +
             "where ID = {6}", saleBillID, productID, productIMEI, isPhone, number, price, id);
         AccessData.ExecuteNonQuery(query);
 
-        int deltaNumber = number - oldNumber;
+        //int deltaNumber = number - oldNumber;
         if (isPhone)
         {
             Phone phone = new Phone(productID);
             int oldAmount = phone.GetAmount();
-            phone.SetAmount(oldAmount - deltaNumber);
+            phone.SetAmount(oldAmount - number);
         }
         else
         {
             Accessory acc = new Accessory(productID);
             int oldAmount = acc.GetAmount();
-            acc.SetAmount(oldAmount - deltaNumber);
+            acc.SetAmount(oldAmount - number);
         }
 
         return true;
@@ -126,6 +142,11 @@ public class SaleBillDt
         return (int)AccessData.ExecuteScalar(query);
     }
 
+    private bool GetIsPhone()
+    {
+        string query = String.Format("select IsPhone from SaleBillDt where ID = {0}", id);
+        return (bool)AccessData.ExecuteScalar(query);
+    }
     public static int GetMaxID()
     {
         object result = AccessData.ExecuteScalar("select max(ID) from SaleBillDt");

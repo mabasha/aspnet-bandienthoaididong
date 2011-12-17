@@ -45,6 +45,23 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
         FillData("");
     }
 
+    void FillDataSearch(string sortExp, string name)
+    {
+        DataTable dtAcc = Accessory.GetAllWithKeyword(name);
+        if (sortExp != "")
+        {
+            dtAcc.DefaultView.Sort = sortExp;
+        }
+        gShow.DataSource = dtAcc;
+        gShow.DataBind();
+    }
+
+    void FillDataSearch(string name)
+    {
+        FillDataSearch("", name);
+    }
+
+
     protected void bShowImage_Click(object sender, EventArgs e)
     {
         if (bShowImage.Text == "Hiện hình ảnh")
@@ -87,7 +104,7 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
     }
     protected void gShow_Sorting(object sender, GridViewSortEventArgs e)
     {
-        FillData(e.SortExpression);
+        FillDataSearch(e.SortExpression, tInput.Text);
     }
     protected void gShow_RowDataBound(object sender, GridViewRowEventArgs e)
     {
@@ -154,5 +171,9 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
     protected void gShow_SelectedIndexChanged(object sender, EventArgs e)
     {
 
+    }
+    protected void bSearch_Click(object sender, EventArgs e)
+    {
+        FillDataSearch("", tInput.Text);
     }
 }
