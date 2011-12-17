@@ -57,7 +57,7 @@
         <tr>
             <td class="style5">
                 <asp:Label ID="lbIntro" runat="server" Font-Italic="False" Font-Size="Large" 
-                    ForeColor="Gray"></asp:Label>
+                    ForeColor="Black" Font-Bold="True"></asp:Label>
             </td>
         </tr>
         <tr>
