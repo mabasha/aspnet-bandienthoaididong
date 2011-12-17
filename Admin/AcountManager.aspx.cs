@@ -77,17 +77,18 @@ public partial class Admin_AcountManager : System.Web.UI.Page
     }
     protected void grid_Users_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-        string username = grid_Users.DataKeys[e.RowIndex].Values[0].ToString();
+        user.username = grid_Users.DataKeys[e.RowIndex].Values[0].ToString();
         if (1>0)
         {
-            AccessData.ExecuteNonQuery("Delete from Users where Username='" + username + "'");
-            lb_Note.Text = "Delete username:" + username + " successfully";
+            user.Delete();
+            lb_Note.ForeColor = System.Drawing.Color.Green;
+            lb_Note.Text = "Xóa thành công username:" + user.username;
             FillDataInGrid("Username");
         } 
         else
         {
             lb_Note.ForeColor = System.Drawing.Color.Red;
-            lb_Note.Text = "Delete username:" + username + " failed";
+            lb_Note.Text = "Lỗi : không thể xóa username : " + user.username;
         }
         
     }
@@ -121,5 +122,13 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         user.idCard = Convert.ToInt32(((TextBox)grid_Users.Rows[e.RowIndex].Cells[7].Controls[0]).Text);
         //TextBox decentralize = (TextBox)grid_Users.Rows[e.RowIndex].Cells[7].Controls[0];
         user.decentralize = ((DropDownList)grid_Users.Rows[e.RowIndex].FindControl("cmbDecentralize")).SelectedValue.ToString();
+    }
+
+    protected void btn_Search_Click(object sender, ImageClickEventArgs e)
+    {
+        DataTable dt = user.Search(txt_Username_Search.Text, txt_Fullname_Search.Text, ddl_Decentralize_Search.SelectedValue.ToString());
+        dt.DefaultView.Sort = "Username";
+        grid_Users.DataSource = dt;
+        grid_Users.DataBind();
     }
 }

@@ -19,7 +19,7 @@ public partial class Admin_AddAccount : System.Web.UI.Page
             txt_Address.Text == "" || txt_IDCard.Text == "")
         {
             lb_Note.ForeColor = System.Drawing.Color.Red;
-            lb_Note.Text = "Insert username:" + txt_Username.Text + " failed. Please complete the information.";
+            lb_Note.Text = "Thêm username:" + txt_Username.Text + " thất bại. Vui lòng điền đầy đủ thông tin vào form bên trên.";
 
         }
         else
@@ -30,18 +30,18 @@ public partial class Admin_AddAccount : System.Web.UI.Page
             if (temp == 0)
             {
                 lb_Note.ForeColor = System.Drawing.Color.Red;
-                lb_Note.Text = "Insert username:" + user.username + " failed. This username is exist.";
+                lb_Note.Text = "Thêm username:" + user.username + " thất bại. Username này đã tồn tại";
                 //FillDataInGrid("Username");
             }
             else if (temp == 1)
             {
                 lb_Note.ForeColor = System.Drawing.Color.Red;
-                lb_Note.Text = "Insert username:" + user.username + " failed. This email is exist.";
+                lb_Note.Text = "Thêm username :" + user.username + " thất bại. Email này đã được sử dụng để đăng kí.";
             }
             else
             {
                 lb_Note.ForeColor = System.Drawing.Color.Green;
-                lb_Note.Text = "Insert username:" + txt_Username.Text + " successfully";
+                lb_Note.Text = "Thêm username:" + txt_Username.Text + " thành công";
                 
             }
         }
@@ -53,8 +53,6 @@ public partial class Admin_AddAccount : System.Web.UI.Page
         user.password = txt_Password.Text;
         user.fullname = txt_Fullname.Text;
         user.email = txt_Email.Text;
-        //FormatProvider f = new FormatProvider();
-        //IFormatProvider culture = new System.Globalization.CultureInfo("en-US", true);
         user.birthDay = Convert.ToDateTime(txt_BirthDay.Text);
         user.tel = txt_Tel.Text;
         user.address = txt_Address.Text;
