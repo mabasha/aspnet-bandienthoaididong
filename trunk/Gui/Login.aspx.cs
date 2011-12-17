@@ -35,16 +35,6 @@ public partial class Gui_Login : System.Web.UI.Page
                 {
                     if (cb_Remember.Checked)
                     {
-                        //HttpCookie username = new HttpCookie("username", txt_Username.Text);
-                        //username.Expires = DateTime.Now.AddDays(30);
-                        //Response.Cookies.Add(username);
-                        //HttpCookie password = new HttpCookie("password", txt_Password.Text);
-                        //password.Expires = DateTime.Now.AddDays(30);
-                        //Response.Cookies.Add(password);
-                        //Response.Cookies["username"].Value = txt_Username.Text;
-                        //Response.Cookies["username"].Expires = DateTime.Now.AddDays(30);
-                        //Response.Cookies["password"].Value = txt_Password.Text;
-                        //Response.Cookies["password"].Expires = DateTime.Now.AddDays(30);
                         HttpCookie cookie = new HttpCookie("login");
                         cookie["username"] = txt_Username.Text;
                         cookie["password"] = txt_Password.Text;
