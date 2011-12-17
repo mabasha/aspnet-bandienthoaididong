@@ -21,7 +21,7 @@ public partial class Admin_PhoneDetail : System.Web.UI.Page
     {
         //DataTable dt = AccessData.GetTable("select * from Phone where id="+id);
         //lb_Price.Text = dt.Rows[0]["Price"].ToString();
-        if (Request.QueryString["id"] != "")
+        if (Request.QueryString["id"] != null)
         {
             id = int.Parse(Request.QueryString["id"]);
             FillDataInGridAccessory(id);
@@ -100,6 +100,10 @@ public partial class Admin_PhoneDetail : System.Web.UI.Page
             lb_CapabilityBattery.Text = phone.capabilityBattery;
             lb_CallingTime.Text = phone.callingTime;
             lb_WaittingTime.Text = phone.waittingTime;
+        }
+        else
+        {
+            Response.Redirect("~/GUI/Products/ShowProducts.aspx");
         }
         
     }
