@@ -154,4 +154,13 @@ public class Accessory
             "where Accessory.ProducerID = Producer.ID and Accessory.ID = N'{0}'", id);
         return AccessData.GetTable(query);
     }
+
+    public static DataTable GetAll(string keyword, double priceFrom, double priceTo, string orderBy, string producerName)
+    {
+        String query = String.Format("select Accessory.*, Producer.Name as ProducerName from Accessory, Producer " +
+            "where (Accessory.ProducerID = Producer.ID) and (Price between {0} and {1}) " +
+            "and Producer.Name like N'%{2}%' and Accessory.Name like N'%{3}%' " +
+            "order by {4}", priceFrom, priceTo, producerName, keyword, orderBy);
+        return AccessData.GetTable(query);
+    }
 }

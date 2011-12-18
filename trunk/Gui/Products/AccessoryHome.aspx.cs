@@ -38,7 +38,7 @@ public partial class Gui_Products_AccessoryHome : System.Web.UI.Page
 
     protected void bSearch_Click(object sender, ImageClickEventArgs e)
     {
-        string url = "~/Gui/Products/ShowAccessory.aspx";
+        string url = "~/Gui/Products/AccessoryList.aspx";
         string param = "";
 
         string keyword = tKeyword.Text;
