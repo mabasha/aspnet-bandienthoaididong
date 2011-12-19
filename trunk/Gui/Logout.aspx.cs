@@ -9,10 +9,23 @@ public partial class Gui_Logout : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        HttpCookie cookie = Request.Cookies["login"];
-        cookie.Expires = DateTime.Now;
-        Response.Cookies.Add(cookie);
-
-        Session["username"] = null;
+        if (!IsPostBack)
+        {
+            HttpCookie cookie = Request.Cookies["login"];
+            if (Session["username"] != null)
+            {
+                Session["username"] = null;
+            }
+            else if (cookie != null)
+            {
+                cookie.Expires = DateTime.Now;
+                Response.Cookies.Add(cookie);
+            }
+            else
+            {
+                Response.Redirect("~/GUI/HomePage.aspx");
+            }
+            Response.Redirect("~/GUI/Login.aspx");
+        }
     }
 }

@@ -75,9 +75,10 @@
         <div class="logo"><b>ADMIN PANEL</b></div>
     
         <div class="right_header">Welcome 
-            <asp:HyperLink ID="lb_Username" runat="server">[lb_Username]</asp:HyperLink>
+            <asp:HyperLink ID="lb_Username" runat="server" 
+                NavigateUrl="~/Admin/ProfileUser.aspx">Client</asp:HyperLink>
             , <a href="#">Visit site</a> | <a href="#" class="messages">Messages</a> | 
-            <asp:HyperLink ID="lb_Logout" runat="server">Logout</asp:HyperLink>
+            <asp:HyperLink ID="lb_Logout" runat="server" NavigateUrl="~/GUI/Logout.aspx">Logout</asp:HyperLink>
         </div>
 
     </div>

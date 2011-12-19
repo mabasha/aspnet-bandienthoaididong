@@ -14,6 +14,7 @@ public partial class Gui_Register : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        
         if (!IsPostBack)
         {
             DeleteImages();
@@ -46,6 +47,10 @@ public partial class Gui_Register : System.Web.UI.Page
             }
             else
             {
+                string contend = String.Format("Chúc mừng {0} đã đăng kí thành công tài khoản {1} ở trang web của chúng tôi.</br>Để hoàn tất việc đăng kí, vui lòng kích hoạt link sau :<a href='~/GUI/AcctiveAccount.aspx?username={2}&&active=true' style='color:Blue;'>Kích hoạt tài khoản</a>.</br>Nếu hủy việc đăng kí, vui lòng kích hoạt link sau : <a href='~/GUI/AcctiveAccount.aspx?username={3}&&active=false' style='color:Blue;'>Hủy đăng kí</a>.",
+                                                user.fullname, user.username, user.username, user.username);
+                SendMail.SendEMail2("smtp.gmail.com", "silentrain.3101@gmail.com", "silentrain.3101@gmail.com", "hoaithuong@",
+                                    587, user.email, "Hoàn tất đăng kí", contend, true);
                 Response.Redirect("../Gui/Redirect.aspx?todo=register");
             }
         }
@@ -56,6 +61,7 @@ public partial class Gui_Register : System.Web.UI.Page
     {
         DeleteImages();
     }
+
 
 
     /*

@@ -62,9 +62,11 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="2" style="margin-left: 40px">
                 <asp:HyperLink ID="HyperLink1" runat="server" 
                     NavigateUrl="../Admin/RecoveryPassword.aspx ">Quên mật khẩu</asp:HyperLink>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Gui/Register.aspx">Đăng ký mới</asp:HyperLink>
             </td>
         </tr>
         </form>
