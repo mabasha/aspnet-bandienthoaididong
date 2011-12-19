@@ -20,7 +20,12 @@
 <body>
     <form id="form1" runat="server">
     <div id="wrapper">
-        <div id="header"></div>
+        <div id="header">Welcome&nbsp;
+            <asp:HyperLink ID="lb_Username" runat="server" 
+                NavigateUrl="~/Gui/ProfileUser.aspx">[lb_Username]</asp:HyperLink>
+&nbsp;<asp:HyperLink ID="lb_AdControl" runat="server" NavigateUrl="~/Admin/Home.aspx">Admin Controls</asp:HyperLink>
+&nbsp;<asp:HyperLink ID="lb_Logout" runat="server" NavigateUrl="~/Gui/Logout.aspx">Logout</asp:HyperLink>
+&nbsp;&nbsp; </div>
         <div id="menu">
             <ul id="topnav">
                 <li><a href="<% =ResolveClientUrl("~") %>Gui/HomePage.aspx">Điện thoại</a></li>

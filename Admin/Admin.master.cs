@@ -18,5 +18,9 @@ public partial class Admin_Admin : System.Web.UI.MasterPage
         {
             lb_Username.Text = cookie["username"].ToString();
         }
+        else
+        {
+            Response.Redirect("~/GUI/HomePage.aspx");
+        }
     }
 }

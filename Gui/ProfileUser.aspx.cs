@@ -29,7 +29,7 @@ public partial class Gui_ProfileUser : System.Web.UI.Page
             }
             else
             {
-                Response.Redirect("~/Admin/Home.aspx");
+                Response.Redirect("~/GUI/HomePage.aspx");
             }
         }
     }
