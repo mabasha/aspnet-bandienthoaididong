@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Gui/Frame.master" AutoEventWireup="true" CodeFile="NewsDetails.aspx.cs" Inherits="Gui_News_NewsDetails" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <link href="../../CSS/News.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         .style2
         {
@@ -30,12 +31,14 @@
         <tr>
             <td class="style3">
                 <asp:HyperLink ID="hlTrangchu" runat="server" ForeColor="#666666" 
-                    NavigateUrl="~/Gui/HomePage.aspx">Trang chủ</asp:HyperLink>
+                    NavigateUrl="~/Gui/HomePage.aspx" CssClass="hyperlink" Target="_blank">Trang chủ</asp:HyperLink>
 &nbsp;&gt;
                 <asp:HyperLink ID="hlTintuc" runat="server" ForeColor="#666666" 
-                    NavigateUrl="~/Gui/News/ShowNews.aspx">Tin tức</asp:HyperLink>
+                    NavigateUrl="~/Gui/News/ShowNews.aspx" CssClass="hyperlink" 
+                    Target="_blank">Tin tức</asp:HyperLink>
 &nbsp;&gt;
-                <asp:HyperLink ID="hlCategory" runat="server" ForeColor="#666666">[hlCategory]</asp:HyperLink>
+                <asp:HyperLink ID="hlCategory" runat="server" ForeColor="#666666" 
+                    CssClass="hyperlink" Target="_blank">[hlCategory]</asp:HyperLink>
 &nbsp;&gt;
             </td>
         </tr>

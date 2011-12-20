@@ -31,7 +31,7 @@
                 </td>
                 <td>
                     <asp:RadioButton ID="rChua" runat="server" Checked="True" 
-                        GroupName="RTinhtrang" Text="Chưa đổi" Enabled="False" />
+                        GroupName="rTinhtrang" Text="Chưa đổi" Enabled="False" />
                     <asp:RadioButton ID="rTra" runat="server" GroupName="rTinhtrang" 
                         Text="Đã đổi" Enabled="False" />
                 </td>
