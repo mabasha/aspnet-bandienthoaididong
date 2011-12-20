@@ -20,7 +20,19 @@ public partial class Gui_Redirect : System.Web.UI.Page
             }
             case "register":
             {
-                lb_Note.Text = "Bạn đã đăng kí thành công. Vui lòng đợi trong giây lát để chuyển về trang đăng nhập";
+                lb_Note.Text = "Bạn đã đăng kí thành công tài khoản tại trang web của chúng tôi. Vui lòng check mail để hoàn tất việc đăng nhập";
+                Response.AddHeader("refresh", "5;url=../Gui/Login.aspx");
+                break;
+            }
+            case "actived":
+            {
+                lb_Note.Text = "Chúc mừng bạn đã avtived thành công tài khoản. Sau khi Login, bạn có thể thoái xem và đặt hàng tại trang web của chúng tôi";
+                Response.AddHeader("refresh", "5;url=../Gui/Login.aspx");
+                break;
+            }
+            case "recovery":
+            {
+                lb_Note.Text = "Bạn đã yêu cầu gửi email để phục hồi mật khẩu. Vui lòng check mail để nhận mật khẩu mới";
                 Response.AddHeader("refresh", "5;url=../Gui/Login.aspx");
                 break;
             }

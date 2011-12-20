@@ -35,6 +35,8 @@
                 Vui lòng đăng nhập :
                 <br />
                 <asp:Label ID="lb_Note" runat="server" ForeColor="Red"></asp:Label>
+            &nbsp;<asp:LinkButton ID="btnl_Actived" runat="server">đây</asp:LinkButton>
+&nbsp;<asp:Label ID="lb_Continuous" runat="server" ForeColor="Red"></asp:Label>
             </td>
         </tr>
         <tr>
@@ -64,7 +66,7 @@
         <tr>
             <td colspan="2" style="margin-left: 40px">
                 <asp:HyperLink ID="HyperLink1" runat="server" 
-                    NavigateUrl="../Admin/RecoveryPassword.aspx ">Quên mật khẩu</asp:HyperLink>
+                    NavigateUrl="../GUI/RecoveryPassword.aspx">Quên mật khẩu</asp:HyperLink>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Gui/Register.aspx">Đăng ký mới</asp:HyperLink>
             </td>
