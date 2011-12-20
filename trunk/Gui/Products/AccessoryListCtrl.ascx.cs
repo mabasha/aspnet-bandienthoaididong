@@ -119,4 +119,21 @@ public partial class Gui_Products_AccessoryListCtrl : System.Web.UI.UserControl
         hlNext.NavigateUrl = url + "&PageNumber=" + (page + 1);
         hlLast.NavigateUrl = url + "&PageNumber=" + numPage;
     }
+
+    protected void gShow_ItemCommand(object source, DataListCommandEventArgs e)
+    {
+        if (e.CommandName == "bBuy")
+        {
+            ImageButton b = (ImageButton)e.CommandSource;
+            int id = Convert.ToInt32(b.CommandArgument);
+
+            List<ProductInfo> productList = (List<ProductInfo>)Session["CartProductList"];
+            ProductInfo.AddProductList(id, false, ref productList);
+            Session["CartProductList"] = productList;
+
+            Response.Redirect("http://" + (string)Request.ServerVariables["SERVER_NAME"]
+                + ":" + (string)Request.ServerVariables["SERVER_PORT"] + (string)Request.ServerVariables["URL"]+Request.QueryString);
+        }
+    }
+
 }

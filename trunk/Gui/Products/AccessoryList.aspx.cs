@@ -9,20 +9,24 @@ public partial class Gui_Products_AccessoryList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Request.QueryString["keyword"] != null)
-            accList.Keyword = Request.QueryString["keyword"];
-        if (Request.QueryString["orderby"] != null)
-            accList.OrderBy = Request.QueryString["orderby"];
-        if (Request.QueryString["ProducerName"] != null)
-            accList.ProducerName = Request.QueryString["ProducerName"];
-        if (Request.QueryString["priceFrom"] != null)
-            accList.PriceFrom = Convert.ToDouble(Request.QueryString["priceFrom"]);
-        if (Request.QueryString["priceTo"] != null)
-            accList.PriceTo= Convert.ToDouble(Request.QueryString["priceTo"]);
-        if (Request.QueryString["IsAsc"] != null)
-            accList.IsAsc = Convert.ToBoolean(Request.QueryString["IsAsc"]);
-        if (Request.QueryString["PageNumber"] != null)
-            accList.PageNumber = Convert.ToInt32(Request.QueryString["PageNumber"]);
-        accList.FillData();
+        if (!IsPostBack)
+        {
+            if (Request.QueryString["keyword"] != null)
+                accList.Keyword = Request.QueryString["keyword"];
+            if (Request.QueryString["orderby"] != null)
+                accList.OrderBy = Request.QueryString["orderby"];
+            if (Request.QueryString["ProducerName"] != null)
+                accList.ProducerName = Request.QueryString["ProducerName"];
+            if (Request.QueryString["priceFrom"] != null)
+                accList.PriceFrom = Convert.ToDouble(Request.QueryString["priceFrom"]);
+            if (Request.QueryString["priceTo"] != null)
+                accList.PriceTo = Convert.ToDouble(Request.QueryString["priceTo"]);
+            if (Request.QueryString["IsAsc"] != null)
+                accList.IsAsc = Convert.ToBoolean(Request.QueryString["IsAsc"]);
+            if (Request.QueryString["PageNumber"] != null)
+                accList.PageNumber = Convert.ToInt32(Request.QueryString["PageNumber"]);
+            accList.FillData();
+        }
     }
+
 }

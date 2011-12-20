@@ -96,3 +96,23 @@ ul#topnav li span a
 ul#topnav li:hover span { display: block; } /*--hiển thị menu cấp 2 khi đưa chuột vào--*/
 ul#topnav li span a { display: inline; } /*-- tất cả các menu câp 2 cùng nằm trên 1 dòng--*/
 ul#topnav li span a:hover {text-decoration: underline;}  
+
+div.user-info
+{
+	width:400px;
+	float:right;
+}
+
+ul.user-info
+{
+	list-style:none;
+	float:right;
+	margin-left:0px;
+	width:400px;
+}
+
+ul.user-info li
+{
+	text-align:right;
+	/*display:inline;*/
+}

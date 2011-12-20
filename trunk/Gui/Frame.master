@@ -4,6 +4,8 @@
 
 <%@ Register src="Others/ProducerList.ascx" tagname="ProducerList" tagprefix="uc2" %>
 
+<%@ Register src="Order/Cart.ascx" tagname="Cart" tagprefix="uc3" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,19 +15,29 @@
     <script src="../Admin/AdminSite/Template/jquery-1.4.2.min.js" type="text/javascript"></script>
     <script src="../Admin/AdminSite/Template/jquery.validate.js" type="text/javascript"></script>
     <script src="../Admin/AdminSite/Template/jquery.validate.min.js" type="text/javascript"></script>
-    <title></title>
+
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
     </head>
 <body>
     <form id="form1" runat="server">
     <div id="wrapper">
-        <div id="header">Welcome&nbsp;
-            <asp:HyperLink ID="lb_Username" runat="server" 
-                NavigateUrl="~/Gui/ProfileUser.aspx">[lb_Username]</asp:HyperLink>
-&nbsp;<asp:HyperLink ID="lb_AdControl" runat="server" NavigateUrl="~/Admin/Home.aspx">Admin Controls</asp:HyperLink>
-&nbsp;<asp:HyperLink ID="lb_Logout" runat="server" NavigateUrl="~/Gui/Logout.aspx">Logout</asp:HyperLink>
-&nbsp;&nbsp; </div>
+        <div id="header">
+            <div class="user-info">
+                <ul class="user-info">
+                    <li>Welcome&nbsp;
+                    <asp:HyperLink ID="lb_Username" runat="server" 
+                        NavigateUrl="~/Gui/ProfileUser.aspx">[lb_Username]</asp:HyperLink>
+                        &nbsp;<asp:HyperLink ID="lb_AdControl" runat="server" NavigateUrl="~/Admin/Home.aspx">Admin Controls</asp:HyperLink>
+                        &nbsp;<asp:HyperLink ID="lb_Logout" runat="server" NavigateUrl="~/Gui/Logout.aspx">Logout</asp:HyperLink>
+                        
+                        &nbsp;&nbsp; </li>
+                    <li style="margin-right:10px;">
+                        <uc3:Cart ID="Cart1" runat="server" />
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div id="menu">
             <ul id="topnav">
                 <li><a href="<% =ResolveClientUrl("~") %>Gui/HomePage.aspx">Điện thoại</a></li>
