@@ -15,12 +15,14 @@ public class Login
 		//
 	}
 
-    /*
-     * Hàm login với các giá trị trả về sau
-     * 1: không tồn tại username
-     * 2: password không đúng
-     * 3: login thành công
-     */
+    /// <summary>
+    /// Summary description for CheckLogin
+    /// * Hàm login với các giá trị trả về sau
+    /// * 0:Tài khoản chưa được kích hoạt
+    /// * 1: không tồn tại username
+    /// * 2: password không đúng
+    /// * 3: login thành công
+    /// </summary>
     public static int CheckLogin(string username, string password)
     {
         string query = String.Format("SELECT Count(*) FROM Users WHERE Username='{0}'", username);
@@ -35,6 +37,13 @@ public class Login
         if (temp < 1)
         {
             return 2;
+        }
+        Account user = new Account();
+        user.username = username;
+        user.GetInfoByUsername();
+        if (user.isActived==0)
+        {
+            return 0;
         }
         return 3;
     }

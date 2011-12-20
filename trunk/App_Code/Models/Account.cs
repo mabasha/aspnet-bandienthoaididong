@@ -17,13 +17,14 @@ public class Account
     public string address;
     public int idCard;
     public string decentralize;
+    public int isActived;
 
 	public Account()
 	{   
 	}
 
     public Account(string _username, string _password, string _fullname, string _email, DateTime _birthDay,
-                    string _tel, string _address, int _idCard)
+                    string _tel, string _address, int _idCard, int _isActived)
     {
         username = _username;
         password = _password;
@@ -34,6 +35,7 @@ public class Account
         address = _address;
         idCard = _idCard;
         decentralize = "Client";
+        isActived = _isActived;
     }
 
     public Account(string username)
@@ -55,6 +57,7 @@ public class Account
         address = (string)dtUser.Rows[0]["Address"];
         idCard = (int)dtUser.Rows[0]["IDCard"];
         decentralize = (string)dtUser.Rows[0]["Decentralize"];
+        isActived = (int)dtUser.Rows[0]["IsActived"];
     }
 
     public int Insert()
@@ -67,9 +70,9 @@ public class Account
         {
             return 1; // Đã tồn tại Email.
         }
-        string sql1 = "Insert into Users (Username, Password, FullName, Email, Tel, BirthDay, Address, IDCard, Decentralize) Values (N'" +
+        string sql1 = "Insert into Users (Username, Password, FullName, Email, Tel, BirthDay, Address, IDCard, Decentralize, IsActived) Values (N'" +
                 username + "', N'" + password + "', N'" + fullname + "', N'" + email + "','" + tel + "', '" + birthDay
-                + "', N'" + address + "', " + idCard + ", '" + decentralize + "')";
+                + "', N'" + address + "', " + idCard + ", '" + decentralize + "', "+isActived+")";
         AccessData.ExecuteNonQuery(sql1);
         return 2;
     }
@@ -91,10 +94,16 @@ public class Account
         {
             string sql = "UPDATE Users SET Password=N'" + password + "', FullName=N'" + fullname + "', Tel='" +
             tel + "', Email='" + email + "', BirthDay='" + birthDay + "',Address=N'" + address + "', IDCard=" + idCard + ", Decentralize='" +
-            decentralize + "' Where Username='" + username + "'";
+            decentralize + "', IsActived="+isActived+" Where Username='" + username + "'";
             AccessData.ExecuteNonQuery(sql);
             return true;
         }
+    }
+
+    public static void UpdateIsActived(string _username, int _isActived)
+    {
+        string sql = String.Format("UPDATE Users SET IsActived={0} WHERE Username='{1}'", _isActived, _username);
+        AccessData.ExecuteNonQuery(sql);
     }
     public static DataTable GetUsers(params string[] decentralizes)
     {
@@ -205,6 +214,7 @@ public class Account
         }
         return dt;
     }
+
     // Hàm mã khóa mật khẩu
     public string EncryptionPassword(string password)
     {
@@ -215,4 +225,6 @@ public class Account
         Byte[] cryptPassword = sha1.ComputeHash(hashBytes);
         return BitConverter.ToString(cryptPassword);
     }
+
+    
 }
