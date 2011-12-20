@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="AccessoryListCtrl.ascx.cs" Inherits="Gui_Products_AccessoryListCtrl" %>
-<asp:DataList ID="gShow" runat="server" RepeatColumns="1">
+<asp:DataList ID="gShow" runat="server" RepeatColumns="1" 
+    onitemcommand="gShow_ItemCommand">
     <ItemTemplate>
             <div class="wrapper" style="width:750px; margin-top:10px;">
                 <div id="image" 
@@ -30,7 +31,9 @@
                         <br />
                         <br />
                         <asp:ImageButton ID="bBuy" runat="server" 
-                            ImageUrl="~/Images/Apps/Front/b-buy.png" />
+                            ImageUrl="~/Images/Apps/Front/b-buy.png" 
+                            CommandArgument='<%# Eval("ID") %>' CommandName="bBuy"
+                            style="height: 27px" />
                         </center>
                 </div>
                 <div style="clear:both"></div>
