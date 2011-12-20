@@ -17,42 +17,55 @@
         </div>
         <div class="border-left">
         <div class="border-right">
-            <div id="search">Tìm kiếm :
-                <asp:TextBox ID="tKeyword" runat="server"></asp:TextBox>
-    &nbsp;<asp:DropDownList ID="dProducer" runat="server">
-                </asp:DropDownList>
-                <asp:DropDownList ID="dPriceFrom" runat="server">
-                    <asp:ListItem>Giá từ ...</asp:ListItem>
-                    <asp:ListItem>300.000</asp:ListItem>
-                    <asp:ListItem>1.000.000</asp:ListItem>
-                    <asp:ListItem>2.000.000</asp:ListItem>
-                    <asp:ListItem>3.000.000</asp:ListItem>
-                    <asp:ListItem>5.000.000</asp:ListItem>
-                    <asp:ListItem>7.000.000</asp:ListItem>
-                    <asp:ListItem>10.000.000</asp:ListItem>
-                    <asp:ListItem>12.000.000</asp:ListItem>
-                    <asp:ListItem>15.000.000</asp:ListItem>
-                </asp:DropDownList>
-                <asp:DropDownList ID="dPriceTo" runat="server">
-                    <asp:ListItem>Giá đến ...</asp:ListItem>
-                    <asp:ListItem>300.000</asp:ListItem>
-                    <asp:ListItem>1.000.000</asp:ListItem>
-                    <asp:ListItem>2.000.000</asp:ListItem>
-                    <asp:ListItem>3.000.000</asp:ListItem>
-                    <asp:ListItem>5.000.000</asp:ListItem>
-                    <asp:ListItem>7.000.000</asp:ListItem>
-                    <asp:ListItem>10.000.000</asp:ListItem>
-                    <asp:ListItem>12.000.000</asp:ListItem>
-                    <asp:ListItem>15.000.000</asp:ListItem>
-                </asp:DropDownList>
-    &nbsp;<asp:ImageButton ID="bSearch" runat="server" 
-                    ImageUrl="~/Images/Apps/Front/b-search.png" onclick="bSearch_Click" />
+            <div id="search">
+                <table>
+                    <tr>
+                    <td>Tìm kiếm </td>
+                    <td>
+                    <asp:TextBox ID="tKeyword" runat="server"></asp:TextBox>
+        &nbsp;<asp:DropDownList ID="dProducer" runat="server">
+                    </asp:DropDownList>
+                    </td>
+                 <td>
+                    <asp:DropDownList ID="dPriceFrom" runat="server">
+                        <asp:ListItem>Giá từ ...</asp:ListItem>
+                        <asp:ListItem>300.000</asp:ListItem>
+                        <asp:ListItem>1.000.000</asp:ListItem>
+                        <asp:ListItem>2.000.000</asp:ListItem>
+                        <asp:ListItem>3.000.000</asp:ListItem>
+                        <asp:ListItem>5.000.000</asp:ListItem>
+                        <asp:ListItem>7.000.000</asp:ListItem>
+                        <asp:ListItem>10.000.000</asp:ListItem>
+                        <asp:ListItem>12.000.000</asp:ListItem>
+                        <asp:ListItem>15.000.000</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+                <td>
+                    <asp:DropDownList ID="dPriceTo" runat="server">
+                        <asp:ListItem>Giá đến ...</asp:ListItem>
+                        <asp:ListItem>300.000</asp:ListItem>
+                        <asp:ListItem>1.000.000</asp:ListItem>
+                        <asp:ListItem>2.000.000</asp:ListItem>
+                        <asp:ListItem>3.000.000</asp:ListItem>
+                        <asp:ListItem>5.000.000</asp:ListItem>
+                        <asp:ListItem>7.000.000</asp:ListItem>
+                        <asp:ListItem>10.000.000</asp:ListItem>
+                        <asp:ListItem>12.000.000</asp:ListItem>
+                        <asp:ListItem>15.000.000</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+                <td>
+                        <asp:ImageButton ID="bSearch" runat="server" 
+                            ImageUrl="~/Images/Apps/Front/b-search.png" onclick="bSearch_Click" />
+                </td>
+                    </tr>
+                    </table>
             </div>
             
             <div id="filter" class="filter">
                 Số sản phẩm
                 <asp:DropDownList ID="dNumberShow" runat="server" AutoPostBack="True" 
-                    onselectedindexchanged="dNumberShow_SelectedIndexChanged" Width="31px">
+                    onselectedindexchanged="dNumberShow_SelectedIndexChanged">
                     <asp:ListItem>8</asp:ListItem>
                     <asp:ListItem>16</asp:ListItem>
                     <asp:ListItem>24</asp:ListItem>
