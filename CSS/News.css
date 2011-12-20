@@ -1,0 +1,11 @@
+﻿body {
+}
+.hyperlink
+{
+	text-decoration:none;
+}
+:hover.hyperlink
+{
+	text-decoration:underline;
+    font-weight:bold; color:Green
+}

@@ -13,13 +13,13 @@ public partial class Admin_ImportBill : System.Web.UI.Page
     {
         if (rDienthoai.Checked == true)
         {
-            btnTenSp.OnClientClick = "window.open(\"PhoneChooser.aspx?receiveID=txtTenSp\", 'mypopup', " +
-                    "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;";
+            btnTenSp.OnClientClick = String.Format("window.open(\"PhoneChooser.aspx?receiveID={0}\", 'mypopup', " +
+                    "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", txtTenSp.ClientID);
         }
         else if (rPhukien.Checked == true)
         {
-            btnTenSp.OnClientClick = "window.open(\"AccessoryChooser.aspx?receiveID=txtTenSp\", 'mypopup', " +
-                    "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;";
+            btnTenSp.OnClientClick = String.Format("window.open(\"AccessoryChooser.aspx?receiveID={0}\", 'mypopup', " +
+                    "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", txtTenSp.ClientID);
         }        
         if (IsPostBack == false)
         {

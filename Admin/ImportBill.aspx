@@ -1,45 +1,38 @@
-﻿<%--<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin/Admin.master" CodeFile="ImportBill.aspx.cs" Inherits="Admin_ImportBill" %>--%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin/Admin.master" CodeFile="ImportBill.aspx.cs" Inherits="Admin_ImportBill" %>
 
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ImportBill.aspx.cs" Inherits="Admin_ImportBill" %>
+<%--<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ImportBill.aspx.cs" Inherits="Admin_ImportBill" %>--%>
 
-<%--<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">--%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<%--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">--%>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<%--<html xmlns="http://www.w3.org/1999/xhtml">--%>
+<head> <%--runat="server">--%>
     <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
     <script src="../Scripts/Utils.js" type="text/javascript"></script>
     <script type="text/javascript">
         $("document").ready(OnPageReady);
         function OnPageReady() {
-            $("#btnAddViewstate").click(AddViewstate);
-            $("#txtNumber").keydown(OnKeyDownCheckNumber);
-            $("#txtPrice").keydown(OnKeyDownCheckNumber);
+            $("#<% =btnAddViewstate.ClientID%>").click(AddViewstate);
+            $("#<% =txtNumber.ClientID%>").keydown(OnKeyDownCheckNumber);
+            $("#<% =txtPrice.ClientID%>").keydown(OnKeyDownCheckNumber);
         }
         function AddViewstate() {
-            if ($('#txtTenSp').val() == "" || $('#txtNumber').val() == "" || $('#txtPrice').val() == "") {
+            if ($('#<% =txtTenSp.ClientID%>').val() == "" || $('#<% =txtNumber.ClientID%>').val() == "" || $('#<% =txtPrice.ClientID%>').val() == "") {
                 alert("Vui lòng nhập đầy đủ thông tin!");
                 return false;
             }
         }
     </script>
     <style type="text/css">
-        .style4
-        {
-            width: 100%;
-            height: 135px;
-        }
-        .style5
-        {
-        }
         .style25
         {
-            width: 82%;
+            width: 100%;
             height: 181px;
+            margin-left: 0px;
         }
         .style26
         {
-            width: 337px;
+            width: 241px;
         }
         .style30
         {
@@ -64,17 +57,17 @@
         }
         .style40
         {
-            width: 540px;
+            width: 581px;
             }
         .style41
         {
-            width: 202px;
+            width: 242px;
         }
         </style>
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<form id="form1" runat="server">
+<%--<form id="form1" runat="server">--%>
     <div class="header" align="center" 
         style="font-size: large; height: 62px; width: 1000px;">
         LẬP HÓA ĐƠN NHẬP</div>
@@ -173,98 +166,94 @@
             </tr>
         </table>
     </div>
-    <div style="height: 260px; width: 1284px; margin-bottom: 0px;" class="list">
-        <table class="style4">
-            <tr>
-                <td class="style5" align="center">
-                    <table class="style25">
-                        <tr>
-                            <td class="style26">
-                                <asp:Label ID="lbThongbaoHD" runat="server"></asp:Label>
-                            </td>
-                            <td class="style30">
-                                <asp:Label ID="lbThongbaoCTHD" runat="server"></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="style26">
-                                <asp:GridView ID="gridImportBill" runat="server" AutoGenerateColumns="False" 
-                                    CellPadding="3"                                      
-                                    onrowdatabound="gridImportBill_RowDataBound"                                     
-                                    onrowdeleting="gridImportBill_RowDeleting" BackColor="White" 
-                                    BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
-                                    <RowStyle ForeColor="#000066" />
-                                    <Columns>
-                                        <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" />
-                                        <asp:BoundField DataField="FullName" HeaderText="Người nhập" />
-                                        <asp:BoundField DataField="CreatedDate" HeaderText="Ngày nhập" />
-                                        <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/Delete.jpg" 
-                                            ShowDeleteButton="True" />
-                                    </Columns>
-                                    <FooterStyle BackColor="White" ForeColor="#000066" />
-                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
-                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
-                                </asp:GridView>
-                            </td>
-                            <td class="style30">
-                    <asp:GridView ID="gridImportBillDt" runat="server" AutoGenerateColumns="False" 
-                        CellPadding="3"                                     
-                                    onrowdatabound="gridImportBillDt_RowDataBound1" 
-                                    onrowdeleting="gridImportBillDt_RowDeleting"                                    
-                                    onrowcommand="gridImportBillDt_RowCommand" BackColor="White" 
-                                    BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" 
-                                    onselectedindexchanged="gridImportBillDt_SelectedIndexChanged"  >
-                        <RowStyle ForeColor="#000066" />
-                        <Columns>
-                            <asp:BoundField DataField="ImportBillID" HeaderText="Mã HĐ" ReadOnly="True" />
-                            <asp:BoundField DataField="ID" HeaderText="Mã CTHĐ" ReadOnly="True" />
-                            <asp:TemplateField HeaderText="Mã sản phẩm">
-                                <EditItemTemplate>
-                                    <asp:TextBox ID="txtMaSpTemp" runat="server" style="margin-left: 2px" 
-                                        Width="50px"></asp:TextBox>
-                                    <asp:Button ID="btnChonDtTemp" runat="server"
-                                        Text="Chọn ĐT" CommandName="btnDt" />
-                                    <asp:Button ID="btnChonPkTemp" runat="server" Text="Chọn PK" 
-                                        CommandName="btnPk"  />
-                                </EditItemTemplate>
-                                <ItemTemplate>
-                                    <asp:Label ID="lbProductID" runat="server" Text='<%# Eval("ProductID") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Loại sản phẩm">
-                                <EditItemTemplate>
-                                    <asp:RadioButton ID="rDtTemp" runat="server" Checked="True" 
-                                        GroupName="rtemplate" Text="Điện thoại" Enabled="False" />
-                                    <asp:RadioButton ID="rPkTemp" runat="server" GroupName="rtemplate" 
-                                        Text="Phụ kiện" Enabled="False" />
-                                </EditItemTemplate>
-                                <ItemTemplate>
-                                    <asp:Label ID="lbIsPhone" runat="server" Text='<%# Eval("IsPhone").ToString()=="True" ?"Điện thoại":"Phụ kiện" %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <%--<asp:BoundField DataField="ProductID" HeaderText="Mã sản phẩm" />--%>
-                            <%--<asp:BoundField DataField="IsPhone" HeaderText="Là điện thoại" />--%>
-                            <asp:BoundField DataField="Number" HeaderText="Số lượng" />
-                            <asp:BoundField DataField="Price" HeaderText="Đơn giá nhập" />
-                            <asp:CommandField ButtonType="Image" 
-                                SelectImageUrl="~/Images/Apps/edit-icon.jpg" ShowSelectButton="True" />
-                            <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/Delete.jpg" 
-                                ShowDeleteButton="True" />
-                        </Columns>
-                        <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
-                    </asp:GridView>
-                            </td>
-                        </tr>
-                    </table>                    
-                </td>
-            </tr>
-        </table>
+    <div style="height: 260px; width: 1127px; margin-bottom: 0px;" class="list">
+      
+            <table class="style25">
+                <tr>
+                    <td class="style26">
+                        <asp:Label ID="lbThongbaoHD" runat="server"></asp:Label>
+                    </td>
+                    <td class="style30">
+                        <asp:Label ID="lbThongbaoCTHD" runat="server"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style26" align="right" valign="top">
+                        <asp:GridView ID="gridImportBill" runat="server" AutoGenerateColumns="False" 
+                            CellPadding="3"                                      
+                            onrowdatabound="gridImportBill_RowDataBound"                                     
+                            onrowdeleting="gridImportBill_RowDeleting" BackColor="White" 
+                            BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Width="410px">
+                            <RowStyle ForeColor="#000066" />
+                            <Columns>
+                                <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" />
+                                <asp:BoundField DataField="FullName" HeaderText="Người nhập" />
+                                <asp:BoundField DataField="CreatedDate" HeaderText="Ngày nhập" />
+                                <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/Delete.jpg" 
+                                    ShowDeleteButton="True" />
+                            </Columns>
+                            <FooterStyle BackColor="White" ForeColor="#000066" />
+                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                        </asp:GridView>
+                    </td>
+                    <td class="style30" valign="top">
+            <asp:GridView ID="gridImportBillDt" runat="server" AutoGenerateColumns="False" 
+                CellPadding="3"                                     
+                            onrowdatabound="gridImportBillDt_RowDataBound1" 
+                            onrowdeleting="gridImportBillDt_RowDeleting"                                    
+                            onrowcommand="gridImportBillDt_RowCommand" BackColor="White" 
+                            BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" 
+                            onselectedindexchanged="gridImportBillDt_SelectedIndexChanged"  >
+                <RowStyle ForeColor="#000066" />
+                <Columns>
+                    <asp:BoundField DataField="ImportBillID" HeaderText="Mã HĐ" ReadOnly="True" />
+                    <asp:BoundField DataField="ID" HeaderText="Mã CTHĐ" ReadOnly="True" />
+                    <asp:TemplateField HeaderText="Mã Sp">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="txtMaSpTemp" runat="server" style="margin-left: 2px" 
+                                Width="50px"></asp:TextBox>
+                            <asp:Button ID="btnChonDtTemp" runat="server"
+                                Text="Chọn ĐT" CommandName="btnDt" />
+                            <asp:Button ID="btnChonPkTemp" runat="server" Text="Chọn PK" 
+                                CommandName="btnPk"  />
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="lbProductID" runat="server" Text='<%# Eval("ProductID") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Loại sản phẩm">
+                        <EditItemTemplate>
+                            <asp:RadioButton ID="rDtTemp" runat="server" Checked="True" 
+                                GroupName="rtemplate" Text="Điện thoại" Enabled="False" />
+                            <asp:RadioButton ID="rPkTemp" runat="server" GroupName="rtemplate" 
+                                Text="Phụ kiện" Enabled="False" />
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="lbIsPhone" runat="server" Text='<%# Eval("IsPhone").ToString()=="True" ?"Điện thoại":"Phụ kiện" %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <%--<asp:BoundField DataField="ProductID" HeaderText="Mã sản phẩm" />--%>
+                    <%--<asp:BoundField DataField="IsPhone" HeaderText="Là điện thoại" />--%>
+                    <asp:BoundField DataField="Number" HeaderText="Số lượng" />
+                    <asp:BoundField DataField="Price" HeaderText="Đơn giá nhập" />
+                    <asp:CommandField ButtonType="Image" 
+                        SelectImageUrl="~/Images/Apps/edit-icon.jpg" ShowSelectButton="True" />
+                    <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/Delete.jpg" 
+                        ShowDeleteButton="True" />
+                </Columns>
+                <FooterStyle BackColor="White" ForeColor="#000066" />
+                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+            </asp:GridView>
+                    </td>
+                </tr>
+            </table>                    
+      
     </div>
-<%--</asp:Content>--%>
-</form>
+</asp:Content>
+<%--</form>
 </body>
-</html>
+</html>--%>
