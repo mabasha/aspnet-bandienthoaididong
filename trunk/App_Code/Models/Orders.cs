@@ -7,7 +7,7 @@ using System.Data;
 /// <summary>
 /// Summary description for Order
 /// </summary>
-public class Order
+public class Orders
 {
     public int id;
     public string username;
@@ -16,18 +16,19 @@ public class Order
     public int number;
     public bool isAccepted;
     public bool isDelivered;
+    public double price;
 
-	public Order()
+	public Orders()
 	{
 	}
 
-    public Order(int id)
+    public Orders(int id)
     {
         this.id = id;
     }
 
-    public Order(int id, string username, bool isPhone, int productID, int number,
-        bool isAccepted, bool isDelivered)
+    public Orders(int id, string username, bool isPhone, int productID, int number,
+        bool isAccepted, bool isDelivered, double price)
     {
         this.id = id;
         this.username = username;
@@ -36,11 +37,12 @@ public class Order
         this.number = number;
         this.isAccepted = isAccepted;
         this.isDelivered = isDelivered;
+        this.price = price;
     }
 
     public void GetInfoByID()
     {
-        string query = String.Format("select * from Order where ID =  {0}", id);
+        string query = String.Format("select * from Orders where ID =  {0}", id);
         DataTable dt = AccessData.GetTable(query);
         username = (string)dt.Rows[0]["Username"];
         isPhone = (bool)dt.Rows[0]["IsPhone"];
@@ -48,5 +50,20 @@ public class Order
         number = (int)dt.Rows[0]["Number"];
         isAccepted = (bool)dt.Rows[0]["IsAccepted"];
         isDelivered = (bool)(dt.Rows[0]["IsDelivered"]);
+        price = Convert.ToDouble(dt.Rows[0]["Price"]);
+    }
+
+    public void Insert()
+    {
+        id = AccessData.GetMaxID("Orders") + 1;
+        string query = String.Format("insert into Orders(ID, Username, IsPhone, ProductID, Number, IsAccepted, IsDelivered, Price)" +
+            "values('{0}',N'{1}','{2}','{3}','{4}','{5}','{6}',{7})", id, username, isPhone, productID, number, isAccepted, isDelivered, price);
+        AccessData.ExecuteNonQuery(query);
+    }
+
+    public void Delete()
+    {
+        string query = String.Format("delete from Orders where ID = '{0}'", id);
+        AccessData.ExecuteNonQuery(query);
     }
 }
