@@ -163,18 +163,4 @@ public class Accessory
             "order by {4}", priceFrom, priceTo, producerName, keyword, orderBy);
         return AccessData.GetTable(query);
     }
-
-    public static DataTable GetAll(List<int> IDs)
-    {
-        if (IDs.Count < 1) return null;
-        string query = "select Accessory.*, Producer.Name as ProducerName from Accessory, Producer " +
-            "where Accessory.ProducerID = Producer.ID and ID in (";
-        foreach (int id in IDs)
-        {
-            query += id + ",";
-        }
-        query = query.Substring(0, query.Length - 2);
-        query += ")";
-        return AccessData.GetTable(query);
-    }
 }

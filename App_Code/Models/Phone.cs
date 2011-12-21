@@ -408,4 +408,11 @@ public class Phone
         }
         return dt;
     }
+
+    public static DataTable GetAllByID(int id)
+    {
+        string query = String.Format("select Phone.*, Producer.Name as ProducerName from Phone, Producer "+
+            "where Phone.ProducerID = Producer.ID and Phone.ID = {0}", id);
+        return AccessData.GetTable(query);
+    }
 }

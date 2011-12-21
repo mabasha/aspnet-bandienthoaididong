@@ -6,8 +6,8 @@ using System.Data;
 
 public class Producer
 {
-    int id;
-    string name;
+    public int id;
+    public string name;
 
     public Producer()
 	{

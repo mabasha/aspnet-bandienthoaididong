@@ -127,12 +127,14 @@ public partial class Gui_Products_AccessoryListCtrl : System.Web.UI.UserControl
             ImageButton b = (ImageButton)e.CommandSource;
             int id = Convert.ToInt32(b.CommandArgument);
 
-            List<ProductInfo> productList = (List<ProductInfo>)Session["CartProductList"];
-            ProductInfo.AddProductList(id, false, ref productList);
+            /*List<ProductInfo> productList = (List<ProductInfo>)Session["CartProductList"];
+            ProductInfo.AddProductList(id, false, number, ref productList);
             Session["CartProductList"] = productList;
 
             Response.Redirect("http://" + (string)Request.ServerVariables["SERVER_NAME"]
-                + ":" + (string)Request.ServerVariables["SERVER_PORT"] + (string)Request.ServerVariables["URL"]+Request.QueryString);
+                + ":" + (string)Request.ServerVariables["SERVER_PORT"] + (string)Request.ServerVariables["URL"]+Request.QueryString);*/
+
+            Response.Redirect(String.Format("~/Gui/Order/ViewCart.aspx?ProductID={0}&IsPhone=false", id));
         }
     }
 
