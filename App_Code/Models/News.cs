@@ -113,6 +113,10 @@ public class News
     {
         return AccessData.GetTable("select * from News where Category = N'Nhân vật' order by ID desc");
     }
+    public static DataTable GetAll_Khuyenmai()
+    {
+        return AccessData.GetTable("select * from News where Category = N'Khuyến mãi' order by ID desc");
+    }
     public static int GetMaxID_Sanpham()
     {
         return Convert.ToInt32(AccessData.ExecuteScalar("select MAX(ID) from News where Category=N'Sản phẩm'"));
@@ -144,6 +148,17 @@ public class News
         try
         {
             return Convert.ToInt32(AccessData.ExecuteScalar("select MAX(ID) from News where Category=N'Nhân vật'"));
+        }
+        catch
+        {
+            return -1;
+        }
+    }
+    public static int GetMaxID_Khuyenmai()
+    {
+        try
+        {
+            return Convert.ToInt32(AccessData.ExecuteScalar("select MAX(ID) from News where Category=N'Khuyến mãi'"));
         }
         catch
         {
