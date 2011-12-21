@@ -11,6 +11,7 @@ public class ProductInfo
 {
     int productID;
     bool isPhone;
+    int number;
 
     public int ProductID
     {
@@ -22,28 +23,34 @@ public class ProductInfo
         get { return isPhone; }
     }
 
-	public ProductInfo(int productID, bool isPhone)
+    public int Number
+    {
+        get { return number; }
+    }
+
+	public ProductInfo(int productID, bool isPhone, int number)
 	{
         this.productID = productID;
         this.isPhone = isPhone;
+        this.number = number;
 	}
 
-    public static void AddProductList(int productID, bool isPhone, ref List<ProductInfo> productList)
+    public static void AddProductList(int productID, bool isPhone, int number, ref List<ProductInfo> productList)
     {
-        ProductInfo info = new ProductInfo(productID, isPhone);
+        ProductInfo info = new ProductInfo(productID, isPhone, number);
         productList.Add(info);
     }
 
-    public static List<int> GetSeperateList(List<ProductInfo>li, bool isPhone)
+    public static List<ProductInfo> GetSeperateList(List<ProductInfo> li, bool isPhone)
     {
-        List<int> idList= new List<int>();
+        List<ProductInfo> sepList = new List<ProductInfo>();
 
         foreach(ProductInfo info in li)
         {
             if(info.isPhone == isPhone)
-                idList.Add(info.productID);
+                sepList.Add(info);
         }
 
-        return idList;
+        return sepList;
     }
 }

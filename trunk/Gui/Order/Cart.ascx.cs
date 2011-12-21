@@ -13,7 +13,14 @@ public partial class Gui_Order_Cart : System.Web.UI.UserControl
 
     public int Number
     {
-        get { return productList.Count; }
+        get {
+            int num = 0;
+            foreach (ProductInfo info in productList)
+            {
+                num += info.Number;
+            }
+            return num; 
+        }
     }
 
     public List<ProductInfo> ProductList
