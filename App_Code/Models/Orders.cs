@@ -14,9 +14,9 @@ public class Orders
     public bool isPhone;
     public int productID;
     public int number;
-    public bool isAccepted;
-    public bool isDelivered;
+    public int status;
     public double price;
+    public DateTime createdDate;
 
 	public Orders()
 	{
@@ -28,16 +28,16 @@ public class Orders
     }
 
     public Orders(int id, string username, bool isPhone, int productID, int number,
-        bool isAccepted, bool isDelivered, double price)
+        int status, double price, DateTime createdDate)
     {
         this.id = id;
         this.username = username;
         this.isPhone = isPhone;
         this.productID = productID;
         this.number = number;
-        this.isAccepted = isAccepted;
-        this.isDelivered = isDelivered;
+        this.status = status;
         this.price = price;
+        this.createdDate = createdDate;
     }
 
     public void GetInfoByID()
@@ -48,16 +48,17 @@ public class Orders
         isPhone = (bool)dt.Rows[0]["IsPhone"];
         productID = (int)dt.Rows[0]["ProductID"];
         number = (int)dt.Rows[0]["Number"];
-        isAccepted = (bool)dt.Rows[0]["IsAccepted"];
-        isDelivered = (bool)(dt.Rows[0]["IsDelivered"]);
+        status = (int)dt.Rows[0]["Status"];
         price = Convert.ToDouble(dt.Rows[0]["Price"]);
+        createdDate = (DateTime)dt.Rows[0]["CreatedDate"];
     }
 
     public void Insert()
     {
         id = AccessData.GetMaxID("Orders") + 1;
-        string query = String.Format("insert into Orders(ID, Username, IsPhone, ProductID, Number, IsAccepted, IsDelivered, Price)" +
-            "values('{0}',N'{1}','{2}','{3}','{4}','{5}','{6}',{7})", id, username, isPhone, productID, number, isAccepted, isDelivered, price);
+        string query = String.Format("insert into Orders(ID, Username, IsPhone, ProductID, Number, Status, Price, CreatedDate)" +
+            "values('{0}',N'{1}','{2}','{3}','{4}','{5}','{6}','{7}')", 
+            id, username, isPhone, productID, number, status, price, createdDate);
         AccessData.ExecuteNonQuery(query);
     }
 
@@ -66,4 +67,33 @@ public class Orders
         string query = String.Format("delete from Orders where ID = '{0}'", id);
         AccessData.ExecuteNonQuery(query);
     }
+
+    public static DataTable GetAll(string keyword, DateTime from, DateTime to, int status, bool isPhone)
+    {
+        string query = "";
+        if (isPhone == true)
+        {
+             query= String.Format("select Orders.*, Phone.Name as ProductName, Producer.Name as ProducerName " +
+                "from Orders, Phone, Users, Producer " +
+                "where Orders.Username = Users.Username and Orders.ProductID = Phone.ID " +
+                "and Phone.ProducerID = Producer.ID " +
+                "and IsPhone = 'True'"+
+                "and (Phone.Name like '%{0}%' or Producer.Name like '%{0}%') " +
+                "and (CreatedDate between '{1}' and '{2}') ", keyword, from, to);
+        }
+        else
+        {
+            query = String.Format("select Orders.*, Accessory.Name as ProductName, Producer.Name as ProducerName " +
+                "from Orders, Accessory, Users, Producer " +
+                "where Orders.Username = Users.Username and Orders.ProductID = Accessory.ID " +
+                "and Accessory.ProducerID = Producer.ID " +
+                "and IsPhone = 'False' "+
+                "and (Accessory.Name like '%{0}%' or Producer.Name like '%{0}%') " +
+                "and (CreatedDate between '{1}' and '{2}') ", keyword, from, to);
+        }
+        if (status != -1)
+            query += "and Status = "+status;
+        return AccessData.GetTable(query);
+    }
+    
 }

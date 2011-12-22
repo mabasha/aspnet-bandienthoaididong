@@ -113,7 +113,7 @@
             onsorting="gPhone_Sorting">
             <AlternatingRowStyle BackColor="PaleGoldenrod" />
             <Columns>
-                <asp:BoundField DataField="ID" HeaderText="Mã" SortExpression="ID" />
+                <asp:BoundField DataField="ID" HeaderText="Mã sản phẩm" SortExpression="ID" />
                 <asp:BoundField DataField="Name" HeaderText="Tên điện thoại" 
                     SortExpression="Name" />
                 <asp:BoundField DataField="ProducerName" HeaderText="NSX" 
@@ -144,7 +144,7 @@
             onsorting="gAcc_Sorting">
             <AlternatingRowStyle BackColor="PaleGoldenrod" />
             <Columns>
-                <asp:BoundField DataField="ID" HeaderText="Mã" SortExpression="ID" />
+                <asp:BoundField DataField="ID" HeaderText="Mã sản phẩm" SortExpression="ID" />
                 <asp:BoundField DataField="Name" HeaderText="Tên phụ kiện" 
                     SortExpression="Name" />
                 <asp:BoundField DataField="ProducerName" HeaderText="NSX" 

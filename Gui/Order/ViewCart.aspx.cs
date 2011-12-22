@@ -142,7 +142,7 @@ public partial class Gui_Order_ViewCart : System.Web.UI.Page
             int productID = Convert.ToInt32(row.Cells[0].Text);
             int number = Convert.ToInt32(row.Cells[4].Text);
             double price = Convert.ToDouble(row.Cells[3].Text);
-            Orders order = new Orders(0, username, false, productID, number, false, false, price);
+            Orders order = new Orders(0, username, false, productID, number, 0, price, DateTime.Now);
             order.Insert();
         }
 
@@ -152,7 +152,7 @@ public partial class Gui_Order_ViewCart : System.Web.UI.Page
             int productID = Convert.ToInt32(row.Cells[0].Text);
             int number = Convert.ToInt32(row.Cells[4].Text);
             double price = Convert.ToDouble(row.Cells[3].Text);
-            Orders order = new Orders(0, username, true, productID, number, false, false, price);
+            Orders order = new Orders(0, username, true, productID, number, 0, price, DateTime.Now);
             order.Insert();
         }
 
@@ -162,6 +162,8 @@ public partial class Gui_Order_ViewCart : System.Web.UI.Page
         FillData("");
 
         lInfo.Text = "<span style=\"color:blue\">Đã đặt hàng thành công. Vui lòng thanh toán để nhận hàng!</span>";
+        Response.Redirect("http://" + (string)Request.ServerVariables["SERVER_NAME"]
+                + ":" + (string)Request.ServerVariables["SERVER_PORT"] + (string)Request.ServerVariables["URL"] + "?" + Request.QueryString);
     }
     protected void fBuyConfirmPhone_ItemCommand(object sender, FormViewCommandEventArgs e)
     {
