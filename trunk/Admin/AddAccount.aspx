@@ -4,8 +4,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
-
-    <script type="text/javascript">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<script type="text/javascript">
         $(document).ready(function() {
             $("#aspnetForm").validate({
                 rules: {
@@ -43,10 +44,8 @@
             });
         });
     </script>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<form id="aspnetForm">
 <table width=100% >
-         <form id="aspnetForm">
             <tr>
                 <td class="style5" width="100">
                     <asp:Label ID="Label1" runat="server" Text="Username :" ></asp:Label>
@@ -126,7 +125,7 @@
             </tr>
             <tr>
                 <td class="style5" width="100">
-                    <asp:Label ID="Label8" runat="server" Text="Decentralize :" Width="100%"></asp:Label>
+                    <asp:Label ID="Label8" runat="server" Text="Decentralize :" Width="109%"></asp:Label>
                 </td>
                 <td class="style4">
         <asp:DropDownList ID="ddl_Decentralize" runat="server" CssClass="styleText" >
@@ -137,7 +136,7 @@
                 </td>
             </tr>
             <tr>
-                <td  colspan=2 rowspan="2" style="text-align: center">
+                <td  colspan=2 style="text-align: center">
                         <br />
         <asp:Button ID="btn_Add" runat="server" Text="Thêm" onclick="btn_Add_Click" 
                         CssClass="styleButtonAdd" BorderStyle="None" Height="40px" Width="87px" />
@@ -146,9 +145,8 @@
             Font-Size="15pt" style="text-align: center"></asp:Label>
                 </td>
             </tr>
-            <tr>
-            </tr>
-        </form>
+                    
         </table>
+        </form>
 </asp:Content>
 
