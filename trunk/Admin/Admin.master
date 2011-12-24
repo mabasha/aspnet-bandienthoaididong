@@ -86,16 +86,20 @@
     <div class="menu_content">
           <div id="smoothmenu1" class="ddsmoothmenu">
             <ul>
-                <li><a href="../Admin/Home.aspx">Home</a></li>
+                <li><a href="../Admin/Home.aspx">Trang chủ</a></li>
                 <li><a href="../Admin/AccessoriesManager.aspx">Phụ Kiện</a></li>
                 <li><a href="../Admin/PhoneManager.aspx">Điện Thoại</a></li>
-                <li><a href="../Admin/AcountManager.aspx">Users</a></li>
-                <li><a href="../Admin/EmployeeReport.aspx">Báo Cáo</a></li>
+                <li><a href="../Admin/Producer.aspx">Nhà Sản Xuất</a></li>
+                <li><a href="../Admin/DistributorManager.aspx">Nhà Phân Phối</a></li>
+                <li><a href="../Admin/AcountManager.aspx">Tài khoản</a></li>
+                <li><a href="../Admin/ImportBill.aspx">Hóa đơn nhập</a></li>
+                <li><a href="../Admin/SaleBillManager.aspx">Hóa đơn bán</a></li>
+                <li><a href="../Admin/EmployeeReport.aspx">Báo cáo bán hàng</a></li>
+                <li><a href="../Admin/ResidualReport.aspx">Báo cáo tồn</a></li>
                 <li><a href="../Admin/ImageManager.aspx">Hình Ảnh</a></li>
                 <li><a href="../Admin/NewsManager.aspx">Tin Tức</a></li>
-                <li><a href="../Admin/Producer.aspx">Nhà Sản Xuất</a></li>
-                <li><a href="../Admin/Producer.aspx">Nhà Phân Phối</a></li>
                 <li><a href="../Admin/WarrantyReceiptManager.aspx">Bảo Hành</a></li>
+                <li><a href="../Admin/OrderManager.aspx">Đơn đặt hàng</a></li>
             </ul>
            </div> 
     </div>

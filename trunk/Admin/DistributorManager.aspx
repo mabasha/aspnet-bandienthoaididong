@@ -75,7 +75,8 @@
                 onselectedindexchanged="gShow_SelectedIndexChanged" >
                 <RowStyle BackColor="#EFF3FB" />
                 <Columns>
-                    <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" >
+                    <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" 
+                        ReadOnly="True" >
                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:BoundField>
                     <asp:BoundField DataField="Name" HeaderText="Tên" SortExpression="Name" >
