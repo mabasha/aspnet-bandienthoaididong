@@ -17,12 +17,14 @@
             <table>
                         <tr>
                             <td style="text-align: center">
+                                <asp:Label ID="Label11" runat="server" Text="Username : "></asp:Label>
                                 <asp:TextBox ID="txt_Username_Search" runat="server" BorderStyle="None" 
                                     CssClass="styleText" Width="200px"></asp:TextBox>
-&nbsp;&nbsp;
-                                <asp:TextBox ID="txt_Fullname_Search" runat="server" BorderStyle="None" 
+&nbsp;&nbsp;<asp:Label ID="Label12" runat="server" Text="Fullname : "></asp:Label>
+&nbsp;<asp:TextBox ID="txt_Fullname_Search" runat="server" BorderStyle="None" 
                                     CssClass="styleText" Width="200px"></asp:TextBox>
 &nbsp;&nbsp;
+                                <asp:Label ID="Label13" runat="server" Text="Decentralize : "></asp:Label>
         <asp:DropDownList ID="ddl_Decentralize_Search" runat="server" CssClass="styleText" >
             <asp:ListItem>Tất cả</asp:ListItem>
             <asp:ListItem>Administrator</asp:ListItem>
@@ -57,7 +59,7 @@
                             <asp:TemplateField HeaderText="Username" SortExpression="Username">
                                 <EditItemTemplate>
                                     <asp:TextBox ID="txt_Username_Update" runat="server" 
-                                        Text='<%# Eval("Username") %>'></asp:TextBox>
+                                        Text='<%# Eval("Username") %>' Enabled="False"></asp:TextBox>
                                 </EditItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="Label10" runat="server" Text='<%# Eval("Username") %>'></asp:Label>
@@ -74,7 +76,18 @@
                             <EditItemTemplate> 
                               <asp:TextBox ID="Birthday" runat="server"  
                                     Text='<%# Eval("BirthDay","{0:MM/dd/yyyy}") %>' /> 
+                                <asp:MaskedEditExtender ID="Birthday_MaskedEditExtender" runat="server" 
+                                    CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
+                                    CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
+                                    CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
+                                    Mask="99/99/9999" MaskType="Date" oninvalidcssclass="error" 
+                                    TargetControlID="Birthday">
+                                </asp:MaskedEditExtender>
                                 <asp:CalendarExtender ID="CalendarExtender2" TargetControlID="Birthday" runat="server"></asp:CalendarExtender>
+                                <asp:MaskedEditValidator ID="MaskedEditValidator1" runat="server" 
+                                    ControlExtender="Birthday_MaskedEditExtender" ControlToValidate="Birthday" 
+                                    IsValidEmpty="False" 
+                                    ToolTip="Vui lòng điền đúng định dạng ngày tháng MM/dd/yyyy"></asp:MaskedEditValidator>
                             </EditItemTemplate> 
                             <ItemTemplate> 
                               <asp:Label ID="lbBirthDay" runat="server" 
@@ -82,13 +95,36 @@
                                     DataFormatString="{0:dd/mm/yyyy}"></asp:Label> 
                             </ItemTemplate> 
                             </asp:TemplateField>
-                            <asp:BoundField DataField="Tel" HeaderText="Tel" SortExpression="Tel" />
+                            <asp:TemplateField HeaderText="Tel" SortExpression="Tel">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_Tel" runat="server" Text='<%# Bind("Tel") %>'></asp:TextBox>
+                                    <asp:FilteredTextBoxExtender ID="txt_Tel_FilteredTextBoxExtender" 
+                                        runat="server" Enabled="True" FilterType="Custom, Numbers" InvalidChars="." 
+                                        TargetControlID="txt_Tel">
+                                    </asp:FilteredTextBoxExtender>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("Tel") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:BoundField DataField="Address" HeaderText="Address" 
                                 SortExpression="Address" />
-                            <asp:BoundField DataField="IDCard" HeaderText="IDCard" 
-                                SortExpression="IDCard" />
                             <%--<asp:BoundField DataField="Decentralize" HeaderText="Decentralize" 
                                 SortExpression="Decentralize" />--%>
+                            <asp:TemplateField HeaderText="IDCard" SortExpression="IDCard">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_IDCard" runat="server" Text='<%# Bind("IDCard") %>'></asp:TextBox>
+                                    <asp:FilteredTextBoxExtender ID="txt_IDCard_FilteredTextBoxExtender" 
+                                        runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txt_IDCard">
+                                    </asp:FilteredTextBoxExtender>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                        ControlToValidate="txt_IDCard" Display="Dynamic" 
+                                        ErrorMessage="Ô này không được để trống"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("IDCard") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="Decentralize"> 
                             <%--<FooterTemplate> 
                               <asp:DropDownList ID="cmbNewDecentralize" runat="server" >

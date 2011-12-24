@@ -13,12 +13,25 @@ public partial class Admin_Admin : System.Web.UI.MasterPage
         if (Session["username"]!=null)
         {
             lb_Username.Text = Session["username"].ToString();
+            CheckLogin(lb_Username.Text);
         }
         else if (cookie!=null)
         {
             lb_Username.Text = cookie["username"].ToString();
+            CheckLogin(lb_Username.Text);
         }
         else
+        {
+            Response.Redirect("~/GUI/HomePage.aspx");
+        }
+    }
+
+    private void CheckLogin(string username)
+    {
+        Account user = new Account();
+        user.username = username;
+        user.GetInfoByUsername();
+        if (user.decentralize == "Client")
         {
             Response.Redirect("~/GUI/HomePage.aspx");
         }

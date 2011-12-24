@@ -10,6 +10,22 @@ public partial class Admin_PhoneChooser : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        HttpCookie cookie = Request.Cookies["login"];
+        if (Session["username"] != null)
+        {
+
+            CheckLogin(Session["username"].ToString());
+        }
+        else if (cookie != null)
+        {
+            CheckLogin(cookie["username"].ToString());
+        }
+        else
+        {
+            Response.Redirect("~/GUI/HomePage.aspx");
+        }
+
+
         if (!IsPostBack)
         {
             FillData();
@@ -51,5 +67,19 @@ public partial class Admin_PhoneChooser : System.Web.UI.Page
     protected void gShow_SelectedIndexChanged(object sender, EventArgs e)
     {
         hChoosed.Value = gShow.SelectedRow.Cells[0].Text;
+    }
+
+    /*
+     * Check Login xem username đang login có phải là admin hoặc employee không, nếu không thì cho ra ngoài trang Home của GUI
+     */
+    private void CheckLogin(string username)
+    {
+        Account user = new Account();
+        user.username = username;
+        user.GetInfoByUsername();
+        if (user.decentralize == "Client")
+        {
+            Response.Redirect("~/GUI/HomePage.aspx");
+        }
     }
 }

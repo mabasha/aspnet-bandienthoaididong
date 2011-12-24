@@ -92,8 +92,8 @@ public partial class Admin_ProfileUser : System.Web.UI.Page
         user.fullname = ((TextBox)dtviews_User.Rows[4].Cells[1].Controls[0]).Text;
         user.email = ((TextBox)dtviews_User.Rows[5].Cells[1].Controls[0]).Text;
         user.birthDay = Convert.ToDateTime(((TextBox)dtviews_User.Rows[6].FindControl("txt_BirthDay")).Text);
-        user.tel = ((TextBox)dtviews_User.Rows[7].Cells[1].Controls[0]).Text;
+        user.tel = ((TextBox)dtviews_User.Rows[7].FindControl("txt_Tel")).Text;
         user.address = ((TextBox)dtviews_User.Rows[8].FindControl("txt_Address")).Text;
-        user.idCard = int.Parse(((TextBox)dtviews_User.Rows[7].Cells[1].Controls[0]).Text);
+        user.idCard = int.Parse(((TextBox)dtviews_User.Rows[9].FindControl("txt_IDCard")).Text);
     }
 }

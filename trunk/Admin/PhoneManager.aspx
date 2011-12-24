@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin/Admin.master" CodeFile="PhoneManager.aspx.cs" Inherits="Admin_PhoneManager" %>
 
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
 <head >
@@ -260,6 +262,9 @@
                                 <EditItemTemplate>
                                     <asp:TextBox ID="txt_Price" runat="server" Text='<%# Bind("Price") %>' 
                                         Width="100px"></asp:TextBox>
+                                    <asp:FilteredTextBoxExtender ID="txt_Price_FilteredTextBoxExtender" 
+                                        runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txt_Price">
+                                    </asp:FilteredTextBoxExtender>
                                     VNĐ<asp:RangeValidator ID="RangeValidator1" runat="server" 
                                         ControlToValidate="txt_Price" Display="Dynamic" 
                                         ErrorMessage="Vui lòng nhập giá từ 0-100.000.000 VNĐ" MaximumValue="100000000" 
@@ -268,13 +273,15 @@
                                 <InsertItemTemplate>
                                     <asp:TextBox ID="txt_Price" runat="server" 
                                         Text='<%# Bind("Price") %>' Width="100px"></asp:TextBox>
+                                    <asp:FilteredTextBoxExtender ID="txt_Price_FilteredTextBoxExtender" 
+                                        runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txt_Price">
+                                    </asp:FilteredTextBoxExtender>
                                     VNĐ<asp:MaskedEditExtender ID="txt_Price_MaskedEditExtender"
                                         CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
                                         CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
                                         CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
                                         InputDirection="RightToLeft" Mask="999999999" MaskType="Number" 
-                                        TargetControlID="txt_Price">
-                                    </asp:MaskedEditExtender>
+                                        TargetControlID="txt_Price"></asp:MaskedEditExtender>
                                     <asp:RangeValidator ID="RangeValidator2" runat="server" 
                                         ControlToValidate="txt_Price" Display="Dynamic" 
                                         ErrorMessage="Vui lòng nhập giá từ 0-100.000.000 VNĐ" MaximumValue="100000000" 

@@ -91,9 +91,21 @@
                 <td class="style4">
                     <asp:TextBox ID="txt_BirthDay" runat="server" Width="400px" CssClass="styleText" 
                         BorderStyle="None" ></asp:TextBox>
+                    <asp:MaskedEditExtender ID="txt_BirthDay_MaskedEditExtender" runat="server" 
+                        CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
+                        CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
+                        CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
+                        Mask="99/99/9999" MaskType="Date" oninvalidcssclass="error" 
+                        TargetControlID="txt_BirthDay">
+                    </asp:MaskedEditExtender>
                     <asp:CalendarExtender ID="txt_BirthDay_CalendarExtender" runat="server" 
                         TargetControlID="txt_BirthDay">
                     </asp:CalendarExtender>
+                    <asp:MaskedEditValidator ID="MaskedEditValidator1" runat="server" 
+                        ControlExtender="txt_BirthDay_MaskedEditExtender" 
+                        ControlToValidate="txt_BirthDay" CssClass="error" Display="Dynamic" 
+                        ErrorMessage="Ngày không đúng định dạng MM/dd/yyyy" 
+                        InvalidValueMessage="Ngày không đúng định dạng MM/dd/yyyy"></asp:MaskedEditValidator>
                 </td>
             </tr>
             <tr>
@@ -103,6 +115,10 @@
                 <td class="style4" style="height: 8px">
         <asp:TextBox ID="txt_Tel" runat="server" Width="400px" CssClass="styleText" 
                         BorderStyle="None"></asp:TextBox>
+                    <asp:FilteredTextBoxExtender ID="txt_Tel_FilteredTextBoxExtender" 
+                        runat="server" Enabled="True" FilterType="Custom, Numbers" InvalidChars="." 
+                        TargetControlID="txt_Tel">
+                    </asp:FilteredTextBoxExtender>
                 </td>
             </tr>
             <tr>
@@ -121,6 +137,9 @@
                 <td class="style4">
         <asp:TextBox ID="txt_IDCard" runat="server" Width="400px" CssClass="styleText" 
                         BorderStyle="None"></asp:TextBox>
+                    <asp:FilteredTextBoxExtender ID="txt_IDCard_FilteredTextBoxExtender" 
+                        runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txt_IDCard">
+                    </asp:FilteredTextBoxExtender>
                 </td>
             </tr>
             <tr>
