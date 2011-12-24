@@ -15,10 +15,7 @@
         text-decoration:none;
         color:Black;
     }
-      .style2:hover
-    {
-        color:Orange;
-    }
+
     .title
     {
          background: -moz-linear-gradient(bottom, #ffffff, #E1E1E1);

@@ -114,11 +114,20 @@
                 onrowediting="gShow_RowEditing" onrowupdating="gShow_RowUpdating">
                 <RowStyle BackColor="#EFF3FB" />
                 <Columns>
-                    <asp:BoundField DataField="ID" HeaderText="Mã" SortExpression="ID" />
+                    <asp:BoundField DataField="ID" HeaderText="Mã" SortExpression="ID" 
+                        ReadOnly="True" />
                     <asp:BoundField DataField="Name" HeaderText="Tên" SortExpression="Name" >
                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:BoundField>
                     <asp:TemplateField HeaderText="NSX" SortExpression="ProducerName">
+                        <EditItemTemplate>
+                            <asp:DropDownList ID="dProducerName" runat="server" DataSourceID="dsProducer" 
+                                DataTextField="Name" DataValueField="ID">
+                            </asp:DropDownList>
+                            <asp:SqlDataSource ID="dsProducer" runat="server" 
+                                ConnectionString="<%$ ConnectionStrings:MobileShopConnectionString %>" 
+                                SelectCommand="SELECT * FROM [Producer]"></asp:SqlDataSource>
+                        </EditItemTemplate>
                     <ItemTemplate><asp:Label ID="lNSX" runat="server" Text='<%# Eval("ProducerName") %>'></asp:Label>
                         
                     </ItemTemplate>

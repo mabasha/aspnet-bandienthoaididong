@@ -70,10 +70,11 @@ public partial class Admin_DistributorManager : System.Web.UI.Page
     }
     protected void gShow_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
-        TextBox tUpdateID = (TextBox)gShow.Rows[e.RowIndex].Cells[0].Controls[0];
+        //TextBox tUpdateID = (TextBox)gShow.Rows[e.RowIndex].Cells[0].Controls[0];
+        string sID = gShow.Rows[e.RowIndex].Cells[0].Text;
         TextBox tUpdateName = (TextBox)gShow.Rows[e.RowIndex].Cells[1].Controls[0];
         TextBox tUpdateAddress = (TextBox)gShow.Rows[e.RowIndex].Cells[2].Controls[0];
-        int ID = Convert.ToInt32(tUpdateID.Text);
+        int ID = Convert.ToInt32(sID);
         string name = tUpdateName.Text;
         string address = tUpdateAddress.Text;
         if (tUpdateName.Text != "" && tUpdateAddress.Text!="")
