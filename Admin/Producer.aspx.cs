@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 public partial class Admin_Producer : System.Web.UI.Page
 {
@@ -71,9 +72,24 @@ public partial class Admin_Producer : System.Web.UI.Page
         lbThongbao.Text = "<div class=valid_box>XÓA THÀNH CÔNG </div>";
         FillData();
     }
+    private void FillData(string sort)
+    {
+        DataTable grid = Producer.GetAll();
+        grid.DefaultView.Sort = sort;
+        gridNsx.DataSource = grid;
+        gridNsx.DataBind();
+    }
     private void FillData()
     {
-        gridNsx.DataSource = Producer.GetAll();
-        gridNsx.DataBind();
+        FillData("");        
+    }
+    protected void gridNsx_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        FillData(e.SortExpression);
+    }
+    protected void gridNsx_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        gridNsx.PageIndex = e.NewPageIndex;
+        FillData();
     }
 }

@@ -40,7 +40,7 @@
         }
         .style32
         {
-            width: 161px;
+            width: 616px;
         }
         .style35
         {
@@ -52,7 +52,7 @@
         }
         .style39
         {
-            width: 161px;
+            width: 616px;
             height: 81px;
         }
         .style40
@@ -62,6 +62,14 @@
         .style41
         {
             width: 242px;
+        }
+        .style42
+        {
+            width: 376px;
+        }
+        .style43
+        {
+            width: 119px;
         }
         </style>
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
@@ -76,7 +84,7 @@
             <tr>
                 <td class="style39">
                     Người Nhập :</td>
-                <td class="style41">
+                <td class="style41" colspan="2">
                     <asp:DropDownList ID="dNguoiNhap" runat="server" DataSourceID="SqlDataSource1" 
                         DataTextField="FullName" DataValueField="Username" >
                     </asp:DropDownList>
@@ -108,13 +116,13 @@
                 </td>
             </tr>
             <tr>
-                <td align="center" colspan="2" class="style35">
+                <td align="center" colspan="3" class="style35">
                 </td>
             </tr>
             <tr>
                 <td class="style32">
                     Loại sản phẩm *:</td>
-                <td class="style41">
+                <td class="style41" colspan="2">
                     <asp:RadioButton ID="rDienthoai" runat="server" AutoPostBack="True" 
                         Checked="True" GroupName="chooser" Text="Điện thoại" />
                     <asp:RadioButton ID="rPhukien" runat="server" AutoPostBack="True" 
@@ -123,28 +131,30 @@
             </tr>
             <tr>
                 <td class="style32">
-                    Tên sản phẩm *:</td>
-                <td class="style41">
+                    Mã sản phẩm *:</td>
+                <td class="style43">
                     <asp:TextBox ID="txtTenSp" runat="server" Width="52px" ></asp:TextBox>
+                </td>
+                <td class="style42">
                     <asp:Button ID="btnTenSp" runat="server" Text="Chọn sản phẩm" />
                 </td>
             </tr>
             <tr>
                 <td class="style32">
                     Số lượng *:</td>
-                <td class="style41">
+                <td class="style41" colspan="2">
                     <asp:TextBox ID="txtNumber" runat="server" Width="190px" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="style32">
                     Đơn giá nhập* :</td>
-                <td class="style41">
+                <td class="style41" colspan="2">
                     <asp:TextBox ID="txtPrice" runat="server" Width="190px" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td align="center" colspan="2" class="style36">
+                <td align="center" colspan="3" class="style36">
     
     <asp:Button ID="btnAddViewstate" runat="server" onclick="btnAddViewstate_Click" 
         Text="Thêm sản phẩm" />
@@ -157,7 +167,7 @@
                 </td>
             </tr>
             <tr>
-                <td align="center" colspan="2" class="style36">
+                <td align="center" colspan="3" class="style36">
     
     <asp:Button ID="btnThemHD" runat="server"  Text="THÊM HÓA ĐƠN" Height="66px" 
             onclick="btnThemHD_Click" Width="135px" Visible="False" />

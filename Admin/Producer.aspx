@@ -6,32 +6,28 @@
 <head>
 
     <title></title>
+    <script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>
      <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="AdminSite/Template/style.css" />
 
     <style type="text/css">
-        .style1
-        {
-            width: 45%;
-            height: 200px;
-        }
-        .style2
-        {
-            height: 3px;
-        }
         .header
         {
             height: 52px;
         }
-        .style3
-        {
-            height: 27px;
-        }
-        .style4
-        {
-            height: 29px;
-        }
     </style>
+    <script type="text/javascript">
+        $("document").ready(OnPageReady);
+        function OnPageReady() {
+            $("#<% =btnThem.ClientID%>").click(Them);           
+        }
+        function Them() {
+            if ($("#<% =txtTenNsx.ClientID%>").val() == "") {
+                alert("Vui lòng nhập đầy đủ thông tin!");
+                return false;
+            }
+        }
+    </script>
      <%--<input id="Button1" type="button" value="button" onclick="return Button1_onclick()" />--%>
 
     <%--<script language="javascript" type="text/javascript">
@@ -59,7 +55,7 @@
     
          <table>
                 <tr>
-                    <td colspan=2 align=center><div class="style">QUẢN LÝ NHÀ PHÂN PHỐI</div></td>
+                    <td colspan=2 align=center><div class="style">QUẢN LÝ NHÀ SẢN XUẤT</div></td>
                 </tr
          </table>
 
@@ -93,11 +89,12 @@
                 <td align="center">
                     <asp:GridView CssClass="styleGrid" ID="gridNsx" runat="server" AutoGenerateColumns="False" 
                         CellPadding="4" DataKeyNames="ID" ForeColor="#333333" GridLines="None"                                                 
-                        ShowFooter="True" PageSize="5" 
+                        ShowFooter="True" 
                         onrowdatabound="gridNsx_RowDataBound" 
                 onrowcancelingedit="gridNsx_RowCancelingEdit" 
                 onrowdeleting="gridNsx_RowDeleting" onrowediting="gridNsx_RowEditing" 
-                onrowupdating="gridNsx_RowUpdating">
+                onrowupdating="gridNsx_RowUpdating" AllowPaging="True" AllowSorting="True" 
+                        onpageindexchanging="gridNsx_PageIndexChanging" onsorting="gridNsx_Sorting">
                         <RowStyle BackColor="#EFF3FB" />
                         <Columns>
                             <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" 
@@ -108,14 +105,12 @@
                                 SortExpression="Name" >
                             <HeaderStyle HorizontalAlign="Left" />
                             </asp:BoundField>
-                            <asp:CommandField ButtonType="Button" SelectText="Chọn" 
-                                ShowSelectButton="True" />
-                            <asp:CommandField ButtonType="Image" ShowDeleteButton="True" 
-                                DeleteImageUrl="~/Images/Apps/Delete.jpg" />
                             <asp:CommandField CancelText="Không" EditText="Sửa" ShowEditButton="True" 
                                 ButtonType="Image" CancelImageUrl="~/Admin/AdminSite/Template/images/error.png" 
                                 EditImageUrl="~/Admin/AdminSite/Template/images/user_edit.png" 
                                 UpdateImageUrl="~/Admin/AdminSite/Template/images/valid.png" />
+                            <asp:CommandField ButtonType="Image" ShowDeleteButton="True" 
+                                DeleteImageUrl="~/Images/Apps/Delete.jpg" />
                         </Columns>
                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                         <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
