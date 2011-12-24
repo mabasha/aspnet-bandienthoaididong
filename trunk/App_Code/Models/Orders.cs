@@ -62,6 +62,14 @@ public class Orders
         AccessData.ExecuteNonQuery(query);
     }
 
+    public void Update()
+    {
+        string query = String.Format("update Orders set Username = N'{0}', IsPhone = '{1}',"
+            + "ProductID = '{2}', Number = '{3}', Status= '{4}', Price= {5}, CreatedDate = '{6}' where ID = {7}",
+            username, isPhone, productID, number, status, price, createdDate ,id);
+        AccessData.ExecuteNonQuery(query);
+    }
+
     public void Delete()
     {
         string query = String.Format("delete from Orders where ID = '{0}'", id);
@@ -73,13 +81,44 @@ public class Orders
         string query = "";
         if (isPhone == true)
         {
+            query = String.Format("select Orders.*, "+
+                "Phone.Name as ProductName, Producer.Name as ProducerName, Users.Fullname, Users.Username, Phone.ID as ProductID " +
+               "from Orders, Phone, Users, Producer " +
+               "where Orders.Username = Users.Username and Orders.ProductID = Phone.ID " +
+               "and Phone.ProducerID = Producer.ID " +
+               "and IsPhone = 'True'" +
+               "and (Phone.Name like '%{0}%' or Producer.Name like '%{0}%') " +
+               "and (CreatedDate between '{1}' and '{2}') ", keyword, from, to);
+        }
+        else
+        {
+            query = String.Format("select Orders.*, "+
+                "Accessory.Name as ProductName, Producer.Name as ProducerName, Users.Fullname, Users.Username, Accessory.ID as ProductID  " +
+                "from Orders, Accessory, Users, Producer " +
+                "where Orders.Username = Users.Username and Orders.ProductID = Accessory.ID " +
+                "and Accessory.ProducerID = Producer.ID " +
+                "and IsPhone = 'False' " +
+                "and (Accessory.Name like '%{0}%' or Producer.Name like '%{0}%') " +
+                "and (CreatedDate between '{1}' and '{2}') ", keyword, from, to);
+        }
+        if (status != -1)
+            query += "and Status = " + status;
+        return AccessData.GetTable(query);
+    }
+
+    public static DataTable GetAll(string keyword, DateTime from, DateTime to, int status, bool isPhone, string username)
+    {
+        string query = "";
+        if (isPhone == true)
+        {
              query= String.Format("select Orders.*, Phone.Name as ProductName, Producer.Name as ProducerName " +
                 "from Orders, Phone, Users, Producer " +
                 "where Orders.Username = Users.Username and Orders.ProductID = Phone.ID " +
                 "and Phone.ProducerID = Producer.ID " +
                 "and IsPhone = 'True'"+
                 "and (Phone.Name like '%{0}%' or Producer.Name like '%{0}%') " +
-                "and (CreatedDate between '{1}' and '{2}') ", keyword, from, to);
+                "and (CreatedDate between '{1}' and '{2}') "+
+                "and Users.Username = '{3}' ", keyword, from, to, username);
         }
         else
         {
@@ -89,7 +128,8 @@ public class Orders
                 "and Accessory.ProducerID = Producer.ID " +
                 "and IsPhone = 'False' "+
                 "and (Accessory.Name like '%{0}%' or Producer.Name like '%{0}%') " +
-                "and (CreatedDate between '{1}' and '{2}') ", keyword, from, to);
+                "and (CreatedDate between '{1}' and '{2}') "+
+                "and Users.Username = '{3}' ", keyword, from, to, username);
         }
         if (status != -1)
             query += "and Status = "+status;

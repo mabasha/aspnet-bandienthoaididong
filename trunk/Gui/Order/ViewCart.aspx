@@ -15,6 +15,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cMain" Runat="Server">
 <div id="view-card-wrapper" style="width:800px;">
+    <asp:HyperLink ID="HyperLink1" runat="server" 
+        NavigateUrl="~/Gui/Order/CartHistory.aspx">Xem lịch sử đặt hàng</asp:HyperLink>
     <div id="buy-confirm">
         
         <asp:FormView ID="fBuyConfirmAcc" runat="server" 

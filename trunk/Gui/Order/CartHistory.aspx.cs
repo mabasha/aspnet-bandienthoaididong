@@ -20,6 +20,14 @@ public partial class Gui_Order_CartHistory : System.Web.UI.Page
     {
         int status = dStatus.SelectedIndex-1;
         DateTime dFrom, dTo;
+        string username = null;
+        HttpCookie cookie = Request.Cookies["login"];
+        if (Session["username"] != null)
+            username = Session["username"].ToString();
+        else if (cookie != null)
+            username = cookie["username"].ToString();
+        if (username == null) return;
+
         try{
             dFrom = Convert.ToDateTime(tFrom.Text);
             dTo = Convert.ToDateTime(tTo.Text);
@@ -30,9 +38,9 @@ public partial class Gui_Order_CartHistory : System.Web.UI.Page
         }
         
         DataTable dtPhone = Orders.GetAll(tKeyword.Text, 
-            dFrom, dTo, status,true);
+            dFrom, dTo, status,true,username);
         DataTable dtAcc = Orders.GetAll(tKeyword.Text,
-            dFrom, dTo, status, false);
+            dFrom, dTo, status, false,username);
 
         if (sortExp != "")
         {
