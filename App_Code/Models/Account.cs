@@ -203,7 +203,7 @@ public class Account
         if (_decentralize != "Tất cả")
         {
             DataRow[] rows;
-            string filter = String.Format("Decentralize=", _decentralize);
+            string filter = String.Format("Decentralize='{0}'", _decentralize);
             rows=dt.Select(filter);
             dt = dt.Clone();
             foreach(DataRow row in rows)

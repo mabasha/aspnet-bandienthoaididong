@@ -117,11 +117,12 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         user.fullname = ((TextBox)grid_Users.Rows[e.RowIndex].Cells[2].Controls[0]).Text;
         user.email = ((TextBox)grid_Users.Rows[e.RowIndex].Cells[3].Controls[0]).Text;
         user.birthDay = Convert.ToDateTime(((TextBox)grid_Users.Rows[e.RowIndex].Cells[4].FindControl("Birthday")).Text);
-        user.tel = ((TextBox)grid_Users.Rows[e.RowIndex].Cells[5].Controls[0]).Text;
+        user.tel = ((TextBox)grid_Users.Rows[e.RowIndex].Cells[5].FindControl("txt_Tel")).Text;
         user.address = ((TextBox)grid_Users.Rows[e.RowIndex].Cells[6].Controls[0]).Text;
-        user.idCard = Convert.ToInt32(((TextBox)grid_Users.Rows[e.RowIndex].Cells[7].Controls[0]).Text);
+        user.idCard = Convert.ToInt32(((TextBox)grid_Users.Rows[e.RowIndex].Cells[7].FindControl("txt_IDCard")).Text);
         //TextBox decentralize = (TextBox)grid_Users.Rows[e.RowIndex].Cells[7].Controls[0];
         user.decentralize = ((DropDownList)grid_Users.Rows[e.RowIndex].FindControl("cmbDecentralize")).SelectedValue.ToString();
+        //user.isActived = Convert.ToInt32(((DropDownList)grid_Users.Rows[e.RowIndex].FindControl("ddl_IsActived")).SelectedValue.ToString());
     }
 
     protected void btn_Search_Click(object sender, ImageClickEventArgs e)

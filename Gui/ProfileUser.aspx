@@ -21,7 +21,7 @@
                 UpdateText="Cập nhật" />
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:Label ID="lb_Note" runat="server"></asp:Label>
+                    <asp:Label ID="lb_Note0" runat="server"></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Username :">
@@ -29,7 +29,7 @@
                     <asp:Label ID="Label1" runat="server" Text='<%# Eval("Username") %>'></asp:Label>
                 </EditItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("Username") %>'></asp:Label>
+                    <asp:Label ID="Label7" runat="server" Text='<%# Eval("Username") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Password :">
@@ -46,25 +46,47 @@
                 <EditItemTemplate>
                     <asp:TextBox ID="txt_BirthDay" runat="server" Width="200px" 
                         Text='<%# Eval("BirthDay","{0:MM/dd/yyyy}") %>'></asp:TextBox>
-                    
+                    <asp:MaskedEditExtender ID="txt_BirthDay_MaskedEditExtender" runat="server" 
+                        CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
+                        CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
+                        CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
+                        Mask="99/99/9999" MaskType="Date" TargetControlID="txt_BirthDay">
+                    </asp:MaskedEditExtender>
                     <asp:CalendarExtender ID="txt_BirthDay_CalendarExtender" runat="server" 
                         TargetControlID="txt_BirthDay">
                     </asp:CalendarExtender>
-                    
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                    <asp:MaskedEditValidator ID="MaskedEditValidator1" runat="server" 
+                        ControlExtender="txt_BirthDay_MaskedEditExtender" 
                         ControlToValidate="txt_BirthDay" Display="Dynamic" 
-                        ErrorMessage="Ô này không được để trống"></asp:RequiredFieldValidator>
+                        ErrorMessage="Vui lòng điền đúng định dạng MM/dd/yyyy" 
+                        InvalidValueMessage="Vui lòng điền đúng định dạng MM/dd/yyyy" 
+                        IsValidEmpty="False" ToolTip="Vui lòng điền đúng định dạng MM/dd/yyyy" 
+                        TooltipMessage="Vui lòng điền đúng định dạng MM/dd/yyyy"></asp:MaskedEditValidator>
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label2" runat="server" 
                         Text='<%# Eval("BirthDay","{0:MM/dd/yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Tel" HeaderText="Tel :" />
+            <asp:TemplateField HeaderText="Tel :">
+                <EditItemTemplate>
+                    <asp:TextBox ID="txt_Tel" runat="server" Text='<%# Bind("Tel") %>'></asp:TextBox>
+                    <asp:FilteredTextBoxExtender ID="txt_Tel_FilteredTextBoxExtender" 
+                        runat="server" Enabled="True" FilterType="Numbers" InvalidChars="." 
+                        TargetControlID="txt_Tel">
+                    </asp:FilteredTextBoxExtender>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Tel") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label6" runat="server" Text='<%# Bind("Tel") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Address :">
                 <EditItemTemplate>
                     <asp:TextBox ID="txt_Address" runat="server" Text='<%# Eval("Address") %>' 
-                        TextMode="MultiLine" Width="200px"></asp:TextBox>
+                        TextMode="MultiLine" Width="200px" Height="50px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
                         ControlToValidate="txt_Address" ErrorMessage="Ô này không được để trống"></asp:RequiredFieldValidator>
                 </EditItemTemplate>
@@ -72,13 +94,23 @@
                     <asp:Label ID="Label3" runat="server" Text='<%# Eval("Address") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="IDCard" HeaderText="IDCard :" />
+            <asp:TemplateField HeaderText="IDCard :">
+                <EditItemTemplate>
+                    <asp:TextBox ID="txt_IDCard" runat="server" Text='<%# Bind("IDCard") %>'></asp:TextBox>
+                    <asp:FilteredTextBoxExtender ID="txt_IDCard_FilteredTextBoxExtender" 
+                        runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txt_IDCard">
+                    </asp:FilteredTextBoxExtender>
+                </EditItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("IDCard") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Decentralize :">
                 <EditItemTemplate>
                     <asp:Label ID="Label4" runat="server" Text='<%# Eval("Decentralize") %>'></asp:Label>
                 </EditItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("Decentralize") %>'></asp:Label>
+                    <asp:Label ID="Label8" runat="server" Text='<%# Eval("Decentralize") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
         </Fields>
