@@ -24,6 +24,7 @@ public partial class Gui_News_NewsDetails : System.Web.UI.Page
                 hlCategory.NavigateUrl = "Nhan_vat.aspx";
             lbTitle.Text = News.GetTitle(id);
             lbDate.Text = "Cập nhật ngày: " + News.GetCreatedDate(id);
+            
             lbIntro.Text = News.GetIntro(id);
             divContents.InnerHtml = News.GetContents(id);
             lbAuthor.Text = News.GetAuthor(id);

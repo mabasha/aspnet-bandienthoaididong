@@ -17,6 +17,7 @@ public class News
     public string category;
     public DateTime createdDate;
     public int views;
+    public string imageURL;
 
 	public News()
 	{
@@ -29,7 +30,7 @@ public class News
 
     public News(int id, string title, string introContent, 
         string content, string author,
-        string category, DateTime createdDate)
+        string category, DateTime createdDate, string imageURL)
     {
         this.id = id;
         this.title = title;
@@ -38,6 +39,7 @@ public class News
         this.author = author;
         this.category = category;
         this.createdDate = createdDate;
+        this.imageURL = imageURL;
     }
 
     public void GetInfoByID()
@@ -51,15 +53,16 @@ public class News
         category = (string)dt.Rows[0]["category"];
         createdDate = (DateTime)(dt.Rows[0]["createdDate"]);
         views = Convert.ToInt32((dt.Rows[0]["views"]));
+        imageURL = (string)dt.Rows[0]["imageURL"];
     }
 
     public void Insert()
     {
         id = AccessData.GetMaxID("News") + 1;
         string query = String.Format("insert into News(ID, Contents, "+
-            "Author, Category, CreatedDate, Views, IntroContent, Title) "+
-            "values({0},N'{1}',N'{2}',N'{3}','{4}',{5},N'{6}', N'{7}')", id, content, 
-            author, category, createdDate, views, introContent,title);
+            "Author, Category, CreatedDate, Views, IntroContent, Title, ImageURL) "+
+            "values({0},N'{1}',N'{2}',N'{3}','{4}',{5},N'{6}', N'{7}', '{8}')", id, content, 
+            author, category, createdDate, views, introContent,title, imageURL);
         
         AccessData.ExecuteNonQuery(query);
     }
@@ -67,8 +70,8 @@ public class News
     public void Update()
     {
         string query = String.Format("update News set Contents = N'{0}', Author = N'{1}', "+
-            "Category = N'{2}', CreatedDate = '{3}', Views = {4}, IntroContent = N'{5}', Title = N'{6}' where ID = {7}",
-            content, author, category, createdDate, views, introContent, title, id);
+            "Category = N'{2}', CreatedDate = '{3}', Views = {4}, IntroContent = N'{5}', Title = N'{6}', ImageUrl = '{7}' where ID = {8}",
+            content, author, category, createdDate, views, introContent, title, imageURL,id);
         AccessData.ExecuteNonQuery(query);
     }
 
@@ -179,7 +182,7 @@ public class News
     }
     public static string GetCreatedDate(int id)
     {
-        return Convert.ToString(AccessData.ExecuteScalar(String.Format("select CreatedDate from News where ID = {0}", id)));
+        return String.Format("{0:dd/MM/yyyy}",(AccessData.ExecuteScalar(String.Format("select CreatedDate from News where ID = {0}", id))));
     }
     public static string GetImage(int id)
     {

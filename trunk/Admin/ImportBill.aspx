@@ -53,7 +53,7 @@
         .style39
         {
             width: 616px;
-            height: 81px;
+            height: 13px;
         }
         .style40
         {
@@ -66,10 +66,42 @@
         .style42
         {
             width: 376px;
+            height: 50px;
         }
         .style43
         {
             width: 119px;
+            height: 50px;
+        }
+        .style44
+        {
+            width: 242px;
+            height: 13px;
+        }
+        .style45
+        {
+            width: 616px;
+            height: 23px;
+        }
+        .style46
+        {
+            width: 242px;
+            height: 23px;
+        }
+        .style47
+        {
+            width: 616px;
+            height: 21px;
+        }
+        .style48
+        {
+            width: 242px;
+            height: 21px;
+        }
+        .style49
+        {
+            width: 616px;
+            height: 50px;
         }
         </style>
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
@@ -79,18 +111,13 @@
     <div class="header" align="center" 
         style="font-size: large; height: 62px; width: 1000px;">
         LẬP HÓA ĐƠN NHẬP</div>
-    <div class="Add" style="height: 439px; width: 1011px;">
-        <table style="width:92%; height: 420px; margin-left: 0px;" align="center">
+    <div class="Add" style="height: 335px; width: 1011px;">
+        <table style="width:92%; height: 296px; margin-left: 0px;" align="center">
             <tr>
                 <td class="style39">
                     Người Nhập :</td>
-                <td class="style41" colspan="2">
-                    <asp:DropDownList ID="dNguoiNhap" runat="server" DataSourceID="SqlDataSource1" 
-                        DataTextField="FullName" DataValueField="Username" >
-                    </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:MobileShopConnectionString %>" 
-                        SelectCommand="SELECT [FullName], [Username] FROM [Users]"></asp:SqlDataSource>
+                <td class="style44" colspan="2">
+                    <asp:Label ID="lbUsername" runat="server"></asp:Label>
                 </td>
                 <td class="style40" rowspan="8">
     
@@ -120,9 +147,9 @@
                 </td>
             </tr>
             <tr>
-                <td class="style32">
+                <td class="style45">
                     Loại sản phẩm *:</td>
-                <td class="style41" colspan="2">
+                <td class="style46" colspan="2">
                     <asp:RadioButton ID="rDienthoai" runat="server" AutoPostBack="True" 
                         Checked="True" GroupName="chooser" Text="Điện thoại" />
                     <asp:RadioButton ID="rPhukien" runat="server" AutoPostBack="True" 
@@ -130,7 +157,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="style32">
+                <td class="style49">
                     Mã sản phẩm *:</td>
                 <td class="style43">
                     <asp:TextBox ID="txtTenSp" runat="server" Width="52px" ></asp:TextBox>
@@ -140,9 +167,9 @@
                 </td>
             </tr>
             <tr>
-                <td class="style32">
+                <td class="style47">
                     Số lượng *:</td>
-                <td class="style41" colspan="2">
+                <td class="style48" colspan="2">
                     <asp:TextBox ID="txtNumber" runat="server" Width="190px" ></asp:TextBox>
                 </td>
             </tr>
@@ -167,7 +194,7 @@
                 </td>
             </tr>
             <tr>
-                <td align="center" colspan="3" class="style36">
+                <td align="center" colspan="3">
     
     <asp:Button ID="btnThemHD" runat="server"  Text="THÊM HÓA ĐƠN" Height="66px" 
             onclick="btnThemHD_Click" Width="135px" Visible="False" />
@@ -193,12 +220,21 @@
                             CellPadding="3"                                      
                             onrowdatabound="gridImportBill_RowDataBound"                                     
                             onrowdeleting="gridImportBill_RowDeleting" BackColor="White" 
-                            BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Width="410px">
+                            BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Width="410px" 
+                            AllowPaging="True" AllowSorting="True" 
+                            onpageindexchanging="gridImportBill_PageIndexChanging" 
+                            onselectedindexchanged="gridImportBill_SelectedIndexChanged" 
+                            onsorting="gridImportBill_Sorting">
                             <RowStyle ForeColor="#000066" />
                             <Columns>
-                                <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" />
-                                <asp:BoundField DataField="FullName" HeaderText="Người nhập" />
-                                <asp:BoundField DataField="CreatedDate" HeaderText="Ngày nhập" />
+                                <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" 
+                                    SortExpression="ID" />
+                                <asp:BoundField DataField="Username" HeaderText="Người nhập" 
+                                    SortExpression="Username" />
+                                <asp:BoundField DataField="CreatedDate" HeaderText="Ngày nhập" 
+                                    DataFormatString="{0:d}" SortExpression="CreatedDate" />
+                                <asp:CommandField ButtonType="Button" SelectText="Chọn" 
+                                    ShowSelectButton="True" />
                                 <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/Delete.jpg" 
                                     ShowDeleteButton="True" />
                             </Columns>
@@ -215,12 +251,17 @@
                             onrowdeleting="gridImportBillDt_RowDeleting"                                    
                             onrowcommand="gridImportBillDt_RowCommand" BackColor="White" 
                             BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" 
-                            onselectedindexchanged="gridImportBillDt_SelectedIndexChanged"  >
+                            onselectedindexchanged="gridImportBillDt_SelectedIndexChanged" 
+                            AllowPaging="True" AllowSorting="True" 
+                            onpageindexchanging="gridImportBillDt_PageIndexChanging" 
+                            onsorting="gridImportBillDt_Sorting"  >
                 <RowStyle ForeColor="#000066" />
                 <Columns>
-                    <asp:BoundField DataField="ImportBillID" HeaderText="Mã HĐ" ReadOnly="True" />
-                    <asp:BoundField DataField="ID" HeaderText="Mã CTHĐ" ReadOnly="True" />
-                    <asp:TemplateField HeaderText="Mã Sp">
+                    <asp:BoundField DataField="ImportBillID" HeaderText="Mã HĐ" ReadOnly="True" 
+                        SortExpression="ImportBillID" />
+                    <asp:BoundField DataField="ID" HeaderText="Mã CTHĐ" ReadOnly="True" 
+                        SortExpression="ID" />
+                    <asp:TemplateField HeaderText="Mã Sp" SortExpression="ProductID">
                         <EditItemTemplate>
                             <asp:TextBox ID="txtMaSpTemp" runat="server" style="margin-left: 2px" 
                                 Width="50px"></asp:TextBox>
@@ -246,8 +287,10 @@
                     </asp:TemplateField>
                     <%--<asp:BoundField DataField="ProductID" HeaderText="Mã sản phẩm" />--%>
                     <%--<asp:BoundField DataField="IsPhone" HeaderText="Là điện thoại" />--%>
-                    <asp:BoundField DataField="Number" HeaderText="Số lượng" />
-                    <asp:BoundField DataField="Price" HeaderText="Đơn giá nhập" />
+                    <asp:BoundField DataField="Number" HeaderText="Số lượng" 
+                        SortExpression="Number" />
+                    <asp:BoundField DataField="Price" HeaderText="Đơn giá nhập" 
+                        SortExpression="Price" />
                     <asp:CommandField ButtonType="Image" 
                         SelectImageUrl="~/Images/Apps/edit-icon.jpg" ShowSelectButton="True" />
                     <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/Delete.jpg" 

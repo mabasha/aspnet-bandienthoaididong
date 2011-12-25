@@ -27,14 +27,22 @@ public class AccessData
         return dt;
     }
     //hàm thực thi lệnh executenonquery
-    public static void ExecuteNonQuery(string sql)
+    public static string ExecuteNonQuery(string sql)
     {
-        SqlConnection con = GetConnect();
-        con.Open();
-        SqlCommand cmd = new SqlCommand(sql, con);
-        cmd.ExecuteNonQuery();
-        con.Close();
-        cmd.Dispose();
+        try
+        {
+            SqlConnection con = GetConnect();
+            con.Open();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            cmd.Dispose();
+            return "";
+        }
+        catch (SqlException ex)
+        {
+            return ex.Message;
+        }
     }
     //Hàm thực thi lệnh ExecuteScalar để trả về 1 giá trị
     public static object ExecuteScalar(string sql)

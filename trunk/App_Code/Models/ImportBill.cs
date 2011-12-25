@@ -27,7 +27,7 @@ public class ImportBill
     }
     public static DataTable GetAll()
     {
-        string query = "SELECT ImportBill.ID, Users.FullName, ImportBill.CreatedDate" 
+        string query = "SELECT ImportBill.ID, Users.Username, ImportBill.CreatedDate" 
                       + " FROM ImportBill, Users"
                       + " WHERE ImportBill.ImporterUsername = Users.Username";
         return AccessData.GetTable(query);

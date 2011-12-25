@@ -43,7 +43,7 @@
             </tr>
             <tr __designer:mapid="b9">
                 <td __designer:mapid="ba" align="center" class="style3" rowspan="2">
-                    <asp:Image ID="imgSp" runat="server" />
+                    <asp:Image ID="imgSp" runat="server" Width="150px" />
                     </td>
                 <td __designer:mapid="bb" class="style4">
                     <asp:HyperLink ID="hlTitleSp" runat="server" Font-Bold="True" Font-Size="13pt" 

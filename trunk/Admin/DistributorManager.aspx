@@ -8,11 +8,11 @@
         $("document").ready(OnPageReady);
 
         function OnPageReady() {
-            $("#bAdd").bind("click", OnAddClick);
+            $("#<% =bAdd.ClientID%>").bind("click", OnAddClick);
         }
 
         function OnAddClick() {
-            if ($("#tName").val() == "" || $("tAddress").val() == "") {
+            if ($("#<% =tName.ClientID%>").val() == "" || $("#<% =tAddress.ClientID%>").val() == "") {
                 alert("Bạn chưa nhập đầy đủ thông tin");
                 return false;
             }

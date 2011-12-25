@@ -42,9 +42,13 @@ public class ImportBillDt
     }
     public static DataTable GetAll()
     {
-        string query = "SELECT ImportBillID, ID, ImportBillID, ProductID , IsPhone, Number, Price"
-                      + " FROM ImportBillDt";
-                      //+ " WHERE ImportBillDt.ProductID=Phone.ID";
+        //string query = "SELECT ImportBillID, ID, ImportBillID, ProductID , IsPhone, Number, Price"
+        //              + " FROM ImportBillDt";                      
+        return AccessData.GetTable("SELECT * FROM ImportBillDt");
+    }
+    public static DataTable GetAll(string ImportBillID)
+    {
+        string query = String.Format("select * from ImportBillDt where ImportBillID = {0}", ImportBillID);
         return AccessData.GetTable(query);
     }
     public void Insert()
