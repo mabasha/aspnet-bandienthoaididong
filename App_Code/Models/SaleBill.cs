@@ -116,8 +116,8 @@ public class SaleBill
             "where SaleBillDt.SaleBillID = SaleBill.ID " +
             "and SaleBill.SalerUsername = Users.Username " +
             "and (Users.Decentralize = 'Administrator' or Users.Decentralize = 'Employee') " +
-            "and (Username like '%{0}%' or FullName like '%{0}%')" +
-            "group by Username, FullName", keyword);
+            "and (Users.Username like '%{0}%' or Users.FullName like '%{0}%')" +
+            "group by Users.Username, Users.FullName", keyword);
         return AccessData.GetTable(query);
     }
 
@@ -128,9 +128,9 @@ public class SaleBill
             "where SaleBillDt.SaleBillID = SaleBill.ID " +
             "and SaleBill.SalerUsername = Users.Username " +
             "and (Users.Decentralize = 'Administrator' or Users.Decentralize = 'Employee') " +
-            "and (Username like '%{0}%' or FullName like '%{0}%') "+
+            "and (Users.Username like '%{0}%' or Users.FullName like '%{0}%') " +
             "and CreatedDate between '{1}' and '{2}' " +
-            "group by Username, FullName", keyword, from, to);
+            "group by Users.Username, Users.FullName", keyword, from, to);
         return AccessData.GetTable(query);
     }
 }
