@@ -24,6 +24,7 @@ public partial class Gui_Frame : System.Web.UI.MasterPage
             lb_Username.Text = "Login";
             lb_Username.NavigateUrl = "~/Gui/Login.aspx";
             lb_AdControl.Visible = false;
+            lb_Logout.Visible = false;
         }
     }
 
