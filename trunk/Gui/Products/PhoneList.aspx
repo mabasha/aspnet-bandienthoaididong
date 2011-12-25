@@ -7,7 +7,7 @@
             AllowPaging="True" AllowSorting="True" style="text-align: left" 
             Width="100%" onrowcommand="grid_Phone_RowCommand" 
             onpageindexchanging="grid_Phone_PageIndexChanging" CellPadding="4" 
-        ForeColor="#333333" GridLines="None" PageSize="7">
+        ForeColor="#333333" GridLines="None" PageSize="7" ShowHeader="False">
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
             <asp:ImageField DataImageUrlField="Image" 
@@ -51,10 +51,14 @@
                     <asp:Label ID="Label1" runat="server" Text='<%# Eval("SpecialFeature") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:ButtonField ButtonType="Image" CommandName="Chon_mua" ItemStyle-HorizontalAlign="Center" HeaderText="Đặt mua" 
-                    ImageUrl="~/Images/Apps/xeHang.png">
-            <ItemStyle HorizontalAlign="Center"></ItemStyle>
-            </asp:ButtonField>
+            <asp:TemplateField HeaderText="Đặt mua" ShowHeader="False">
+                <ItemTemplate>
+                    <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
+                        CommandArgument='<%# Eval("ID") %>' CommandName="Chon_mua" 
+                        ImageUrl="~/Images/Apps/xeHang.png" Text='<%# Eval("ID") %>' />
+                </ItemTemplate>
+                <ItemStyle HorizontalAlign="Center" />
+            </asp:TemplateField>
         </Columns>
         <EditRowStyle BackColor="#999999" />
         <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

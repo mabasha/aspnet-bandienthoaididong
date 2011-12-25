@@ -1,108 +1,104 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PhoneDetail.aspx.cs" Inherits="Admin_PhoneDetail" %>
+﻿<%@ Page Title="" Language="C#" AutoEventWireup="true"  MasterPageFile="~/Gui/Frame.master" CodeFile="PhoneDetail.aspx.cs" Inherits="Admin_PhoneDetail" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title></title>
-    <style type="text/css">
-        .style1
-        {
-            width: 100%;
-            background-color: #FFFFFF;
-        }
-        .style2
-        {
-            height: 197px;
-            font-weight: 700;
-        }
-        .style3
-        {
-            height: 197px;
-            width: 200px;
-        }
-        .style4
-        {
-            height: 197px;
-            width: 290px;
-        }
-        .style5
-        {
-            font-size: large;
-            font-weight: bold;
-        }
-        .style7
-        {
-            width: 369px;
-            font-weight: bold;
-        }
-        .style8
-        {
-            width: 200px;
-            font-style: italic;
-            color: #3333CC;
-        }
-        .style9
-        {
-            width: 200px;
-            height: 23px;
-            font-style: italic;
-            color: #3333CC;
-        }
-        .style10
-        {
-            height: 23px;
-        }
-        .style12
-        {
-            width: 200px;
-            font-style: italic;
-            color: #3333CC;
-            background-color: #FFFFFF;
-        }
-        .style14
-        {
-            width: 200px;
-            color: #3333FF;
-            font-style: italic;
-        }
-        .style15
-        {
-            width: 201px;
-            font-style: italic;
-            color: #3333CC;
-            background-color: #FFFFFF;
-        }
-        .style16
-        {
-            width: 200px;
-            font-style: italic;
-            background-color: #FFFFFF;
-        }
-        .style17
-        {
-            color: #3333FF;
-        }
-        .style18
-        {
-            width: 100%;
-        }
-        .style19
-        {
-            color: #3333FF;
-            font-style: italic;
-        }
-        .style20
-        {
-            height: 197px;
-            font-weight: 700;
-            width: 354px;
-        }
-    </style>
-    
-</head>
-<body>
-    <form id="form1" runat="server">
+        <style type="text/css">
+            .style1
+            {
+                width: 100%;
+                background-color: #FFFFFF;
+            }
+            .style2
+            {
+                height: 197px;
+                font-weight: 700;
+            }
+            .style3
+            {
+                height: 197px;
+                width: 200px;
+            }
+            .style4
+            {
+                height: 197px;
+                width: 290px;
+            }
+            .style5
+            {
+                font-size: large;
+                font-weight: bold;
+            }
+            .style7
+            {
+                width: 201px;
+                font-weight: bold;
+            }
+            .style8
+            {
+                width: 200px;
+                font-style: italic;
+                color: #3333CC;
+            }
+            .style9
+            {
+                width: 200px;
+                height: 23px;
+                font-style: italic;
+                color: #3333CC;
+            }
+            .style10
+            {
+                height: 23px;
+            }
+            .style12
+            {
+                width: 200px;
+                font-style: italic;
+                color: #3333CC;
+                background-color: #FFFFFF;
+            }
+            .style14
+            {
+                width: 200px;
+                color: #3333FF;
+                font-style: italic;
+            }
+            .style15
+            {
+                width: 201px;
+                font-style: italic;
+                color: #3333CC;
+                background-color: #FFFFFF;
+            }
+            .style16
+            {
+                width: 200px;
+                font-style: italic;
+                background-color: #FFFFFF;
+            }
+            .style17
+            {
+                color: #3333FF;
+            }
+            .style18
+            {
+                width: 100%;
+            }
+            .style19
+            {
+                color: #3333FF;
+                font-style: italic;
+            }
+            .style20
+            {
+                height: 197px;
+                font-weight: 700;
+                width: 354px;
+            }
+        </style>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="cMain" Runat="Server">
     <div>
     
         <table class="style1" border="2">
@@ -744,6 +740,6 @@
             </td>
         </tr>
     </table>
-    </form>
-</body>
-</html>
+    
+</asp:Content>
+

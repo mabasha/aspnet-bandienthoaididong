@@ -138,4 +138,8 @@ public partial class Gui_Products_AccessoryListCtrl : System.Web.UI.UserControl
         }
     }
 
+    protected void bBuy_Click(object sender, ImageClickEventArgs e)
+    {
+
+    }
 }
