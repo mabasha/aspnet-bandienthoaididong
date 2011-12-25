@@ -33,7 +33,7 @@
                         <asp:ImageButton ID="bBuy" runat="server" 
                             ImageUrl="~/Images/Apps/Front/b-buy.png" 
                             CommandArgument='<%# Eval("ID") %>' CommandName="bBuy"
-                            style="height: 27px" />
+                            style="height: 27px" onclick="bBuy_Click" />
                         </center>
                 </div>
                 <div style="clear:both"></div>

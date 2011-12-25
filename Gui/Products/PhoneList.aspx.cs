@@ -9,7 +9,10 @@ public partial class Gui_Products_PhoneList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        FillDataInGrid();
+        if (!IsPostBack)
+        {
+            FillDataInGrid();
+        }
     }
 
     AccessData ac = new AccessData();
@@ -42,9 +45,12 @@ public partial class Gui_Products_PhoneList : System.Web.UI.Page
         if (e.CommandName == "Chon_mua")
         {
             //Xác định chỉ số dòng.
-            int index = int.Parse(e.CommandArgument.ToString());
-            Label donGia = (Label)grid_Phone.Rows[index].FindControl("lb_Price");
-            
+            //int index = int.Parse(e.CommandArgument.ToString());
+            //Label donGia = (Label)grid_Phone.Rows[index].FindControl("lb_Price");
+
+            ImageButton b = (ImageButton)e.CommandSource;
+            int id = Convert.ToInt32(b.CommandArgument);
+            Response.Redirect(String.Format("~/Gui/Order/ViewCart.aspx?ProductID={0}&IsPhone=true", id));
         }
     }
     protected void grid_Phone_PageIndexChanging(object sender, GridViewPageEventArgs e)
