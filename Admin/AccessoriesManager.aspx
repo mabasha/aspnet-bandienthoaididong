@@ -94,7 +94,7 @@
                 <tr><td><br /></td></tr>
                 <tr>
                     <td colspan=2>
-                        <asp:Label ID="lThongBao" runat="server"></asp:Label>
+                        <asp:Label ID="lInfo" runat="server"></asp:Label>
                     </td>
                 </tr>
  

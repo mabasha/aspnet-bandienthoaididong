@@ -25,8 +25,8 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
             string script = String.Format("window.open(\"ImageManager.aspx?receiveInputID={0}\", 'mypopup', " +
                 "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", tImageName.ClientID);
             bChooseImage.OnClientClick = script;
-
         }
+        lInfo.Text = "";
     }
 
     void FillData(String sortExp)
@@ -85,7 +85,7 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
         bool isSuccess = acc.Insert();
         if (isSuccess == true)
         {
-            lThongBao.Text = "<div class=valid_box>THÊM THÀNH CÔNG </div>";
+            lInfo.Text = "<div class=valid_box>THÊM THÀNH CÔNG </div>";
             tName.Text = "";
             tPrice.Text = "";
             tImageName.Text = "";
@@ -94,7 +94,7 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
         }
         else
         {
-            lThongBao.Text = "<div class=error_box>TÊN ĐÃ TỒN TẠI </div>";
+            lInfo.Text = "<div class=error_box>TÊN ĐÃ TỒN TẠI </div>";
         }
     }
     protected void gShow_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -161,8 +161,10 @@ public partial class Admin_AccessoriesManager : System.Web.UI.Page
     protected void gShow_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
         Accessory acc = new Accessory(Convert.ToInt32(gShow.Rows[e.RowIndex].Cells[0].Text));
-        acc.Delete();
-        FillData();
+        string result = acc.Delete();
+        if (result == "")    //không có lỗi
+            FillData();
+        else lInfo.Text = "<span style=\"color:red;\">LỖI : Không xóa được, xóa các đối tượng liên quan trước.</span>";
     }
     protected void bChooseImage_Click(object sender, EventArgs e)
     {

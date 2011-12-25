@@ -76,10 +76,10 @@ public class Accessory
         return !isExist;
     }
 
-    public void Delete()
+    public string Delete()
     {
         string query = String.Format("delete from Accessory where ID = '{0}'", id);
-        AccessData.ExecuteNonQuery(query);
+        return AccessData.ExecuteNonQuery(query);
     }
 
     public bool IsExistName()
