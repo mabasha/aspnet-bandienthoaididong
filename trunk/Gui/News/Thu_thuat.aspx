@@ -43,7 +43,7 @@
                         <tr>
                             <td align="center" class="style4" rowspan="3">
                                 <asp:Image ID="imgAvatar" runat="server" 
-                                    ImageUrl='<%# "~/Images/News/" + Eval("ImageUrl") %>' />
+                                    ImageUrl='<%# "~/Images/News/" + Eval("ImageUrl") %>' Width="150px" />
                             </td>
                             <td>
                                 <asp:HyperLink ID="hlTitle" runat="server" 
