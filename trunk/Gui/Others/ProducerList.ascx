@@ -46,7 +46,8 @@
                                         <asp:Image ID="iArrow" runat="server" 
                                             ImageUrl="~/Images/Apps/Front/arrow.gif" />
                                         <asp:HyperLink CssClass="style2" ID="hName" runat="server" Text='<%# Eval("Name") %>' 
-                                            NavigateUrl='<%# "~/Gui/Products/ShowProducts.aspx?ProducerName="+Eval("Name") %>'></asp:HyperLink>
+                                            
+                                            NavigateUrl='<%# "~/Gui/Products/PhoneList.aspx?ProducerName="+Eval("Name") %>'></asp:HyperLink>
                                     </td>
                                 </tr>
                             </table>

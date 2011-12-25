@@ -65,6 +65,7 @@ public partial class Admin_NewsManager : System.Web.UI.Page
     protected void gShow_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         gShow.PageIndex = e.NewPageIndex;
+        FillData(tKeyword.Text);
     }
     protected void gShow_Sorting(object sender, GridViewSortEventArgs e)
     {
