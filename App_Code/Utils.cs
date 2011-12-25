@@ -54,9 +54,9 @@ public class Utils
     /// <param name="emailto">Mail muốn gửi đến</param>
     /// <param name="subject">Tựa đề mail</param>
     /// <param name="content">Nội dung mail</param>
-    public static void SendEMail(string emailto,string subject, string content)
+    public static int SendEMail(string emailto,string subject, string content)
     {
-        SendMail.SendEMail2("smtp.gmail.com", "silentrain.3101@gmail.com", "silentrain.3101@gmail.com", "hoaithuong@",
+        return SendMail.SendEMail2("smtp.gmail.com", "silentrain.3101@gmail.com", "silentrain.3101@gmail.com", "hoaithuong@",
                             587, emailto, subject, content, true);
     }
 }
