@@ -8,11 +8,18 @@ div
 #wrapper
 {
 	width:1000px;
+	margin-left:10%;
+
+}
+.bg
+{
+    background: -moz-linear-gradient(bottom, #ffffff,#FAFAFA);
+    background: -webkit-gradient(linear, center bottom, center top, from(#ffffff), to(#FAFAFA));
 }
 
 #header
 {
-	background-image: url('../Images/Apps/Front/header.jpg'); 
+
 	height: 80px;
 	text-align: right;
 }
@@ -36,14 +43,16 @@ div
 
 #right-panel
 {
+    margin-top:13px;
 	float:left;
 	width:200px;
 }
 
 #footer
 {
-	background-color:Yellow;
-	height:40px;
+	background: -moz-linear-gradient(bottom, #E1E1E1, #ffffff);
+    background: -webkit-gradient(linear, center bottom, center top, from(#E1E1E1), to(#ffffff));
+	height:20px;
 	margin-top:10px;
 }
 
@@ -53,8 +62,11 @@ ul#topnav {
     width: 1000px;
     list-style: none;
     position: relative; /*--thiết lập vị trí của ul chưa menu--*/
-    font-size: 1.2em;
-    background: /*url(topnav_stretch.gif)*/ #252525 repeat-x;
+    font-size: 1.0em;
+    background: -moz-linear-gradient(bottom, #141414,#4E4C4D);
+    background: -webkit-gradient(linear, center bottom, center top, from(#141414), to(#4E4C4D));
+      -moz-border-radius:5px;
+    -webkit-border-radius:5px;
 }
 ul#topnav li {
     float: left;
@@ -67,7 +79,11 @@ ul#topnav li a {
     color: #f0f0f0;
     text-decoration: none;
 }
-ul#topnav li:hover { background: #1376c9 url('../Images/Apps/Front/bg-menu-active.gif') repeat-x; }
+ul#topnav li:hover     
+{
+     background: -moz-linear-gradient(bottom, #4E4C4D,#141414);
+    background: -webkit-gradient(linear, center bottom, center top, from(#4E4C4D), to(#141414));
+}
 
 
 ul#topnav li span {
@@ -96,3 +112,23 @@ ul#topnav li span a
 ul#topnav li:hover span { display: block; } /*--hiển thị menu cấp 2 khi đưa chuột vào--*/
 ul#topnav li span a { display: inline; } /*-- tất cả các menu câp 2 cùng nằm trên 1 dòng--*/
 ul#topnav li span a:hover {text-decoration: underline;}  
+
+div.user-info
+{
+	width:400px;
+	float:right;
+}
+
+ul.user-info
+{
+	list-style:none;
+	float:right;
+	margin-left:0px;
+	width:400px;
+}
+
+ul.user-info li
+{
+	text-align:right;
+	/*display:inline;*/
+}
