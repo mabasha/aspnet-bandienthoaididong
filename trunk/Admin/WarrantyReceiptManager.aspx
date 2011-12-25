@@ -94,8 +94,9 @@
                 </asp:TemplateField>
                 <asp:BoundField DataField="IMEI" HeaderText="IMEI" />
                 <asp:BoundField DataField="CreatedDate" HeaderText="Ngày lập" 
-                    SortExpression="CreatedDate" />
-                <asp:BoundField DataField="OutOfDate" HeaderText="Hạn bảo hành" />
+                    SortExpression="CreatedDate" DataFormatString="{0:dd/MM/yyyy}" />
+                <asp:BoundField DataField="OutOfDate" HeaderText="Hạn bảo hành" 
+                    DataFormatString="{0:dd/MM/yyyy}" SortExpression="OutOfDate" />
                 <asp:TemplateField HeaderText="Lý do ">
                     <EditItemTemplate>
                         <asp:TextBox ID="txtReason" runat="server" Height="80px" TextMode="MultiLine" 
@@ -121,11 +122,8 @@
                             Text='<%# Eval("IsReturned").ToString()=="True" ?"Đã đổi":"Chưa đổi" %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Ngày đổi">
-                    <ItemTemplate>
-                        <asp:Label ID="lReDate" runat="server" Text='<%# Eval("ReturnedDate") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
+                <asp:BoundField DataField="ReturnedDate" DataFormatString="{0:dd/MM/yyyy}" 
+                    HeaderText="Ngày đổi" />
                 <asp:TemplateField HeaderText="Mô tả">
                     <EditItemTemplate>
                         <asp:TextBox ID="txtDes" runat="server" Height="80px" TextMode="MultiLine" 

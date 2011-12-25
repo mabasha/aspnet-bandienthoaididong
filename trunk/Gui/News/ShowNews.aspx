@@ -26,11 +26,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cMain" Runat="Server">
     <p>
                 <asp:HyperLink ID="hlTrangchu" runat="server" ForeColor="#666666" 
-                    NavigateUrl="~/Gui/HomePage.aspx" CssClass="hyperlink" Target="_blank">Trang chủ</asp:HyperLink>
+                    NavigateUrl="~/Gui/HomePage.aspx" CssClass="hyperlink">Trang chủ</asp:HyperLink>
 &nbsp;&gt;
                 <asp:HyperLink ID="hlTintuc" runat="server" ForeColor="#666666" 
-                    NavigateUrl="~/Gui/News/ShowNews.aspx" CssClass="hyperlink" 
-                    Target="_blank">Tin tức</asp:HyperLink>
+                    NavigateUrl="~/Gui/News/ShowNews.aspx" CssClass="hyperlink">Tin tức</asp:HyperLink>
         &nbsp;</p>
     <table __designer:mapid="b5" class="style2">
             <tr __designer:mapid="b6">

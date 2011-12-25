@@ -20,14 +20,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cMain" Runat="Server">
     <p>
                 <asp:HyperLink ID="hlTrangchu" runat="server" ForeColor="#666666" 
-                    NavigateUrl="~/Gui/HomePage.aspx" CssClass="hyperlink" Target="_blank">Trang chủ</asp:HyperLink>
+                    NavigateUrl="~/Gui/HomePage.aspx" CssClass="hyperlink">Trang chủ</asp:HyperLink>
 &nbsp;&gt;
                 <asp:HyperLink ID="hlTintuc" runat="server" ForeColor="#666666" 
-                    NavigateUrl="~/Gui/News/ShowNews.aspx" CssClass="hyperlink" 
-                    Target="_blank">Tin tức</asp:HyperLink>
+                    NavigateUrl="~/Gui/News/ShowNews.aspx" CssClass="hyperlink">Tin tức</asp:HyperLink>
 &nbsp;&gt;
                 <asp:HyperLink ID="hlCategory" runat="server" ForeColor="#666666" 
-            NavigateUrl="Cong_nghe.aspx" CssClass="hyperlink" Target="_blank">Công nghệ</asp:HyperLink>
+            NavigateUrl="Cong_nghe.aspx" CssClass="hyperlink">Công nghệ</asp:HyperLink>
     </p>
     <p></p>
     <asp:GridView ID="gridShow" runat="server" AllowPaging="True" 
@@ -54,7 +53,8 @@
                         <tr>
                             <td>
                                 <asp:Label ID="lbCreatedDate" runat="server" Font-Size="Small" 
-                                    ForeColor="#666666" Text='<%# Eval("CreatedDate") %>'></asp:Label>
+                                    ForeColor="#666666" 
+                                    Text='<%# "Cập nhật ngày : "+Eval("CreatedDate", "{0:dd/MM/yyyy}") %>'></asp:Label>
                             </td>
                         </tr>
                         <tr>

@@ -232,7 +232,7 @@
                                 <asp:BoundField DataField="Username" HeaderText="Người nhập" 
                                     SortExpression="Username" />
                                 <asp:BoundField DataField="CreatedDate" HeaderText="Ngày nhập" 
-                                    DataFormatString="{0:d}" SortExpression="CreatedDate" />
+                                    DataFormatString="{0:dd/MM/yyyy}" SortExpression="CreatedDate" />
                                 <asp:CommandField ButtonType="Button" SelectText="Chọn" 
                                     ShowSelectButton="True" />
                                 <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/Delete.jpg" 
@@ -290,7 +290,7 @@
                     <asp:BoundField DataField="Number" HeaderText="Số lượng" 
                         SortExpression="Number" />
                     <asp:BoundField DataField="Price" HeaderText="Đơn giá nhập" 
-                        SortExpression="Price" />
+                        SortExpression="Price" DataFormatString="{0:#,##0}" />
                     <asp:CommandField ButtonType="Image" 
                         SelectImageUrl="~/Images/Apps/edit-icon.jpg" ShowSelectButton="True" />
                     <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/Delete.jpg" 
