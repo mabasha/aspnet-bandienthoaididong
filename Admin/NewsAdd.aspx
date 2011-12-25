@@ -100,6 +100,12 @@ TextColor|BGColor">
                 </tr>
                 <tr>
                     <td>
+                        Hình ảnh</td>
+                    <td align=right>
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
                         &nbsp;</td>
                     <td align=right>
                         <asp:Button ID="bAdd" runat="server" onclick="bAdd_Click" Text="Thêm" 

@@ -60,8 +60,8 @@
                         <a href="<% =ResolveClientUrl("~") %>Gui/News/Thu_thuat.aspx">Thủ thuật</a>
                     </span>
                 </li>
-                <li><a href="<% =ResolveClientUrl("~") %>Gui/News/ShowNews.aspx?Category=Khuyến mại">Khuyến mại</a></li>
-                <li><a href="<% =ResolveClientUrl("~") %>Gui/News/ShowNews.aspx?Category=Khuyến mại">Giới thiệu</a></li>
+                <li><a href="<% =ResolveClientUrl("~") %>Gui/News/Khuyen_mai.aspx">Khuyến mại</a></li>
+                <li><a href="<% =ResolveClientUrl("~") %>Gui/News/About.aspx">Giới thiệu</a></li>
             </ul>
             <div style="clear:both"></div>
         </div>
