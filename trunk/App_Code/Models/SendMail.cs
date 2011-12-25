@@ -101,8 +101,8 @@ public class SendMail
             MailMessage objMail = new MailMessage();
             //reg xác lập tính hợp lệ của mail
             Regex reg = new Regex(@"^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$");
-            objMail.From = new MailAddress(smtpMailFrom);
-            objMail.ReplyTo = new MailAddress(smtpMailFrom);
+            objMail.From = new MailAddress(smtpMailFrom, "Website điện thoại di động", System.Text.Encoding.UTF8);
+            objMail.ReplyTo = new MailAddress(smtpMailFrom, "Website điện thoại di động", System.Text.Encoding.UTF8); 
 
             if (reg.IsMatch(strMailTo))
             {
