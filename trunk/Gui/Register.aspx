@@ -3,6 +3,10 @@
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <script src="../Admin/AdminSite/Template/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="../Admin/AdminSite/Template/jquery.validate.js" type="text/javascript"></script>
+    <script src="../Admin/AdminSite/Template/jquery.validate.min.js" type="text/javascript"></script>
+
     <style type="text/css">
         .style2
         {
@@ -12,22 +16,16 @@
         {
             width: 277px;
         }
-        .style4
-        {
-        }
         .style5
         {
-            width: 284px;
         }
-        .style6
-        {
-            width: 400px;
-            height: 26px;
-            border-style: None;
-        }
-    select, input, textarea, button {outline:none; resize:none;
+        select, input, textarea, button {outline:none; resize:none;
 	height: 26px;
 }
+        .style7
+        {
+            width: 162px;
+        }
     </style>
      
 </asp:Content>
@@ -101,7 +99,7 @@
             </td>
         </tr>
         <tr>
-            <td align="char" class="style5" valign="bottom">
+            <td align="char" class="style7" valign="bottom">
                 Username :
             </td>
             <td class="style3" valign="middle">
@@ -110,7 +108,7 @@
             </td>
         </tr>
         <tr>
-            <td align="char" class="style5" valign="bottom">
+            <td align="char" class="style7" valign="bottom">
                 Password :
             </td>
             <td class="style3" valign="middle">
@@ -118,7 +116,7 @@
             </td>
         </tr>
         <tr>
-            <td align="char" class="style5" valign="bottom">
+            <td align="char" class="style7" valign="bottom">
                 Confirm Password :
             </td>
             <td class="style3" valign="middle">
@@ -127,7 +125,7 @@
             </td>
         </tr>
         <tr>
-            <td align="char" class="style5" valign="bottom">
+            <td align="char" class="style7" valign="bottom">
                 Fullname :
             </td>
             <td class="style3" valign="middle">
@@ -135,14 +133,14 @@
             </td>
         </tr>
         <tr>
-            <td align="char" class="style5" valign="bottom">
+            <td align="char" class="style7" valign="bottom">
                 Email Address :</td>
             <td class="style3" valign="middle">
                 <asp:TextBox ID="txt_Email" runat="server" Width="200px"></asp:TextBox>
             </td>
         </tr>
         <tr>
-            <td align="char" class="style5" valign="bottom">
+            <td align="char" class="style7" valign="bottom">
                 Confirm Email Address :
             </td>
             <td class="style3" valign="middle">
@@ -150,7 +148,7 @@
             </td>
         </tr>
         <tr>
-            <td align="char" class="style5" valign="bottom">
+            <td align="char" class="style7" valign="bottom">
                 BirthDay :
             </td>
             <td class="style3" valign="middle">
@@ -173,7 +171,7 @@
             </td>
         </tr>
         <tr>
-            <td align="char" class="style5" valign="bottom">
+            <td align="char" class="style7" valign="bottom">
                 Tel : </td>
             <td class="style3" valign="middle">
         <asp:TextBox ID="txt_Tel" runat="server" Width="200px" CssClass="styleText"></asp:TextBox>
@@ -184,7 +182,7 @@
             </td>
         </tr>
         <tr>
-            <td align="char" class="style5" valign="bottom">
+            <td align="char" class="style7" valign="bottom">
                 Address : </td>
             <td class="style3" valign="middle">
                 <asp:TextBox ID="txt_Address" runat="server" Height="50px" TextMode="MultiLine" 
@@ -192,7 +190,7 @@
             </td>
         </tr>
         <tr>
-            <td align="char" class="style5" valign="bottom">
+            <td align="char" class="style7" valign="bottom">
                 IDcard : </td>
             <td class="style3" valign="middle">
         <asp:TextBox ID="txt_IDCard" runat="server" Width="200px" CssClass="styleText"></asp:TextBox>
@@ -202,20 +200,17 @@
             </td>
         </tr>
         <tr>
-            <td class="style5" valign="bottom">
-                <br />
+            <td align="char" class="style5" valign="bottom" colspan="2">
                        Vui lòng điền đúng chuỗi kí tự ở hình bên trên :
-            </td>
-            <td class="style4" valign="bottom">
-                <asp:UpdatePanel runat="server" ID="updatepanelcaptcha">
+                <asp:UpdatePanel runat="server" ID="updatepanel1">
                    <ContentTemplate>
+                <br />
                        <asp:Image ID="captchaImage" runat="server" />
-                       &nbsp;
                        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Images/Apps/update.jpg"
                            OnClick="ImageButton1_Click" ToolTip="Đổi Captcha" />
-                   </ContentTemplate>
+                   <br />
+                 </ContentTemplate>
                 </asp:UpdatePanel>
-                <br />
                 <asp:TextBox ID="txt_Captcha" runat="server" Width="200px"></asp:TextBox>
             </td>
         </tr>
