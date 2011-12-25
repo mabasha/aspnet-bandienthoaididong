@@ -13,12 +13,13 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        DataTable dtSaler = Account.GetUsers("Administrator", "Employee", "Manager");
-        dtSaler.DefaultView.Sort = "Username";
-        dSaler.DataSource = dtSaler;
-        dSaler.DataTextField = "Username";
-        dSaler.DataValueField = "Username";
-        dSaler.DataBind();
+        string salerUsername = null;
+        HttpCookie cookie = Request.Cookies["login"];
+        if (Session["username"] != null)
+            salerUsername = Session["username"].ToString();
+        else if (cookie != null)
+            salerUsername = cookie["username"].ToString();
+        lSalerUsername.Text = salerUsername;
 
         bChooseCustomer.OnClientClick = String.Format("window.open(\"AccountChooser.aspx?receiveID={0}\", 'mypopup', " +
                 "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", tCustomerName.ClientID);
@@ -172,7 +173,14 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
         if (gAddDetail.Rows.Count > 0)
         {
             //Chèn saleBill.
-            string salerUsername = dSaler.SelectedValue.ToString();
+            //string salerUsername = dSaler.SelectedValue.ToString();
+            string salerUsername = null;
+            HttpCookie cookie = Request.Cookies["login"];
+            if (Session["username"] != null)
+                salerUsername = Session["username"].ToString();
+            else if (cookie != null)
+                salerUsername = cookie["username"].ToString();
+
             string customName = tCustomerName.Text;
             string address = tAddress.Text;
             string tel = tPhone.Text;

@@ -93,8 +93,7 @@
                     <td class="left-add">
                         Người bán</td>
                     <td>
-                        <asp:DropDownList ID="dSaler" runat="server">
-                        </asp:DropDownList>
+                        <asp:Label ID="lSalerUsername" runat="server"></asp:Label>
                     </td>
                 </tr>
                 <tr>
