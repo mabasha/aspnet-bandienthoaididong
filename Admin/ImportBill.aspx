@@ -108,20 +108,30 @@
 </head>
 <body>
 <%--<form id="form1" runat="server">--%>
-    <div class="header" align="center" 
-        style="font-size: large; height: 62px; width: 1000px;">
-        LẬP HÓA ĐƠN NHẬP</div>
+     <table width=100%>
+            <tr>
+                <td align=center>
+                    <div class="style">LẬP HÓA ĐƠN NHẬP</div>      
+                </td>
+            </tr>
+        </table>
+         <br />
     <div class="Add" style="height: 335px; width: 1011px;">
         <table style="width:92%; height: 296px; margin-left: 0px;" align="center">
             <tr>
                 <td class="style39">
                     Người Nhập :</td>
-                <td class="style44" colspan="2">
-                    <asp:Label ID="lbUsername" runat="server"></asp:Label>
+                <td class="style41" colspan="2">
+                    <asp:DropDownList ID="dNguoiNhap" runat="server" DataSourceID="SqlDataSource1" 
+                        DataTextField="FullName" DataValueField="Username" CssClass="styleText" >
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:MobileShopConnectionString %>" 
+                        SelectCommand="SELECT [FullName], [Username] FROM [Users]"></asp:SqlDataSource>
                 </td>
                 <td class="style40" rowspan="8">
     
-    <asp:GridView ID="gridViewState" runat="server" AutoGenerateColumns="False" 
+    <asp:GridView CssClass="styleGrid" ID="gridViewState" runat="server" AutoGenerateColumns="False" 
                     onrowdeleting="gridViewState_RowDeleting" Width="533px" BackColor="White" 
                     BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
         <RowStyle ForeColor="#000066" />
@@ -160,31 +170,31 @@
                 <td class="style49">
                     Mã sản phẩm *:</td>
                 <td class="style43">
-                    <asp:TextBox ID="txtTenSp" runat="server" Width="52px" ></asp:TextBox>
+                    <asp:TextBox ID="txtTenSp" runat="server" Width="52px" CssClass="styleText" ></asp:TextBox>
                 </td>
                 <td class="style42">
-                    <asp:Button ID="btnTenSp" runat="server" Text="Chọn sản phẩm" />
+                    <asp:Button ID="btnTenSp" runat="server" Text="Chọn sản phẩm"   CssClass="styleButton"/>
                 </td>
             </tr>
             <tr>
                 <td class="style47">
                     Số lượng *:</td>
                 <td class="style48" colspan="2">
-                    <asp:TextBox ID="txtNumber" runat="server" Width="190px" ></asp:TextBox>
+                    <asp:TextBox ID="txtNumber" runat="server" Width="190px"  CssClass="styleText" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="style32">
                     Đơn giá nhập* :</td>
                 <td class="style41" colspan="2">
-                    <asp:TextBox ID="txtPrice" runat="server" Width="190px" ></asp:TextBox>
+                    <asp:TextBox ID="txtPrice" runat="server" Width="190px"  CssClass="styleText" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td align="center" colspan="3" class="style36">
     
     <asp:Button ID="btnAddViewstate" runat="server" onclick="btnAddViewstate_Click" 
-        Text="Thêm sản phẩm" />
+        Text="Thêm sản phẩm"  CssClass="styleButton" />
             
                     <asp:Button ID="btnCapnhat" runat="server" onclick="btnCapnhat_Click" 
                         Text="Cập nhật" Visible="False" />
@@ -197,25 +207,26 @@
                 <td align="center" colspan="3">
     
     <asp:Button ID="btnThemHD" runat="server"  Text="THÊM HÓA ĐƠN" Height="66px" 
-            onclick="btnThemHD_Click" Width="135px" Visible="False" />
+            onclick="btnThemHD_Click" Width="135px" Visible="False"  CssClass="styleButton" 
+                        BorderStyle="Dotted"/>
     
                 </td>
             </tr>
         </table>
     </div>
-    <div style="height: 260px; width: 1127px; margin-bottom: 0px;" class="list">
+    <div style=" width: 1127px; margin-bottom: 0px;" class="list">
       
-            <table class="style25">
+            <table width=100%>
                 <tr>
-                    <td class="style26">
+                    <td>
                         <asp:Label ID="lbThongbaoHD" runat="server"></asp:Label>
                     </td>
-                    <td class="style30">
+                    <td>
                         <asp:Label ID="lbThongbaoCTHD" runat="server"></asp:Label>
                     </td>
                 </tr>
                 <tr>
-                    <td class="style26" align="right" valign="top">
+                    <td align="center" valign="top">
                         <asp:GridView ID="gridImportBill" runat="server" AutoGenerateColumns="False" 
                             CellPadding="3"                                      
                             onrowdatabound="gridImportBill_RowDataBound"                                     

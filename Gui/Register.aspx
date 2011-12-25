@@ -24,7 +24,7 @@
 }
         .style7
         {
-            width: 162px;
+            width: 80px;
         }
     </style>
      

@@ -99,11 +99,16 @@
                 </tr>
  
                 <tr>
-                    <td colspan="2">Tìm kiếm
-                        <asp:TextBox ID="tInput" runat="server"></asp:TextBox>
-                        <asp:Button ID="bSearch" runat="server" onclick="bSearch_Click" Text="Tìm" />
+                    <td >Tìm kiếm
+                        
+                    </td>
+                    <td>
+                    <asp:TextBox ID="tInput" runat="server" CssClass="styleText" BorderStyle="None"></asp:TextBox>
+                        <asp:Button ID="bSearch" runat="server" onclick="bSearch_Click" Text="Tìm" 
+                            CssClass="styleButton" BorderStyle="None" Width="58px" />
                     </td>
                 </tr>
+            
                 <tr>
                     <td colspan="2">
             <asp:GridView class="styleGrid" ID="gShow" runat="server" AutoGenerateColumns="False" 

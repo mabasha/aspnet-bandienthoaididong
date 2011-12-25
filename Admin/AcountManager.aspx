@@ -14,7 +14,7 @@
         </table>
          <br />
               
-            <table>
+            <table width=100%>
                         <tr>
                             <td style="text-align: center">
                                 <asp:Label ID="Label11" runat="server" Text="Username : "></asp:Label>
@@ -45,7 +45,7 @@
                         <tr>
                             <td>
     
-                    <asp:GridView class="styleGrid" ID="grid_Users" runat="server" AutoGenerateColumns="False" 
+                    <asp:GridView CssClass=styleGrid ID="grid_Users" runat="server" AutoGenerateColumns="False" 
                         CellPadding="4" DataKeyNames="Username" ForeColor="#333333" 
                         onrowdatabound="grid_Users_RowDataBound" Width="100%" 
                         onrowediting="grid_Users_RowEditing" 
@@ -68,10 +68,14 @@
                             <asp:BoundField DataField="Password" HeaderText="Password" 
                                 SortExpression="Password" />
                             <asp:BoundField DataField="FullName" HeaderText="FullName" 
-                                SortExpression="FullName"  />
+                                SortExpression="FullName"  >
+                            <ItemStyle Width="100px" />
+                            </asp:BoundField>
                             <%--<asp:BoundField DataField="BirthDay" DataFormatString="{0:dd/MM/yyyy}" 
                                 HeaderText="BirthDay" HtmlEncode="False" SortExpression="BirthDay" />--%>
-                            <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+                            <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" >
+                            <ItemStyle Width="20px" />
+                            </asp:BoundField>
                             <asp:TemplateField HeaderText="BirthDay" > 
                             <EditItemTemplate> 
                               <asp:TextBox ID="Birthday" runat="server"  
@@ -108,7 +112,9 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="Address" HeaderText="Address" 
-                                SortExpression="Address" />
+                                SortExpression="Address" >
+                            <ItemStyle Width="10px" />
+                            </asp:BoundField>
                             <%--<asp:BoundField DataField="Decentralize" HeaderText="Decentralize" 
                                 SortExpression="Decentralize" />--%>
                             <asp:TemplateField HeaderText="IDCard" SortExpression="IDCard">

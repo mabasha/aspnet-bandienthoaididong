@@ -45,6 +45,14 @@
         });
     </script>
 <form id="aspnetForm">
+<table width=100%>
+            <tr>
+                <td align=center>
+                    <div class="style">Thêm tài khoản</div>      
+                </td>
+            </tr>
+        </table>
+        <br />
 <table width=100% >
             <tr>
                 <td class="style5" width="100">
@@ -101,9 +109,9 @@
                     <asp:CalendarExtender ID="txt_BirthDay_CalendarExtender" runat="server" 
                         TargetControlID="txt_BirthDay">
                     </asp:CalendarExtender>
-                    <asp:MaskedEditValidator ID="MaskedEditValidator1" runat="server" 
+                    <asp:MaskedEditValidator ID="MaskedEditValidator1" runat="server"  CssClass="error_date"
                         ControlExtender="txt_BirthDay_MaskedEditExtender" 
-                        ControlToValidate="txt_BirthDay" CssClass="error" Display="Dynamic" 
+                        ControlToValidate="txt_BirthDay" Display="Dynamic" 
                         ErrorMessage="Ngày không đúng định dạng MM/dd/yyyy" 
                         InvalidValueMessage="Ngày không đúng định dạng MM/dd/yyyy"></asp:MaskedEditValidator>
                 </td>

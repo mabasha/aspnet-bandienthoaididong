@@ -229,3 +229,9 @@ td.right-add
     -webkit-transform:scale(1.1);
      background-color:#2F4A8A;
 }
+
+.error_date
+{
+    font-size:x-small;
+    font-weight:bold;
+}
