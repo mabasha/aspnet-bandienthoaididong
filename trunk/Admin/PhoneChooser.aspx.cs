@@ -25,7 +25,6 @@ public partial class Admin_PhoneChooser : System.Web.UI.Page
             Response.Redirect("~/GUI/HomePage.aspx");
         }
 
-
         if (!IsPostBack)
         {
             FillData();

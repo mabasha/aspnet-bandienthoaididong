@@ -91,7 +91,12 @@
                 <li><a href="../Admin/PhoneManager.aspx">Điện Thoại</a></li>
                 <li><a href="../Admin/Producer.aspx">Nhà Sản Xuất</a></li>
                 <li><a href="../Admin/DistributorManager.aspx">Nhà Phân Phối</a></li>
-                <li><a href="../Admin/AcountManager.aspx">Tài khoản</a></li>
+                <li><a href="../Admin/AcountManager.aspx">Tài khoản</a>
+                    <ul>
+                        <li><a href="../Admin/AcountManager.aspx">Tài khoản</a></li>
+                        <li><a href="../Admin/AcountManager.aspx">1231231</a></li>
+                    </ul>
+                </li>
                 <li><a href="../Admin/ImportBill.aspx">Hóa đơn nhập</a></li>
                 <li><a href="../Admin/SaleBillManager.aspx">Hóa đơn bán</a></li>
                 <li><a href="../Admin/EmployeeReport.aspx">Báo cáo bán hàng</a></li>

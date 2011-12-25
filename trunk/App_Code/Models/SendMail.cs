@@ -122,6 +122,7 @@ public class SendMail
                 sClient = new SmtpClient();
 
                 sClient.Host = smtpServer;
+        
                 sClient.Port = smtpPort;
                 sClient.Credentials = new System.Net.NetworkCredential(smtpUser, smtpPassword);
                 sClient.EnableSsl = true;
