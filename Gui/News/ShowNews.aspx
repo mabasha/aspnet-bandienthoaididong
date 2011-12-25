@@ -77,7 +77,7 @@
             </tr>
             <tr __designer:mapid="b9">
                 <td __designer:mapid="ba" align="center" class="style3" rowspan="2">
-                    <asp:Image ID="imgCn" runat="server" />
+                    <asp:Image ID="imgCn" runat="server" Width="150px" />
                 </td>
                 <td __designer:mapid="bb" class="style4">
                     <asp:HyperLink ID="hlTitleCn" runat="server" Font-Bold="True" Font-Size="13pt" 
@@ -110,7 +110,7 @@
             </tr>
             <tr __designer:mapid="b9">
                 <td __designer:mapid="ba" align="center" class="style3" rowspan="2">
-                    <asp:Image ID="imgTt" runat="server" />
+                    <asp:Image ID="imgTt" runat="server" Width="150px" />
                 </td>
                 <td __designer:mapid="bb" class="style4">
                     <asp:HyperLink ID="hlTitleTt" runat="server" Font-Bold="True" Font-Size="13pt" 
@@ -143,7 +143,7 @@
             </tr>
             <tr __designer:mapid="b9">
                 <td __designer:mapid="ba" align="center" class="style3" rowspan="2">
-                    <asp:Image ID="imgNv" runat="server" />
+                    <asp:Image ID="imgNv" runat="server" Width="150px" />
                 </td>
                 <td __designer:mapid="bb" class="style4">
                     <asp:HyperLink ID="hlTitleNv" runat="server" Font-Bold="True" Font-Size="13pt" 
