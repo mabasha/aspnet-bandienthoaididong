@@ -14,7 +14,8 @@
         <div class="border-left">
         <div class="border-right">
             <asp:FormView ID="fShow" runat="server" 
-              onpageindexchanging="fShow_PageIndexChanging" Width="700px">
+              onpageindexchanging="fShow_PageIndexChanging" Width="700px" 
+                onitemcommand="fShow_ItemCommand">
               <ItemTemplate>
                   <div style="padding: 10px; width=220px; float:left">
                       <asp:Image ID="Image1" runat="server" 
@@ -35,6 +36,11 @@
                       <br />
                       Mô tả :
                       <asp:Label ID="lDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Label>
+                      <br />
+                      <br />
+                      <center><asp:ImageButton ID="iBuy" runat="server" 
+                          ImageUrl="~/Images/Apps/Front/b-buy.png" CommandName="iBuy" 
+                              onclick="iBuy_Click" /></center>
                   </div>
               </ItemTemplate>
           </asp:FormView>

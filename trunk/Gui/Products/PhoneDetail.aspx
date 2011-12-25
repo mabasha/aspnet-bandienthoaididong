@@ -114,6 +114,11 @@
                     <br />
                     <b>Giá bán :</b> 
                     <asp:Label ID="lb_Price" runat="server" ForeColor="Red"></asp:Label>
+                    <br />
+                    <br />
+                    <center>
+                        <asp:ImageButton ID="iBuy" runat="server" 
+                        ImageUrl="~/Images/Apps/Front/b-buy.png" onclick="iBuy_Click" /></center>
                 </td>
                 <td class="style20">
                     <b>Bộ bán hàng chuẩn: </b>

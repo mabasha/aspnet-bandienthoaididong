@@ -17,10 +17,22 @@
         }
         .style5
         {
-            width: 282px;
+            width: 284px;
         }
+        .style6
+        {
+            width: 400px;
+            height: 26px;
+            border-style: None;
+        }
+    select, input, textarea, button {outline:none; resize:none;
+	height: 26px;
+}
     </style>
-     <script type="text/javascript">
+     
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="cMain" Runat="Server">
+   <script type="text/javascript">
         $(document).ready(function() {
             $("#aspnetForm").validate({
             rules: {
@@ -52,10 +64,10 @@
                         equalTo: "#<%=txt_Email.ClientID %>"
                     },
                     <%=txt_BirthDay.UniqueID %>: {                       
-                        required: true,
+                        required: true
                     },
                     <%=txt_Tel.UniqueID %>: {                       
-                        required: true,
+                        required: true
                     },
                     <%=txt_Address.UniqueID %>: {
                         required: true
@@ -73,11 +85,11 @@
             });
         });
    </script>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="cMain" Runat="Server">
-  
+
+   <form id="aspnetForm">
+    
     <table class="style2">
-    <form id="aspnetForm">
+    
         <tr>
             <td colspan="2" valign="bottom">
                 <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
@@ -93,7 +105,8 @@
                 Username :
             </td>
             <td class="style3" valign="middle">
-                <asp:TextBox ID="txt_Username" runat="server" Width="200px"></asp:TextBox>
+                <asp:TextBox ID="txt_Username" runat="server" Width="200px" 
+                    style="margin-left: 0px"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -141,17 +154,33 @@
                 BirthDay :
             </td>
             <td class="style3" valign="middle">
-                <asp:TextBox ID="txt_BirthDay" runat="server" Width="200px"></asp:TextBox>
-                <asp:CalendarExtender ID="txt_BirthDay_CalendarExtender" runat="server" 
-                    TargetControlID="txt_BirthDay">
-                </asp:CalendarExtender>
+                    <asp:TextBox ID="txt_BirthDay" runat="server" Width="200px" ></asp:TextBox>
+                    <asp:MaskedEditExtender ID="txt_BirthDay_MaskedEditExtender" runat="server" 
+                        CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
+                        CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
+                        CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
+                        Mask="99/99/9999" MaskType="Date" TargetControlID="txt_BirthDay">
+                    </asp:MaskedEditExtender>
+                    <asp:CalendarExtender ID="txt_BirthDay_CalendarExtender" runat="server" 
+                        TargetControlID="txt_BirthDay">
+                    </asp:CalendarExtender>
+                    <asp:MaskedEditValidator ID="MaskedEditValidator1" runat="server" 
+                        ControlExtender="txt_BirthDay_MaskedEditExtender" 
+                        ControlToValidate="txt_BirthDay" Display="Dynamic" 
+                        ErrorMessage="Vui lòng điền đúng định dạng MM/dd/yyyy" 
+                        InvalidValueMessage="Vui lòng điền đúng định dạng MM/dd/yyyy" 
+                        IsValidEmpty="False"></asp:MaskedEditValidator>
             </td>
         </tr>
         <tr>
             <td align="char" class="style5" valign="bottom">
                 Tel : </td>
             <td class="style3" valign="middle">
-                <asp:TextBox ID="txt_Tel" runat="server" Width="200px"></asp:TextBox>
+        <asp:TextBox ID="txt_Tel" runat="server" Width="200px" CssClass="styleText"></asp:TextBox>
+                    <asp:FilteredTextBoxExtender ID="txt_Tel_FilteredTextBoxExtender" 
+                        runat="server" Enabled="True" FilterType="Custom, Numbers" InvalidChars="." 
+                        TargetControlID="txt_Tel">
+                    </asp:FilteredTextBoxExtender>
             </td>
         </tr>
         <tr>
@@ -166,7 +195,10 @@
             <td align="char" class="style5" valign="bottom">
                 IDcard : </td>
             <td class="style3" valign="middle">
-                <asp:TextBox ID="txt_IDCard" runat="server" Width="200px"></asp:TextBox>
+        <asp:TextBox ID="txt_IDCard" runat="server" Width="200px" CssClass="styleText"></asp:TextBox>
+                    <asp:FilteredTextBoxExtender ID="txt_IDCard_FilteredTextBoxExtender" 
+                        runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txt_IDCard">
+                    </asp:FilteredTextBoxExtender>
             </td>
         </tr>
         <tr>
@@ -193,7 +225,9 @@
                     onclick="btn_Register_Click" />
             </td>
         </tr>
-        </form>
+        
     </table>
+    
+    </form>
 </asp:Content>
 

@@ -25,4 +25,16 @@ public partial class Gui_Products_AccessoryDetail : System.Web.UI.Page
     {
 
     }
+    protected void fShow_ItemCommand(object sender, FormViewCommandEventArgs e)
+    {
+        if (e.CommandName == "iBuy")
+        {
+            int id = Convert.ToInt32(Request.QueryString["id"]);
+            Response.Redirect(String.Format("~/Gui/Order/ViewCart.aspx?ProductID={0}&IsPhone=false", id));
+        }
+    }
+    protected void iBuy_Click(object sender, ImageClickEventArgs e)
+    {
+
+    }
 }

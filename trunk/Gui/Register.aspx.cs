@@ -59,7 +59,7 @@ public partial class Gui_Register : System.Web.UI.Page
 
     protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
     {
-        DeleteImages();
+       DeleteImages();
     }
 
 
@@ -175,5 +175,9 @@ public partial class Gui_Register : System.Web.UI.Page
         byte b = Convert.ToByte(bi);
         return Color.FromArgb(r, g, b);
     }
-    
+
+    protected void btn_Add_Click(object sender, EventArgs e)
+    {
+
+    }
 }

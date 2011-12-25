@@ -34,7 +34,7 @@
                             <td align="left">
                                 <b>Giá :</b>
                                 <asp:Label ID="lb_Price" runat="server" 
-                                        Text='<%# Eval("Price") %>'></asp:Label>
+                                        Text='<%# Eval("Price","{0:#,##0} đồng") %>' ForeColor="Red"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -55,7 +55,7 @@
                 <ItemTemplate>
                     <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
                         CommandArgument='<%# Eval("ID") %>' CommandName="Chon_mua" 
-                        ImageUrl="~/Images/Apps/xeHang.png" Text='<%# Eval("ID") %>' />
+                        ImageUrl="~/Images/Apps/Front/b-buy.png" Text='<%# Eval("ID") %>' />
                 </ItemTemplate>
                 <ItemStyle HorizontalAlign="Center" />
             </asp:TemplateField>
