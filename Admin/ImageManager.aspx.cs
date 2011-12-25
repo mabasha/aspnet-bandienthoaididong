@@ -82,7 +82,7 @@ public partial class Admin_ImageManager : System.Web.UI.Page
     private bool CheckFileType(String fileName)
     {
         string ext = Path.GetExtension(fileName);
-        if (ext == ".jpg" || ext == ".png" || ext == ".bmp" || ext == ".jpeg")
+        if (ext == ".jpg" || ext == ".png" || ext == ".bmp" || ext == ".jpeg"||ext == ".JPG" || ext == ".PNG" || ext == ".BMP" || ext == ".JPEG")
         {
             return true;
         }
@@ -135,6 +135,11 @@ public partial class Admin_ImageManager : System.Web.UI.Page
         else if (rAccessory.Checked == true)
         {
             ViewState["folder"] = "Accessory/";
+            LoadImage();
+        }
+        else if(rNews.Checked == true)
+        {
+            ViewState["folder"] = "News/";
             LoadImage();
         }
     }

@@ -27,6 +27,9 @@ public partial class Admin_NewsAdd : System.Web.UI.Page
 
             }
         }
+        string script = String.Format("window.open(\"ImageManager.aspx?receiveInputID={0}\", 'mypopup', " +
+                "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", tImageName.ClientID);
+        bChooseImage.OnClientClick = script;
     }
     protected void bAdd_Click(object sender, EventArgs e)
     {
@@ -39,7 +42,7 @@ public partial class Admin_NewsAdd : System.Web.UI.Page
         string content = ckContent.Text;
         content = content.Replace("'", "''");
         News news = new News(id, tTitle.Text, tIntro.Text, content,
-            tAuthor.Text, dCategory.SelectedValue.ToString(), DateTime.Now);
+            tAuthor.Text, dCategory.SelectedValue.ToString(), DateTime.Now, tImageName.Text);
 
         if (id == 0)         //add
         {

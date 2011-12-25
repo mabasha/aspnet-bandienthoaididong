@@ -102,7 +102,9 @@ TextColor|BGColor">
                     <td>
                         Hình ảnh</td>
                     <td align=right>
-                        &nbsp;</td>
+                        <asp:TextBox ID="tImageName" runat="server"></asp:TextBox>
+                        <asp:Button ID="bChooseImage" runat="server" Text="Chọn hình ảnh" />
+                    </td>
                 </tr>
                 <tr>
                     <td>

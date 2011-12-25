@@ -9,8 +9,21 @@ using System.Data;
 public partial class Admin_ImportBill : System.Web.UI.Page
 {
     DataTable dtAddBillDt;
+    public static string username = "";
     protected void Page_Load(object sender, EventArgs e)
     {
+        // Load username
+        HttpCookie cookie = Request.Cookies["login"];
+        if (Session["username"] != null)
+        {
+            username = Session["username"].ToString();
+        }
+        else if (cookie != null)
+        {
+            username = cookie["username"].ToString();
+        }
+        lbUsername.Text = username;
+        //end Load username
         if (rDienthoai.Checked == true)
         {
             btnTenSp.OnClientClick = String.Format("window.open(\"PhoneChooser.aspx?receiveID={0}\", 'mypopup', " +
@@ -34,16 +47,45 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         {
             dtAddBillDt = (DataTable)ViewState["dtAddBillDt"];
         }
+    }    
+    private void FillData(string sort)
+    {
+        DataTable dt = ImportBill.GetAll();
+        if (sort!= "")
+        {
+            dt.DefaultView.Sort = sort;
+        }
+        gridImportBill.DataSource = dt;
+        gridImportBill.DataBind();
     }
     private void FillData()
     {
-        gridImportBill.DataSource = ImportBill.GetAll();
-        gridImportBill.DataBind();
+        FillData("");
+    }
+    private void FillDataDt(string sort)
+    {
+        if (gridImportBill.Rows.Count > 0)
+        {
+            if (gridImportBill.SelectedIndex == -1)
+            {
+                gridImportBill.SelectedIndex = 0;
+            }
+
+            if (gridImportBill.SelectedRow.Cells[0].Text != "")
+            {
+                DataTable dt = ImportBillDt.GetAll(gridImportBill.SelectedRow.Cells[0].Text);
+                if (sort != "")
+                {
+                    dt.DefaultView.Sort = sort;
+                }
+                gridImportBillDt.DataSource = dt;
+                gridImportBillDt.DataBind();
+            }
+        }
     }
     private void FillDataDt()
     {
-        gridImportBillDt.DataSource = ImportBillDt.GetAll();
-        gridImportBillDt.DataBind();
+        FillDataDt("");
     }
     private void FillDataViewstate()
     {
@@ -60,43 +102,6 @@ public partial class Admin_ImportBill : System.Web.UI.Page
             btnDelete.OnClientClick = "if (!confirm('Bạn có đồng ý xóa Chi Tiết Hóa đơn nhập?')) return false";
         }
     }   
-    //protected void gridImportBillDt_RowEditing(object sender, GridViewEditEventArgs e)
-    //{
-    //    gridImportBillDt.EditIndex = e.NewEditIndex;
-    //    FillDataDt();
-        
-    //    RadioButton rDt = (RadioButton)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("rPkTemp");
-    //    RadioButton rPk = (RadioButton)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("rPkTemp");
-    //    Button btnChonDtTemp = (Button)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("btnChonDtTemp");
-    //    Button btnChonPkTemp = (Button)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("btnChonPkTemp");
-    //    TextBox txtMaTemp = (TextBox)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("txtMaSpTemp");
-
-    //    btnChonDtTemp.OnClientClick = String.Format("window.open(\"PhoneChooser.aspx?receiveID={0}\", 'mypopup', " +
-    //            "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", txtMaTemp.ClientID);
-      
-    //    btnChonPkTemp.OnClientClick = String.Format("window.open(\"AccessoryChooser.aspx?receiveID={0}\", 'mypopup', " +
-    //            "'width=600, height=400, toolbar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no, menubar=no, location=no'); return false;", txtMaTemp.ClientID);               
-    //}
-    //protected void gridImportBillDt_RowUpdating(object sender, GridViewUpdateEventArgs e)
-    //{
-
-    //    TextBox maSp = (TextBox)gridImportBillDt.Rows[gridImportBillDt.EditIndex].FindControl("txtMaSpTemp");
-    //    TextBox sl = (TextBox)gridImportBillDt.Rows[gridImportBillDt.EditIndex].Cells[4].Controls[0];
-    //    TextBox price = (TextBox)gridImportBillDt.Rows[gridImportBillDt.EditIndex].Cells[5].Controls[0];
-    //    int id = Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[1].Text);
-    //    //int ImpId = Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[0].Text);
-
-    //    ImportBillDt iDt = new ImportBillDt(id, maSp.Text, isPhoneEdit, sl.Text, price.Text);
-    //    iDt.Update();
-    //    gridImportBillDt.EditIndex = -1;
-
-    //    FillDataDt();
-    //}
-    //protected void gridImportBillDt_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-    //{
-    //    gridImportBillDt.EditIndex = -1;
-    //    FillDataDt();
-    //}
     protected void gridImportBillDt_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
         int id = Convert.ToInt32(gridImportBillDt.Rows[e.RowIndex].Cells[1].Text);
@@ -125,7 +130,7 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         if (e.Row.RowType == DataControlRowType.DataRow && (e.Row.RowState == DataControlRowState.Alternate ||
                     e.Row.RowState == DataControlRowState.Normal))
         {
-            ImageButton btnDelete = (ImageButton)e.Row.Cells[3].Controls[0];
+            ImageButton btnDelete = (ImageButton)e.Row.Cells[4].Controls[0];
             btnDelete.OnClientClick = "if (!confirm('Bạn có đồng ý xóa Hóa đơn nhập?')) return false";
         }      
     }
@@ -192,7 +197,7 @@ public partial class Admin_ImportBill : System.Web.UI.Page
     {
         if (gridViewState.Rows.Count > 0)
         {
-            ImportBill imp = new ImportBill(0, dNguoiNhap.SelectedValue.ToString(), getCurrentTime());
+            ImportBill imp = new ImportBill(0, username, getCurrentTime());
             imp.Insert();
             lbThongbaoHD.Text = "<p class=info>* Thêm thành công Hóa đơn.</p>";
             FillData();
@@ -272,5 +277,28 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         txtPrice.Text = "";
         btnCapnhat.Visible = false;
         btnHuy.Visible = false;
+    }
+    protected void gridImportBill_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        gridImportBill.PageIndex = e.NewPageIndex;
+        FillData();
+    }
+    protected void gridImportBillDt_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        gridImportBillDt.PageIndex = e.NewPageIndex;
+        FillDataDt();
+    }
+    protected void gridImportBill_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        FillData(e.SortExpression);
+    }
+    protected void gridImportBillDt_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        FillDataDt(e.SortExpression);
+    }
+    protected void gridImportBill_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        FillData();
+        FillDataDt();
     }
 }

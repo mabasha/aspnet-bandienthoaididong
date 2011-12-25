@@ -49,6 +49,8 @@
             GroupName="folder" />
                      <asp:RadioButton ID="rAccessory" runat="server" Text="Phụ kiện" 
             GroupName="folder"/>
+                    <asp:RadioButton ID="rNews" runat="server" AutoPostBack="True" 
+                        GroupName="folder" Text="Tin tức" />
                 </td>
                 <td>
                 <br />
