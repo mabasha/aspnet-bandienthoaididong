@@ -1,9 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="WarrantyReceiptManager.aspx.cs" Inherits="Admin_WarrantyReceiptManager" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Admin/Admin.master" CodeFile="WarrantyReceiptManager.aspx.cs" Inherits="Admin_WarrantyReceiptManager" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+    <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="AdminSite/Template/style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.1.js"></script>
+
+<head>
     <title></title>
     <style type="text/css">
         .style1
@@ -16,13 +19,13 @@
         }
     </style>
 </head>
-<body>
-    <form id="form1" runat="server">
-    <div align="center" style="height: 52px">
+
+    <div align="center" class="style">
     
         QUẢN LÝ PHIẾU BẢO HÀNH
-    
     </div>
+        <br />
+
     <div style="height: 242px; width: 1187px">
         <table class="style1">
             <tr>
@@ -53,19 +56,20 @@
                 </td>
             </tr>
             <tr>
-                <td class="style2">
-                    <asp:Button ID="btnCapnhat" runat="server" Text="Cập nhật" Enabled="False" 
-                        onclick="btnCapnhat_Click" />
-                    <asp:Button ID="btnHuy" runat="server" Text="Hủy" Enabled="False" 
-                        onclick="btnHuy_Click" />
+                <td class="style2" colspan=2 align=center>
+                    <asp:Button ID="btnCapnhat" runat="server" Text="Cập nhật" Enabled="True" CssClass="styleButton"
+                        onclick="btnCapnhat_Click" BorderStyle="None" Height="37px" Width="89px" />
+                    <asp:Button ID="btnHuy" runat="server" Text="Hủy" Enabled="True"  CssClass="styleButtonCancle"
+                        onclick="btnHuy_Click" BorderStyle="None" Height="35px" Width="45px" />
                 </td>
+
                 <td>
                     &nbsp;</td>
-            </tr>
-        </table>
-    </div>
+            <tr>
+                <td>
+                    
     <div style="height: 158px">
-        <asp:GridView ID="gridPBH" runat="server" AutoGenerateColumns="False" 
+        <asp:GridView CssClass="styleGrid" ID="gridPBH" runat="server" AutoGenerateColumns="False" 
             Width="1182px" onrowdatabound="gridPBH_RowDataBound" 
             onrowdeleting="gridPBH_RowDeleting" 
             onselectedindexchanged="gridPBH_SelectedIndexChanged" AllowPaging="True" 
@@ -143,7 +147,9 @@
             <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
         </asp:GridView>
-    </div>    
-    </form>
-</body>
-</html>
+    </div>
+            </td>
+            </tr>
+            </table>
+            </div>
+  </asp:Content>

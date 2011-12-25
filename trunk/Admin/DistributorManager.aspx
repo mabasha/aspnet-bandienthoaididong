@@ -28,24 +28,21 @@
                 </tr>
             </table>
 
-            <table>
+            <table width=100%>
                 <tr>
                     <td>
                         <br />
                     </td>
                 </tr>
                 <tr>
-                    <td class="left-add" >
-                        Tên</td>
-                    <td>
+                    <td align=center>
+                        Tên :
                         <asp:TextBox ID="tName" runat="server" Width="236px" CssClass="styleButton" 
                             BorderStyle="None" Height="28px"></asp:TextBox>
                     </td>
-                </tr>
-                <tr>
-                    <td>
-                        Địa chỉ</td>
-                    <td>
+              
+                    <td align=center>
+                        Địa chỉ :
                         <asp:TextBox ID="tAddress" runat="server" Width="234px" CssClass="styleButton" 
                             BorderStyle="None" Height="27px"></asp:TextBox>
                     </td>
@@ -66,7 +63,7 @@
             <tr>
                <td colspan=2>
 
-            <asp:GridView class="styleGrid" ID="gShow" runat="server" AutoGenerateColumns="False" 
+            <asp:GridView  CssClass="styleGrid" ID="gShow" runat="server" AutoGenerateColumns="False"
                 onrowcancelingedit="gShow_RowCancelingEdit" onrowdatabound="gShow_RowDataBound" 
                 onrowdeleting="gShow_RowDeleting" onrowediting="gShow_RowEditing" 
                 onrowupdating="gShow_RowUpdating" CellPadding="4" ForeColor="#333333" 

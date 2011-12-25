@@ -22,7 +22,7 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         {
             username = cookie["username"].ToString();
         }
-        lbUsername.Text = username;
+ 
         //end Load username
         if (rDienthoai.Checked == true)
         {
@@ -108,7 +108,7 @@ public partial class Admin_ImportBill : System.Web.UI.Page
 
         ImportBillDt impdt = new ImportBillDt(id);
         impdt.Delete();
-        lbThongbaoCTHD.Text = "<p class=info>* Bạn đã xóa thành công Chi tiết hóa đơn.</p>";
+        lbThongbaoCTHD.Text = "<p class=valid_box>Bạn đã xóa thành công Chi tiết hóa đơn.</p>";
         FillDataDt();
     }
     protected void gridImportBillDt_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -146,7 +146,7 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         }
         ImportBill imp = new ImportBill(Convert.ToInt32(gridImportBill.Rows[e.RowIndex].Cells[0].Text));
         imp.Delete();      
-        lbThongbaoHD.Text = "<p class=info>* Bạn đã xóa thành công hóa đơn.</p>";
+        lbThongbaoHD.Text = "<p class=valid_box> Bạn đã xóa thành công hóa đơn.</p>";
         FillData();
         FillDataDt();
     }
@@ -199,7 +199,7 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         {
             ImportBill imp = new ImportBill(0, username, getCurrentTime());
             imp.Insert();
-            lbThongbaoHD.Text = "<p class=info>* Thêm thành công Hóa đơn.</p>";
+            lbThongbaoHD.Text = "<p class=valid_box>* Thêm thành công Hóa đơn.</p>";
             FillData();
 
             object re = AccessData.ExecuteScalar("select max(ID) from ImportBill");

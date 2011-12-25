@@ -51,7 +51,7 @@
                     QUẢN LÝ ĐIỆN THOẠI</div></td>
             </tr>
         </table>
-        <table>
+        <table width=100%>
             <tr>
                 <br />
                 <td  valign="middle" width="300px" align="center" height="50" class="styleText">
@@ -67,9 +67,9 @@
                 </td>
             </tr>
             <tr>
-                <td class="style3" valign="middle" align="center" height="50" colspan="2" 
+                <td class="" valign="middle" align="center" height="50" colspan="2" 
                     id="btn_Search">
-                    <asp:TextBox ID="txt_PhoneName" runat="server" Width="200px"></asp:TextBox>
+                    <asp:TextBox ID="txt_PhoneName" runat="server" Width="200px" CssClass="styleText"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;
                     <asp:DropDownList ID="ddl_Producer" runat="server" Width="150px">
                         <asp:ListItem Value="0">None</asp:ListItem>
@@ -91,8 +91,8 @@
                 </td>
             </tr>
             <tr>
-                <td class="style3" valign="top" width="300px">
-                    <asp:GridView ID="grid_Phone" runat="server" AllowPaging="True" 
+                <td class="" valign="top" width="300px">
+                    <asp:GridView CssClass="styleGrid" ID="grid_Phone" runat="server" AllowPaging="True" 
                         AutoGenerateColumns="False" CellPadding="4" 
                         ForeColor="#333333" GridLines="None" PageSize="20" DataKeyNames="ID" 
                         onpageindexchanging="grid_Phone_PageIndexChanging" 
