@@ -43,21 +43,26 @@ public class Account
         this.username = username;
     }
 
-    public void GetInfoByUsername()
+    public int GetInfoByUsername()
     {
         string query = String.Format("select * from Users where Username = N'{0}'", username);
         DataTable dtUser = AccessData.GetTable(query);
 
-        username = (string)dtUser.Rows[0]["Username"];
-        password = (string)dtUser.Rows[0]["Password"];
-        fullname = (string)dtUser.Rows[0]["FullName"];
-        email = (string)dtUser.Rows[0]["Email"];
-        birthDay = (DateTime)dtUser.Rows[0]["BirthDay"];
-        tel = (string)dtUser.Rows[0]["Tel"];
-        address = (string)dtUser.Rows[0]["Address"];
-        idCard = (string)dtUser.Rows[0]["IDCard"];
-        decentralize = (string)dtUser.Rows[0]["Decentralize"];
-        isActived = (int)dtUser.Rows[0]["IsActived"];
+        if (dtUser.Rows.Count > 0)
+        {
+            username = (string)dtUser.Rows[0]["Username"];
+            password = (string)dtUser.Rows[0]["Password"];
+            fullname = (string)dtUser.Rows[0]["FullName"];
+            email = (string)dtUser.Rows[0]["Email"];
+            birthDay = (DateTime)dtUser.Rows[0]["BirthDay"];
+            tel = (string)dtUser.Rows[0]["Tel"];
+            address = (string)dtUser.Rows[0]["Address"];
+            idCard = (string)dtUser.Rows[0]["IDCard"];
+            decentralize = (string)dtUser.Rows[0]["Decentralize"];
+            isActived = (int)dtUser.Rows[0]["IsActived"];
+            return 1;
+        }
+        return 0;
     }
 
     public int Insert()
@@ -77,10 +82,10 @@ public class Account
         return 2;
     }
 
-    public void Delete()
+    public string Delete()
     {
         string query = String.Format("DELETE FROM Users WHERE Username='{0}'", username);
-        AccessData.ExecuteNonQuery(query);
+        return AccessData.ExecuteNonQuery(query);
     }
     public bool Update()
     {
@@ -194,11 +199,11 @@ public class Account
      * Tìm kiếm dựa vào các thông số : username, fullname, decentralize
      * Được dùng ở trang AddAccount
      */
-    public DataTable Search(string _username, string _fullname, string _decentralize)
+    public DataTable Search(string _username, string _fullname, string _email, string _decentralize, string _isActived)
     {
-        
-        string query = String.Format("SELECT * FROM Users WHERE Username LIKE N'%{0}%' AND Fullname LIKE N'%{1}%'",
-                                    _username, _fullname);
+
+        string query = String.Format("SELECT * FROM Users WHERE Username LIKE N'%{0}%' AND Fullname LIKE N'%{1}%' AND Email LIKE N'%{2}%'",
+                                    _username, _fullname, _email);
         DataTable dt = AccessData.GetTable(query);
         if (_decentralize != "Tất cả")
         {
@@ -211,6 +216,19 @@ public class Account
                 dt.ImportRow(row);
             }
             
+        }
+
+        if (_isActived != "Tất cả")
+        {
+            int temp = int.Parse(_isActived);
+            DataRow[] rows;
+            string filter = String.Format("IsActived={0}", temp);
+            rows = dt.Select(filter);
+            dt = dt.Clone();
+            foreach (DataRow row in rows)
+            {
+                dt.ImportRow(row);
+            }
         }
         return dt;
     }
