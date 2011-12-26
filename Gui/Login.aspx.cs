@@ -14,10 +14,13 @@ public partial class Gui_Login : System.Web.UI.Page
         HttpCookie cookie = Request.Cookies["login"];
         if (Session["username"] != null)
         {
+            CheckLogin(Session["username"].ToString());
             Response.Redirect("../Gui/HomePage.aspx");
+            
         }
         else if (cookie != null)
         {
+            CheckLogin(cookie["username"]);
             Account user = new Account();
             user.username = cookie["username"];
             user.GetInfoByUsername();
@@ -106,5 +109,28 @@ public partial class Gui_Login : System.Web.UI.Page
                 }
         }
         
+    }
+
+    private void CheckLogin(string username)
+    {
+        Account user = new Account();
+        user.username = username;
+        // xét trường hợp cookie vẫn còn nhưng account đã bị xóa.
+        int temp = user.GetInfoByUsername();
+        if (temp == 0)
+        {
+            HttpCookie cookie = Request.Cookies["login"];
+            if (Session["username"] != null)
+            {
+                Session["username"] = null;
+            }
+            else if (cookie != null)
+            {
+                cookie.Expires = DateTime.Now;
+                Response.Cookies.Add(cookie);
+            }
+
+        }
+        Response.Redirect("~/GUI/HomePage.aspx");
     }
 }

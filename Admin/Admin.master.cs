@@ -12,13 +12,15 @@ public partial class Admin_Admin : System.Web.UI.MasterPage
         HttpCookie cookie = Request.Cookies["login"];
         if (Session["username"]!=null)
         {
+            CheckLogin(Session["username"].ToString());
             lb_Username.Text = Session["username"].ToString();
-            CheckLogin(lb_Username.Text);
+            
         }
         else if (cookie!=null)
         {
+            CheckLogin(cookie["username"].ToString());
             lb_Username.Text = cookie["username"].ToString();
-            CheckLogin(lb_Username.Text);
+            
         }
         else
         {
@@ -30,7 +32,23 @@ public partial class Admin_Admin : System.Web.UI.MasterPage
     {
         Account user = new Account();
         user.username = username;
-        user.GetInfoByUsername();
+        // xét trường hợp cookie vẫn còn nhưng account đã bị xóa.
+        int temp = user.GetInfoByUsername();
+        if (temp == 0)
+        {
+            HttpCookie cookie = Request.Cookies["login"];
+            if (Session["username"] != null)
+            {
+                Session["username"] = null;
+            }
+            else if (cookie != null)
+            {
+                cookie.Expires = DateTime.Now;
+                Response.Cookies.Add(cookie);
+            }
+            
+            Response.Redirect("~/GUI/HomePage.aspx");           
+        }
         if (user.decentralize == "Client")
         {
             Response.Redirect("~/GUI/HomePage.aspx");

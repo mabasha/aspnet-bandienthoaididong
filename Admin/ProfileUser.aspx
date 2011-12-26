@@ -19,7 +19,7 @@
         <EditRowStyle BackColor="#2461BF" />
         <FieldHeaderStyle Font-Bold="True" Width="120px" BackColor="#DEE8F5" />
         <Fields>
-            <asp:CommandField ButtonType="Image" CancelImageUrl="~/Images/Apps/delete.png" 
+            <asp:CommandField CancelImageUrl="~/Images/Apps/delete.png" 
                 CancelText="Hủy bỏ" EditImageUrl="~/Images/Apps/edit.png" EditText="Chỉnh sửa" 
                 ShowEditButton="True" UpdateImageUrl="~/Images/Apps/update.jpg" 
                 UpdateText="Cập nhật" />
