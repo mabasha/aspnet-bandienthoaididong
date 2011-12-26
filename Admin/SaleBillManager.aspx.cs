@@ -129,7 +129,7 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
                 Phone phone = new Phone(Convert.ToInt32(tProductID.Text));
                 phone.GetInfoByID();
                 lProductName.Text = phone.name;
-                lPrice.Text = phone.price.ToString();
+                lPrice.Text = String.Format("{0:0,##0}",phone.price)+" đồng";
             }
             else if (rAccessory.Checked == true)
             {

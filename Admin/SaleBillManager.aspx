@@ -30,6 +30,11 @@
                 alert('Thiếu thông tin chi tiết hóa đơn');
                 return false;
             }
+
+            if (parseInt($('#<% =tNumber.ClientID%>').val()) == 0) {
+                alert("Số lượng phải lớn hơn 0!");
+                return false;
+            }
         }
 
         function OnAddBill() {
@@ -182,7 +187,7 @@
                     <td width="50%" class="left-add">
                         Đơn giá</td>
                     <td>
-                        <asp:Label ID="lPrice" runat="server"></asp:Label>
+                        <asp:Label ID="lPrice" runat="server" ForeColor="Red"></asp:Label>
 &nbsp;</td>
                 </tr>
                 <tr>
@@ -220,7 +225,8 @@
                     <asp:BoundField DataField="ProductName" HeaderText="Tên sản phẩm" />
                     <asp:BoundField DataField="ProductIMEI" HeaderText="Số IMEI" />
                     <asp:BoundField DataField="Number" HeaderText="Số lượng" />
-                    <asp:BoundField DataField="Price" HeaderText="Đơn giá" />
+                    <asp:BoundField DataField="Price" HeaderText="Đơn giá" 
+                        DataFormatString="{0:#,##0 đồng}" />
                     <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/delete.jpg" 
                         ShowDeleteButton="True" />
                 </Columns>
@@ -275,7 +281,8 @@
                             SortExpression="Address" />
                         <asp:BoundField DataField="Tel" HeaderText="Điện thoại" SortExpression="Tel" />
                         <asp:BoundField DataField="CreatedDate" HeaderText="Ngày tạo" 
-                            SortExpression="CreatedDate" ReadOnly="True" />
+                            SortExpression="CreatedDate" ReadOnly="True" 
+                            DataFormatString="{0:dd/MM/yyyy}" />
                         <asp:CommandField ButtonType="Button" SelectText="Chọn" 
                             ShowSelectButton="True" />
                         <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/Delete.jpg" 

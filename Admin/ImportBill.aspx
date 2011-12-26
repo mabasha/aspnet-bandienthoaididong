@@ -3,7 +3,7 @@
 <%--<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ImportBill.aspx.cs" Inherits="Admin_ImportBill" %>--%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<%--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">--%>
+    <%--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">--%>
 
 <%--<html xmlns="http://www.w3.org/1999/xhtml">--%>
 <head> <%--runat="server">--%>
@@ -19,6 +19,10 @@
         function AddViewstate() {
             if ($('#<% =txtTenSp.ClientID%>').val() == "" || $('#<% =txtNumber.ClientID%>').val() == "" || $('#<% =txtPrice.ClientID%>').val() == "") {
                 alert("Vui lòng nhập đầy đủ thông tin!");
+                return false;
+            }
+            if (parseInt($('#<% =txtNumber.ClientID%>').val()) == 0) {
+                alert("Số lượng phải lớn hơn 0, và giá nhập phải lớn hơn 0!");
                 return false;
             }
         }
@@ -108,30 +112,20 @@
 </head>
 <body>
 <%--<form id="form1" runat="server">--%>
-     <table width=100%>
-            <tr>
-                <td align=center>
-                    <div class="style">LẬP HÓA ĐƠN NHẬP</div>      
-                </td>
-            </tr>
-        </table>
-         <br />
+    <div class="header" align="center" 
+        style="font-size: large; height: 62px; width: 1000px;">
+        LẬP HÓA ĐƠN NHẬP</div>
     <div class="Add" style="height: 335px; width: 1011px;">
         <table style="width:92%; height: 296px; margin-left: 0px;" align="center">
             <tr>
                 <td class="style39">
                     Người Nhập :</td>
-                <td class="style41" colspan="2">
-                    <asp:DropDownList ID="dNguoiNhap" runat="server" DataSourceID="SqlDataSource1" 
-                        DataTextField="FullName" DataValueField="Username" CssClass="styleText" >
-                    </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:MobileShopConnectionString %>" 
-                        SelectCommand="SELECT [FullName], [Username] FROM [Users]"></asp:SqlDataSource>
+                <td class="style44" colspan="2">
+                    <asp:Label ID="lbUsername" runat="server"></asp:Label>
                 </td>
                 <td class="style40" rowspan="8">
     
-    <asp:GridView CssClass="styleGrid" ID="gridViewState" runat="server" AutoGenerateColumns="False" 
+    <asp:GridView ID="gridViewState" runat="server" AutoGenerateColumns="False" 
                     onrowdeleting="gridViewState_RowDeleting" Width="533px" BackColor="White" 
                     BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
         <RowStyle ForeColor="#000066" />
@@ -170,31 +164,31 @@
                 <td class="style49">
                     Mã sản phẩm *:</td>
                 <td class="style43">
-                    <asp:TextBox ID="txtTenSp" runat="server" Width="52px" CssClass="styleText" ></asp:TextBox>
+                    <asp:TextBox ID="txtTenSp" runat="server" Width="52px" ></asp:TextBox>
                 </td>
                 <td class="style42">
-                    <asp:Button ID="btnTenSp" runat="server" Text="Chọn sản phẩm"   CssClass="styleButton"/>
+                    <asp:Button ID="btnTenSp" runat="server" Text="Chọn sản phẩm" />
                 </td>
             </tr>
             <tr>
                 <td class="style47">
                     Số lượng *:</td>
                 <td class="style48" colspan="2">
-                    <asp:TextBox ID="txtNumber" runat="server" Width="190px"  CssClass="styleText" ></asp:TextBox>
+                    <asp:TextBox ID="txtNumber" runat="server" Width="190px" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="style32">
                     Đơn giá nhập* :</td>
                 <td class="style41" colspan="2">
-                    <asp:TextBox ID="txtPrice" runat="server" Width="190px"  CssClass="styleText" ></asp:TextBox>
+                    <asp:TextBox ID="txtPrice" runat="server" Width="190px" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td align="center" colspan="3" class="style36">
     
     <asp:Button ID="btnAddViewstate" runat="server" onclick="btnAddViewstate_Click" 
-        Text="Thêm sản phẩm"  CssClass="styleButton" />
+        Text="Thêm sản phẩm" />
             
                     <asp:Button ID="btnCapnhat" runat="server" onclick="btnCapnhat_Click" 
                         Text="Cập nhật" Visible="False" />
@@ -207,26 +201,25 @@
                 <td align="center" colspan="3">
     
     <asp:Button ID="btnThemHD" runat="server"  Text="THÊM HÓA ĐƠN" Height="66px" 
-            onclick="btnThemHD_Click" Width="135px" Visible="False"  CssClass="styleButton" 
-                        BorderStyle="Dotted"/>
+            onclick="btnThemHD_Click" Width="135px" Visible="False" />
     
                 </td>
             </tr>
         </table>
     </div>
-    <div style=" width: 1127px; margin-bottom: 0px;" class="list">
+    <div style="height: 260px; width: 1127px; margin-bottom: 0px;" class="list">
       
-            <table width=100%>
+            <table class="style25">
                 <tr>
-                    <td>
+                    <td class="style26">
                         <asp:Label ID="lbThongbaoHD" runat="server"></asp:Label>
                     </td>
-                    <td>
+                    <td class="style30">
                         <asp:Label ID="lbThongbaoCTHD" runat="server"></asp:Label>
                     </td>
                 </tr>
                 <tr>
-                    <td align="center" valign="top">
+                    <td class="style26" align="right" valign="top">
                         <asp:GridView ID="gridImportBill" runat="server" AutoGenerateColumns="False" 
                             CellPadding="3"                                      
                             onrowdatabound="gridImportBill_RowDataBound"                                     
@@ -259,8 +252,7 @@
             <asp:GridView ID="gridImportBillDt" runat="server" AutoGenerateColumns="False" 
                 CellPadding="3"                                     
                             onrowdatabound="gridImportBillDt_RowDataBound1" 
-                            onrowdeleting="gridImportBillDt_RowDeleting"                                    
-                            onrowcommand="gridImportBillDt_RowCommand" BackColor="White" 
+                            onrowdeleting="gridImportBillDt_RowDeleting"   BackColor="White" 
                             BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" 
                             onselectedindexchanged="gridImportBillDt_SelectedIndexChanged" 
                             AllowPaging="True" AllowSorting="True" 
@@ -301,7 +293,7 @@
                     <asp:BoundField DataField="Number" HeaderText="Số lượng" 
                         SortExpression="Number" />
                     <asp:BoundField DataField="Price" HeaderText="Đơn giá nhập" 
-                        SortExpression="Price" DataFormatString="{0:#,##0}" />
+                        SortExpression="Price" DataFormatString="{0:#,##0 đồng}" />
                     <asp:CommandField ButtonType="Image" 
                         SelectImageUrl="~/Images/Apps/edit-icon.jpg" ShowSelectButton="True" />
                     <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/Delete.jpg" 

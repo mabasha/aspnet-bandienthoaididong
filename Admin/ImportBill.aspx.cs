@@ -22,7 +22,7 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         {
             username = cookie["username"].ToString();
         }
- 
+        lbUsername.Text = username;
         //end Load username
         if (rDienthoai.Checked == true)
         {
@@ -110,21 +110,7 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         impdt.Delete();
         lbThongbaoCTHD.Text = "<p class=valid_box>Bạn đã xóa thành công Chi tiết hóa đơn.</p>";
         FillDataDt();
-    }
-    protected void gridImportBillDt_RowCommand(object sender, GridViewCommandEventArgs e)
-    {
-        if (e.CommandName == "btnDt")
-        {
-            //int index = Convert.ToInt32(e.CommandArgument);
-            //GridViewRow row = gridImportBillDt.Rows[index];
-            isPhoneEdit = "True";
-        }
-        else if (e.CommandName == "btnPk")
-        {
-            isPhoneEdit = "False";
-        }
-    }
-
+    }  
     protected void gridImportBill_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType == DataControlRowType.DataRow && (e.Row.RowState == DataControlRowState.Alternate ||
@@ -141,14 +127,15 @@ public partial class Admin_ImportBill : System.Web.UI.Page
             if (r.Cells[0].Text == gridImportBill.Rows[e.RowIndex].Cells[0].Text)
             {                
                 ImportBillDt impdt = new ImportBillDt(Convert.ToInt32(r.Cells[1].Text));
-                impdt.Delete();                               
+                impdt.Delete();
+                FillDataDt();               
             }
         }
         ImportBill imp = new ImportBill(Convert.ToInt32(gridImportBill.Rows[e.RowIndex].Cells[0].Text));
         imp.Delete();      
         lbThongbaoHD.Text = "<p class=valid_box> Bạn đã xóa thành công hóa đơn.</p>";
         FillData();
-        FillDataDt();
+        //FillDataDt();
     }
 
     protected void gridViewState_RowDeleting(object sender, GridViewDeleteEventArgs e)
