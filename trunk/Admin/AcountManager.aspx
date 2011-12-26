@@ -116,7 +116,7 @@
                             </asp:BoundField>
                             <%--<asp:BoundField DataField="Decentralize" HeaderText="Decentralize" 
                                 SortExpression="Decentralize" />--%>
-                            <asp:TemplateField HeaderText="IDCard" SortExpression="IDCard">
+                            <asp:TemplateField HeaderText="Số chứng minh" SortExpression="IDCard">
                                 <EditItemTemplate>
                                     <asp:TextBox ID="txt_IDCard" runat="server" Text='<%# Bind("IDCard") %>'></asp:TextBox>
                                     <asp:FilteredTextBoxExtender ID="txt_IDCard_FilteredTextBoxExtender" 
@@ -130,7 +130,7 @@
                                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("IDCard") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Phân quyền"> 
+                            <asp:TemplateField HeaderText="Phân quyền" SortExpression="Decentralize"> 
                             <%--<FooterTemplate> 
                               <asp:DropDownList ID="cmbNewDecentralize" runat="server" >
                                 <asp:ListItem Text="Adminitrator" Value="Adminitrator"></asp:ListItem> 

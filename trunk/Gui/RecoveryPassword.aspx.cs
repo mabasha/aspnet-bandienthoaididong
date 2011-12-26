@@ -24,11 +24,12 @@ public partial class Gui_RecoveryPassword : System.Web.UI.Page
         else
         {
             Account user = new Account();
+            string tempPass = Utils.RandomPassword();
             user.username = txt_Username.Text;
             user.GetInfoByUsername();
-            user.password = Utils.RandomPassword();
+            user.password = Utils.MD5(tempPass);
             string subject = "Khôi phục mật khẩu";
-            string content = String.Format("Bạn đã yêu cầu khôi phục mật khẩu cho tài khoản {0} ở trang web của chúng tôi. Mật khẩu mới của bạn là : {1} . </br>Vui lòng truy cập vào website của chúng tôi để tiến hành đăng nhập và đổi mật khẩu", txt_Username.Text, user.password);
+            string content = String.Format("Bạn đã yêu cầu khôi phục mật khẩu cho tài khoản {0} ở trang web của chúng tôi. Mật khẩu mới của bạn là : {1} . </br>Vui lòng truy cập vào website của chúng tôi để tiến hành đăng nhập và đổi mật khẩu", txt_Username.Text, tempPass);
             int temp = Utils.SendEMail(user.email, subject, content);
             user.Update();
             if (temp == 1)

@@ -41,7 +41,7 @@
         </tr>
         <tr>
             <td width="70">
-                Username : 
+                Tên : 
             </td>
             <td class="style3">
                 <asp:TextBox ID="txt_Username" runat="server" Width="200px"></asp:TextBox>
@@ -49,7 +49,7 @@
         </tr>
         <tr>
             <td width="70">
-                Password :
+                Mật khẩu :
             </td>
             <td class="style3">
                 <asp:TextBox ID="txt_Password" runat="server" TextMode="Password" Width="200px"></asp:TextBox>
@@ -57,7 +57,7 @@
         </tr>
         <tr>
             <td colspan="2">
-                <asp:CheckBox ID="cb_Remember" runat="server" Text="Remember Me?" />
+                <asp:CheckBox ID="cb_Remember" runat="server" Text="Ghi nhớ?" />
                 <br />
                 <asp:Button ID="btn_Login" runat="server" onclick="btn_Login_Click" 
                     style="text-align: left" Text="Đăng nhập" />
@@ -66,9 +66,10 @@
         <tr>
             <td colspan="2" style="margin-left: 40px">
                 <asp:HyperLink ID="HyperLink1" runat="server" 
-                    NavigateUrl="../GUI/RecoveryPassword.aspx">Quên mật khẩu</asp:HyperLink>
+                    NavigateUrl="../GUI/RecoveryPassword.aspx" ForeColor="#3366FF">Quên mật khẩu</asp:HyperLink>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Gui/Register.aspx">Đăng ký mới</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Gui/Register.aspx" 
+                    ForeColor="#3366FF">Đăng ký mới</asp:HyperLink>
             </td>
         </tr>
         </form>
