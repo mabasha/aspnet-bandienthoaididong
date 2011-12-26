@@ -36,8 +36,8 @@
                     <asp:DataList ID="DataList1" runat="server">
                     <ItemTemplate>
                     <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/Apps/Front/dot.jpg" />
-                    &nbsp;<asp:HyperLink ID="HyperLink1" runat="server" 
-                        NavigateUrl='<%# "~/Gui/News/NewsDetails.aspx?id="+Eval("ID") %>' 
+                    &nbsp;<asp:HyperLink ID="HyperLink1" runat="server"
+                        NavigateUrl='<%# "~/Gui/News/NewsDetails.aspx?id="+Eval("ID") %>' style="color:Gray"
                         Text='<%# Eval("Title") %>'></asp:HyperLink>
                         </ItemTemplate>
                         </asp:DataList>
