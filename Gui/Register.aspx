@@ -20,11 +20,6 @@
         {
         }
         select, input, textarea, button {outline:none; resize:none;
-	height: 26px;
-}
-        .style7
-        {
-            width: 80px;
         }
     </style>
      
@@ -99,7 +94,7 @@
             </td>
         </tr>
         <tr>
-            <td align="char" class="style7" valign="bottom">
+            <td align="left" class="" valign="middle" width="140px">
                 Username :
             </td>
             <td class="style3" valign="middle">
@@ -108,7 +103,7 @@
             </td>
         </tr>
         <tr>
-            <td align="char" class="style7" valign="bottom">
+            <td align="left" class="" valign="middle" width="140px">
                 Password :
             </td>
             <td class="style3" valign="middle">
@@ -116,7 +111,7 @@
             </td>
         </tr>
         <tr>
-            <td align="char" class="style7" valign="bottom">
+            <td align="left" class="" valign="middle" width="140px">
                 Confirm Password :
             </td>
             <td class="style3" valign="middle">
@@ -125,7 +120,7 @@
             </td>
         </tr>
         <tr>
-            <td align="char" class="style7" valign="bottom">
+            <td align="left" class="" valign="middle" width="140px">
                 Fullname :
             </td>
             <td class="style3" valign="middle">
@@ -133,14 +128,14 @@
             </td>
         </tr>
         <tr>
-            <td align="char" class="style7" valign="bottom">
+            <td align="left" class="" valign="middle" width="140px">
                 Email Address :</td>
             <td class="style3" valign="middle">
                 <asp:TextBox ID="txt_Email" runat="server" Width="200px"></asp:TextBox>
             </td>
         </tr>
         <tr>
-            <td align="char" class="style7" valign="bottom">
+            <td align="left" class="" valign="middle" width="140px">
                 Confirm Email Address :
             </td>
             <td class="style3" valign="middle">
@@ -148,7 +143,7 @@
             </td>
         </tr>
         <tr>
-            <td align="char" class="style7" valign="bottom">
+            <td align="left" class="" valign="middle" width="140px">
                 BirthDay :
             </td>
             <td class="style3" valign="middle">
@@ -171,7 +166,7 @@
             </td>
         </tr>
         <tr>
-            <td align="char" class="style7" valign="bottom">
+            <td align="left" class="" valign="middle" width="140px">
                 Tel : </td>
             <td class="style3" valign="middle">
         <asp:TextBox ID="txt_Tel" runat="server" Width="200px" CssClass="styleText"></asp:TextBox>
@@ -182,7 +177,7 @@
             </td>
         </tr>
         <tr>
-            <td align="char" class="style7" valign="bottom">
+            <td align="left" class="" valign="middle" width="140px">
                 Address : </td>
             <td class="style3" valign="middle">
                 <asp:TextBox ID="txt_Address" runat="server" Height="50px" TextMode="MultiLine" 
@@ -190,7 +185,7 @@
             </td>
         </tr>
         <tr>
-            <td align="char" class="style7" valign="bottom">
+            <td align="left" class="" valign="middle" width="140px">
                 IDcard : </td>
             <td class="style3" valign="middle">
         <asp:TextBox ID="txt_IDCard" runat="server" Width="200px" CssClass="styleText"></asp:TextBox>
@@ -206,8 +201,8 @@
                    <ContentTemplate>
                 <br />
                        <asp:Image ID="captchaImage" runat="server" />
-                       <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Images/Apps/update.jpg"
-                           OnClick="ImageButton1_Click" ToolTip="Đổi Captcha" />
+                       <asp:ImageButton ID="ibtn_ChangeCaptcha" runat="server" ImageUrl="~/Images/Apps/update.jpg"
+                           OnClick="ibtn_ChangeCaptcha_Click" />
                    <br />
                  </ContentTemplate>
                 </asp:UpdatePanel>

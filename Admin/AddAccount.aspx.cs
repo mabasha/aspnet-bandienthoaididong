@@ -56,7 +56,7 @@ public partial class Admin_AddAccount : System.Web.UI.Page
         user.birthDay = Convert.ToDateTime(txt_BirthDay.Text);
         user.tel = txt_Tel.Text;
         user.address = txt_Address.Text;
-        user.idCard = Convert.ToInt32(txt_IDCard.Text);
+        user.idCard = txt_IDCard.Text;
         user.decentralize = ddl_Decentralize.SelectedValue.ToString();
     }
 }

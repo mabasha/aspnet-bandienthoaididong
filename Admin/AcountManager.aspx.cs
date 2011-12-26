@@ -61,12 +61,12 @@ public partial class Admin_AcountManager : System.Web.UI.Page
             grid_Users.EditIndex = -1;
             FillDataInGrid("Username");
             lb_Note.ForeColor = System.Drawing.Color.Green;
-            lb_Note.Text = "Update username:" + user.username + " successfully";
+            lb_Note.Text = "Cập nhật username:" + user.username + " thành công";
         } 
         else
         {
             lb_Note.ForeColor = System.Drawing.Color.Red;
-            lb_Note.Text = "Update username:" + user.username + " failed. This email is exist.";
+            lb_Note.Text = "Cập nhật username:" + user.username + " lỗi. Email này đã được sử dụng.";
         }
         
     }
@@ -119,7 +119,7 @@ public partial class Admin_AcountManager : System.Web.UI.Page
         user.birthDay = Convert.ToDateTime(((TextBox)grid_Users.Rows[e.RowIndex].Cells[4].FindControl("Birthday")).Text);
         user.tel = ((TextBox)grid_Users.Rows[e.RowIndex].Cells[5].FindControl("txt_Tel")).Text;
         user.address = ((TextBox)grid_Users.Rows[e.RowIndex].Cells[6].Controls[0]).Text;
-        user.idCard = Convert.ToInt32(((TextBox)grid_Users.Rows[e.RowIndex].Cells[7].FindControl("txt_IDCard")).Text);
+        user.idCard = ((TextBox)grid_Users.Rows[e.RowIndex].Cells[7].FindControl("txt_IDCard")).Text;
         //TextBox decentralize = (TextBox)grid_Users.Rows[e.RowIndex].Cells[7].Controls[0];
         user.decentralize = ((DropDownList)grid_Users.Rows[e.RowIndex].FindControl("cmbDecentralize")).SelectedValue.ToString();
         //user.isActived = Convert.ToInt32(((DropDownList)grid_Users.Rows[e.RowIndex].FindControl("ddl_IsActived")).SelectedValue.ToString());

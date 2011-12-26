@@ -23,7 +23,7 @@ public partial class Gui_Register : System.Web.UI.Page
     protected void btn_Register_Click(object sender, EventArgs e)
     {
         Account user = new Account(txt_Username.Text, txt_Password.Text, txt_Fullname.Text, txt_Email.Text,
-                                    Convert.ToDateTime(txt_BirthDay.Text), txt_Tel.Text, txt_Address.Text, Convert.ToInt32(txt_IDCard.Text), 0);
+                                    Convert.ToDateTime(txt_BirthDay.Text), txt_Tel.Text, txt_Address.Text, txt_IDCard.Text, 0);
         string captcha = txt_Captcha.Text;
         if (String.Compare(Session["captcha"].ToString(), captcha) != 0)
         {
@@ -57,11 +57,7 @@ public partial class Gui_Register : System.Web.UI.Page
         
     }
 
-    protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
-    {
-       DeleteImages();
-    }
-
+    
 
 
     /*
@@ -179,5 +175,9 @@ public partial class Gui_Register : System.Web.UI.Page
     protected void btn_Add_Click(object sender, EventArgs e)
     {
 
+    }
+    protected void ibtn_ChangeCaptcha_Click(object sender, ImageClickEventArgs e)
+    {
+        DeleteImages();
     }
 }
