@@ -88,7 +88,7 @@ public partial class Gui_ProfileUser : System.Web.UI.Page
     private void GetDataForUserFromDetailViews()
     {
         user.username = dtviews_User.DataKey.Value.ToString();
-        user.password = ((TextBox)dtviews_User.Rows[3].FindControl("txt_Password")).Text;
+        user.password = Utils.MD5(((TextBox)dtviews_User.Rows[3].FindControl("txt_Password")).Text);
         user.fullname = ((TextBox)dtviews_User.Rows[4].Cells[1].Controls[0]).Text;
         user.email = ((TextBox)dtviews_User.Rows[5].Cells[1].Controls[0]).Text;
         user.birthDay = Convert.ToDateTime(((TextBox)dtviews_User.Rows[6].FindControl("txt_BirthDay")).Text);

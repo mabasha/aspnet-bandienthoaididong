@@ -17,14 +17,14 @@
             <table width=100%>
                         <tr>
                             <td style="text-align: center">
-                                <asp:Label ID="Label11" runat="server" Text="Username : "></asp:Label>
+                                <asp:Label ID="Label11" runat="server" Text="Tài khoản : "></asp:Label>
                                 <asp:TextBox ID="txt_Username_Search" runat="server" BorderStyle="None" 
                                     CssClass="styleText" Width="200px"></asp:TextBox>
-&nbsp;&nbsp;<asp:Label ID="Label12" runat="server" Text="Fullname : "></asp:Label>
+&nbsp;&nbsp;<asp:Label ID="Label12" runat="server" Text="Họ và tên : "></asp:Label>
 &nbsp;<asp:TextBox ID="txt_Fullname_Search" runat="server" BorderStyle="None" 
                                     CssClass="styleText" Width="200px"></asp:TextBox>
 &nbsp;&nbsp;
-                                <asp:Label ID="Label13" runat="server" Text="Decentralize : "></asp:Label>
+                                <asp:Label ID="Label13" runat="server" Text="Phân quyền : "></asp:Label>
         <asp:DropDownList ID="ddl_Decentralize_Search" runat="server" CssClass="styleText" >
             <asp:ListItem>Tất cả</asp:ListItem>
             <asp:ListItem>Administrator</asp:ListItem>
@@ -56,7 +56,7 @@
                         AllowSorting="True" onsorting="grid_Users_Sorting" GridLines="None"  >
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
-                            <asp:TemplateField HeaderText="Username" SortExpression="Username">
+                            <asp:TemplateField HeaderText="Tài khoản" SortExpression="Username">
                                 <EditItemTemplate>
                                     <asp:TextBox ID="txt_Username_Update" runat="server" 
                                         Text='<%# Eval("Username") %>' Enabled="False"></asp:TextBox>
@@ -65,9 +65,8 @@
                                     <asp:Label ID="Label10" runat="server" Text='<%# Eval("Username") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="Password" HeaderText="Password" 
-                                SortExpression="Password" />
-                            <asp:BoundField DataField="FullName" HeaderText="FullName" 
+                            <asp:BoundField HeaderText="Mật khẩu" />
+                            <asp:BoundField DataField="FullName" HeaderText="Họ và tên" 
                                 SortExpression="FullName"  >
                             <ItemStyle Width="100px" />
                             </asp:BoundField>
@@ -76,7 +75,7 @@
                             <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" >
                             <ItemStyle Width="20px" />
                             </asp:BoundField>
-                            <asp:TemplateField HeaderText="BirthDay" > 
+                            <asp:TemplateField HeaderText="Ngày sinh" > 
                             <EditItemTemplate> 
                               <asp:TextBox ID="Birthday" runat="server"  
                                     Text='<%# Eval("BirthDay","{0:MM/dd/yyyy}") %>' /> 
@@ -99,7 +98,7 @@
                                     DataFormatString="{0:dd/mm/yyyy}"></asp:Label> 
                             </ItemTemplate> 
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Tel" SortExpression="Tel">
+                            <asp:TemplateField HeaderText="Điện thoại" SortExpression="Tel">
                                 <EditItemTemplate>
                                     <asp:TextBox ID="txt_Tel" runat="server" Text='<%# Bind("Tel") %>'></asp:TextBox>
                                     <asp:FilteredTextBoxExtender ID="txt_Tel_FilteredTextBoxExtender" 
@@ -111,7 +110,7 @@
                                     <asp:Label ID="Label3" runat="server" Text='<%# Bind("Tel") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="Address" HeaderText="Address" 
+                            <asp:BoundField DataField="Address" HeaderText="Địa chỉ" 
                                 SortExpression="Address" >
                             <ItemStyle Width="10px" />
                             </asp:BoundField>
@@ -131,7 +130,7 @@
                                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("IDCard") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Decentralize"> 
+                            <asp:TemplateField HeaderText="Phân quyền"> 
                             <%--<FooterTemplate> 
                               <asp:DropDownList ID="cmbNewDecentralize" runat="server" >
                                 <asp:ListItem Text="Adminitrator" Value="Adminitrator"></asp:ListItem> 
@@ -149,7 +148,7 @@
                             </EditItemTemplate> 
                             </asp:TemplateField> 
                             <asp:CommandField ButtonType="Button" DeleteImageUrl="~/Admin/AdminSite/Template/images/error.png" 
-                                ShowDeleteButton="True" CancelText="" >
+                                ShowDeleteButton="True" CancelText="" DeleteText="Xóa" >
                             <ControlStyle BorderStyle="None" CssClass="styleButtonCancle" />
                             <HeaderStyle VerticalAlign="Middle" />
                             </asp:CommandField>

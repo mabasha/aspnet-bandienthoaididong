@@ -22,7 +22,7 @@ public partial class Gui_Register : System.Web.UI.Page
     }
     protected void btn_Register_Click(object sender, EventArgs e)
     {
-        Account user = new Account(txt_Username.Text, txt_Password.Text, txt_Fullname.Text, txt_Email.Text,
+        Account user = new Account(txt_Username.Text, Utils.MD5(txt_Password.Text), txt_Fullname.Text, txt_Email.Text,
                                     Convert.ToDateTime(txt_BirthDay.Text), txt_Tel.Text, txt_Address.Text, txt_IDCard.Text, 0);
         string captcha = txt_Captcha.Text;
         if (String.Compare(Session["captcha"].ToString(), captcha) != 0)
@@ -48,7 +48,7 @@ public partial class Gui_Register : System.Web.UI.Page
             else
             {
                 string subject = "Hoàn tất đăng kí";
-                string content = String.Format("Chúc mừng {0} đã đăng kí thành công tài khoản {1} ở trang web của chúng tôi.</br>Để hoàn tất việc đăng kí, vui lòng kích hoạt link sau :<a href='~/GUI/AcctiveAccount.aspx?username={2}&&isactive=true' style='color:Blue;'>Kích hoạt tài khoản</a>.</br>Nếu hủy việc đăng kí, vui lòng kích hoạt link sau : <a href='~/GUI/AcctiveAccount.aspx?username={3}&&isactive=false' style='color:Blue;'>Hủy đăng kí</a>.",
+                string content = String.Format("Chúc mừng {0} đã đăng kí thành công tài khoản {1} ở trang web của chúng tôi.</br>Để hoàn tất việc đăng kí, vui lòng kích hoạt link sau :<a href='/GUI/AcctiveAccount.aspx?username={2}&&isactived=1' style='color:Blue;'>Kích hoạt tài khoản</a>.</br>Nếu hủy việc đăng kí, vui lòng kích hoạt link sau : <a href='/GUI/AcctiveAccount.aspx?username={2}&&isactived=0' style='color:Blue;'>Hủy đăng kí</a>. </br> Việc kích hoạt tài khoản chỉ có có hiệu lực một ngày kể từ lúc đăng kí.",
                                                 user.fullname, user.username, user.username, user.username);
                 Utils.SendEMail(user.email, subject, content);
                 Response.Redirect("../Gui/Redirect.aspx?todo=register");

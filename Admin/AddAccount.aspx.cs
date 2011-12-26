@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Security.Cryptography;
 
 public partial class Admin_AddAccount : System.Web.UI.Page
 {
@@ -50,7 +51,7 @@ public partial class Admin_AddAccount : System.Web.UI.Page
     private void GetDataForUserFromTextbox()
     {
         user.username = txt_Username.Text;
-        user.password = txt_Password.Text;
+        user.password = Utils.MD5(txt_Password.Text);
         user.fullname = txt_Fullname.Text;
         user.email = txt_Email.Text;
         user.birthDay = Convert.ToDateTime(txt_BirthDay.Text);
