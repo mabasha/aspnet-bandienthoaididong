@@ -15,7 +15,7 @@ public class Account
     public DateTime birthDay;
     public string tel;
     public string address;
-    public int idCard;
+    public string idCard;
     public string decentralize;
     public int isActived;
 
@@ -24,7 +24,7 @@ public class Account
 	}
 
     public Account(string _username, string _password, string _fullname, string _email, DateTime _birthDay,
-                    string _tel, string _address, int _idCard, int _isActived)
+                    string _tel, string _address, string _idCard, int _isActived)
     {
         username = _username;
         password = _password;
@@ -55,7 +55,7 @@ public class Account
         birthDay = (DateTime)dtUser.Rows[0]["BirthDay"];
         tel = (string)dtUser.Rows[0]["Tel"];
         address = (string)dtUser.Rows[0]["Address"];
-        idCard = (int)dtUser.Rows[0]["IDCard"];
+        idCard = (string)dtUser.Rows[0]["IDCard"];
         decentralize = (string)dtUser.Rows[0]["Decentralize"];
         isActived = (int)dtUser.Rows[0]["IsActived"];
     }
@@ -72,7 +72,7 @@ public class Account
         }
         string sql1 = "Insert into Users (Username, Password, FullName, Email, Tel, BirthDay, Address, IDCard, Decentralize, IsActived) Values (N'" +
                 username + "', N'" + password + "', N'" + fullname + "', N'" + email + "','" + tel + "', '" + birthDay
-                + "', N'" + address + "', " + idCard + ", '" + decentralize + "', "+isActived+")";
+                + "', N'" + address + "', '" + idCard + "', '" + decentralize + "', "+isActived+")";
         AccessData.ExecuteNonQuery(sql1);
         return 2;
     }
@@ -93,7 +93,7 @@ public class Account
         else
         {
             string sql = "UPDATE Users SET Password=N'" + password + "', FullName=N'" + fullname + "', Tel='" +
-            tel + "', Email='" + email + "', BirthDay='" + birthDay + "',Address=N'" + address + "', IDCard=" + idCard + ", Decentralize='" +
+            tel + "', Email='" + email + "', BirthDay='" + birthDay + "',Address=N'" + address + "', IDCard='" + idCard + "', Decentralize='" +
             decentralize + "', IsActived="+isActived+" Where Username='" + username + "'";
             AccessData.ExecuteNonQuery(sql);
             return true;
