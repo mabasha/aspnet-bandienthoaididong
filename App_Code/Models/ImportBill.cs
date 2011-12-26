@@ -9,9 +9,9 @@ using System.Data;
 /// </summary>
 public class ImportBill
 {
-    private int id;
-    string username;
-    string createdDate;
+    public int id;
+    public string username;
+    public string createdDate;
 	public ImportBill()
 	{		
 	}
@@ -34,11 +34,15 @@ public class ImportBill
     }
     public static string GetImporterFullname(int id)
     {
-        return Convert.ToString(AccessData.ExecuteScalar(String.Format("select ImporterUsername from ImportBill where ID = {0}", id)));
+        return Convert.ToString(AccessData.ExecuteScalar(String.Format("select Users.FullName from Users, ImportBill where (ImportBill.ID = {0} and ImportBill.ImporterUsername = Users.Username)", id)));
     }
     public static string GetCreatedDate(int id)
     {
-        return Convert.ToString(AccessData.ExecuteScalar(String.Format("select CreatedDate from ImportBill where ID = {0}", id)));
+        return String.Format("{0:dd/MM/yyyy}",AccessData.ExecuteScalar(String.Format("select CreatedDate from ImportBill where ID = {0}", id)));
+    }
+    public static DateTime GetCreatedDateEx(int id)
+    {
+        return (DateTime)AccessData.ExecuteScalar(String.Format("select CreatedDate from ImportBill where ID = {0}", id));
     }
     public void Delete()
     {        
@@ -54,6 +58,18 @@ public class ImportBill
     public static int GetMaxID()
     {
         object result = AccessData.ExecuteScalar("select max(ID) from ImportBill");
+        try
+        {
+            return Convert.ToInt32(result);
+        }
+        catch (Exception) { }
+        return 0;
+    }
+
+    public static double GetSumPrice(int importBillID)
+    {
+        string query = String.Format("select sum(Price*Number) from ImportBill, ImportBillDt where ImportBill.ID = {0} and ImportBillDt.ImportBillID= ImportBill.ID",importBillID);
+        object result = AccessData.ExecuteScalar(query);
         try
         {
             return Convert.ToInt32(result);

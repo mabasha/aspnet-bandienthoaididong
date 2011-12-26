@@ -325,9 +325,10 @@
                         </asp:TemplateField>
                         <asp:BoundField DataField="ProductIMEI" HeaderText="Số IMEI" 
                             SortExpression="ProductIMEI" />
-                        <asp:TemplateField HeaderText="Là điện thoại ?" SortExpression="IsPhone">
+                        <asp:TemplateField HeaderText="Loại sản phẩm" SortExpression="IsPhone">
                             <ItemTemplate>
-                                <asp:Label ID="lIsPhoneTmp" runat="server" Text='<%# Eval("IsPhone") %>'></asp:Label>
+                                <asp:Label ID="lIsPhoneTmp" runat="server" 
+                                    Text='<%# Eval("IsPhone").ToString()=="True" ?"Điện thoại":"Phụ kiện" %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:RadioButton ID="rPhoneTmp" runat="server" Checked='<%# (bool)Eval("IsPhone") %>' 
