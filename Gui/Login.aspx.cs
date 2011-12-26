@@ -43,7 +43,7 @@ public partial class Gui_Login : System.Web.UI.Page
             user.username = username;
             user.GetInfoByUsername();
             string subject = "Kích hoạt lại tài khoản";
-            string content = String.Format("Xin chào {0}. Bạn đã yêu cầu kích hoạt lại tài khoản {1} ở trang web của chúng tôi.</br>Để kích hoạt lại tài khoản, vui lòng kích hoạt link sau :<a href='/GUI/AcctiveAccount.aspx?username={2}&&isactived=1' style='color:Blue;'>Kích hoạt tài khoản</a>.</br>Nếu hủy việc kích hoạt, vui lòng kích hoạt link sau : <a href='/GUI/AcctiveAccount.aspx?username={2}&&isactived=0' style='color:Blue;'>Hủy đăng kí</a>.</br> Việc kích hoạt tài khoản chỉ có có hiệu lực một ngày kể từ lúc đăng kí.", user.fullname, user.username, user.username, user.username);
+            string content = String.Format("Xin chào {0}. Bạn đã yêu cầu kích hoạt lại tài khoản {1} ở trang web của chúng tôi.</br>Để kích hoạt lại tài khoản, vui lòng kích hoạt link sau :<a href='/GUI/AcctiveAccount.aspx?username={2}&isactived=1' style='color:Blue;'>Kích hoạt tài khoản</a>.</br>Nếu hủy việc kích hoạt, vui lòng kích hoạt link sau : <a href='/GUI/AcctiveAccount.aspx?username={2}&isactived=0' style='color:Blue;'>Hủy đăng kí</a>.</br> Việc kích hoạt tài khoản chỉ có có hiệu lực một ngày kể từ lúc đăng kí.", user.fullname, user.username, user.username, user.username);
             Utils.SendEMail(user.email, subject, content);
             //lb_Actived.Visible = false;
             lb_Note.ForeColor = Color.Green;

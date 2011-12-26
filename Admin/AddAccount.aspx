@@ -4,6 +4,17 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .style1
+        {
+            width: 137px;
+        }
+        .style2
+        {
+            height: 8px;
+            width: 137px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <script type="text/javascript">
@@ -55,8 +66,8 @@
         <br />
 <table width=100% >
             <tr>
-                <td class="style5" width="100">
-                    <asp:Label ID="Label1" runat="server" Text="Username :" ></asp:Label>
+                <td class="style1">
+                    <asp:Label ID="Label1" runat="server" Text="Tài khoản :" ></asp:Label>
                 </td>
                 <td class="style4">
         <asp:TextBox ID="txt_Username" runat="server" style="text-align: left" 
@@ -66,8 +77,8 @@
                 </td>
             </tr>
             <tr>
-                <td class="style5" width="100">
-                    <asp:Label ID="Label2" runat="server" Text="Password :"></asp:Label>
+                <td class="style1">
+                    <asp:Label ID="Label2" runat="server" Text="Mật khẩu :"></asp:Label>
                 </td>
                 <td class="style4">
         <asp:TextBox ID="txt_Password" runat="server" TextMode="Password" Width="400px" 
@@ -75,8 +86,8 @@
                 </td>
             </tr>
             <tr>
-                <td class="style5" width="100">
-                    <asp:Label ID="Label3" runat="server" Text="Fullname :"></asp:Label>
+                <td class="style1">
+                    <asp:Label ID="Label3" runat="server" Text="Họ và tên :"></asp:Label>
                 </td>
                 <td class="style4">
         <asp:TextBox ID="txt_Fullname" runat="server" Width="400px" CssClass="styleText" 
@@ -84,7 +95,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="style5" width="100">
+                <td class="style1">
                     <asp:Label ID="Label9" runat="server" Text="Email :"></asp:Label>
                 </td>
                 <td class="style4">
@@ -93,8 +104,8 @@
                 </td>
             </tr>
             <tr>
-                <td class="style5" width="100">
-                    <asp:Label ID="Label4" runat="server" Text="BirthDay :&nbsp;&nbsp;"></asp:Label>
+                <td class="style1">
+                    <asp:Label ID="Label4" runat="server" Text="Ngày sinh :&nbsp;&nbsp;"></asp:Label>
                 </td>
                 <td class="style4">
                     <asp:TextBox ID="txt_BirthDay" runat="server" Width="400px" CssClass="styleText" 
@@ -117,8 +128,8 @@
                 </td>
             </tr>
             <tr>
-                <td class="style5" style="height: 8px" width="100">
-                    <asp:Label ID="Label5" runat="server" Text="Tel :"></asp:Label>
+                <td class="style2">
+                    <asp:Label ID="Label5" runat="server" Text="Số điện thoại :"></asp:Label>
                 </td>
                 <td class="style4" style="height: 8px">
         <asp:TextBox ID="txt_Tel" runat="server" Width="400px" CssClass="styleText" 
@@ -130,8 +141,8 @@
                 </td>
             </tr>
             <tr>
-                <td class="style5" width="100">
-                    <asp:Label ID="Label6" runat="server" Text="Address :"></asp:Label>
+                <td class="style1">
+                    <asp:Label ID="Label6" runat="server" Text="Địa chỉ :"></asp:Label>
                 </td>
                 <td class="style4" valign="middle" align="left" style="text-align: left">
         <asp:TextBox ID="txt_Address" runat="server" Width="400px" TextMode="MultiLine" 
@@ -139,8 +150,8 @@
                 </td>
             </tr>
             <tr>
-                <td class="style5" width="100">
-                    <asp:Label ID="Label7" runat="server" Text="IDCard :"></asp:Label>
+                <td class="style1">
+                    <asp:Label ID="Label7" runat="server" Text="Số chứng minh :"></asp:Label>
                 </td>
                 <td class="style4">
         <asp:TextBox ID="txt_IDCard" runat="server" Width="400px" CssClass="styleText" 
@@ -151,8 +162,8 @@
                 </td>
             </tr>
             <tr>
-                <td class="style5" width="100">
-                    <asp:Label ID="Label8" runat="server" Text="Decentralize :" Width="109%"></asp:Label>
+                <td class="style1">
+                    <asp:Label ID="Label8" runat="server" Text="Phân quyền :" Width="109%"></asp:Label>
                 </td>
                 <td class="style4">
         <asp:DropDownList ID="ddl_Decentralize" runat="server" CssClass="styleText" >

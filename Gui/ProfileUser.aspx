@@ -33,7 +33,7 @@
                     <asp:Label ID="lb_Note0" runat="server"></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Username :">
+            <asp:TemplateField HeaderText="Tài khoản :">
                 <EditItemTemplate>
                     <asp:Label ID="Label1" runat="server" Text='<%# Eval("Username") %>'></asp:Label>
                 </EditItemTemplate>
@@ -41,7 +41,7 @@
                     <asp:Label ID="Label7" runat="server" Text='<%# Eval("Username") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Password :">
+            <asp:TemplateField HeaderText="Mật khẩu :">
                 <EditItemTemplate>
                     <asp:TextBox ID="txt_Password" runat="server" TextMode="Password" Width="200px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
@@ -49,9 +49,9 @@
                         ErrorMessage="Ô này không được bỏ trống"></asp:RequiredFieldValidator>
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Fullname" HeaderText="Fullname :" />
+            <asp:BoundField DataField="Fullname" HeaderText="Họ và tên :" />
             <asp:BoundField DataField="Email" HeaderText="Email :" />
-            <asp:TemplateField HeaderText="BirthDay :">
+            <asp:TemplateField HeaderText="Ngày sinh :">
                 <EditItemTemplate>
                     <asp:TextBox ID="txt_BirthDay" runat="server" Width="200px" 
                         Text='<%# Eval("BirthDay","{0:MM/dd/yyyy}") %>'></asp:TextBox>
@@ -77,7 +77,7 @@
                         Text='<%# Eval("BirthDay","{0:MM/dd/yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Tel :">
+            <asp:TemplateField HeaderText="Số điện thoại :">
                 <EditItemTemplate>
                     <asp:TextBox ID="txt_Tel" runat="server" Text='<%# Bind("Tel") %>'></asp:TextBox>
                     <asp:FilteredTextBoxExtender ID="txt_Tel_FilteredTextBoxExtender" 
@@ -92,7 +92,7 @@
                     <asp:Label ID="Label6" runat="server" Text='<%# Bind("Tel") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Address :">
+            <asp:TemplateField HeaderText="Địa chỉ :">
                 <EditItemTemplate>
                     <asp:TextBox ID="txt_Address" runat="server" Text='<%# Eval("Address") %>' 
                         TextMode="MultiLine" Width="200px" Height="50px"></asp:TextBox>
@@ -103,7 +103,7 @@
                     <asp:Label ID="Label3" runat="server" Text='<%# Eval("Address") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="IDCard :">
+            <asp:TemplateField HeaderText="Số chứng minh :">
                 <EditItemTemplate>
                     <asp:TextBox ID="txt_IDCard" runat="server" Text='<%# Bind("IDCard") %>'></asp:TextBox>
                     <asp:FilteredTextBoxExtender ID="txt_IDCard_FilteredTextBoxExtender" 
@@ -114,7 +114,7 @@
                     <asp:Label ID="Label5" runat="server" Text='<%# Bind("IDCard") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Decentralize :">
+            <asp:TemplateField HeaderText="Phần quyền :">
                 <EditItemTemplate>
                     <asp:Label ID="Label4" runat="server" Text='<%# Eval("Decentralize") %>'></asp:Label>
                 </EditItemTemplate>
