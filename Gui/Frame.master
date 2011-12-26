@@ -6,7 +6,6 @@
 
 <%@ Register src="Order/Cart.ascx" tagname="Cart" tagprefix="uc3" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -36,15 +35,15 @@
                         &nbsp;<asp:HyperLink ID="lb_AdControl" runat="server" NavigateUrl="~/Admin/Home.aspx">Admin Controls</asp:HyperLink>
                         &nbsp;<asp:HyperLink ID="lb_Logout" runat="server" NavigateUrl="~/Gui/Logout.aspx">Logout</asp:HyperLink>
                         
-                        &nbsp;&nbsp; </li>
-                    <li style="margin-right:10px;">
-                        <uc3:Cart ID="Cart1" runat="server" />
-                    </li>
+                        &nbsp;&nbsp;
+                         </li>
+                        
                 </ul>
+               
             </div>
         </div>
-
-
+    </div>
+    
     <div id="wrapper">
         
         <div id="menu">
@@ -63,18 +62,25 @@
                 <li><a href="<% =ResolveClientUrl("~") %>Gui/News/Khuyen_mai.aspx">Khuyến mại</a></li>
                 <li><a href="<% =ResolveClientUrl("~") %>Gui/News/About.aspx">Giới thiệu</a></li>
             </ul>
-            <div style="clear:both"></div>
         </div>
+        <table width=100%>
+            <tr>
+                <td align=right>
+                    <uc3:Cart ID="Cart1" runat="server"/>
+                </td>
+            </tr>
+        </table>
+         
 
         <!-- slide show ảnh -->
         <div id="headerImage"><div class="wrap">
    <div id="slide-holder">
             <div id="slide-runner">
-                <a href=""><img id="slide-img-1" src="http://images.thegioididong.com/qcao/30_11_2011_15_40_44_acer-mong-500.gif" class="slide" alt="Test 1" /></a>
-                <a href=""><img id="slide-img-2" src="http://images.thegioididong.com/qcao/16_12_2011_07_42_21_LEXMA-M243_500.gif" class="slide" alt="Test 2" /></a>
-                <a href=""><img id="slide-img-3" src="http://images.thegioididong.com/qcao/30_11_2011_15_41_32_jay-chou.gif" class="slide" alt="Test 3" /></a>
-                 <a href=""><img id="slide-img-4" src="http://images.thegioididong.com/qcao/30_11_2011_15_41_32_jay-chou.gif" class="slide" alt="Test 4" /></a>
-                 <a href=""><img id="slide-img-5" src="http://images.thegioididong.com/qcao/16_12_2011_07_42_21_LEXMA-M243_500.gif" class="slide" alt="Test 5" /></a>
+                <a href=""><img id="slide-img-1" src="http://images.thegioididong.com/qcao/30_11_2011_15_40_44_acer-mong-500.gif" class="slide" /></a>
+                <a href=""><img id="slide-img-2" src="http://images.thegioididong.com/qcao/16_12_2011_07_42_21_LEXMA-M243_500.gif" class="slide" /></a>
+                <a href=""><img id="slide-img-3" src="http://images.thegioididong.com/qcao/30_11_2011_15_41_32_jay-chou.gif" class="slide"/></a>
+                 <a href=""><img id="slide-img-4" src="http://images.thegioididong.com/qcao/30_11_2011_15_41_32_jay-chou.gif" class="slide"/></a>
+                 <a href=""><img id="slide-img-5" src="http://images.thegioididong.com/qcao/16_12_2011_07_42_21_LEXMA-M243_500.gif" class="slide"/></a>
 
                 <div id="slide-controls">
                  <p id="slide-client" class="text"><strong></strong><span></span></p>
@@ -98,6 +104,9 @@
             <div id="right-panel">
                 <div id="news">
                     <uc1:NewsTitleList ID="NewsTitleList1" runat="server" OrderBy="Title"/>
+                    
+                </div>
+                <div>
                     <uc2:ProducerList ID="ProducerList1" runat="server" />
                 </div>
             </div>
@@ -109,7 +118,7 @@
     </div>
      <div id = "footer">
         </div>
-        </div>
+
     </form>
 </body>
 </html>

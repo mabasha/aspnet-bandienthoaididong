@@ -12,9 +12,9 @@
         {
             width: 100%;
         }
-        .style3
+        .styleRegisterTextBox
         {
-            width: 277px;
+            width: 180px;
         }
         .style5
         {
@@ -25,7 +25,7 @@
      
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cMain" Runat="Server">
-   <script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function() {
             $("#aspnetForm").validate({
             rules: {
@@ -81,7 +81,8 @@
 
    <form id="aspnetForm">
     
-    <table class="style2">
+    <table class="style2"
+ >
     
         <tr>
             <td colspan="2" valign="bottom">
@@ -94,59 +95,59 @@
             </td>
         </tr>
         <tr>
-            <td align="left" class="" valign="middle" width="140px">
+            <td align="left" class="" valign="middle" width="140px" class="styleRegisterTextBox">
                 Username :
             </td>
-            <td class="style3" valign="middle">
+            <td  valign="middle">
                 <asp:TextBox ID="txt_Username" runat="server" Width="200px" 
                     style="margin-left: 0px"></asp:TextBox>
             </td>
         </tr>
         <tr>
-            <td align="left" class="" valign="middle" width="140px">
+            <td align="left" class="" valign="middle" width="140px" class="styleRegisterTextBox" >
                 Password :
             </td>
-            <td class="style3" valign="middle">
+            <td valign="middle">
                 <asp:TextBox ID="txt_Password" runat="server" Width="200px" TextMode="Password"></asp:TextBox>
             </td>
         </tr>
         <tr>
-            <td align="left" class="" valign="middle" width="140px">
+            <td align="left"  valign="middle" width="140px" class="styleRegisterTextBox">
                 Confirm Password :
             </td>
-            <td class="style3" valign="middle">
+            <td  valign="middle">
                 <asp:TextBox ID="txt_ConfirmPassword" runat="server" Width="200px" 
                     TextMode="Password"></asp:TextBox>
             </td>
         </tr>
         <tr>
-            <td align="left" class="" valign="middle" width="140px">
+            <td align="left" class="styleRegisterTextBox" valign="middle" width="140px" class="styleRegisterTextBox">
                 Fullname :
             </td>
-            <td class="style3" valign="middle">
+            <td  valign="middle">
                 <asp:TextBox ID="txt_Fullname" runat="server" Width="200px"></asp:TextBox>
             </td>
         </tr>
         <tr>
-            <td align="left" class="" valign="middle" width="140px">
+            <td align="left" class="styleRegisterTextBox" valign="middle" width="140px">
                 Email Address :</td>
-            <td class="style3" valign="middle">
+            <td  valign="middle">
                 <asp:TextBox ID="txt_Email" runat="server" Width="200px"></asp:TextBox>
             </td>
         </tr>
         <tr>
-            <td align="left" class="" valign="middle" width="140px">
+            <td align="left" class="styleRegisterTextBox" valign="middle" width="140px">
                 Confirm Email Address :
             </td>
-            <td class="style3" valign="middle">
+            <td  valign="middle">
                 <asp:TextBox ID="txt_ConfirmEmail" runat="server" Width="200px"></asp:TextBox>
             </td>
         </tr>
         <tr>
-            <td align="left" class="" valign="middle" width="140px">
+            <td align="left" class="styleRegisterTextBox" valign="middle" width="140px">
                 BirthDay :
             </td>
-            <td class="style3" valign="middle">
+            <td  valign="middle">
                     <asp:TextBox ID="txt_BirthDay" runat="server" Width="200px" ></asp:TextBox>
                     <asp:MaskedEditExtender ID="txt_BirthDay_MaskedEditExtender" runat="server" 
                         CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
@@ -166,9 +167,9 @@
             </td>
         </tr>
         <tr>
-            <td align="left" class="" valign="middle" width="140px">
+            <td align="left" class="styleRegisterTextBox" valign="middle" width="140px">
                 Tel : </td>
-            <td class="style3" valign="middle">
+            <td  valign="middle">
         <asp:TextBox ID="txt_Tel" runat="server" Width="200px" CssClass="styleText"></asp:TextBox>
                     <asp:FilteredTextBoxExtender ID="txt_Tel_FilteredTextBoxExtender" 
                         runat="server" Enabled="True" FilterType="Custom, Numbers" InvalidChars="." 
@@ -177,17 +178,17 @@
             </td>
         </tr>
         <tr>
-            <td align="left" class="" valign="middle" width="140px">
+            <td align="left" class="styleRegisterTextBox" valign="middle" width="140px">
                 Address : </td>
-            <td class="style3" valign="middle">
+            <td  valign="middle">
                 <asp:TextBox ID="txt_Address" runat="server" Height="50px" TextMode="MultiLine" 
                     Width="200px"></asp:TextBox>
             </td>
         </tr>
         <tr>
-            <td align="left" class="" valign="middle" width="140px">
+            <td align="left" class="styleRegisterTextBox" valign="middle" width="140px">
                 IDcard : </td>
-            <td class="style3" valign="middle">
+            <td  valign="middle">
         <asp:TextBox ID="txt_IDCard" runat="server" Width="200px" CssClass="styleText"></asp:TextBox>
                     <asp:FilteredTextBoxExtender ID="txt_IDCard_FilteredTextBoxExtender" 
                         runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txt_IDCard">

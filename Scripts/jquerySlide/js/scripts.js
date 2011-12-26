@@ -139,7 +139,7 @@ var slider={
    window.setTimeout('slider.ticker("'+el+'","'+text+'",'+(pos+1)+',"'+unique+'");',30);
  }
 };
-// STYLING FILE INPUTS 1.0 | Shaun Inman <http://www.shauninman.com/> | 2007-09-07
+// STYLING FILE INPUTS 
 if(!window.SI){var SI={};};
 SI.Files={
  htmlClass:'SI-FILES-STYLIZED',
