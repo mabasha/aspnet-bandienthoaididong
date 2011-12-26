@@ -113,7 +113,7 @@ public partial class Admin_AcountManager : System.Web.UI.Page
     private void GetDataForUserFromGrid(GridViewUpdateEventArgs e)
     {
         user.username = grid_Users.DataKeys[e.RowIndex].Value.ToString();
-        user.password = ((TextBox)grid_Users.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
+        user.password = Utils.MD5(((TextBox)grid_Users.Rows[e.RowIndex].Cells[1].Controls[0]).Text);
         user.fullname = ((TextBox)grid_Users.Rows[e.RowIndex].Cells[2].Controls[0]).Text;
         user.email = ((TextBox)grid_Users.Rows[e.RowIndex].Cells[3].Controls[0]).Text;
         user.birthDay = Convert.ToDateTime(((TextBox)grid_Users.Rows[e.RowIndex].Cells[4].FindControl("Birthday")).Text);

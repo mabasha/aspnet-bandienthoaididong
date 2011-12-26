@@ -35,7 +35,7 @@
                 Vui lòng đăng nhập :
                 <br />
                 <asp:Label ID="lb_Note" runat="server" ForeColor="Red"></asp:Label>
-            &nbsp;<asp:LinkButton ID="btnl_Actived" runat="server">đây</asp:LinkButton>
+            &nbsp;<asp:LinkButton ID="btnl_Actived" runat="server" ForeColor="#3333FF">đây</asp:LinkButton>
 &nbsp;<asp:Label ID="lb_Continuous" runat="server" ForeColor="Red"></asp:Label>
             </td>
         </tr>

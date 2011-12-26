@@ -59,4 +59,32 @@ public class Utils
         return SendMail.SendEMail2("smtp.gmail.com", "sieuthidienthoai.cnw@gmail.com", "sieuthidienthoai.cnw@gmail.com", "123456cnw",
                             587, emailto, subject, content, true);
     }
+
+    /// <summary>
+    /// Hàm mã hóa mật khẩu dạng MD5 để bảo mật
+    /// </summary>
+    /// <param name="password">chuỗi để mã hóa</param>
+    public static string MD5(string password)
+    {
+        byte[] textBytes = System.Text.Encoding.Default.GetBytes(password);
+        try
+        {
+            System.Security.Cryptography.MD5CryptoServiceProvider cryptHandler;
+            cryptHandler = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            byte[] hash = cryptHandler.ComputeHash(textBytes);
+            string ret = "";
+            foreach (byte a in hash)
+            {
+                if (a < 16)
+                    ret += "0" + a.ToString("x");
+                else
+                    ret += a.ToString("x");
+            }
+            return ret;
+        }
+        catch
+        {
+            throw;
+        }
+    } 
 }

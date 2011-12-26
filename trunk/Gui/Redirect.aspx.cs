@@ -26,7 +26,7 @@ public partial class Gui_Redirect : System.Web.UI.Page
             }
             case "actived":
             {
-                lb_Note.Text = "Chúc mừng bạn đã avtived thành công tài khoản. Sau khi Login, bạn có thể thoái xem và đặt hàng tại trang web của chúng tôi";
+                lb_Note.Text = "Chúc mừng bạn đã actived thành công tài khoản. Sau khi Login, bạn có thể thoái xem và đặt hàng tại trang web của chúng tôi";
                 Response.AddHeader("refresh", "5;url=../Gui/Login.aspx");
                 break;
             }
