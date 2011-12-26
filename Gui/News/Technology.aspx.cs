@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Gui_News_Khuyen_mai : System.Web.UI.Page
+public partial class Gui_News_Cong_nghe : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -16,7 +16,7 @@ public partial class Gui_News_Khuyen_mai : System.Web.UI.Page
     }
     private void FillData()
     {
-        gridShow.DataSource = News.GetAll_Khuyenmai();
+        gridShow.DataSource = News.GetAll_Technology();
         gridShow.DataBind();
     }
     protected void gridShow_PageIndexChanging(object sender, GridViewPageEventArgs e)

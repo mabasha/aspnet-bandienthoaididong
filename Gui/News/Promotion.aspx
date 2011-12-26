@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Gui/Frame.master" AutoEventWireup="true" CodeFile="Nhan_vat.aspx.cs" Inherits="Gui_News_Nhan_vat" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Gui/Frame.master" AutoEventWireup="true" CodeFile="Promotion.aspx.cs" Inherits="Gui_News_Khuyen_mai" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link href="../../CSS/News.css" rel="stylesheet" type="text/css" />
@@ -18,18 +18,17 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cMain" Runat="Server">
-    <p>
-        <asp:HyperLink ID="hlTrangchu" runat="server" ForeColor="#666666" 
-            NavigateUrl="~/Gui/HomePage.aspx" CssClass="hyperlink">Trang chủ</asp:HyperLink>
-        &nbsp;&gt;
-        <asp:HyperLink ID="hlTintuc" runat="server" ForeColor="#666666" 
-            NavigateUrl="~/Gui/News/ShowNews.aspx" CssClass="hyperlink">Tin tức</asp:HyperLink>
-        &nbsp;&gt;
-        <asp:HyperLink ID="hlCategory" runat="server" ForeColor="#666666" 
-            NavigateUrl="Nhan_vat.aspx" CssClass="hyperlink">Nhân vật</asp:HyperLink>
+<p>
+                <asp:HyperLink ID="hlTrangchu" runat="server" ForeColor="#666666" 
+                    NavigateUrl="~/Gui/HomePage.aspx" CssClass="hyperlink">Trang chủ</asp:HyperLink>
+&nbsp;&gt;
+                <asp:HyperLink ID="hlTintuc" runat="server" ForeColor="#666666" 
+                    NavigateUrl="~/Gui/News/ShowNews.aspx" CssClass="hyperlink">Tin tức</asp:HyperLink>
+&nbsp;&gt;
+                <asp:HyperLink ID="hlCategory" runat="server" ForeColor="#666666" 
+            NavigateUrl="Promotion.aspx" CssClass="hyperlink">Khuyến mãi</asp:HyperLink>
     </p>
-    <p>
-    </p>
+    <p></p>
     <asp:GridView ID="gridShow" runat="server" AllowPaging="True" 
         AutoGenerateColumns="False" onpageindexchanging="gridShow_PageIndexChanging" 
         PageSize="5" ShowHeader="False" Width="762px" BackColor="White" 
@@ -46,11 +45,9 @@
                             </td>
                             <td>
                                 <asp:HyperLink ID="hlTitle" runat="server" 
-                                    NavigateUrl='<%# "NewsDetails.aspx?id=" + Eval("ID") %>' 
-                                    Text='<%# Eval("Title") %>' Font-Bold="True" ForeColor="#33CCFF" 
-                                    CssClass="hyperlink" Target="_blank"></asp:HyperLink>
-                                <%--<a href="<%#"NewsDetails.aspx?id="+DataBinder.Eval(Container.DataItem,"ID")%>"><strong>
-                                                <%#DataBinder.Eval(Container.DataItem, "Title")%></strong></a>--%>
+                                     Text='<%# Eval("Title") %>' 
+                                    NavigateUrl='<%# "NewsDetails.aspx?id=" + Eval("ID") %>' Font-Bold="True" 
+                                    ForeColor="#33CCFF" CssClass="hyperlink" Target="_blank"></asp:HyperLink>                                
                             </td>
                         </tr>
                         <tr>

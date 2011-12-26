@@ -32,6 +32,14 @@ public class ImportBill
                       + " WHERE ImportBill.ImporterUsername = Users.Username";
         return AccessData.GetTable(query);
     }
+    public static string GetImporterFullname(int id)
+    {
+        return Convert.ToString(AccessData.ExecuteScalar(String.Format("select ImporterUsername from ImportBill where ID = {0}", id)));
+    }
+    public static string GetCreatedDate(int id)
+    {
+        return Convert.ToString(AccessData.ExecuteScalar(String.Format("select CreatedDate from ImportBill where ID = {0}", id)));
+    }
     public void Delete()
     {        
         string query_imp = String.Format("delete from ImportBill where ID = '{0}'", id);
