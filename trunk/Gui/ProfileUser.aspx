@@ -2,18 +2,27 @@
 
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
 
+      
+        
+
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cMain" Runat="Server">
     <asp:Label ID="lb_Note" runat="server"></asp:Label>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
-    <asp:DetailsView ID="dtviews_User" runat="server" AutoGenerateRows="False" 
-        BorderStyle="None" Height="50px" onitemcommand="dtviews_User_ItemCommand" 
+    <asp:DetailsView CssClass="styleProducerList" ID="dtviews_User" 
+    runat="server" AutoGenerateRows="False" style="margin-top:14px" Height="50px" onitemcommand="dtviews_User_ItemCommand" 
         onitemupdating="dtviews_User_ItemUpdating" 
         onmodechanging="dtviews_User_ModeChanging" DataKeyNames="Username" 
-        Width="500px" Font-Names="TimesNewRoman">
-        <FieldHeaderStyle Font-Bold="True" ForeColor="#666633" Width="120px" />
+        Width="95%" Font-Names="TimesNewRoman" CellPadding="4" 
+    ForeColor="#333333" GridLines="None">
+        <AlternatingRowStyle BackColor="White" />
+        <CommandRowStyle BackColor="#D1DDF1" Font-Bold="True" />
+        <EditRowStyle BackColor="#2461BF" />
+        <FieldHeaderStyle Font-Bold="True" Width="120px" BackColor="#DEE8F5" />
         <Fields>
             <asp:CommandField ButtonType="Image" CancelImageUrl="~/Images/Apps/delete.png" 
                 CancelText="Hủy bỏ" EditImageUrl="~/Images/Apps/edit.png" EditText="Chỉnh sửa" 
@@ -114,7 +123,11 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Fields>
-        <HeaderStyle Width="100px" />
+        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle Width="100px" BackColor="#507CD1" Font-Bold="True" 
+            ForeColor="White" />
+        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+        <RowStyle BackColor="#EFF3FB" />
     </asp:DetailsView>
 </asp:Content>
 
