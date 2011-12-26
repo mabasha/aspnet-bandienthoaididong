@@ -151,6 +151,30 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
             row[3] = tNumber.Text;
             row[4] = lPrice.Text;
 
+            int productID = Convert.ToInt32(tProductID.Text);
+            int number = Convert.ToInt32(tNumber.Text);
+
+            if (rPhone.Checked == true)
+            {
+                Phone phone = new Phone(productID);         //kiểm tra số lượng tồn có đủ hay không
+                phone.GetInfoByID();
+                if (phone.residualAmount < number)
+                {
+                    lInfoDt.Text = "<span style=\"color:red;\">Mặt hàng không đủ số lượng bán</span>";
+                    return;
+                }
+            }
+            else
+            {
+                Accessory acc = new Accessory(productID);
+                acc.GetInfoByID();
+                if (acc.residualAmount < number)
+                {
+                    lInfoDt.Text = "<span style=\"color:red;\">Mặt hàng không đủ số lượng bán</span>";
+                    return;
+                }
+            }
+
             dtAddBillDt.Rows.Add(row);
             ViewState["dtAddBillDt"] = dtAddBillDt;
 
@@ -205,6 +229,7 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
                 int productID = Convert.ToInt32(row.Cells[0].Text);
                 string sIMEI = row.Cells[2].Text;
                 string productIMEI="";
+                int number = Convert.ToInt32(row.Cells[3].Text);
                 bool isPhone;
                 if (sIMEI != "&nbsp;")     //điện thoại
                 {
@@ -215,8 +240,9 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
                 {
                     isPhone = false;
                 }
-                int number = Convert.ToInt32(row.Cells[3].Text);
+                
                 double price = Convert.ToDouble(row.Cells[4].Text);
+                
 
                 SaleBillDt saleBillDt = new SaleBillDt(0, saleBillID, productID,
                     productIMEI, isPhone, number, price);

@@ -174,4 +174,20 @@ public class SaleBillDt
         string query = String.Format("delete from SaleBillDt where SaleBillID = {0}", saleBillID);
         AccessData.ExecuteNonQuery(query);
     }
+
+    public static DataTable GetAllByID(int saleBillID, bool isPhone)
+    {
+        string query;
+        if (isPhone == true)
+        {
+            query = String.Format("select Phone.Name, SaleBillDt.* from Phone, SaleBillDt " +
+                "where SaleBillDt.ProductID = Phone.ID and SaleBillDt.SaleBillID = {0} and SaleBillDt.IsPhone = 'True'", saleBillID);
+        }
+        else
+        {
+            query = String.Format("select Accessory.Name, SaleBillDt.* from Accessory, SaleBillDt " +
+                "where SaleBillDt.ProductID = Accessory.ID and SaleBillDt.SaleBillID = {0} and SaleBillDt.IsPhone = 'False'", saleBillID);
+        }
+        return AccessData.GetTable(query);
+    }
 }

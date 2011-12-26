@@ -51,6 +51,21 @@ public class ImportBillDt
         string query = String.Format("select * from ImportBillDt where ImportBillID = {0}", ImportBillID);
         return AccessData.GetTable(query);
     }
+    public static DataTable GetAllByID(int importBillID, bool isPhone)
+    {   
+        string query;
+        if (isPhone == true)
+        {
+            query = String.Format("select Phone.Name, ImportBillDt.* from Phone, ImportBillDt "+
+                "where ImportBillDt.ProductID = Phone.ID and ImportBillDt.ImportBillID = {0} and ImportBillDt.IsPhone = 'True'", importBillID);            
+        }
+        else
+        {
+            query = String.Format("select Accessory.Name, ImportBillDt.* from Accessory, ImportBillDt "+
+                "where ImportBillDt.ProductID = Accessory.ID and ImportBillDt.ImportBillID = {0} and ImportBillDt.IsPhone = 'False'", importBillID); 
+        }
+        return AccessData.GetTable(query);
+    }
     public void Insert()
     {                        
         id = GetMaxID() + 1;

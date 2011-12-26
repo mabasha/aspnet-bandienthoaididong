@@ -50,11 +50,17 @@ public class SaleBill
         string query = String.Format("select * from SaleBill where ID =  {0}", id);
         DataTable dt = AccessData.GetTable(query);
         salerUsername = (string)dt.Rows[0]["SalerUsername"];
-        customName = (string)dt.Rows[0]["CustomName"];
-        address = (string)dt.Rows[0]["Address"];
-        tel = (string)dt.Rows[0]["Tel"];
         createdDate = (DateTime)dt.Rows[0]["CreatedDate"];
-        customUsername = (string)dt.Rows[0]["CustomUsername"];
+        try
+        {
+            customUsername = (string)dt.Rows[0]["CustomUsername"];
+        }
+        catch
+        {
+            customName = (string)dt.Rows[0]["CustomName"];
+            address = (string)dt.Rows[0]["Address"];
+            tel = (string)dt.Rows[0]["Tel"];
+        }
     }
 
     public bool Insert()
@@ -132,5 +138,17 @@ public class SaleBill
             "and CreatedDate between '{1}' and '{2}' " +
             "group by Users.Username, Users.FullName", keyword, from, to);
         return AccessData.GetTable(query);
+    }
+
+    public static double GetSumPrice(int saleBillID)
+    {
+        string query = String.Format("select sum(Price*Number) from SaleBill, SaleBillDt where SaleBill.ID = {0} and SaleBillDt.SaleBillID= SaleBill.ID", saleBillID);
+        object result = AccessData.ExecuteScalar(query);
+        try
+        {
+            return Convert.ToDouble(result);
+        }
+        catch (Exception) { }
+        return 0;
     }
 }
