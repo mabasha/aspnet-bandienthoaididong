@@ -19,7 +19,8 @@ div
 
 #header
 {
-
+     background: -moz-linear-gradient(bottom, #ffffff,#CCCCCC);
+    background: -webkit-gradient(linear, center bottom, center top, from(#ffffff), to(#CCCCCC));
 	height: 80px;
 	text-align: right;
 }

@@ -5,6 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link href="../../CSS/HomePage.css" rel="stylesheet" type="text/css" />
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="cMain" Runat="Server">
     <div id="products">
     

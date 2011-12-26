@@ -94,6 +94,6 @@ public partial class Gui_ProfileUser : System.Web.UI.Page
         user.birthDay = Convert.ToDateTime(((TextBox)dtviews_User.Rows[6].FindControl("txt_BirthDay")).Text);
         user.tel = ((TextBox)dtviews_User.Rows[7].FindControl("txt_Tel")).Text;
         user.address = ((TextBox)dtviews_User.Rows[8].FindControl("txt_Address")).Text;
-        user.idCard = int.Parse(((TextBox)dtviews_User.Rows[9].FindControl("txt_IDCard")).Text);
+        user.idCard = ((TextBox)dtviews_User.Rows[9].FindControl("txt_IDCard")).Text;
     }
 }
