@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Gui/Frame.master" AutoEventWireup="true" CodeFile="Cong_nghe.aspx.cs" Inherits="Gui_News_Cong_nghe" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Gui/Frame.master" AutoEventWireup="true" CodeFile="Technology.aspx.cs" Inherits="Gui_News_Cong_nghe" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link href="../../CSS/News.css" rel="stylesheet" type="text/css" />
@@ -26,7 +26,7 @@
                     NavigateUrl="~/Gui/News/ShowNews.aspx" CssClass="hyperlink">Tin tức</asp:HyperLink>
 &nbsp;&gt;
                 <asp:HyperLink ID="hlCategory" runat="server" ForeColor="#666666" 
-            NavigateUrl="Cong_nghe.aspx" CssClass="hyperlink">Công nghệ</asp:HyperLink>
+            NavigateUrl="Technology.aspx" CssClass="hyperlink">Công nghệ</asp:HyperLink>
     </p>
     <p></p>
     <asp:GridView ID="gridShow" runat="server" AllowPaging="True" 

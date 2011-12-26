@@ -15,13 +15,13 @@ public partial class Gui_News_NewsDetails : System.Web.UI.Page
             string category = News.GetCategory(id);
             hlCategory.Text = category;
             if(category=="Sản phẩm")
-                hlCategory.NavigateUrl = "San_pham.aspx";
+                hlCategory.NavigateUrl = "Product.aspx";
             if (category == "Công nghệ")
-                hlCategory.NavigateUrl = "Cong_nghe.aspx";
+                hlCategory.NavigateUrl = "Technology.aspx";
             if (category == "Thủ thuật")
-                hlCategory.NavigateUrl = "Thu_thuat.aspx";
+                hlCategory.NavigateUrl = "Tips.aspx";
             if (category == "Nhân vật")
-                hlCategory.NavigateUrl = "Nhan_vat.aspx";
+                hlCategory.NavigateUrl = "Character.aspx";
             lbTitle.Text = News.GetTitle(id);
             lbDate.Text = "Cập nhật ngày: " + News.GetCreatedDate(id);
             

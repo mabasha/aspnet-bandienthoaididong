@@ -36,7 +36,7 @@
                 <td __designer:mapid="b7" class="style5" colspan="2" 
                     style="border-top-style: groove">
                     <asp:HyperLink ID="hlCategory" runat="server" 
-                        NavigateUrl="San_pham.aspx" Font-Size="15pt" ForeColor="#33CCFF" 
+                        NavigateUrl="Product.aspx" Font-Size="15pt" ForeColor="#33CCFF" 
                         Target="_blank" CssClass="hyperlink">Sản phẩm</asp:HyperLink>
                 </td>
             </tr>
@@ -70,7 +70,7 @@
             <tr __designer:mapid="b6">
                 <td __designer:mapid="b7" class="style5" colspan="2">
                     <asp:HyperLink ID="hlCongnghe" runat="server" 
-                        NavigateUrl="Cong_nghe.aspx" Font-Size="15pt" ForeColor="#33CCFF" 
+                        NavigateUrl="Technology.aspx" Font-Size="15pt" ForeColor="#33CCFF" 
                         CssClass="hyperlink" Target="_blank">Công nghệ</asp:HyperLink>
                 </td>
             </tr>
@@ -103,7 +103,7 @@
             <tr __designer:mapid="b6">
                 <td __designer:mapid="b7" class="style5" colspan="2">
                     <asp:HyperLink ID="hlThuthuat" runat="server" 
-                        NavigateUrl="Thu_thuat.aspx" Font-Size="15pt" ForeColor="#33CCFF" 
+                        NavigateUrl="Tips.aspx" Font-Size="15pt" ForeColor="#33CCFF" 
                         CssClass="hyperlink" Target="_blank">Thủ thuật</asp:HyperLink>
                 </td>
             </tr>
@@ -136,7 +136,7 @@
             <tr __designer:mapid="b6">
                 <td __designer:mapid="b7" class="style5" colspan="2">
                     <asp:HyperLink ID="hlNhanvat" runat="server" 
-                        NavigateUrl="Nhan_vat.aspx" Font-Size="15pt" ForeColor="#33CCFF" 
+                        NavigateUrl="Character.aspx" Font-Size="15pt" ForeColor="#33CCFF" 
                         CssClass="hyperlink" Target="_blank">Nhân vật</asp:HyperLink>
                 </td>
             </tr>

@@ -53,13 +53,13 @@
                 <li>
                     <a href="<% =ResolveClientUrl("~") %>Gui/News/ShowNews.aspx">Tin tức</a>
                     <span>
-                        <a href="<% =ResolveClientUrl("~") %>Gui/News/San_pham.aspx">Sản phẩm</a>
-                        <a href="<% =ResolveClientUrl("~") %>Gui/News/Cong_nghe.aspx">Công nghệ</a>
-                        <a href="<% =ResolveClientUrl("~") %>Gui/News/Nhan_vat.aspx">Nhân vật</a>
-                        <a href="<% =ResolveClientUrl("~") %>Gui/News/Thu_thuat.aspx">Thủ thuật</a>
+                        <a href="<% =ResolveClientUrl("~") %>Gui/News/Product.aspx">Sản phẩm</a>
+                        <a href="<% =ResolveClientUrl("~") %>Gui/News/Technology.aspx">Công nghệ</a>
+                        <a href="<% =ResolveClientUrl("~") %>Gui/News/Character.aspx">Nhân vật</a>
+                        <a href="<% =ResolveClientUrl("~") %>Gui/News/Tips.aspx">Thủ thuật</a>
                     </span>
                 </li>
-                <li><a href="<% =ResolveClientUrl("~") %>Gui/News/Khuyen_mai.aspx">Khuyến mại</a></li>
+                <li><a href="<% =ResolveClientUrl("~") %>Gui/News/Promotion.aspx">Khuyến mại</a></li>
                 <li><a href="<% =ResolveClientUrl("~") %>Gui/News/About.aspx">Giới thiệu</a></li>
             </ul>
         </div>

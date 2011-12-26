@@ -100,31 +100,31 @@ public class News
             query += "desc";
         return AccessData.GetTable(query);
     }
-    public static DataTable GetAll_Sanpham()
+    public static DataTable GetAll_Product()
     {
         return AccessData.GetTable("select * from News where Category = N'Sản phẩm' order by ID desc");
     }
-    public static DataTable GetAll_Thuthuat()
+    public static DataTable GetAll_Tips()
     {
         return AccessData.GetTable("select * from News where Category = N'Thủ thuật' order by ID desc");
     }
-    public static DataTable GetAll_Congnghe()
+    public static DataTable GetAll_Technology()
     {
         return AccessData.GetTable("select * from News where Category = N'Công nghệ' order by ID desc");
     }
-    public static DataTable GetAll_Nhanvat()
+    public static DataTable GetAll_Character()
     {
         return AccessData.GetTable("select * from News where Category = N'Nhân vật' order by ID desc");
     }
-    public static DataTable GetAll_Khuyenmai()
+    public static DataTable GetAll_Promotion()
     {
         return AccessData.GetTable("select * from News where Category = N'Khuyến mãi' order by ID desc");
     }
-    public static int GetMaxID_Sanpham()
+    public static int GetMaxID_Product()
     {
         return Convert.ToInt32(AccessData.ExecuteScalar("select MAX(ID) from News where Category=N'Sản phẩm'"));
     }    
-    public static int GetMaxID_Thuthuat()
+    public static int GetMaxID_Tips()
     {
         try
         {
@@ -135,7 +135,7 @@ public class News
             return -1;
         }
     }
-    public static int GetMaxID_Congnghe()
+    public static int GetMaxID_Technology()
     {
         try
         {
@@ -146,7 +146,7 @@ public class News
             return -1;
         }
     }
-    public static int GetMaxID_Nhanvat()
+    public static int GetMaxID_Character()
     {
         try
         {
@@ -157,7 +157,7 @@ public class News
             return -1;
         }
     }
-    public static int GetMaxID_Khuyenmai()
+    public static int GetMaxID_Promotion()
     {
         try
         {

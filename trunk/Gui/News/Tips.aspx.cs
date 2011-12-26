@@ -4,20 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
 
-public partial class Gui_News_San_pham : System.Web.UI.Page
+public partial class Gui_News_Thu_thuat : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack == false)
         {
-            FillData();                  
+            FillData();
         }
     }
     private void FillData()
     {
-        gridShow.DataSource = News.GetAll_Sanpham();
+        gridShow.DataSource = News.GetAll_Tips();
         gridShow.DataBind();
     }
     protected void gridShow_PageIndexChanging(object sender, GridViewPageEventArgs e)

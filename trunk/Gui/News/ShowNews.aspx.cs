@@ -21,7 +21,7 @@ public partial class Gui_News_ShowNews : System.Web.UI.Page
     }
     private void Sanpham_Load()
     {
-        int id = News.GetMaxID_Sanpham();
+        int id = News.GetMaxID_Product();
         if (id != -1)
         {
             imgSp.ImageUrl = "~/Images/News/" + News.GetImage(id);
@@ -57,7 +57,7 @@ public partial class Gui_News_ShowNews : System.Web.UI.Page
     }
     private void Congnghe_Load()
     {
-        int id = News.GetMaxID_Congnghe();
+        int id = News.GetMaxID_Technology();
         if (id != -1)
         {
             imgCn.ImageUrl = "~/Images/News/" + News.GetImage(id);
@@ -92,7 +92,7 @@ public partial class Gui_News_ShowNews : System.Web.UI.Page
     }
     private void Thuthuat_Load()
     {
-        int id = News.GetMaxID_Thuthuat();
+        int id = News.GetMaxID_Tips();
         if (id != -1)
         {
             imgTt.ImageUrl = "~/Images/News/" + News.GetImage(id);
@@ -127,7 +127,7 @@ public partial class Gui_News_ShowNews : System.Web.UI.Page
     }
     private void Nhanvat_Load()
     {
-        int id = News.GetMaxID_Nhanvat();
+        int id = News.GetMaxID_Character();
         if (id != -1)
         {
             imgNv.ImageUrl = "~/Images/News/" + News.GetImage(id);
