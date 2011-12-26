@@ -1,12 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ShowPhoneSmall.ascx.cs" Inherits="Gui_Products_ShowPhoneSmall" %>
 
-<style>
-      .styleText
-      {
-          text-decoration:none;
-          color:Black;
-      }
-</style>
+
 
 <asp:DataList ID="gShow" runat="server" RepeatColumns="4">
     <ItemTemplate>
@@ -14,8 +8,8 @@
             <asp:Image ID="iPhone" runat="server" Height="80px" 
                 ImageUrl='<%# "~/Images/Phone/"+Eval("Image") %>' />
             <br />
-            <asp:HyperLink CssClass="styleText" ID="hName" runat="server" 
-                NavigateUrl='<%# "~/Gui/Products/PhoneDetail.aspx?id="+Eval("ID") %>' 
+            <asp:HyperLink ID="hName" runat="server"
+                NavigateUrl='<%# "~/Gui/Products/PhoneDetail.aspx?id="+Eval("ID") %>' style="color:Gray"
                 Text='<%# Eval("Name") %>'></asp:HyperLink>
             <br />
             <asp:Label ID="lPrice" runat="server" ForeColor="#FF3300" 

@@ -20,7 +20,7 @@
                             <td align="left">
                                 <b>Tên điện thoại</b> <b>:</b>
                                 <asp:HyperLink ID="url_PhoneName" runat="server" ForeColor="Blue" 
-                                        NavigateUrl='<%# "~/Gui/PhoneDetail.aspx?id=" + Eval("id") %>' 
+                                        NavigateUrl='<%# "~/Gui/Products/PhoneDetail.aspx?id=" + Eval("id") %>' 
                                         Text='<%# Eval("Name") %>'></asp:HyperLink>
                             </td>
                         </tr>
@@ -40,7 +40,9 @@
                         <tr>
                             <td align="left" style="text-align: right">
                                 <asp:HyperLink ID="url_PhoneDetail" runat="server" 
-                                        NavigateUrl='<%# "~/Gui/PhoneDetail.aspx?id=" + Eval("id") %>'>Chi tiết ...</asp:HyperLink>
+                                        
+                                    NavigateUrl='<%# "~/Gui/Products/PhoneDetail.aspx?id=" + Eval("id") %>' 
+                                    ForeColor="#3333FF">Chi tiết ...</asp:HyperLink>
                                     .</td>
                         </tr>
                     </table>

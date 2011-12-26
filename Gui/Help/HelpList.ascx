@@ -1,7 +1,9 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="NewsTitleList.ascx.cs" Inherits="Gui_News_NewsTitleList" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="HelpList.ascx.cs" Inherits="Gui_Help_WebUserControl" %>
+
 <style type="text/css">
     .style1
     {
+    	margin-top:10px;
         width: 100%;
         -moz-border-radius:5px;
         -webkit-border-radius:5px;
@@ -29,7 +31,7 @@
 <table class="style1" border=0>
         <tr>
             <td class="title" align=center>
-                Tin tức</td>
+                Hỗ trợ trực tuyến</td>
         </tr>
         <tr>
             <td>

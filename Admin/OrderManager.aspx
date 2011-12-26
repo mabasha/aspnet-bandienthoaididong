@@ -1,15 +1,25 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.master" AutoEventWireup="true" CodeFile="OrderManager.aspx.cs" Inherits="Admin_OrderManager" %>
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 <title>Quản lý đơn đặt hàng trực tuyến</title>
+<link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
         </asp:ToolkitScriptManager>
-    <div class="order-title">
-        Quản lý đơn đặt hàng</div>
+        <table width=100% >
+            <tr>
+                <td align=center class=style>
+                    <div>Quản lý đơn đặt hàng</div>
+                </td>    
+            </tr>
+            <tr>
+                <td align=center>
+                    <br />
     <div class="step-first">
         Chọn đơn đặt hàng cần xử lý:
         <div class="choose">
@@ -38,6 +48,10 @@
                 <asp:ImageButton ID="bSearch" runat="server" 
                     ImageUrl="~/Images/Apps/Front/b-search.png" onclick="bSearch_Click" />
             </div>
+            </td>
+            </tr>
+            <tr>
+                <td>
             <asp:GridView ID="gShowPhone" runat="server" AutoGenerateColumns="False" AllowPaging="True" 
                 AllowSorting="True" onpageindexchanging="gShowPhone_PageIndexChanging" 
                 onsorting="gShowPhone_Sorting" onrowcommand="gShowPhone_RowCommand">
@@ -74,6 +88,10 @@
                         SortExpression="CreatedDate" DataFormatString="{0:d}" />
                 </Columns>
             </asp:GridView>
+            </td>
+            </tr>
+            <tr>
+            <td>
             <asp:GridView ID="gShowAcc" runat="server" AutoGenerateColumns="False" AllowPaging="True" 
                 AllowSorting="True" onpageindexchanging="gShowAcc_PageIndexChanging" 
                 onsorting="gShowAcc_Sorting" onrowcommand="gShowAcc_RowCommand">
@@ -110,6 +128,9 @@
                         SortExpression="CreatedDate" DataFormatString="{0:d}" />
                 </Columns>
             </asp:GridView>
+            </td>
+            </tr>
+            </table>
         </div>
     </div>
 </asp:Content>

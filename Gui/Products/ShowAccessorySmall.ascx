@@ -6,7 +6,7 @@
                 ImageUrl='<%# "~/Images/Accessory/"+Eval("Image") %>' />
             <br />
             <asp:HyperLink ID="hName" runat="server" 
-                NavigateUrl='<%# "~/Gui/Products/AccessoryDetail.aspx?id="+Eval("ID") %>' 
+                NavigateUrl='<%# "~/Gui/Products/AccessoryDetail.aspx?id="+Eval("ID") %>' style="color:Gray"
                 Text='<%# Eval("Name") %>'></asp:HyperLink>
             <br />
             <asp:Label ID="lPrice" runat="server" ForeColor="#FF3300" 

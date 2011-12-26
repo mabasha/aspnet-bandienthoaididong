@@ -40,7 +40,7 @@
                                         <asp:Image ID="iArrow" runat="server" 
                                             ImageUrl="~/Images/Apps/Front/arrow.gif" />
                                         <asp:HyperLink  ID="hName" runat="server" Text='<%# Eval("Name") %>'                                    
-                                            NavigateUrl='<%# "~/Gui/Products/PhoneList.aspx?ProducerName="+Eval("Name") %>' style="color:Orange"></asp:HyperLink>
+                                            NavigateUrl='<%# "~/Gui/Products/PhoneList.aspx?ProducerName="+Eval("Name") %>' style="color:Gray"></asp:HyperLink>
  
                     </ItemTemplate>
                 </asp:DataList>
