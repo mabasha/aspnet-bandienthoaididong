@@ -2,14 +2,20 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
-        .style2
-        {
-            width: 100%;
-        }
-        .style3
-        {
-            width: 401px;
-        }
+               .styleLogin
+            {
+                margin-top:20px;
+                width: 95%;
+                background-color: #FFFFFF;
+                -moz-border-radius:5px;
+                -webkit-border-radius:5px;
+                 box-shadow: 0px 0px 0px 0px #818181;
+    -webkit-box-shadow: 0px 0px 1px 1px #818181;
+    -moz-box-shadow: 1px 1px 1px 1px #818181;
+                background: -moz-linear-gradient(bottom, #E1E1E1, #ffffff);
+    background: -webkit-gradient(linear, center bottom, center top, from(#E1E1E1), to(#ffffff));
+    
+            }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cMain" Runat="Server">
@@ -28,7 +34,7 @@
             });
         });
     </script>
-    <table class="style2" width="400">
+    <table class="styleLogin" width="400">
     <form id="aspnetForm">
         <tr>
             <td colspan="2">

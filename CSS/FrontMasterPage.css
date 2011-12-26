@@ -18,10 +18,8 @@ div
 }
 
 #header
-{
-     background: -moz-linear-gradient(bottom, #ffffff,#CCCCCC);
-    background: -webkit-gradient(linear, center bottom, center top, from(#ffffff), to(#CCCCCC));
-	height: 80px;
+{   
+	height:auto;
 	text-align: right;
 }
 #main
@@ -53,8 +51,9 @@ div
 {
 	background: -moz-linear-gradient(bottom, #E1E1E1, #ffffff);
     background: -webkit-gradient(linear, center bottom, center top, from(#E1E1E1), to(#ffffff));
-	height:20px;
+	height:auto;
 	margin-top:10px;
+	font-size:xx-small;
 }
 
 ul#topnav {
