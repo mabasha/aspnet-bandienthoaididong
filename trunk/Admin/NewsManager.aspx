@@ -1,14 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="NewsManager.aspx.cs" Inherits="Admin_NewsManager" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Admin/Admin.master" CodeFile="NewsManager.aspx.cs" Inherits="Admin_NewsManager" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
+<asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
+  <link href="../CSS/Admin.css" rel="stylesheet" type="text/css" />
     <title>Quản lý tin tức</title>
-</head>
-<body>
-    <form id="form1" runat="server">
+</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
     <div class="wrapper">
         <div class="header">Quản lý tin tức</div>
         <div class="list">
@@ -18,8 +15,10 @@
                         onclick="bAdd_Click" />
                 </div>
                 <div style="float: left; ">
-                Từ khóa<asp:TextBox ID="tKeyword" runat="server"></asp:TextBox>
-                    <asp:Button ID="bSearch" runat="server" onclick="bSearch_Click" Text="Tìm kiếm" />
+                Từ khóa<asp:TextBox ID="tKeyword" runat="server" CssClass="styleText" 
+                        BorderStyle="None"></asp:TextBox>
+                    <asp:Button ID="bSearch" runat="server" onclick="bSearch_Click" Text="Tìm kiếm" 
+                        CssClass="styleButton" BorderStyle="None"/>
                 </div>
                 <div style="clear:both"></div>
             </div>
@@ -53,6 +52,4 @@
             </div>
         </div>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>

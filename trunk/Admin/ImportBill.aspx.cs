@@ -288,4 +288,12 @@ public partial class Admin_ImportBill : System.Web.UI.Page
         FillData();
         FillDataDt();
     }
+    protected void gridImportBill_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "PrintBill")
+        {
+            id = Convert.ToInt32(gridImportBill.SelectedRow.Cells[0].Text);
+            Response.Redirect("~/Admin/ImportBill_Print.aspx?id="+id);
+        }
+    }
 }

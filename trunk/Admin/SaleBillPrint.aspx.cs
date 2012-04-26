@@ -52,5 +52,9 @@ public partial class Admin_SaleBillPrint : System.Web.UI.Page
 
         gridAccessory.DataSource = SaleBillDt.GetAllByID(id, false);
         gridAccessory.DataBind();
+
+        if (gridPhone.Rows.Count == 0) lPhone.Visible = false;
+
+        if (gridAccessory.Rows.Count == 0) lAcc.Visible = false;
     }
 }
