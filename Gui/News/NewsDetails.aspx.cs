@@ -22,6 +22,8 @@ public partial class Gui_News_NewsDetails : System.Web.UI.Page
                 hlCategory.NavigateUrl = "Tips.aspx";
             if (category == "Nhân vật")
                 hlCategory.NavigateUrl = "Character.aspx";
+            if (category == "Khuyến mãi")
+                hlCategory.NavigateUrl = "Promotion.aspx";
             lbTitle.Text = News.GetTitle(id);
             lbDate.Text = "Cập nhật ngày: " + News.GetCreatedDate(id);
             

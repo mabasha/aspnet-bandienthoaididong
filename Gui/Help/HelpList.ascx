@@ -35,14 +35,7 @@
         </tr>
         <tr>
             <td>
-                    <asp:DataList ID="DataList1" runat="server">
-                    <ItemTemplate>
-                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/Apps/Front/dot.jpg" />
-                    &nbsp;<asp:HyperLink ID="HyperLink1" runat="server" 
-                        NavigateUrl='<%# "~/Gui/News/NewsDetails.aspx?id="+Eval("ID") %>' 
-                        Text='<%# Eval("Title") %>'></asp:HyperLink>
-                        </ItemTemplate>
-                        </asp:DataList>
+                   <a href="ymsgr:sendim?thongdola2007"><img border=0 src="http://opi.yahoo.com/online?u=baoquangcao&m=g&t=2&l=us">
             </td>
         </tr>
 </table>

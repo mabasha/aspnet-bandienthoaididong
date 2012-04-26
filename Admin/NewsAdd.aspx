@@ -60,7 +60,7 @@
                             <asp:ListItem>Công nghệ</asp:ListItem>
                             <asp:ListItem>Nhân vật</asp:ListItem>
                             <asp:ListItem>Thủ thuật</asp:ListItem>
-                            <asp:ListItem>Khuyến mại</asp:ListItem>
+                            <asp:ListItem Value="Khuyến mãi">Khuyến mãi</asp:ListItem>
                             <asp:ListItem>Công ty</asp:ListItem>
                         </asp:DropDownList>
                     </td>

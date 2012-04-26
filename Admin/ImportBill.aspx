@@ -15,6 +15,7 @@
             $("#<% =btnAddViewstate.ClientID%>").click(AddViewstate);
             $("#<% =txtNumber.ClientID%>").keydown(OnKeyDownCheckNumber);
             $("#<% =txtPrice.ClientID%>").keydown(OnKeyDownCheckNumber);
+            $("#<% =txtTenSp.ClientID%>").keydown(OnKeyDownCheckNumber);
         }
         function AddViewstate() {
             if ($('#<% =txtTenSp.ClientID%>').val() == "" || $('#<% =txtNumber.ClientID%>').val() == "" || $('#<% =txtPrice.ClientID%>').val() == "") {
@@ -228,7 +229,8 @@
                             AllowPaging="True" AllowSorting="True" 
                             onpageindexchanging="gridImportBill_PageIndexChanging" 
                             onselectedindexchanged="gridImportBill_SelectedIndexChanged" 
-                            onsorting="gridImportBill_Sorting">
+                            onsorting="gridImportBill_Sorting" 
+                            onrowcommand="gridImportBill_RowCommand">
                             <RowStyle ForeColor="#000066" />
                             <Columns>
                                 <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" 
@@ -241,6 +243,8 @@
                                     ShowSelectButton="True" />
                                 <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/Apps/Delete.jpg" 
                                     ShowDeleteButton="True" />
+                                <asp:ButtonField ButtonType="Button" CommandName="PrintBill" 
+                                    Text="In báo cáo" />
                             </Columns>
                             <FooterStyle BackColor="White" ForeColor="#000066" />
                             <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />

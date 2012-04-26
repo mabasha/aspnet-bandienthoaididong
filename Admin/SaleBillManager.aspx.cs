@@ -491,4 +491,12 @@ public partial class Admin_SaleBillManager : System.Web.UI.Page
     {
         FillDataSaleDt(e.SortExpression);
     }
+    protected void gShowBill_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "BillPrint")
+        {
+            int id = Convert.ToInt32(gShowBill.SelectedRow.Cells[0].Text);
+            Response.Redirect("~/Admin/SaleBillPrint.aspx?id=" + id);
+        }
+    }
 }

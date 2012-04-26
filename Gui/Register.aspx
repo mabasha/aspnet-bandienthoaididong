@@ -81,8 +81,7 @@
 
    <form id="aspnetForm">
     
-    <table class="style2"
- >
+    <table class="style2">
     
         <tr>
             <td colspan="2" valign="bottom">

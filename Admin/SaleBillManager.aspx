@@ -256,7 +256,8 @@
                     onrowdatabound="gShowBill_RowDataBound" onrowdeleting="gShowBill_RowDeleting" 
                     onrowediting="gShowBill_RowEditing" onrowupdating="gShowBill_RowUpdating" 
                     onselectedindexchanged="gShowBill_SelectedIndexChanged" 
-                    onsorting="gShowBill_Sorting" SelectedIndex="0">
+                    onsorting="gShowBill_Sorting" SelectedIndex="0" 
+                    onrowcommand="gShowBill_RowCommand">
                     <RowStyle ForeColor="#000066" />
                     <Columns>
                         <asp:BoundField DataField="ID" HeaderText="Mã" SortExpression="ID" 
@@ -289,6 +290,8 @@
                             ShowDeleteButton="True" />
                         <asp:CommandField CancelText="Hủy" EditText="Sửa" ShowEditButton="True" 
                             UpdateText="Cập nhật" />
+                        <asp:ButtonField ButtonType="Button" CommandName="BillPrint" 
+                            Text="In báo cáo" />
                     </Columns>
                     <FooterStyle BackColor="White" ForeColor="#000066" />
                     <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
